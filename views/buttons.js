@@ -7,17 +7,15 @@ function updateStock(button_number) {
   const button = document.getElementById(`button_${button_number}`);
 
   if (button.className != "aos") {
-    stock_levels[button.id] = "aos";
-    button.style.background = aos_colour;
+    stock_levels[button.text] = "aos";
     console.log(`${button_number} is out of stock`);
     socket.emit("update table", JSON.stringify(stock_levels));
-    button.className = "aos";
+    defineLevel('aos', button_number);
   } else {
-    stock_levels[button.id] = "stock";
-    button.style.background = stock_colour;
+    stock_levels[button.text] = "stock";
     console.log(`${button_number} is back in stock`);
     socket.emit("update table", JSON.stringify(stock_levels));
-    button.className = "stock";
+    defineLevel('stock', button_number);
   }
 }
 
@@ -29,14 +27,23 @@ function confirmUpdate(button_number){
   updateStock(button_number);
 }
 
+function defineLevel(stock_level, button_number) {
+  const button_id = document.getElementById(`button_${button_number}`);
+  if (stock_level == "aos") {
+    button_id.className = "aos";
+    button_id.style.background = aos_colour;
+  } else if (stock_level == "stock") {
+    button_id.className = "stock";
+    button_id.style.background = stock_colour;
+  }
+}
+
 function updateAllStock(stock_levels) {
-  for (button in stock_levels) {
-    if (stock_levels[button] == "aos") {
-      document.getElementById(`${button}`).className = "aos";
-      document.getElementById(`${button}`).style.background = aos_colour;
-    } else if (stock_levels[button] == "stock") {
-      document.getElementById(`${button}`).className = "stock";
-      document.getElementById(`${button}`).style.background = stock_colour;
+  for (button_number in stock_levels) {
+    if (stock_levels[button_number] == "aos") {
+      defineLevel('aos', button_number);
+    } else if (stock_levels[button_number] == "stock") {
+      defineLevel('stock', button_number);
     }
   }
 }
