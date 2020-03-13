@@ -8,15 +8,16 @@ const http = require("http");
 const server = http.Server(app);
 const io = require("socket.io")(server);
 
+const state_file = "state.json"
 let last_table = {};
 
 
-if (fs.existsSync("state.json")) {
-  const old = JSON.parse(fs.readFileSync("state.json", "utf8"));
+if (fs.existsSync(state_file)) {
+  const old = JSON.parse(fs.readFileSync(state_file, "utf8"));
   last_table = old;
   console.log(`Reading in: ${JSON.stringify(old)}`);
 } else {
-  fs.writeFile("state.json", "{}", function(err) {
+  fs.writeFile(state_file, "{}", function(err) {
     console.log(`Creating file`);
     if (err) {
       console.log(err);
@@ -26,7 +27,7 @@ if (fs.existsSync("state.json")) {
 
 
 function saveState(stock_levels) {
-  fs.writeFile("state.json", stock_levels, function(err) {
+  fs.writeFile(state_file, stock_levels, function(err) {
     if (err) {
         console.log(err);
     }
