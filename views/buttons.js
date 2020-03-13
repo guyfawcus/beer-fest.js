@@ -19,7 +19,7 @@ function updateStock(button_number) {
   }
 }
 
-function confirmUpdate(button_number){
+function confirmUpdate(button_number) {
   const r = confirm(`Are you sure you want to update number ${button_number}`);
   if (r != true) {
     return;
@@ -53,4 +53,3 @@ socket.on("update table", table => {
   updateAllStock(stock_levels);
   console.log(`Updating table from ${table}`);
 });
-
