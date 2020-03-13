@@ -67,7 +67,7 @@ io.on("connection", socket => {
   io.sockets.emit("update table", JSON.stringify(last_table));
 
   socket.on("update table", table => {
-    console.log("Distibuting updates");
+    console.log(`Distibuting updates from ${socket.id}`);
     last_table = JSON.parse(table);
     io.sockets.emit("update table", table);
     saveState(table);
