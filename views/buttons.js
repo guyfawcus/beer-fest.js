@@ -6,11 +6,6 @@ let stock_levels = {};
 function updateStock(button_number) {
   const button = document.getElementById(`button_${button_number}`);
 
-  const r = confirm(`Are you sure you want to update number ${button_number}`);
-  if (r != true) {
-    return;
-  }
-
   if (button.className != "aos") {
     stock_levels[button.id] = "aos";
     button.style.background = aos_colour;
@@ -24,6 +19,14 @@ function updateStock(button_number) {
     socket.emit("update table", JSON.stringify(stock_levels));
     button.className = "stock";
   }
+}
+
+function confirmUpdate(button_number){
+  const r = confirm(`Are you sure you want to update number ${button_number}`);
+  if (r != true) {
+    return;
+  }
+  updateStock(button_number);
 }
 
 function updateAllStock(stock_levels) {
