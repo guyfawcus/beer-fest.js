@@ -1,6 +1,6 @@
 const socket = io.connect(self.location.host);
-const aos_colour = "#d81010";
-const stock_colour = "#1999bb";
+const aos_colour = "#e84118";
+const stock_colour = "#00a8ff";
 let stock_levels = {};
 
 // Make sure the user wants to update the selected number
