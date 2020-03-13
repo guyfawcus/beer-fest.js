@@ -1,4 +1,4 @@
-const socket = io.connect("http://192.168.0.18:8000");
+const socket = io.connect(self.location.host);
 const aos_colour = "#d81010";
 const stock_colour = "#1999bb";
 let stock_levels = {};

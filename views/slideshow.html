@@ -8,11 +8,10 @@
       overflow: hidden;
     }
   </style>
-
   <body>
     <iframe
       class="slides"
-      src="http://192.168.0.18:8000/"
+      id=button_matrix
       height="1079px"
       width="1920px"
     ></iframe>
@@ -23,6 +22,7 @@
 
   <script>
     w3.slideshow(".slides", 3000);
+    document.getElementById("button_matrix").src = `http://${self.location.host}/`;
   </script>
 </html>
 
