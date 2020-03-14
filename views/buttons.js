@@ -29,12 +29,12 @@ function updateFromLocal(button_number) {
   const button = document.getElementById(`button_${button_number}`);
 
   if (button.className != "aos") {
-    stock_levels[button.text] = "aos";
+    stock_levels[button_number] = "aos";
     console.log(`${button_number} is out of stock`);
     socket.emit("update table", JSON.stringify(stock_levels));
     updateLevel('aos', button_number);
   } else {
-    stock_levels[button.text] = "stock";
+    stock_levels[button_number] = "stock";
     console.log(`${button_number} is back in stock`);
     socket.emit("update table", JSON.stringify(stock_levels));
     updateLevel('stock', button_number);
