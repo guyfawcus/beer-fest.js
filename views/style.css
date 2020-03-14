@@ -3,6 +3,7 @@ body {
   color: #2f3640;
   font-family: "Helvetica", "Arial", sans-serif;
   margin: 0px;
+  overflow-x: hidden;
 }
 
 ::selection {
@@ -26,6 +27,15 @@ div[id^="button_"] {
   flex-direction: column;
   justify-content: center;
   transition: all 150ms;
+}
+
+div[id^="button_"]:hover {
+  transform: scale(1.05);
+  border-radius: 50px
+  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
+                    0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .grid {
