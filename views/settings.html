@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ACBF 2020 Settings</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+  </head>
+
+  <body>
+
+    <div class="settings_container">
+      <div class="settings_header"><H1>ACBF 2020 Settings</H1></div>
+      <div class="settings_options">
+        <div class="button" onclick="tableClear()">Clear</div>
+        <div class="button" onclick="tableUpload()">Upload</div>
+        <div class="button" onclick="tableDownload()">Download</div>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="settings.js"></script>
+  </body>
+</html>

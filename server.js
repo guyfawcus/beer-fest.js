@@ -57,6 +57,10 @@ app.get("/slideshow", (req, res) => {
   res.sendFile(path.join(__dirname, "views/slideshow.html"));
 });
 
+app.get("/settings", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/settings.html"));
+});
+
 // ---------------------------------------------------------------------------
 // Socket Events
 // ---------------------------------------------------------------------------
