@@ -17,7 +17,7 @@ function tableFill() {
 }
 
 function tableClear() {
-  const r = confirm("Are you sure you want to clear the whole table");
+  const r = confirm("Are you sure you want to mark everything as in-stock?");
   if (r != true) {
     return;
   }
