@@ -1,6 +1,21 @@
 const socket = io.connect(self.location.host);
 let stock_levels = {};
 
+function tableFill() {
+  const r = confirm(
+    "Are you sure you want to mark everything as out of stock?"
+  );
+  if (r != true) {
+    return;
+  }
+  console.log("Filling table");
+  const table = {};
+  for (i = 1; i <= 80; i++) {
+    table[i] = "aos";
+  }
+  socket.emit("update table", JSON.stringify(table));
+}
+
 function tableClear() {
   const r = confirm("Are you sure you want to clear the whole table");
   if (r != true) {
