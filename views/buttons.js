@@ -58,3 +58,13 @@ socket.on("update table", table => {
   updateFromState(stock_levels);
   console.log(`Updating table from ${table}`);
 });
+
+socket.on("connect", () => {
+  console.log("Server connected");
+  document.getElementById("title").style.color = "#2f3640";
+});
+
+socket.on("disconnect", () => {
+  console.log("Server diconnected!");
+  document.getElementById("title").style.color = "#e84118";
+});
