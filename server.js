@@ -8,9 +8,8 @@ const http = require("http");
 const server = http.Server(app);
 const io = require("socket.io")(server);
 
-const state_file = "state.json"
+const state_file = "state.json";
 let last_table = {};
-
 
 if (fs.existsSync(state_file)) {
   const old = JSON.parse(fs.readFileSync(state_file, "utf8"));
@@ -25,15 +24,13 @@ if (fs.existsSync(state_file)) {
   });
 }
 
-
 function saveState(stock_levels) {
   fs.writeFile(state_file, stock_levels, function(err) {
     if (err) {
-        console.log(err);
+      console.log(err);
     }
-});
+  });
 }
-
 
 // ---------------------------------------------------------------------------
 // Configuration

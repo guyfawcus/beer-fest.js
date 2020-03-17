@@ -19,7 +19,9 @@ function tableUpload() {
 }
 
 function tableDownload() {
-  let file = new Blob([JSON.stringify(stock_levels)], {type: "application/json;charset=utf-8"});
+  let file = new Blob([JSON.stringify(stock_levels)], {
+    type: "application/json;charset=utf-8"
+  });
   let download_url = URL.createObjectURL(file);
   let download_element = document.createElement("a");
   download_element.style.display = "none";

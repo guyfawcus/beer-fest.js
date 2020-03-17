@@ -14,7 +14,8 @@ h1 {
   font-size: 48px;
 }
 
-div[id^="button_"], .button {
+div[id^="button_"],
+.button {
   background: #00a8ff;
   display: flex;
   width: 100%;
@@ -23,19 +24,19 @@ div[id^="button_"], .button {
   font-size: 3rem;
   font-weight: bold;
   box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-                    0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+    0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
   flex-direction: column;
   justify-content: center;
   transition: all 150ms;
 }
 
-div[id^="button_"]:hover, .button:hover {
+div[id^="button_"]:hover,
+.button:hover {
   transform: translateY(-3px) scale(1.05);
-  border-radius: 50px
+  border-radius: 50px;
   box-shadow: 0px 0px 1.5rem 0px rgba(0, 0, 0, 0.5);
   box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-                    0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-                    0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
+    0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -45,21 +46,19 @@ div[id^="button_"]:hover, .button:hover {
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
-
 .settings_container {
   display: grid;
   grid-template-columns: 2fr 1fr 2fr;
   grid-template-rows: 150px auto;
   justify-content: center;
-
 }
 
-.settings_header{
- grid-column-start: 1;
- grid-column-end: 4;
- grid-row-start: 1;
- grid-row-end: 2;
- text-align: center;
+.settings_header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  text-align: center;
 }
 
 .settings_options {
