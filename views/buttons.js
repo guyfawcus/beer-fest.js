@@ -61,7 +61,7 @@ socket.on("update table", table => {
 
 socket.on("connect", () => {
   console.log("Server connected");
-  document.getElementById("title").style.color = "#2f3640";
+  document.getElementById("title").style.color = "#f5f6fa";
 });
 
 socket.on("disconnect", () => {

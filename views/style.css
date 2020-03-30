@@ -1,5 +1,9 @@
 body {
-  background-color: #f5f6fa;
+  background-image: radial-gradient(
+    circle farthest-corner at 50% 50%,
+    rgba(116, 147, 179, 1) 0%,
+    rgba(62, 83, 104, 1) 100%
+  );
   color: #2f3640;
   font-family: "Helvetica", "Arial", sans-serif;
   margin: 0px;
@@ -71,7 +75,7 @@ div[id^="button_"]:hover,
 .button {
   margin-bottom: 15px;
   height: 60px;
-  background: #dcdde1;
+  background: #f5f6fa;
   font-size: 2rem;
   font-weight: normal;
 }
