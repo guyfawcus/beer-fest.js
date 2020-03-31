@@ -30,7 +30,48 @@ function tableClear() {
 }
 
 function tableUpload() {
+  const input_element = document.createElement("input");
+  input_element.type = "file";
+  input_element.onchange = function() {
+    const reader = new FileReader();
+    const file = input_element.files[0];
+    reader.onload = function() {
+      // File type validation
+      if (file.type != "application/json") {
+        alert(
+          "Error: this file is not of the right type,\nplease upload a 'state.json' file"
+        );
+        return;
+      }
 
+      // File size validation
+      if (file.size > 1032) {
+        alert(
+          "Error: this file is too large,\nplease upload a valid 'state.json' file"
+        );
+        return;
+      }
+
+      // Data validation
+      try {
+        let data = JSON.parse(reader.result);
+      } catch (error) {
+        alert(
+          "Error: could not parse JSON,\nplease upload a valid 'state.json' file"
+        );
+        return;
+      }
+
+      const r = confirm("Are you sure you want to use this data?");
+      if (r == true) {
+        socket.emit("update table", reader.result);
+      }
+    };
+
+    reader.readAsText(file);
+    console.log(file.size);
+  };
+  input_element.click();
 }
 
 function tableDownload() {
