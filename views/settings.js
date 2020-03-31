@@ -86,6 +86,7 @@ function tableDownload() {
   document.body.appendChild(download_element);
   download_element.click();
   document.body.removeChild(download_element);
+  URL.revokeObjectURL(file);
 }
 
 // Update the state when remotes send updates
