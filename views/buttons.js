@@ -26,9 +26,9 @@ function updateLevel(button_number, stock_level) {
 
 // Update the table based on local changes to the stock state
 function updateFromLocal(button_number) {
-  const button = document.getElementById(`button_${button_number}`);
+  const button_id = document.getElementById(`button_${button_number}`);
 
-  if (button.className != "aos") {
+  if (button_id.className != "aos") {
     stock_levels[button_number] = "aos";
     socket.emit("update single", [button_number, "aos"]);
     updateLevel(button_number, "aos");
