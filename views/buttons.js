@@ -13,7 +13,7 @@ function confirmUpdate(button_number) {
 }
 
 // Change the colour of the button depending on the stock level
-function updateLevel(stock_level, button_number) {
+function updateLevel(button_number, stock_level) {
   const button_id = document.getElementById(`button_${button_number}`);
   if (stock_level == "aos") {
     button_id.className = "aos";
@@ -31,11 +31,11 @@ function updateFromLocal(button_number) {
   if (button.className != "aos") {
     stock_levels[button_number] = "aos";
     socket.emit("update single", [button_number, "aos"]);
-    updateLevel("aos", button_number);
+    updateLevel(button_number, "aos");
   } else {
     stock_levels[button_number] = "stock";
     socket.emit("update single", [button_number, "stock"]);
-    updateLevel("stock", button_number);
+    updateLevel(button_number, "stock");
   }
 }
 
@@ -43,9 +43,9 @@ function updateFromLocal(button_number) {
 function updateFromState(stock_levels) {
   for (button_number in stock_levels) {
     if (stock_levels[button_number] == "aos") {
-      updateLevel("aos", button_number);
+      updateLevel(button_number, "aos");
     } else if (stock_levels[button_number] == "stock") {
-      updateLevel("stock", button_number);
+      updateLevel(button_number, "stock");
     }
   }
 }
@@ -59,7 +59,7 @@ socket.on("update table", table => {
 
 socket.on("update single", stock_level => {
   stock_levels[stock_level[0]] = stock_level[1];
-  updateLevel(stock_level[1], stock_level[0]);
+  updateLevel(stock_level[0], stock_level[1]);
   console.log(`Number ${stock_level[0]} = ${stock_level[1]}`);
 });
 
