@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <title>Slideshow</title>
-  <script src="https://www.w3schools.com/lib/w3.js"></script>
-  <style type="text/css">
-    * {
-      margin: 0;
-      overflow: hidden;
-    }
-  </style>
-  <body>
-    <iframe
-      class="slides"
-      id="button_matrix"
-      height="1079px"
-      width="1920px"
-    ></iframe>
-    <img class="slides" src="beer-1.jpg" width="1920px" />
-    <img class="slides" src="beer-2.jpg" width="1920px" />
-    <img class="slides" src="beer-3.jpg" width="1920px" />
-  </body>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
-  <script>
-    w3.slideshow(".slides", 3000);
-    document.getElementById(
-      "button_matrix"
-    ).src = `http://${self.location.host}/`;
-  </script>
+    <title>Availiability slideshow</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides" id="reveal_slideshow">
+        <section data-background-iframe="/" data-autoslide="4000"></section>
+        <section data-background-image="beer-1.jpg"></section>
+        <section data-background-image="beer-2.jpg"></section>
+        <section data-autoslide="3000">Drink up, for charity!<br />🍻</section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        preloadIframes: true,
+        autoSlideStoppable: false,
+        progress: false,
+        controls: false,
+        loop: true,
+        //keyboard: false
+        transition: "fade",
+        transitionSpeed: "slow"
+      });
+      Reveal.configure({
+        autoSlide: 2000
+      });
+    </script>
+  </body>
 </html>
