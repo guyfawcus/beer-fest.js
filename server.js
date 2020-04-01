@@ -37,7 +37,7 @@ function saveState(stock_levels) {
 // ---------------------------------------------------------------------------
 
 server.listen(process.env.PORT || 8000, () => {
-  console.log(`[ server.js ] Listening on port ${server.address().port}`);
+  console.log(`Listening on port ${server.address().port}`);
 });
 
 app.use(express.static(__dirname + "/views/"));
@@ -77,12 +77,12 @@ app.get("/js/reveal.js", (req, res) => {
 // ---------------------------------------------------------------------------
 
 io.on("connection", socket => {
-  console.log(`[ server.js ] ${socket.id} connected`);
+  console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
 
   socket.on("update table", table => {
-    console.log(`Distibuting updates from ${socket.id}`);
+    console.log(`Distibuting whole table from ${socket.id}`);
     last_table = JSON.parse(table);
     socket.broadcast.emit("update table", table);
     saveState(table);
@@ -96,6 +96,6 @@ io.on("connection", socket => {
   });
 
   socket.on("disconnect", () => {
-    console.log(`[ server.js ] ${socket.id} disconnected`);
+    console.log(`Client ${socket.id} disconnected`);
   });
 });

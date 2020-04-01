@@ -54,8 +54,8 @@ function updateFromState(stock_levels) {
 
 // Update the state when remotes send updates
 socket.on("update table", table => {
-  updateFromState(JSON.parse(table));
   console.log(`Updating table from ${table}`);
+  updateFromState(JSON.parse(table));
 });
 
 socket.on("update single", stock_level => {

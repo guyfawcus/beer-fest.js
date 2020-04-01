@@ -61,7 +61,7 @@ function tableUpload() {
     };
 
     reader.readAsText(file);
-    console.log(file.size);
+    console.log(`Reading in ${file.size} bytes from ${file.name}`);
   };
   input_element.click();
 }
