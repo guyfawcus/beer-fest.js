@@ -27,8 +27,7 @@ div[id^="button_"],
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-    0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
   flex-direction: column;
   justify-content: center;
   transition: all 150ms;
@@ -39,8 +38,8 @@ div[id^="button_"]:hover,
   transform: translateY(-3px) scale(1.05);
   border-radius: 50px;
   box-shadow: 0px 0px 1.5rem 0px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-    0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
+    0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
   border-radius: 8px;
   cursor: pointer;
 }

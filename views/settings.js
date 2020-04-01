@@ -2,9 +2,7 @@ const socket = io.connect(self.location.host);
 let stock_levels = {};
 
 function tableFill() {
-  const r = confirm(
-    "Are you sure you want to mark everything as out of stock?"
-  );
+  const r = confirm("Are you sure you want to mark everything as out of stock?");
   if (r != true) {
     return;
   }
@@ -38,17 +36,13 @@ function tableUpload() {
     reader.onload = function() {
       // File type validation
       if (file.type != "application/json") {
-        alert(
-          "Error: this file is not of the right type,\nplease upload a 'state.json' file"
-        );
+        alert("Error: this file is not of the right type,\nplease upload a 'state.json' file");
         return;
       }
 
       // File size validation
       if (file.size > 1032) {
-        alert(
-          "Error: this file is too large,\nplease upload a valid 'state.json' file"
-        );
+        alert("Error: this file is too large,\nplease upload a valid 'state.json' file");
         return;
       }
 
@@ -56,9 +50,7 @@ function tableUpload() {
       try {
         let data = JSON.parse(reader.result);
       } catch (error) {
-        alert(
-          "Error: could not parse JSON,\nplease upload a valid 'state.json' file"
-        );
+        alert("Error: could not parse JSON,\nplease upload a valid 'state.json' file");
         return;
       }
 
