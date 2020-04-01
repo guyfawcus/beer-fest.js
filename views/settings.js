@@ -87,6 +87,10 @@ socket.on("update table", table => {
   console.log(`Updating table from ${table}`);
 });
 
+socket.on("update single", stock_level => {
+  stock_levels[stock_level[0]] = stock_level[1];
+});
+
 socket.on("connect", () => {
   console.log("Server connected");
   document.getElementById("title").style.color = "#f5f6fa";

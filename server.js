@@ -79,19 +79,19 @@ app.get("/js/reveal.js", (req, res) => {
 io.on("connection", socket => {
   console.log(`[ server.js ] ${socket.id} connected`);
   console.log("Distibuting previous state");
-  io.sockets.emit("update table", JSON.stringify(last_table));
+  io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
 
   socket.on("update table", table => {
     console.log(`Distibuting updates from ${socket.id}`);
     last_table = JSON.parse(table);
-    io.sockets.emit("update table", table);
+    socket.broadcast.emit("update table", table);
     saveState(table);
   });
 
   socket.on("update single", stock_level => {
     console.log(`Distibuting updates from ${socket.id} (number ${stock_level[0]} = ${stock_level[1]})`);
     last_table[stock_level[0]] = stock_level[1];
-    io.sockets.emit("update single", stock_level);
+    socket.broadcast.emit("update single", stock_level);
     saveState(JSON.stringify(last_table));
   });
 

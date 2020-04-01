@@ -16,9 +16,13 @@ function confirmUpdate(button_number) {
 function updateLevel(button_number, stock_level) {
   const button_id = document.getElementById(`button_${button_number}`);
   if (stock_level == "aos") {
+    console.log(`Setting ${button_number} as out-of-stock`);
+    stock_levels[button_number] = "aos";
     button_id.className = "aos";
     button_id.style.background = aos_colour;
   } else if (stock_level == "stock") {
+    console.log(`Setting ${button_number} as in-stock`);
+    stock_levels[button_number] = "stock";
     button_id.className = "stock";
     button_id.style.background = stock_colour;
   }
@@ -29,11 +33,9 @@ function updateFromLocal(button_number) {
   const button_id = document.getElementById(`button_${button_number}`);
 
   if (button_id.className != "aos") {
-    stock_levels[button_number] = "aos";
     socket.emit("update single", [button_number, "aos"]);
     updateLevel(button_number, "aos");
   } else {
-    stock_levels[button_number] = "stock";
     socket.emit("update single", [button_number, "stock"]);
     updateLevel(button_number, "stock");
   }
@@ -52,15 +54,12 @@ function updateFromState(stock_levels) {
 
 // Update the state when remotes send updates
 socket.on("update table", table => {
-  stock_levels = JSON.parse(table);
-  updateFromState(stock_levels);
+  updateFromState(JSON.parse(table));
   console.log(`Updating table from ${table}`);
 });
 
 socket.on("update single", stock_level => {
-  stock_levels[stock_level[0]] = stock_level[1];
   updateLevel(stock_level[0], stock_level[1]);
-  console.log(`Number ${stock_level[0]} = ${stock_level[1]}`);
 });
 
 socket.on("connect", () => {
