@@ -74,6 +74,15 @@ io.on("connection", socket => {
     saveState(table);
   });
 
+  socket.on("update single", stock_level => {
+    console.log(
+      `Distibuting updates from ${socket.id} (number ${stock_level[0]} = ${stock_level[1]})`
+    );
+    last_table[stock_level[0]] = stock_level[1];
+    io.sockets.emit("update single", stock_level);
+    saveState(JSON.stringify(last_table));
+  });
+
   socket.on("disconnect", () => {
     console.log(`[ server.js ] ${socket.id} disconnected`);
   });

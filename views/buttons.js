@@ -30,13 +30,11 @@ function updateFromLocal(button_number) {
 
   if (button.className != "aos") {
     stock_levels[button_number] = "aos";
-    console.log(`${button_number} is out of stock`);
-    socket.emit("update table", JSON.stringify(stock_levels));
+    socket.emit("update single", [button_number, "aos"]);
     updateLevel("aos", button_number);
   } else {
     stock_levels[button_number] = "stock";
-    console.log(`${button_number} is back in stock`);
-    socket.emit("update table", JSON.stringify(stock_levels));
+    socket.emit("update single", [button_number, "stock"]);
     updateLevel("stock", button_number);
   }
 }
@@ -57,6 +55,12 @@ socket.on("update table", table => {
   stock_levels = JSON.parse(table);
   updateFromState(stock_levels);
   console.log(`Updating table from ${table}`);
+});
+
+socket.on("update single", stock_level => {
+  stock_levels[stock_level[0]] = stock_level[1];
+  updateLevel(stock_level[1], stock_level[0]);
+  console.log(`Number ${stock_level[0]} = ${stock_level[1]}`);
 });
 
 socket.on("connect", () => {
