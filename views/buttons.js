@@ -3,13 +3,25 @@ const aos_colour = "#e84118";
 const stock_colour = "#00a8ff";
 let stock_levels = {};
 
+const TO_CONFIRM = true;
+
 // Make sure the user wants to update the selected number
-function confirmUpdate(button_number) {
-  const r = confirm(`Are you sure you want to update number ${button_number}`);
-  if (r != true) {
-    return;
+function confirmUpdate(button_number, to_confirm = TO_CONFIRM) {
+  const button_id = document.getElementById(`button_${button_number}`);
+
+  if (button_id.className != "aos") {
+    if (to_confirm) {
+      if (confirm(`Are you sure you want to mark number ${button_number} as out-of-stock`) != true) return;
+    }
+    socket.emit("update single", [button_number, "aos"]);
+    updateLevel(button_number, "aos");
+  } else {
+    if (to_confirm) {
+      if (confirm(`Are you sure you want to mark number ${button_number} as in-stock`) != true) return;
+    }
+    socket.emit("update single", [button_number, "stock"]);
+    updateLevel(button_number, "stock");
   }
-  updateFromLocal(button_number);
 }
 
 // Change the colour of the button depending on the stock level
@@ -25,19 +37,6 @@ function updateLevel(button_number, stock_level) {
     stock_levels[button_number] = "stock";
     button_id.className = "stock";
     button_id.style.background = stock_colour;
-  }
-}
-
-// Update the table based on local changes to the stock state
-function updateFromLocal(button_number) {
-  const button_id = document.getElementById(`button_${button_number}`);
-
-  if (button_id.className != "aos") {
-    socket.emit("update single", [button_number, "aos"]);
-    updateLevel(button_number, "aos");
-  } else {
-    socket.emit("update single", [button_number, "stock"]);
-    updateLevel(button_number, "stock");
   }
 }
 
