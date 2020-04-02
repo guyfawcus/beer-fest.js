@@ -55,7 +55,9 @@ function updateFromState(stock_levels) {
 
 // Update the state when remotes send updates
 socket.on("update table", table => {
+  console.groupCollapsed("Updating all entities");
   updateFromState(JSON.parse(table));
+  console.groupEnd();
 });
 
 socket.on("update single", stock_level => {
@@ -68,6 +70,6 @@ socket.on("connect", () => {
 });
 
 socket.on("disconnect", () => {
-  console.log("Server diconnected!");
+  console.log("%cServer diconnected!", "color:red;");
   document.getElementById("title").style.color = "#e84118";
 });

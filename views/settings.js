@@ -92,11 +92,13 @@ function updateRequired(table) {
 
 // Update the state when remotes send updates
 socket.on("update table", table => {
+  console.log("%cUpdating table from:", "font-weight:bold;");
+  console.log(JSON.parse(table));
   stock_levels = JSON.parse(table);
-  console.log(`Updating table from ${table}`);
 });
 
 socket.on("update single", stock_level => {
+  console.log(`Setting ${stock_level[0]} as ${stock_level[1]}`);
   stock_levels[stock_level[0]] = stock_level[1];
 });
 
@@ -106,6 +108,6 @@ socket.on("connect", () => {
 });
 
 socket.on("disconnect", () => {
-  console.log("Server diconnected!");
+  console.log("%cServer diconnected!", "color:red;");
   document.getElementById("title").style.color = "#e84118";
 });
