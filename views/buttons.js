@@ -42,6 +42,8 @@ function updateLevel(button_number, stock_level) {
 
 // Update the table based on remote changes to the stock state
 function updateFromState(stock_levels) {
+  console.log("%cUpdating table from:", "font-weight:bold;");
+  console.log(stock_levels);
   for (button_number in stock_levels) {
     if (stock_levels[button_number] == "aos") {
       updateLevel(button_number, "aos");
@@ -53,7 +55,6 @@ function updateFromState(stock_levels) {
 
 // Update the state when remotes send updates
 socket.on("update table", table => {
-  console.log(`Updating table from ${table}`);
   updateFromState(JSON.parse(table));
 });
 
