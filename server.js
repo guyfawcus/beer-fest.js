@@ -10,13 +10,16 @@ const io = require("socket.io")(server);
 
 const state_file = "state.json";
 let last_table = {};
+for (i = 1; i <= 80; i++) {
+  last_table[i] = "stock";
+}
 
 if (fs.existsSync(state_file)) {
   const old = JSON.parse(fs.readFileSync(state_file, "utf8"));
   last_table = old;
   console.log(`Reading in: ${JSON.stringify(old)}`);
 } else {
-  fs.writeFile(state_file, "{}", function(err) {
+  fs.writeFile(state_file, JSON.stringify(last_table), function(err) {
     console.log(`Creating file`);
     if (err) {
       console.log(err);

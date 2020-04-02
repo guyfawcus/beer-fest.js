@@ -56,7 +56,7 @@ function tableUpload() {
 
       const r = confirm("Are you sure you want to use this data?");
       if (r == true) {
-        socket.emit("update table", reader.result);
+        updateRequired(JSON.parse(reader.result));
       }
     };
 
@@ -79,6 +79,15 @@ function tableDownload() {
   download_element.click();
   document.body.removeChild(download_element);
   URL.revokeObjectURL(file);
+}
+
+function updateRequired(table) {
+  for (let [button_number, stock_level] of Object.entries(table)) {
+    if (stock_level != stock_levels[button_number]) {
+      console.log(`Setting ${button_number} as ${stock_level}`);
+      socket.emit("update single", [button_number, stock_level]);
+    }
+  }
 }
 
 // Update the state when remotes send updates
