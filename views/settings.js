@@ -12,6 +12,7 @@ function tableFill() {
     table[i] = "aos";
   }
   socket.emit("update table", JSON.stringify(table));
+  stock_levels = table;
 }
 
 function tableClear() {
@@ -24,6 +25,7 @@ function tableClear() {
     table[i] = "stock";
   }
   socket.emit("update table", JSON.stringify(table));
+  stock_levels = table;
 }
 
 function tableUpload() {
@@ -85,6 +87,7 @@ function updateRequired(table) {
     if (stock_level != stock_levels[button_number]) {
       console.log(`Setting ${button_number} as ${stock_level}`);
       socket.emit("update single", [button_number, stock_level]);
+      stock_levels[button_number] = stock_level;
     }
   }
 }
