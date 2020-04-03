@@ -13,13 +13,13 @@ function confirmUpdate(button_number, to_confirm = TO_CONFIRM) {
     if (to_confirm) {
       if (confirm(`Are you sure you want to mark number ${button_number} as out-of-stock`) != true) return;
     }
-    socket.emit("update single", [button_number, "aos"]);
+    socket.emit("update single", { number: button_number, level: "aos" });
     updateLevel(button_number, "aos");
   } else {
     if (to_confirm) {
       if (confirm(`Are you sure you want to mark number ${button_number} as in-stock`) != true) return;
     }
-    socket.emit("update single", [button_number, "stock"]);
+    socket.emit("update single", { number: button_number, level: "stock" });
     updateLevel(button_number, "stock");
   }
 }
@@ -61,7 +61,7 @@ socket.on("update table", table => {
 });
 
 socket.on("update single", stock_level => {
-  updateLevel(stock_level[0], stock_level[1]);
+  updateLevel(stock_level["number"], stock_level["level"]);
 });
 
 socket.on("config", configuration => {

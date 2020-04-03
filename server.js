@@ -95,8 +95,8 @@ io.on("connection", socket => {
   });
 
   socket.on("update single", stock_level => {
-    console.log(`Distibuting updates from ${socket.id} (number ${stock_level[0]} = ${stock_level[1]})`);
-    last_table[stock_level[0]] = stock_level[1];
+    console.log(`Distibuting updates from ${socket.id} (number ${stock_level["number"]} = ${stock_level["level"]})`);
+    last_table[stock_level["number"]] = stock_level["level"];
     socket.broadcast.emit("update single", stock_level);
     saveState(JSON.stringify(last_table));
   });

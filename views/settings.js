@@ -86,7 +86,7 @@ function updateRequired(table) {
   for (let [button_number, stock_level] of Object.entries(table)) {
     if (stock_level != stock_levels[button_number]) {
       console.log(`Setting ${button_number} as ${stock_level}`);
-      socket.emit("update single", [button_number, stock_level]);
+      socket.emit("update single", { number: button_number, level: stock_level });
       stock_levels[button_number] = stock_level;
     }
   }
@@ -119,8 +119,8 @@ socket.on("update table", table => {
 });
 
 socket.on("update single", stock_level => {
-  console.log(`Setting ${stock_level[0]} as ${stock_level[1]}`);
-  stock_levels[stock_level[0]] = stock_level[1];
+  console.log(`Setting ${stock_level["number"]} as ${stock_level["level"]}`);
+  stock_levels[stock_level["number"]] = stock_level["level"];
 });
 
 socket.on("connect", () => {
