@@ -4,25 +4,25 @@ let TO_CONFIRM = true;
 
 function tableFill() {
   if (TO_CONFIRM) {
-    if (confirm("Are you sure you want to mark everything as out of stock?") != true) return;
+    if (confirm("Are you sure you want to mark everything as full?") != true) return;
   }
-  console.log("Filling table");
+  console.log("Filling everything 🍻");
   const table = {};
   for (i = 1; i <= 80; i++) {
-    table[i] = "aos";
+    table[i] = "full";
   }
   socket.emit("update table", JSON.stringify(table));
   stock_levels = table;
 }
 
-function tableClear() {
+function tableEmpty() {
   if (TO_CONFIRM) {
-    if (confirm("Are you sure you want to mark everything as in-stock?") != true) return;
+    if (confirm("Are you sure you want to mark everything as empty?") != true) return;
   }
-  console.log("Clearing table");
+  console.log("Emptying everything 😧");
   const table = {};
   for (i = 1; i <= 80; i++) {
-    table[i] = "stock";
+    table[i] = "empty";
   }
   socket.emit("update table", JSON.stringify(table));
   stock_levels = table;

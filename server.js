@@ -13,7 +13,7 @@ let last_table = {};
 let CONFIG = { confirm: true };
 
 for (i = 1; i <= 80; i++) {
-  last_table[i] = "stock";
+  last_table[i] = "full";
 }
 
 if (fs.existsSync(state_file)) {
