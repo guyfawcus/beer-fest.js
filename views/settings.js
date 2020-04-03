@@ -15,6 +15,19 @@ function tableFill() {
   stock_levels = table;
 }
 
+function tableLow() {
+  if (TO_CONFIRM) {
+    if (confirm("Are you sure you want to mark everything as low?") != true) return;
+  }
+  console.log("Lowering everything");
+  const table = {};
+  for (i = 1; i <= 80; i++) {
+    table[i] = "low";
+  }
+  socket.emit("update table", JSON.stringify(table));
+  stock_levels = table;
+}
+
 function tableEmpty() {
   if (TO_CONFIRM) {
     if (confirm("Are you sure you want to mark everything as empty?") != true) return;

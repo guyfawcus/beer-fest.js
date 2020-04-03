@@ -1,5 +1,6 @@
 const socket = io.connect(self.location.host);
 const empty_colour = "#e84118";
+const low_colour = "#fbc531";
 const full_colour = "#00a8ff";
 let stock_levels = {};
 
@@ -9,13 +10,19 @@ let TO_CONFIRM = true;
 function confirmUpdate(button_number, to_confirm = TO_CONFIRM) {
   const button_id = document.getElementById(`button_${button_number}`);
 
-  if (button_id.className != "empty") {
+  if (button_id.className == "full") {
+    if (to_confirm) {
+      if (confirm(`Are you sure you want to mark number ${button_number} as low`) != true) return;
+    }
+    socket.emit("update single", { number: button_number, level: "low" });
+    updateLevel(button_number, "low");
+  } else if (button_id.className == "low") {
     if (to_confirm) {
       if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
     }
     socket.emit("update single", { number: button_number, level: "empty" });
     updateLevel(button_number, "empty");
-  } else {
+  } else if (button_id.className == "empty") {
     if (to_confirm) {
       if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
     }
@@ -32,6 +39,11 @@ function updateLevel(button_number, stock_level) {
     stock_levels[button_number] = "empty";
     button_id.className = "empty";
     button_id.style.background = empty_colour;
+  } else if (stock_level == "low") {
+    console.log(`Setting ${button_number} as low`);
+    stock_levels[button_number] = "low";
+    button_id.className = "low";
+    button_id.style.background = low_colour;
   } else if (stock_level == "full") {
     console.log(`Setting ${button_number} as full`);
     stock_levels[button_number] = "full";
@@ -47,6 +59,8 @@ function updateFromState(stock_levels) {
   for (button_number in stock_levels) {
     if (stock_levels[button_number] == "empty") {
       updateLevel(button_number, "empty");
+    } else if (stock_levels[button_number] == "low") {
+      updateLevel(button_number, "low");
     } else if (stock_levels[button_number] == "full") {
       updateLevel(button_number, "full");
     }
