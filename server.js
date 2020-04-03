@@ -10,6 +10,8 @@ const io = require("socket.io")(server);
 
 const state_file = "state.json";
 let last_table = {};
+let CONFIG = { confirm: true };
+
 for (i = 1; i <= 80; i++) {
   last_table[i] = "stock";
 }
@@ -83,6 +85,7 @@ io.on("connection", socket => {
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
+  io.to(`${socket.id}`).emit("config", { CONFIG });
 
   socket.on("update table", table => {
     console.log(`Distibuting whole table from ${socket.id}`);
@@ -96,6 +99,13 @@ io.on("connection", socket => {
     last_table[stock_level[0]] = stock_level[1];
     socket.broadcast.emit("update single", stock_level);
     saveState(JSON.stringify(last_table));
+  });
+
+  socket.on("config", configuration => {
+    console.log("Distributing configuration:");
+    console.log(configuration);
+    io.sockets.emit("config", configuration);
+    CONFIG = configuration;
   });
 
   socket.on("disconnect", () => {

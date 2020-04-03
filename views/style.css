@@ -78,3 +78,37 @@ div[id^="button_"]:hover,
   font-size: 2rem;
   font-weight: normal;
 }
+
+input[type="checkbox"] {
+  position: relative;
+  width: 80px;
+  height: 40px;
+  -webkit-appearance: none;
+  background: #f5f6fa;
+  outline: none;
+  border-radius: 20px;
+  transition: 150ms;
+  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+}
+
+input:checked[type="checkbox"] {
+  background: #00a8ff;
+}
+
+input[type="checkbox"]:before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  background: #f5f6fa;
+  transform: scale(1.1);
+  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+  transition: 150ms;
+}
+
+input:checked[type="checkbox"]:before {
+  left: 40px;
+}

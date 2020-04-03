@@ -1,10 +1,10 @@
 const socket = io.connect(self.location.host);
 let stock_levels = {};
+let TO_CONFIRM = true;
 
 function tableFill() {
-  const r = confirm("Are you sure you want to mark everything as out of stock?");
-  if (r != true) {
-    return;
+  if (TO_CONFIRM) {
+    if (confirm("Are you sure you want to mark everything as out of stock?") != true) return;
   }
   console.log("Filling table");
   const table = {};
@@ -15,9 +15,8 @@ function tableFill() {
 }
 
 function tableClear() {
-  const r = confirm("Are you sure you want to mark everything as in-stock?");
-  if (r != true) {
-    return;
+  if (TO_CONFIRM) {
+    if (confirm("Are you sure you want to mark everything as in-stock?") != true) return;
   }
   console.log("Clearing table");
   const table = {};
@@ -54,10 +53,10 @@ function tableUpload() {
         return;
       }
 
-      const r = confirm("Are you sure you want to use this data?");
-      if (r == true) {
-        updateRequired(JSON.parse(reader.result));
+      if (TO_CONFIRM) {
+        if (confirm("Are you sure you want to use this data?") != true) return;
       }
+      updateRequired(JSON.parse(reader.result));
     };
 
     reader.readAsText(file);
@@ -89,6 +88,27 @@ function updateRequired(table) {
     }
   }
 }
+
+const checkbox = document.getElementById("confirm_check");
+checkbox.addEventListener("change", event => {
+  if (event.target.checked) {
+    console.log("Updating configuration: setting confirm to true");
+    socket.emit("config", { confirm: true });
+  } else {
+    console.log("Updating configuration: setting confirm to false");
+    socket.emit("config", { confirm: false });
+  }
+});
+
+socket.on("config", configuration => {
+  console.log("Updating configuration:");
+  console.log(configuration);
+  if (configuration["confirm"]) {
+    TO_CONFIRM = true;
+  } else {
+    TO_CONFIRM = false;
+  }
+});
 
 // Update the state when remotes send updates
 socket.on("update table", table => {

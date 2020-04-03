@@ -3,7 +3,7 @@ const aos_colour = "#e84118";
 const stock_colour = "#00a8ff";
 let stock_levels = {};
 
-const TO_CONFIRM = true;
+let TO_CONFIRM = true;
 
 // Make sure the user wants to update the selected number
 function confirmUpdate(button_number, to_confirm = TO_CONFIRM) {
@@ -62,6 +62,16 @@ socket.on("update table", table => {
 
 socket.on("update single", stock_level => {
   updateLevel(stock_level[0], stock_level[1]);
+});
+
+socket.on("config", configuration => {
+  console.log("Updating configuration:");
+  console.log(configuration);
+  if (configuration["confirm"]) {
+    TO_CONFIRM = true;
+  } else {
+    TO_CONFIRM = false;
+  }
 });
 
 socket.on("connect", () => {
