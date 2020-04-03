@@ -63,16 +63,16 @@ app.get("/settings", (req, res) => {
 
 // Routes for reveal
 app.get("/css/reset.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "../reveal.js/css/reset.css"));
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reset.css"));
 });
 app.get("/css/reveal.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "../reveal.js/css/reveal.css"));
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reveal.css"));
 });
 app.get("/css/theme/black.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "../reveal.js/css/theme/black.css"));
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/theme/black.css"));
 });
 app.get("/js/reveal.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "../reveal.js/js/reveal.js"));
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/js/reveal.js"));
 });
 
 // ---------------------------------------------------------------------------
