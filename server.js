@@ -85,7 +85,7 @@ io.on("connection", socket => {
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
-  io.to(`${socket.id}`).emit("config", { CONFIG });
+  io.to(`${socket.id}`).emit("config", CONFIG);
 
   socket.on("update table", table => {
     console.log(`Distibuting whole table from ${socket.id}`);

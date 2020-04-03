@@ -95,16 +95,14 @@ function updateRequired(table) {
 const checkbox = document.getElementById("confirm_check");
 checkbox.addEventListener("change", event => {
   if (event.target.checked) {
-    console.log("Updating configuration: setting confirm to true");
     socket.emit("config", { confirm: true });
   } else {
-    console.log("Updating configuration: setting confirm to false");
     socket.emit("config", { confirm: false });
   }
 });
 
 socket.on("config", configuration => {
-  console.log("Updating configuration:");
+  console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
   if (configuration["confirm"]) {
     TO_CONFIRM = true;

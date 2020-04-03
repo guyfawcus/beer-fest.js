@@ -65,7 +65,7 @@ socket.on("update single", stock_level => {
 });
 
 socket.on("config", configuration => {
-  console.log("Updating configuration:");
+  console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
   if (configuration["confirm"]) {
     TO_CONFIRM = true;
