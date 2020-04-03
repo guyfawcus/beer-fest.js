@@ -5,29 +5,51 @@ const full_colour = "#00a8ff";
 let stock_levels = {};
 
 let TO_CONFIRM = true;
+let LOW_ENABLE = false;
 
 // Make sure the user wants to update the selected number
 function confirmUpdate(button_number, to_confirm = TO_CONFIRM) {
   const button_id = document.getElementById(`button_${button_number}`);
-
-  if (button_id.className == "full") {
-    if (to_confirm) {
-      if (confirm(`Are you sure you want to mark number ${button_number} as low`) != true) return;
+  if (LOW_ENABLE == true) {
+    if (button_id.className == "full") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as low`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "low" });
+      updateLevel(button_number, "low");
+    } else if (button_id.className == "low") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "empty" });
+      updateLevel(button_number, "empty");
+    } else if (button_id.className == "empty") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "full" });
+      updateLevel(button_number, "full");
     }
-    socket.emit("update single", { number: button_number, level: "low" });
-    updateLevel(button_number, "low");
-  } else if (button_id.className == "low") {
-    if (to_confirm) {
-      if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+  } else {
+    if (button_id.className == "full") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "empty" });
+      updateLevel(button_number, "empty");
+    } else if (button_id.className == "low") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "empty" });
+      updateLevel(button_number, "empty");
+    } else if (button_id.className == "empty") {
+      if (to_confirm) {
+        if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
+      }
+      socket.emit("update single", { number: button_number, level: "full" });
+      updateLevel(button_number, "full");
     }
-    socket.emit("update single", { number: button_number, level: "empty" });
-    updateLevel(button_number, "empty");
-  } else if (button_id.className == "empty") {
-    if (to_confirm) {
-      if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
-    }
-    socket.emit("update single", { number: button_number, level: "full" });
-    updateLevel(button_number, "full");
   }
 }
 
@@ -85,6 +107,11 @@ socket.on("config", configuration => {
     TO_CONFIRM = true;
   } else {
     TO_CONFIRM = false;
+  }
+  if (configuration["low_enable"]) {
+    LOW_ENABLE = true;
+  } else {
+    LOW_ENABLE = false;
   }
 });
 

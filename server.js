@@ -10,7 +10,7 @@ const io = require("socket.io")(server);
 
 const state_file = "state.json";
 let last_table = {};
-let CONFIG = { confirm: true };
+let CONFIG = { confirm: true, low_enable: false };
 
 for (i = 1; i <= 80; i++) {
   last_table[i] = "full";

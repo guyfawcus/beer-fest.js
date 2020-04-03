@@ -1,6 +1,7 @@
 const socket = io.connect(self.location.host);
 let stock_levels = {};
 let TO_CONFIRM = true;
+let LOW_ENABLE = false;
 
 function tableFill() {
   if (TO_CONFIRM) {
@@ -105,12 +106,21 @@ function updateRequired(table) {
   }
 }
 
-const checkbox = document.getElementById("confirm_check");
-checkbox.addEventListener("change", event => {
+const confirm_checkbox = document.getElementById("confirm_check");
+confirm_checkbox.addEventListener("change", event => {
   if (event.target.checked) {
-    socket.emit("config", { confirm: true });
+    socket.emit("config", { confirm: true, low_enable: LOW_ENABLE });
   } else {
-    socket.emit("config", { confirm: false });
+    socket.emit("config", { confirm: false, low_enable: LOW_ENABLE });
+  }
+});
+
+const low_checkbox = document.getElementById("low_check");
+low_checkbox.addEventListener("change", event => {
+  if (event.target.checked) {
+    socket.emit("config", { low_enable: true, confirm: TO_CONFIRM });
+  } else {
+    socket.emit("config", { low_enable: false, confirm: TO_CONFIRM });
   }
 });
 
@@ -123,6 +133,13 @@ socket.on("config", configuration => {
   } else {
     TO_CONFIRM = false;
     document.getElementById("confirm_check").checked = false;
+  }
+  if (configuration["low_enable"]) {
+    LOW_ENABLE = true;
+    document.getElementById("low_check").checked = true;
+  } else {
+    LOW_ENABLE = false;
+    document.getElementById("low_check").checked = false;
   }
 });
 
