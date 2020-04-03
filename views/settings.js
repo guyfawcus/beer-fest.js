@@ -106,8 +106,10 @@ socket.on("config", configuration => {
   console.log(configuration);
   if (configuration["confirm"]) {
     TO_CONFIRM = true;
+    document.getElementById("confirm_check").checked = true;
   } else {
     TO_CONFIRM = false;
+    document.getElementById("confirm_check").checked = false;
   }
 });
 
