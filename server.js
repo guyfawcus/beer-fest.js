@@ -52,6 +52,10 @@ app.use(express.static(__dirname + "/views/"));
 // ---------------------------------------------------------------------------
 
 app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/index.html"));
+});
+
+app.get("/availability", (req, res) => {
   res.sendFile(path.join(__dirname, "views/buttons.html"));
 });
 

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>ACBF</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+  </head>
+  <body>
+    <div class="settings_container">
+      <div class="settings_header"><h1 id="title">Aston Clinton Beer Festival</h1></div>
+      <div class="settings_options">
+        <div class="button" onclick="location.href='/availability'" title="availability">Availability</div>
+        <div class="button" onclick="location.href='/settings'" title="settings">Settings</div>
+        <div class="button" onclick="location.href='/slideshow'" title="slideshow">Slideshow</div>
+      </div>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>
