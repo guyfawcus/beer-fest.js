@@ -3,10 +3,18 @@ const path = require("path");
 
 const express = require("express");
 const app = express();
+const session = require("express-session");
+const sharedsession = require("express-socket.io-session");
 
 const http = require("http");
 const server = http.Server(app);
 const io = require("socket.io")(server);
+
+const redis = require("redis");
+const RedisStore = require("connect-redis")(session);
+const redisClient = redis.createClient(process.env.REDIS_URL);
+
+const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
 
 const state_file = "state.json";
 let last_table = {};
@@ -45,7 +53,14 @@ server.listen(process.env.PORT || 8000, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
 
-app.use(express.static(__dirname + "/views/"));
+let redisSession = session({
+  secret: COOKIE_SECRET,
+  store: new RedisStore({ client: redisClient }),
+  resave: false,
+  saveUninitialized: true,
+});
+app.use(redisSession);
+io.use(sharedsession(redisSession));
 
 // ---------------------------------------------------------------------------
 // Routes
@@ -81,6 +96,8 @@ app.get("/js/reveal.js", (req, res) => {
   res.sendFile(path.join(__dirname, "node_modules/reveal.js/js/reveal.js"));
 });
 
+app.use(express.static(__dirname + "/views/"));
+
 // ---------------------------------------------------------------------------
 // Socket Events
 // ---------------------------------------------------------------------------
@@ -91,25 +108,79 @@ io.on("connection", (socket) => {
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
   io.to(`${socket.id}`).emit("config", CONFIG);
 
+  redisClient.sadd(socket.handshake.session.id, socket.id);
+
+  redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
+    if (reply) {
+      io.to(`${socket.id}`).emit("auth", true);
+    } else {
+      io.to(`${socket.id}`).emit("auth", false);
+    }
+  });
+
   socket.on("update table", (table) => {
-    console.log(`Distibuting whole table from ${socket.id}`);
-    last_table = JSON.parse(table);
-    socket.broadcast.emit("update table", table);
-    saveState(table);
+    redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
+      if (reply) {
+        console.log(`Distibuting whole table from ${socket.id}`);
+        last_table = JSON.parse(table);
+        socket.broadcast.emit("update table", table);
+        saveState(table);
+      } else {
+        console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`);
+      }
+    });
   });
 
   socket.on("update single", (stock_level) => {
-    console.log(`Distibuting updates from ${socket.id} (number ${stock_level["number"]} = ${stock_level["level"]})`);
-    last_table[stock_level["number"]] = stock_level["level"];
-    socket.broadcast.emit("update single", stock_level);
-    saveState(JSON.stringify(last_table));
+    redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
+      if (reply) {
+        console.log(
+          `Distibuting updates from ${socket.id} (number ${stock_level["number"]} = ${stock_level["level"]})`
+        );
+        last_table[stock_level["number"]] = stock_level["level"];
+        io.sockets.emit("update single", stock_level);
+        saveState(JSON.stringify(last_table));
+      } else {
+        console.log(
+          `Unauthenticated client ${socket.id} attempted to change ${stock_level["number"]} to ${stock_level["level"]}`
+        );
+      }
+    });
   });
 
   socket.on("config", (configuration) => {
-    console.log("Distributing configuration:");
-    console.log(configuration);
-    io.sockets.emit("config", configuration);
-    CONFIG = configuration;
+    redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
+      if (reply) {
+        console.log("Distributing configuration:");
+        console.log(configuration);
+        io.sockets.emit("config", configuration);
+        CONFIG = configuration;
+      } else {
+        console.log(
+          `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
+        );
+      }
+    });
+  });
+
+  socket.on("auth", (code) => {
+    if (code == "1234") {
+      console.log(`Client - ${socket.handshake.session.id} - correct code`);
+      redisClient.sadd(["authed_ids", socket.handshake.session.id]);
+      redisClient.smembers(socket.handshake.session.id, (err, reply) => {
+        for (const socket of reply) {
+          io.to(`${socket}`).emit("auth", true);
+        }
+      });
+    } else {
+      console.log(`Client - ${socket.handshake.session.id} - wrong code`);
+      redisClient.srem(["authed_ids", socket.handshake.session.id]);
+      redisClient.smembers(socket.handshake.session.id, (err, reply) => {
+        for (const socket of reply) {
+          io.to(`${socket}`).emit("auth", false);
+        }
+      });
+    }
   });
 
   socket.on("disconnect", () => {
