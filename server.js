@@ -85,27 +85,27 @@ app.get("/js/reveal.js", (req, res) => {
 // Socket Events
 // ---------------------------------------------------------------------------
 
-io.on("connection", socket => {
+io.on("connection", (socket) => {
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
   io.to(`${socket.id}`).emit("config", CONFIG);
 
-  socket.on("update table", table => {
+  socket.on("update table", (table) => {
     console.log(`Distibuting whole table from ${socket.id}`);
     last_table = JSON.parse(table);
     socket.broadcast.emit("update table", table);
     saveState(table);
   });
 
-  socket.on("update single", stock_level => {
+  socket.on("update single", (stock_level) => {
     console.log(`Distibuting updates from ${socket.id} (number ${stock_level["number"]} = ${stock_level["level"]})`);
     last_table[stock_level["number"]] = stock_level["level"];
     socket.broadcast.emit("update single", stock_level);
     saveState(JSON.stringify(last_table));
   });
 
-  socket.on("config", configuration => {
+  socket.on("config", (configuration) => {
     console.log("Distributing configuration:");
     console.log(configuration);
     io.sockets.emit("config", configuration);
