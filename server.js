@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+const bcrypt = require("bcryptjs");
 const express = require("express");
 const app = express();
 const session = require("express-session");
@@ -15,6 +16,7 @@ const RedisStore = require("connect-redis")(session);
 const redisClient = redis.createClient(process.env.REDIS_URL);
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
+const ADMIN_CODE = process.env.ADMIN_CODE;
 
 const state_file = "state.json";
 let last_table = {};
@@ -164,23 +166,26 @@ io.on("connection", (socket) => {
   });
 
   socket.on("auth", (code) => {
-    if (code == "1234") {
-      console.log(`Client - ${socket.handshake.session.id} - correct code`);
-      redisClient.sadd(["authed_ids", socket.handshake.session.id]);
-      redisClient.smembers(socket.handshake.session.id, (err, reply) => {
-        for (const socket of reply) {
-          io.to(`${socket}`).emit("auth", true);
-        }
-      });
-    } else {
-      console.log(`Client - ${socket.handshake.session.id} - wrong code`);
-      redisClient.srem(["authed_ids", socket.handshake.session.id]);
-      redisClient.smembers(socket.handshake.session.id, (err, reply) => {
-        for (const socket of reply) {
-          io.to(`${socket}`).emit("auth", false);
-        }
-      });
-    }
+    console.log(ADMIN_CODE);
+    bcrypt.compare(code, ADMIN_CODE, function(err, res) {
+      if (res) {
+        console.log(`Client - ${socket.handshake.session.id} - correct code`);
+        redisClient.sadd(["authed_ids", socket.handshake.session.id]);
+        redisClient.smembers(socket.handshake.session.id, (err, reply) => {
+          for (const socket of reply) {
+            io.to(`${socket}`).emit("auth", true);
+          }
+        });
+      } else {
+        console.log(`Client - ${socket.handshake.session.id} - wrong code`);
+        redisClient.srem(["authed_ids", socket.handshake.session.id]);
+        redisClient.smembers(socket.handshake.session.id, (err, reply) => {
+          for (const socket of reply) {
+            io.to(`${socket}`).emit("auth", false);
+          }
+        });
+      }
+    });
   });
 
   socket.on("disconnect", () => {
