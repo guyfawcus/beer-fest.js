@@ -18,33 +18,26 @@ const redisClient = redis.createClient(process.env.REDIS_URL);
 const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
 const ADMIN_CODE = process.env.ADMIN_CODE;
 
-const state_file = "state.json";
 let last_table = {};
 let CONFIG = { confirm: true, low_enable: false };
 
-for (i = 1; i <= 80; i++) {
-  last_table[i] = "full";
-}
-
-if (fs.existsSync(state_file)) {
-  const old = JSON.parse(fs.readFileSync(state_file, "utf8"));
-  last_table = old;
-  console.log(`Reading in: ${JSON.stringify(old)}`);
-} else {
-  fs.writeFile(state_file, JSON.stringify(last_table), function(err) {
-    console.log(`Creating file`);
-    if (err) {
-      console.log(err);
+redisClient.hgetall("stock_levels", function(err, reply) {
+  if (reply != null) {
+    console.log(`Reading in: ${JSON.stringify(reply)}`);
+    last_table = reply;
+  } else {
+    console.log(`Starting off state matrix`);
+    for (i = 1; i <= 80; i++) {
+      last_table[i] = "full";
     }
-  });
-}
+    saveState(JSON.stringify(last_table));
+  }
+});
 
 function saveState(stock_levels) {
-  fs.writeFile(state_file, stock_levels, function(err) {
-    if (err) {
-      console.log(err);
-    }
-  });
+  for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
+    redisClient.hmset("stock_levels", number, level);
+  }
 }
 
 // ---------------------------------------------------------------------------
