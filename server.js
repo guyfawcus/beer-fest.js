@@ -166,10 +166,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("auth", (code) => {
-    console.log(ADMIN_CODE);
     bcrypt.compare(code, ADMIN_CODE, function(err, res) {
       if (res) {
-        console.log(`Client - ${socket.handshake.session.id} - correct code`);
+        console.log(`Client - ${socket.handshake.session.id} - has entered the correct code`);
         redisClient.sadd(["authed_ids", socket.handshake.session.id]);
         redisClient.smembers(socket.handshake.session.id, (err, reply) => {
           for (const socket of reply) {
@@ -177,7 +176,7 @@ io.on("connection", (socket) => {
           }
         });
       } else {
-        console.log(`Client - ${socket.handshake.session.id} - wrong code`);
+        console.log(`Client - ${socket.handshake.session.id} - has enterted the wrong code (${code})`);
         redisClient.srem(["authed_ids", socket.handshake.session.id]);
         redisClient.smembers(socket.handshake.session.id, (err, reply) => {
           for (const socket of reply) {
