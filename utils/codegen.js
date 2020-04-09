@@ -3,6 +3,11 @@
 const bcrypt = require("bcryptjs");
 const readline = require("readline");
 const { exec } = require("child_process");
+const crypto = require("crypto");
+
+const cookieSecret = crypto.randomBytes(32).toString("hex");
+console.log(cookieSecret);
+exec(`heroku config:set COOKIE_SECRET='${cookieSecret}'`);
 
 let hashedCode = "";
 
