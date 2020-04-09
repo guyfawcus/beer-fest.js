@@ -7,10 +7,14 @@ const getCode = () => {
 
 socket.on("connect", () => {
   console.log("Server connected");
-  document.getElementById("title").style.color = "#f5f6fa";
+  document.getElementsByClassName("warning_icon")[0].style.display = "none";
 });
 
 socket.on("disconnect", () => {
-  console.log("%cServer diconnected!", "color:red;");
-  document.getElementById("title").style.color = "#e84118";
+  window.setTimeout(function() {
+    if (socket.connected !== true) {
+      console.log("%cServer diconnected!", "color:red;");
+      document.getElementsByClassName("warning_icon")[0].style.display = "grid";
+    }
+  }, 2000);
 });
