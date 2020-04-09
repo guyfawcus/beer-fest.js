@@ -51,7 +51,7 @@ div[id^="button_"]:hover,
 
 .settings_container {
   display: grid;
-  grid-template-columns: 2fr 1fr 2fr;
+  grid-template-columns: 4fr 2fr 4fr;
   grid-template-rows: 150px auto;
   justify-content: center;
 }
