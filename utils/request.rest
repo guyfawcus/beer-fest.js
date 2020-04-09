@@ -1,0 +1,49 @@
+### Should return the stock_levels JSON
+GET http://localhost:8000/api/stock_levels/
+
+
+### Should update singles
+POST http://localhost:8000/api/stock_levels/
+Content-Type: application/json
+
+{
+  "4": "empty",
+  "8": "empty",
+  "15": "empty",
+  "16": "empty",
+  "23": "empty",
+  "42": "empty"
+}
+
+
+### Should update singles
+POST http://localhost:8000/api/stock_levels/
+Content-Type: application/json
+
+{
+  "1": "full",
+  "2": "low",
+  "3": "empty"
+}
+
+
+### Should update the whole table
+POST http://localhost:8000/api/stock_levels/
+Content-Type: application/json
+
+{"1":"full","2":"full","3":"full","4":"full","5":"full","6":"full","7":"full","8":"full","9":"full","10":"full","11":"full","12":"full","13":"full","14":"full","15":"full","16":"full","17":"full","18":"full","19":"full","20":"full","21":"full","22":"full","23":"full","24":"full","25":"full","26":"full","27":"full","28":"full","29":"full","30":"full","31":"full","32":"full","33":"full","34":"full","35":"full","36":"full","37":"full","38":"full","39":"full","40":"full","41":"full","42":"full","43":"full","44":"full","45":"full","46":"full","47":"full","48":"full","49":"full","50":"full","51":"full","52":"full","53":"full","54":"full","55":"full","56":"full","57":"full","58":"full","59":"full","60":"full","61":"full","62":"full","63":"full","64":"full","65":"full","66":"full","67":"full","68":"full","69":"full","70":"full","71":"full","72":"full","73":"full","74":"full","75":"full","76":"full","77":"full","78":"full","79":"full","80":"full"}
+
+
+### Should fail
+POST http://localhost:8000/api/stock_levels/
+Content-Type: application/json
+
+{"83":"nope","1":"full","2":"full","3":"full","4":"full","5":"full","6":"full","7":"full","8":"full","9":"full","10":"full","11":"full","12":"full","13":"full","14":"full","15":"full","16":"full","17":"full","18":"full","19":"full","20":"full","21":"full","22":"full","23":"full","24":"full","25":"full","26":"full","27":"full","28":"full","29":"full","30":"full","31":"full","32":"full","33":"full","34":"full","35":"full","36":"full","37":"full","38":"full","39":"full","40":"full","41":"full","42":"full","43":"full","44":"full","45":"full","46":"full","47":"full","48":"full","49":"full","50":"full","51":"full","52":"full","53":"full","54":"full","55":"full","56":"full","57":"full","58":"full","59":"full","60":"full","61":"full","62":"full","63":"full","64":"full","65":"full","66":"full","67":"full","68":"full","69":"full","70":"full","71":"full","72":"full","73":"full","74":"full","75":"full","76":"full","77":"full","78":"full","79":"full","80":"full"}
+
+
+### Should update singles
+POST http://localhost:8000/api/stock_levels/1/empty
+
+
+### Should fail as is out of range
+POST http://localhost:8000/api/stock_levels/81/empty

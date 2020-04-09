@@ -17,6 +17,7 @@ const redisClient = redis.createClient(process.env.REDIS_URL);
 
 const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
 const ADMIN_CODE = process.env.ADMIN_CODE;
+const ENABLE_API = process.env.ENABLE_API || "false";
 
 let last_table = {};
 let CONFIG = { confirm: true, low_enable: false };
@@ -47,6 +48,8 @@ function saveState(stock_levels) {
 server.listen(process.env.PORT || 8000, () => {
   console.log(`Listening on port ${server.address().port}`);
 });
+
+app.use(express.json());
 
 let redisSession = session({
   secret: COOKIE_SECRET,
@@ -91,6 +94,61 @@ app.get("/.well-known/keybase.txt", (req, res) => {
 
 app.get("/humans.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "humans.txt"));
+});
+
+// API
+app.get("/api/stock_levels", (req, res) => {
+  res.send(last_table);
+});
+
+app.get("/api/stock_levels/:number", (req, res) => {
+  res.send(last_table[req.params.number]);
+});
+
+app.post("/api/stock_levels", (req, res) => {
+  if (ENABLE_API == "true") {
+    if (Object.keys(req.body).length > 80) {
+      console.log("Too many items in JSON");
+      res.status(400).send("Too many items in JSON");
+      return;
+    } else if (Object.keys(req.body).length === 80) {
+      console.log("Saving whole table");
+      last_table = req.body;
+      io.sockets.emit("update table", JSON.stringify(last_table));
+      saveState(JSON.stringify(last_table));
+    } else {
+      for (let [number, level] of Object.entries(req.body)) {
+        if (last_table[number] != level) {
+          last_table[number] = level;
+          io.sockets.emit("update single", { number: number, level: level });
+          saveState(JSON.stringify(last_table));
+        }
+      }
+    }
+    res.send(last_table);
+  } else {
+    console.log("API use is not enabled");
+    res.status(403).send("API use is not enabled");
+  }
+});
+
+app.post("/api/stock_levels/:number/:level", (req, res) => {
+  if (ENABLE_API == "true") {
+    if (req.params.number <= 80) {
+      if (last_table[req.params.number] != req.params.level) {
+        last_table[req.params.number] = req.params.level;
+        io.sockets.emit("update single", { number: req.params.number, level: req.params.level });
+        saveState(JSON.stringify(last_table));
+      }
+      res.send(last_table);
+    } else {
+      console.log("Number too high");
+      res.status(400).send("Number too high");
+    }
+  } else {
+    console.log("API use is not enabled");
+    res.status(403).send("API use is not enabled");
+  }
 });
 
 // Routes for reveal
