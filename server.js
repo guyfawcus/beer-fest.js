@@ -77,6 +77,22 @@ app.get("/settings", (req, res) => {
   res.sendFile(path.join(__dirname, "views/settings.html"));
 });
 
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "robots.txt"));
+});
+
+app.get("/.well-known/security.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "security.txt"));
+});
+
+app.get("/.well-known/keybase.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "keybase.txt"));
+});
+
+app.get("/humans.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "humans.txt"));
+});
+
 // Routes for reveal
 app.get("/css/reset.css", (req, res) => {
   res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reset.css"));

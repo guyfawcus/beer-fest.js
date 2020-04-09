@@ -1,0 +1,75 @@
+==================================================================
+https://keybase.io/guyfawcus
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://acbf-2020.herokuapp.com
+  * I am guyfawcus (https://keybase.io/guyfawcus) on keybase.
+  * I have a public key with fingerprint AA0D F72D 4255 83F1 5170  5D44 0155 604D 62A8 9AFC
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "012024fb4f71fdef5d3ae65860bf91524bd87e4c829528f983ff5273357f36c453170a",
+      "fingerprint": "aa0df72d425583f151705d440155604d62a89afc",
+      "host": "keybase.io",
+      "key_id": "0155604d62a89afc",
+      "kid": "010122b165fa5f612dcec604cbfef21fb22500901661a8f577b3c662f316dcda9e250a",
+      "uid": "c8408394685c3358054e5d3df7488519",
+      "username": "guyfawcus"
+    },
+    "service": {
+      "hostname": "acbf-2020.herokuapp.com",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1586426125,
+  "expire_in": 157680000,
+  "prev": "276631c943344c95dceb9c44d0cfddbc65d214c98ecb61356260399761987bb2",
+  "seqno": 16,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: Keybase OpenPGP v2.1.13
+Comment: https://keybase.io/crypto
+
+yMN7AnicZVJtUFRVAGWBzKUItY9Bk0EemISwva/7PlYGkCFbx7XxBzTWIMv7uA+W
+j931vV22XTKHlRqdJsZByJlmcshFI5ASW4LRgmBorNlKdEJJGNAYS4RKIBAQtLsO
+/ur+uXPvPefcc869fdERYVE6XV7hbrHp4yVdsKfRFVZQMxVdiYl22YMZK7FS+GiC
+ZTLUnJZSq4wZMZwgcZJWRFphCUWGCpApATKAY3BR4QlA0qLMsZCWOJIHJKfwHKUo
+gGQpCrAKxUg0oAgWF7BUTLHaiqDqUK02J5IVBFxWWFKmSQAQhQAIBWSaxgkAGJyW
+GVLgeEGRELHYroUYyJwoaNBgtaM9tLCs2Psf/rFv5JwUCQYoAlAYgpQlKCGkJCpQ
+IQlFJEmA4zxOMAwhcApgWZGSGIZUKIKRJVngIToP+XY9kpM4GuconmY4IKFsHA5o
+iKpAGWiOAwQfAmpQtQnlEKGLXB5FcEsuDTuQiqHtCqsEQ82GoqxABGQkDVWLG4qh
+ai91CQ6HQbKXIx2HanfaJXsZAhU7nQ7NGBJxehwhlhuKlhU9i2i1yahTxKiAqma1
+2zAjgZCS0xq6gEBPRJMoN0jF4NsOqwot1hACsAyHoxG6B1YgSZJlGIqQeJqiaFri
+AepJ5CWalnFJkWVRYoBMEuiAg5LIEBRgSAaneJ5lCJ5jRZHEQgn32+xIm0E+hSKk
+qVmLbILTpULsQG9PfmSYLips1RPhoc8WFqVf8/gLujJillabs1qPJC2kwE0bL0bd
+vzPqOF+T1rozLr4yr+Xg1DcF+ub9m+tP/pI8cm8+te5a1abnr470vXFwZPLOWGPO
+Dndi+Fx+iv+TC4VZSc80X2spNJyAvp0TauDFrKCZToi95W5oXOsvn895Ms//vrfK
+Zo51+A6t/85VUX/quc/0fTmXk3hT0fruiX1nu1sGgv5/2zpzX9IFJufA2Kbl9Mnt
+E9+O3sRWJ/4w0tkWFRGIOZ625d38usNNOKxubTT947ve7Qu+ogy/3HfR+vXvUU1j
+p27WSpc+HGkcOP/j4gPvg+aG+a6EuyfXpK7r7zGrXa/9dnu29gV30CyXjbszzz1s
+EfJnZ764vDVzeNSl2Sw/jc5eWbetw1A8eHyhvXAqfjplT2Z/Sfizpszg3/ok75/S
+U4G9KZv39pzWJQznHmvHPvpUO5R2JLw2fW4mIbrsey5BW8Uv9571eG/v3qAvGKqu
+Tswd37HYlj27/d6WhuXxvzrEwAdf3TfFvrr0nseQ35qTzR6L6xos0cO3Dmfs+nlo
+diZ6dN/C52WD8Z2vBwZPn5lO3jg17zG/WT9u9k3X1Q+8k321t1iwTEU6+m5UWp4W
+s13btvoXdxVU+M5E06aHKnbOcfeoFql1e6tMV3pLbmVcMHqNG/y+tXGRNe4TudR1
+fcRQTHp6+p72DvKGbPvjS12yutzS/+sl+T+iqckN
+=ktGA
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/guyfawcus
+
+==================================================================
