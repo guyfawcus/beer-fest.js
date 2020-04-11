@@ -11,7 +11,7 @@ Dev Ed - https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q
 Web Dev Simplified - https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw
 
 /* SITE */
-Last update: 2020/04/09
+Last update: 2020/04/11
 Standards: HTML5, CSS3
 Components: Node.js with bcryptjs, connect-redis, express, express-session, express-socket.io-session, redis, reveal.js, socket.io
 Software: Visual Studio Code
