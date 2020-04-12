@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 
+var bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const express = require("express");
 const app = express();
@@ -50,6 +51,7 @@ server.listen(process.env.PORT || 8000, () => {
 });
 
 app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 
 let redisSession = session({
   secret: COOKIE_SECRET,
@@ -78,6 +80,48 @@ app.get("/slideshow", (req, res) => {
 
 app.get("/settings", (req, res) => {
   res.sendFile(path.join(__dirname, "views/settings.html"));
+});
+
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "views/login.html"));
+});
+
+app.post("/users", (req, res) => {
+  const code = req.body.code;
+  const thisSession = req.session.id;
+
+  bcrypt.compare(code, ADMIN_CODE, function(err, resp) {
+    if (resp) {
+      console.log(`Client - ${thisSession} - has entered the correct code`);
+      redisClient.sadd(["authed_ids", thisSession]);
+      redisClient.smembers(thisSession, (err, reply) => {
+        for (const socket of reply) {
+          io.to(`${socket}`).emit("auth", true);
+        }
+      });
+      res.redirect("/");
+    } else {
+      console.log(`Client - ${thisSession} - has enterted the wrong code (${code})`);
+      redisClient.srem(["authed_ids", thisSession]);
+      redisClient.smembers(thisSession, (err, reply) => {
+        for (const socket of reply) {
+          io.to(`${socket}`).emit("auth", false);
+        }
+      });
+      res.redirect("login");
+    }
+  });
+});
+
+app.get("/logout", (req, res) => {
+  const thisSession = req.session.id;
+  redisClient.srem(["authed_ids", thisSession]);
+  redisClient.smembers(thisSession, (err, reply) => {
+    for (const socket of reply) {
+      io.to(`${socket}`).emit("auth", false);
+    }
+  });
+  res.redirect("/");
 });
 
 app.get("/robots.txt", (req, res) => {
@@ -228,28 +272,6 @@ io.on("connection", (socket) => {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
         );
-      }
-    });
-  });
-
-  socket.on("auth", (code) => {
-    bcrypt.compare(code, ADMIN_CODE, function(err, res) {
-      if (res) {
-        console.log(`Client - ${socket.handshake.session.id} - has entered the correct code`);
-        redisClient.sadd(["authed_ids", socket.handshake.session.id]);
-        redisClient.smembers(socket.handshake.session.id, (err, reply) => {
-          for (const socket of reply) {
-            io.to(`${socket}`).emit("auth", true);
-          }
-        });
-      } else {
-        console.log(`Client - ${socket.handshake.session.id} - has enterted the wrong code (${code})`);
-        redisClient.srem(["authed_ids", socket.handshake.session.id]);
-        redisClient.smembers(socket.handshake.session.id, (err, reply) => {
-          for (const socket of reply) {
-            io.to(`${socket}`).emit("auth", false);
-          }
-        });
       }
     });
   });

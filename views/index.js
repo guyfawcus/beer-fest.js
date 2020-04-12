@@ -1,9 +1,5 @@
 const socket = io.connect(self.location.host);
-
-const getCode = () => {
-  let code = prompt("Enter code:");
-  socket.emit("auth", code);
-};
+let AUTHORISED = false;
 
 socket.on("connect", () => {
   console.log("Server connected");
@@ -17,4 +13,18 @@ socket.on("disconnect", () => {
       document.getElementsByClassName("warning_icon")[0].style.display = "grid";
     }
   }, 2000);
+});
+
+socket.on("auth", (status) => {
+  if (status) {
+    AUTHORISED = true;
+    document.getElementById("login").innerHTML = "Log out";
+    document.getElementById("login").onclick = () => (location.href = "/logout");
+    console.log("Authenticated with server");
+  } else {
+    AUTHORISED = false;
+    document.getElementById("login").innerHTML = "Log in";
+    document.getElementById("login").onclick = () => (location.href = "/login");
+    console.log("Not authenticated");
+  }
 });
