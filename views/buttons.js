@@ -8,7 +8,7 @@ let TO_CONFIRM = true;
 let LOW_ENABLE = false;
 let AUTHORISED = false;
 
-const confirmUpdate = (button_number) => {
+const confirmUpdate = button_number => {
   if (AUTHORISED) {
     goUpdate(button_number);
   } else {
@@ -90,17 +90,17 @@ function updateFromState(stock_levels) {
 }
 
 // Update the state when remotes send updates
-socket.on("update table", (table) => {
+socket.on("update table", table => {
   console.groupCollapsed("Updating all entities");
   updateFromState(JSON.parse(table));
   console.groupEnd();
 });
 
-socket.on("update single", (stock_level) => {
+socket.on("update single", stock_level => {
   updateLevel(stock_level["number"], stock_level["level"]);
 });
 
-socket.on("config", (configuration) => {
+socket.on("config", configuration => {
   console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
   if (configuration["confirm"]) {
@@ -129,7 +129,7 @@ socket.on("disconnect", () => {
   }, 2000);
 });
 
-socket.on("auth", (status) => {
+socket.on("auth", status => {
   if (status) {
     AUTHORISED = true;
     console.log("Authenticated with server");

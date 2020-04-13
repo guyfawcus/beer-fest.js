@@ -15,7 +15,7 @@ socket.on("disconnect", () => {
   }, 2000);
 });
 
-socket.on("auth", (status) => {
+socket.on("auth", status => {
   if (status) {
     AUTHORISED = true;
     document.getElementById("login").innerHTML = "Log out";

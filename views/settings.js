@@ -100,7 +100,7 @@ function tableUpload() {
 
 function tableDownload() {
   let file = new Blob([JSON.stringify(stock_levels)], {
-    type: "application/json;charset=utf-8",
+    type: "application/json;charset=utf-8"
   });
   let download_url = URL.createObjectURL(file);
   let download_element = document.createElement("a");
@@ -125,7 +125,7 @@ function updateRequired(table) {
 
 const confirm_checkbox = document.getElementById("confirm_check");
 
-confirm_checkbox.addEventListener("change", (event) => {
+confirm_checkbox.addEventListener("change", event => {
   if (AUTHORISED) {
     if (event.target.checked) {
       socket.emit("config", { confirm: true, low_enable: LOW_ENABLE });
@@ -140,7 +140,7 @@ confirm_checkbox.addEventListener("change", (event) => {
 
 const low_checkbox = document.getElementById("low_check");
 
-low_checkbox.addEventListener("change", (event) => {
+low_checkbox.addEventListener("change", event => {
   if (AUTHORISED) {
     if (event.target.checked) {
       socket.emit("config", { low_enable: true, confirm: TO_CONFIRM });
@@ -153,7 +153,7 @@ low_checkbox.addEventListener("change", (event) => {
   }
 });
 
-socket.on("config", (configuration) => {
+socket.on("config", configuration => {
   console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
   if (configuration["confirm"]) {
@@ -173,13 +173,13 @@ socket.on("config", (configuration) => {
 });
 
 // Update the state when remotes send updates
-socket.on("update table", (table) => {
+socket.on("update table", table => {
   console.log("%cUpdating table from:", "font-weight:bold;");
   console.log(JSON.parse(table));
   stock_levels = JSON.parse(table);
 });
 
-socket.on("update single", (stock_level) => {
+socket.on("update single", stock_level => {
   console.log(`Setting ${stock_level["number"]} as ${stock_level["level"]}`);
   stock_levels[stock_level["number"]] = stock_level["level"];
 });
@@ -198,7 +198,7 @@ socket.on("disconnect", () => {
   }, 2000);
 });
 
-socket.on("auth", (status) => {
+socket.on("auth", status => {
   if (status) {
     AUTHORISED = true;
     console.log("Authenticated with server");

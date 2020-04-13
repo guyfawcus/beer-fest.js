@@ -57,7 +57,7 @@ let redisSession = session({
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: true
 });
 app.use(redisSession);
 io.use(sharedsession(redisSession));
@@ -215,7 +215,7 @@ app.use(express.static(__dirname + "/views/"));
 // Socket Events
 // ---------------------------------------------------------------------------
 
-io.on("connection", (socket) => {
+io.on("connection", socket => {
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
@@ -231,7 +231,7 @@ io.on("connection", (socket) => {
     }
   });
 
-  socket.on("update table", (table) => {
+  socket.on("update table", table => {
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
         console.log(`Distibuting whole table from ${socket.id}`);
@@ -244,7 +244,7 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("update single", (stock_level) => {
+  socket.on("update single", stock_level => {
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
         console.log(
@@ -261,7 +261,7 @@ io.on("connection", (socket) => {
     });
   });
 
-  socket.on("config", (configuration) => {
+  socket.on("config", configuration => {
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
         console.log("Distributing configuration:");
