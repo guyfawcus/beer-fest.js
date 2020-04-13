@@ -1,7 +1,6 @@
 const fs = require("fs");
 const path = require("path");
 
-var bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
 const express = require("express");
 const app = express();
@@ -51,7 +50,7 @@ server.listen(process.env.PORT || 8000, () => {
 });
 
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: false }));
 
 let redisSession = session({
   secret: COOKIE_SECRET,
