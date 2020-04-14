@@ -82,11 +82,11 @@ app.get("/slideshow", (req, res) => {
   res.sendFile(path.join(__dirname, "views/slideshow.html"));
 });
 
-app.get("/settings", (req, res) => {
+app.get("/settings", checkAuthenticated, (req, res) => {
   res.sendFile(path.join(__dirname, "views/settings.html"));
 });
 
-app.get("/login", (req, res) => {
+app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
 
@@ -285,3 +285,21 @@ io.on("connection", socket => {
     console.log(`Client ${socket.id} disconnected`);
   });
 });
+
+function checkAuthenticated(req, res, next) {
+  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
+    if (reply) {
+      return next();
+    }
+    res.redirect("/login");
+  });
+}
+
+function checkNotAuthenticated(req, res, next) {
+  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
+    if (reply) {
+      return res.redirect("/");
+    }
+    next();
+  });
+}
