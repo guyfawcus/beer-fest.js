@@ -22,7 +22,7 @@ const ADMIN_CODE = process.env.ADMIN_CODE;
 const ENABLE_API = process.env.ENABLE_API || "false";
 
 let last_table = {};
-let CONFIG = { confirm: true, low_enable: false };
+let CONFIG = {};
 
 redisClient.hgetall("stock_levels", function(err, reply) {
   if (reply != null) {
@@ -35,6 +35,20 @@ redisClient.hgetall("stock_levels", function(err, reply) {
     }
     saveState(JSON.stringify(last_table));
   }
+});
+
+redisClient.hgetall("config", function(err, reply) {
+  if (reply != null) {
+    console.log(`Reading in: ${JSON.stringify(reply)}`);
+    let confirm = reply.confirm === "true" ? true : false;
+    let low_enable = reply.low_enable === "true" ? true : false;
+    CONFIG = { confirm: confirm, low_enable: low_enable };
+  } else {
+    console.log(`Initialising config`);
+    CONFIG = { confirm: true, low_enable: false };
+  }
+  redisClient.hset("config", "confirm", CONFIG.confirm);
+  redisClient.hset("config", "low_enable", CONFIG.low_enable);
 });
 
 function saveState(stock_levels) {
@@ -273,6 +287,8 @@ io.on("connection", socket => {
         console.log(configuration);
         io.sockets.emit("config", configuration);
         CONFIG = configuration;
+        redisClient.hset("config", "confirm", configuration.confirm);
+        redisClient.hset("config", "low_enable", configuration.low_enable);
       } else {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
