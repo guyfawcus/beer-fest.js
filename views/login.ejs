@@ -14,6 +14,7 @@
       <div class="settings_header"><h1 id="title">ACBF Login</h1></div>
       <div class="settings_options">
         <div>
+          <% if (messages.error) { %> <%= messages.error %> <% } %>
           <form action="/users" method="post">
             <div>
               <label for="name">Name:</label>

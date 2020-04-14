@@ -7,6 +7,8 @@ const app = express();
 const session = require("express-session");
 const sharedsession = require("express-socket.io-session");
 
+const flash = require("express-flash");
+
 const http = require("http");
 const server = http.Server(app);
 const io = require("socket.io")(server);
@@ -61,6 +63,9 @@ let redisSession = session({
 app.use(redisSession);
 io.use(sharedsession(redisSession));
 
+app.set("view-engine", "ejs");
+app.use(flash());
+
 // ---------------------------------------------------------------------------
 // Routes
 // ---------------------------------------------------------------------------
@@ -82,7 +87,7 @@ app.get("/settings", (req, res) => {
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "views/login.html"));
+  res.render("login.ejs");
 });
 
 app.post("/users", (req, res) => {
@@ -107,6 +112,7 @@ app.post("/users", (req, res) => {
           io.to(`${socket}`).emit("auth", false);
         }
       });
+      req.flash("error", "Wrong code, please try again");
       res.redirect("login");
     }
   });
