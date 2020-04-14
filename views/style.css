@@ -159,3 +159,8 @@ input:checked[type="checkbox"]:before {
   display: none;
   place-items: center;
 }
+
+a {
+  color: #2f3640;
+  text-decoration: none;
+}

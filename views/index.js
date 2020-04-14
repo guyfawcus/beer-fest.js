@@ -19,12 +19,12 @@ socket.on("auth", status => {
   if (status) {
     AUTHORISED = true;
     document.getElementById("login").innerHTML = "Log out";
-    document.getElementById("login").onclick = () => (location.href = "/logout");
+    document.getElementById("login").href = "/logout";
     console.log("Authenticated with server");
   } else {
     AUTHORISED = false;
     document.getElementById("login").innerHTML = "Log in";
-    document.getElementById("login").onclick = () => (location.href = "/login");
+    document.getElementById("login").href = "/login";
     console.log("Not authenticated");
   }
 });

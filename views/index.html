@@ -12,12 +12,12 @@
       <div class="warning_conatiner"><div class="warning_icon" title="Server disconnected!">X</div></div>
       <div class="settings_header"><h1 id="title">Aston Clinton Beer Festival</h1></div>
       <div class="settings_options">
-        <div class="button" title="Log in/out" id="login"></div>
-        <div class="button" onclick="location.href='/settings'" title="Settings">Settings</div>
-        <div class="button" onclick="location.href='/availability'" title="Availability table">* Availability *</div>
-        <div class="button" onclick="location.href='/slideshow'" title="Slideshow with availability slide">
+        <a class="button" title="Log in/out" id="login"></a>
+        <a class="button" href="/settings" title="Settings">Settings</a>
+        <a class="button" href="/availability" title="Availability table">* Availability *</a>
+        <a class="button" href="/slideshow" title="Slideshow with availability slide">
           * Slideshow *
-        </div>
+        </a>
       </div>
     </div>
     <script src="/socket.io/socket.io.js"></script>
