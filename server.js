@@ -283,6 +283,7 @@ io.on("connection", socket => {
 
   socket.on("disconnect", () => {
     console.log(`Client ${socket.id} disconnected`);
+    redisClient.srem(socket.handshake.session.id, socket.id);
   });
 });
 
