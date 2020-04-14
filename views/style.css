@@ -18,6 +18,11 @@ body {
   background-color: transparent;
 }
 
+input[type="text"]::selection,
+input[type="password"]::selection {
+  background-color: black;
+}
+
 h1 {
   font-size: 48px;
   color: #f5f6fa;
