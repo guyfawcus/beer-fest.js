@@ -196,11 +196,14 @@ app.post("/api/stock_levels", (req, res) => {
 });
 
 app.post("/api/stock_levels/:number/:level", (req, res) => {
+  const number = req.params.number;
+  const level = req.params.level;
+
   if (ENABLE_API == "true") {
-    if (req.params.number <= 80) {
-      if (last_table[req.params.number] != req.params.level) {
-        last_table[req.params.number] = req.params.level;
-        io.sockets.emit("update single", { number: req.params.number, level: req.params.level });
+    if (number <= 80) {
+      if (last_table[number] != level) {
+        last_table[number] = level;
+        io.sockets.emit("update single", { number: number, level: level });
         saveState(JSON.stringify(last_table));
       }
       res.send(last_table);
@@ -264,18 +267,17 @@ io.on("connection", socket => {
   });
 
   socket.on("update single", stock_level => {
+    const number = stock_level["number"];
+    const level = stock_level["level"];
+
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
-        console.log(
-          `Distibuting updates from ${socket.id} (number ${stock_level["number"]} = ${stock_level["level"]})`
-        );
-        last_table[stock_level["number"]] = stock_level["level"];
+        console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`);
+        last_table[number] = level;
         io.sockets.emit("update single", stock_level);
         saveState(JSON.stringify(last_table));
       } else {
-        console.log(
-          `Unauthenticated client ${socket.id} attempted to change ${stock_level["number"]} to ${stock_level["level"]}`
-        );
+        console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`);
       }
     });
   });
