@@ -1,7 +1,7 @@
 const socket = io.connect(self.location.host);
-const empty_colour = "#e84118";
-const low_colour = "#fbc531";
-const full_colour = "#00a8ff";
+const empty_colour = getComputedStyle(document.body).getPropertyValue("--empty-colour");
+const low_colour = getComputedStyle(document.body).getPropertyValue("--low-colour");
+const full_colour = getComputedStyle(document.body).getPropertyValue("--full-colour");
 let stock_levels = {};
 
 let TO_CONFIRM = true;

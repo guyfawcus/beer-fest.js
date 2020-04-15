@@ -1,3 +1,19 @@
+:root {
+  --full-colour: #00a8ff;
+  --low-colour: #fbc531;
+  --empty-colour: #e84118;
+
+  --main-colour: rgba(62, 83, 104, 1);
+  --main-shade-colour: rgba(116, 147, 179, 1);
+  --selection-colour: black;
+  --content-colour: #2f3640;
+  --button-bg-colour: #f5f6fa;
+  --shadow-colour: rgba(0, 0, 0, 1);
+  --shadow-shade-colour: rgba(0, 0, 0, 0.5);
+  --warning-main-color: rgba(232, 65, 24, 0.75);
+  --warning-bg-colour: rgba(47, 54, 64, 0.75);
+}
+
 html {
   height: 100%;
 }
@@ -5,10 +21,10 @@ html {
 body {
   background-image: radial-gradient(
     circle farthest-corner at 50% 50%,
-    rgba(116, 147, 179, 1) 0%,
-    rgba(62, 83, 104, 1) 100%
+    var(--main-shade-colour) 0%,
+    var(--main-colour) 100%
   );
-  color: #2f3640;
+  color: var(--content-colour);
   font-family: "Helvetica", "Arial", sans-serif;
   margin: 0px;
   overflow-x: hidden;
@@ -20,23 +36,23 @@ body {
 
 input[type="text"]::selection,
 input[type="password"]::selection {
-  background-color: black;
+  background-color: var(--selection-colour);
 }
 
 h1 {
   font-size: 48px;
-  color: #f5f6fa;
+  color: var(--button-bg-colour);
 }
 
 div[id^="button_"],
 .button {
-  background: #00a8ff;
+  background: var(--full-colour);
   display: flex;
   width: 100%;
   height: 120px;
   font-size: 3rem;
   font-weight: bold;
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -47,9 +63,9 @@ div[id^="button_"]:hover,
 .button:hover {
   transform: translateY(-3px) scale(1.05);
   border-radius: 50px;
-  box-shadow: 0px 0px 1.5rem 0px rgba(0, 0, 0, 0.5);
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 1rem 0px rgba(0, 0, 0, 0.5),
-    0px 0px 1.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 1.5rem 0px var(--shadow-colour);
   border-radius: 8px;
   cursor: pointer;
 }
@@ -88,7 +104,7 @@ div[id^="button_"]:hover,
 }
 
 .settings_utils {
-  border: solid 2px rgb(62, 83, 104);
+  border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -100,7 +116,7 @@ div[id^="button_"]:hover,
 }
 
 .settings_options {
-  border: solid 2px rgb(62, 83, 104);
+  border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;
@@ -112,7 +128,7 @@ div[id^="button_"]:hover,
 }
 
 .settings_checkboxes {
-  border: solid 2px rgb(62, 83, 104);
+  border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 4;
@@ -128,7 +144,7 @@ form {
 .button {
   margin: 7.5px;
   height: 60px;
-  background: #f5f6fa;
+  background: var(--button-bg-colour);
   font-size: 2rem;
   font-weight: normal;
   width: 95%;
@@ -146,15 +162,15 @@ input[type="checkbox"] {
   width: 80px;
   height: 40px;
   -webkit-appearance: none;
-  background: #f5f6fa;
+  background: var(--button-bg-colour);
   outline: none;
   border-radius: 20px;
   transition: 150ms;
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
 }
 
 input:checked[type="checkbox"] {
-  background: #00a8ff;
+  background: var(--full-colour);
 }
 
 input[type="checkbox"]:before {
@@ -165,9 +181,9 @@ input[type="checkbox"]:before {
   border-radius: 50%;
   top: 0;
   left: 0;
-  background: #f5f6fa;
+  background: var(--button-bg-colour);
   transform: scale(1.1);
-  box-shadow: inset 0px 0px 1rem 0px rgba(0, 0, 0, 0.5), 0px 0px 0.5rem 0px rgba(0, 0, 0, 1);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   transition: 150ms;
 }
 
@@ -176,8 +192,8 @@ input:checked[type="checkbox"]:before {
 }
 
 .warning_icon {
-  background: rgba(232, 65, 24, 0.75);
-  color: rgba(47, 54, 64, 0.75);
+  background: var(--warning-main-color);
+  color: var(--warning-bg-colour);
   width: 40px;
   height: 40px;
   margin: 0 auto;
@@ -192,6 +208,6 @@ input:checked[type="checkbox"]:before {
 }
 
 a {
-  color: #2f3640;
+  color: var(--content-colour);
   text-decoration: none;
 }
