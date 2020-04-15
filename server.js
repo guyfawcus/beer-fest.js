@@ -192,9 +192,10 @@ app.post("/api/stock_levels", (req, res) => {
       io.sockets.emit("update table", JSON.stringify(last_table));
       saveState(JSON.stringify(last_table));
     } else {
+      const name = req.session.name;
       for (let [number, level] of Object.entries(req.body)) {
-        console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
-        redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
+        console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
+        redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
         if (last_table[number] != level) {
           last_table[number] = level;
           io.sockets.emit("update single", { number: number, level: level });
@@ -210,13 +211,14 @@ app.post("/api/stock_levels", (req, res) => {
 });
 
 app.post("/api/stock_levels/:number/:level", (req, res) => {
+  const name = req.session.name;
   const number = req.params.number;
   const level = req.params.level;
 
   if (ENABLE_API == "true") {
     if (number <= 80) {
-      console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
-      redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
+      console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
+      redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
       if (last_table[number] != level) {
         last_table[number] = level;
         io.sockets.emit("update single", { number: number, level: level });
@@ -293,13 +295,14 @@ io.on("connection", socket => {
   });
 
   socket.on("update single", stock_level => {
+    const name = socket.handshake.session.name;
     const number = stock_level["number"];
     const level = stock_level["level"];
 
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
-        console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
-        redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
+        console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
+        redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`);
         last_table[number] = level;
         io.sockets.emit("update single", stock_level);
