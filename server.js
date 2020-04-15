@@ -53,7 +53,7 @@ redisClient.hgetall("config", function(err, reply) {
 
 function saveState(stock_levels) {
   for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
-    redisClient.hmset("stock_levels", number, level);
+    redisClient.hset("stock_levels", number, level);
   }
 }
 
