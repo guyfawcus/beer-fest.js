@@ -5,14 +5,14 @@
 
   --main-colour: #3e5368;
   --main-shade-colour: #7493b3;
-  --text-colour: #2f3640;
+  --text-colour: #222933;
   --button-bg-colour: #f5f6fa;
 
   --shadow-colour: #000000;
   --shadow-shade-colour: #00000080;
 
-  --warning-main-color: #e84118bf;
-  --warning-bg-colour: #2f3640bf;
+  --warning-bg-color: #e84118bf;
+  --warning-text-colour: #222933bf;
 }
 
 html {
@@ -193,8 +193,8 @@ input:checked[type="checkbox"]:before {
 }
 
 .warning_icon {
-  background: var(--warning-main-color);
-  color: var(--warning-bg-colour);
+  background: var(--warning-bg-color);
+  color: var(--warning-text-colour);
   width: 40px;
   height: 40px;
   margin: 0 auto;
