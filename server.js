@@ -105,12 +105,14 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
 });
 
 app.post("/users", (req, res) => {
+  const name = req.body.name;
   const code = req.body.code;
   const thisSession = req.session.id;
 
   bcrypt.compare(code, ADMIN_CODE, function(err, resp) {
     if (resp) {
       console.log(`Client - ${thisSession} - has entered the correct code`);
+      req.session.name = name;
       redisClient.sadd(["authed_ids", thisSession]);
       redisClient.smembers(thisSession, (err, reply) => {
         for (const socket of reply) {
