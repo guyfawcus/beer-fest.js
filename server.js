@@ -72,7 +72,7 @@ let redisSession = session({
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 });
 app.use(redisSession);
 io.use(sharedsession(redisSession));
