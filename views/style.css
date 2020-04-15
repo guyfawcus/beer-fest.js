@@ -134,6 +134,12 @@ form {
   width: 95%;
 }
 
+.login_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
 input[type="checkbox"] {
   margin: 5%;
   position: relative;
