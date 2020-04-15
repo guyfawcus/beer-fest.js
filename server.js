@@ -175,12 +175,24 @@ app.post("/api/stock_levels", (req, res) => {
       res.status(400).send("Too many items in JSON");
       return;
     } else if (Object.keys(req.body).length === 80) {
+      // Backup log if it exists and set to expire in a week
+      redisClient.exists("log", (err, reply) => {
+        if (reply) {
+          console.log("Backing up and wiping log");
+          const log_backup_name = `log-backup-${Date.now()}`;
+          redisClient.rename("log", log_backup_name);
+          redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7);
+        }
+      });
+
       console.log("Saving whole table");
       last_table = req.body;
       io.sockets.emit("update table", JSON.stringify(last_table));
       saveState(JSON.stringify(last_table));
     } else {
       for (let [number, level] of Object.entries(req.body)) {
+        console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
+        redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
         if (last_table[number] != level) {
           last_table[number] = level;
           io.sockets.emit("update single", { number: number, level: level });
@@ -201,6 +213,8 @@ app.post("/api/stock_levels/:number/:level", (req, res) => {
 
   if (ENABLE_API == "true") {
     if (number <= 80) {
+      console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
+      redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
       if (last_table[number] != level) {
         last_table[number] = level;
         io.sockets.emit("update single", { number: number, level: level });
@@ -256,6 +270,16 @@ io.on("connection", socket => {
   socket.on("update table", table => {
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
+        // Backup log if it exists and set to expire in a week
+        redisClient.exists("log", (err, reply) => {
+          if (reply) {
+            console.log("Backing up and wiping log");
+            const log_backup_name = `log-backup-${Date.now()}`;
+            redisClient.rename("log", log_backup_name);
+            redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7);
+          }
+        });
+
         console.log(`Distibuting whole table from ${socket.id}`);
         last_table = JSON.parse(table);
         socket.broadcast.emit("update table", table);
@@ -272,6 +296,8 @@ io.on("connection", socket => {
 
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
+        console.log(`${Date.now()}, {"number": "${number}", "level": "${level}"}`);
+        redisClient.zadd("log", Date.now(), `{"number": "${number}", "level": "${level}"}`);
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`);
         last_table[number] = level;
         io.sockets.emit("update single", stock_level);
