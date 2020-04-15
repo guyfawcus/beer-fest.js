@@ -1,28 +1,30 @@
+#!/usr/bin/env node
+
 const fs = require("fs");
+const http = require("http");
 const path = require("path");
 
 const bcrypt = require("bcryptjs");
 const express = require("express");
-const app = express();
+const flash = require("express-flash");
 const session = require("express-session");
 const sharedsession = require("express-socket.io-session");
+const redis = require("redis");
 
-const flash = require("express-flash");
+const ADMIN_CODE = process.env.ADMIN_CODE;
+const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
+const ENABLE_API = process.env.ENABLE_API || "false";
+const REDIS_URL = process.env.REDIS_URL
 
-const http = require("http");
+const app = express();
 const server = http.Server(app);
 const io = require("socket.io")(server);
-
-const redis = require("redis");
+const redisClient = redis.createClient(REDIS_URL);
 const RedisStore = require("connect-redis")(session);
-const redisClient = redis.createClient(process.env.REDIS_URL);
 
-const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
-const ADMIN_CODE = process.env.ADMIN_CODE;
-const ENABLE_API = process.env.ENABLE_API || "false";
-
+let last_config = {};
 let last_table = {};
-let CONFIG = {};
+
 
 redisClient.hgetall("stock_levels", function(err, reply) {
   if (reply != null) {
@@ -42,13 +44,13 @@ redisClient.hgetall("config", function(err, reply) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
     let confirm = reply.confirm === "true" ? true : false;
     let low_enable = reply.low_enable === "true" ? true : false;
-    CONFIG = { confirm: confirm, low_enable: low_enable };
+    last_config = { confirm: confirm, low_enable: low_enable };
   } else {
     console.log(`Initialising config`);
-    CONFIG = { confirm: true, low_enable: false };
+    last_config = { confirm: true, low_enable: false };
   }
-  redisClient.hset("config", "confirm", CONFIG.confirm);
-  redisClient.hset("config", "low_enable", CONFIG.low_enable);
+  redisClient.hset("config", "confirm", last_config.confirm);
+  redisClient.hset("config", "low_enable", last_config.low_enable);
 });
 
 function saveState(stock_levels) {
@@ -259,7 +261,7 @@ io.on("connection", socket => {
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
-  io.to(`${socket.id}`).emit("config", CONFIG);
+  io.to(`${socket.id}`).emit("config", last_config);
 
   redisClient.sadd(socket.handshake.session.id, socket.id);
 
@@ -319,7 +321,7 @@ io.on("connection", socket => {
         console.log("Distributing configuration:");
         console.log(configuration);
         io.sockets.emit("config", configuration);
-        CONFIG = configuration;
+        last_config = configuration;
         redisClient.hset("config", "confirm", configuration.confirm);
         redisClient.hset("config", "low_enable", configuration.low_enable);
       } else {
