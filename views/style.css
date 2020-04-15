@@ -73,8 +73,8 @@ div[id^="button_"]:hover,
 .settings_container {
   display: grid;
   grid-template-columns: 1fr 300px 1fr;
-  grid-template-rows: 119px auto;
-  row-gap: 10px;
+  grid-template-rows: 119px auto auto;
+  row-gap: 20px;
 }
 
 .settings_header {
@@ -87,7 +87,8 @@ div[id^="button_"]:hover,
   justify-content: center;
 }
 
-.settings_options {
+.settings_utils {
+  border: solid 2px rgb(62, 83, 104);
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -98,13 +99,30 @@ div[id^="button_"]:hover,
   justify-content: space-between;
 }
 
-.settings_checkboxes {
+.settings_options {
+  border: solid 2px rgb(62, 83, 104);
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 3;
   grid-row-end: 3;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.settings_checkboxes {
+  border: solid 2px rgb(62, 83, 104);
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 4;
+  display: flex;
   justify-content: space-around;
+}
+
+form {
+  margin: 5%;
 }
 
 .button {
@@ -113,9 +131,11 @@ div[id^="button_"]:hover,
   background: #f5f6fa;
   font-size: 2rem;
   font-weight: normal;
+  width: 95%;
 }
 
 input[type="checkbox"] {
+  margin: 5%;
   position: relative;
   width: 80px;
   height: 40px;

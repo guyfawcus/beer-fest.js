@@ -12,12 +12,14 @@
     <div class="warning_icon" title="Server disconnected!">X</div>
     <div class="settings_container">
       <div class="settings_header"><h1 id="title">ACBF Settings</h1></div>
+      <div class="settings_utils">
+        <div class="button" onclick="tableUpload()" title="Upload a previous state">Upload</div>
+        <a class="button" href="/api/stock_levels" title="Download the current state" download="state.json">Download</a>
+      </div>
       <div class="settings_options">
         <div class="button" onclick="tableFill()" title="Mark everything as full">Fill</div>
         <div class="button" onclick="tableLow()" title="Mark everything as low">Low</div>
         <div class="button" onclick="tableEmpty()" title="Mark everything as empty">Empty</div>
-        <div class="button" onclick="tableUpload()" title="Upload a previous state">Upload</div>
-        <a class="button" href="/api/stock_levels" title="Download the current state" download="state.json">Download</a>
       </div>
       <div class="settings_checkboxes">
         <div title="Enable/disable the confirmation checks">
