@@ -5,11 +5,12 @@
 
   --main-colour: #3e5368;
   --main-shade-colour: #7493b3;
-  --selection-colour: #000000;
-  --content-colour: #2f3640;
+  --text-colour: #2f3640;
   --button-bg-colour: #f5f6fa;
+
   --shadow-colour: #000000;
   --shadow-shade-colour: #00000080;
+
   --warning-main-color: #e84118bf;
   --warning-bg-colour: #2f3640bf;
 }
@@ -24,7 +25,7 @@ body {
     var(--main-shade-colour) 0%,
     var(--main-colour) 100%
   );
-  color: var(--content-colour);
+  color: var(--text-colour);
   font-family: "Helvetica", "Arial", sans-serif;
   margin: 0px;
   overflow-x: hidden;
@@ -36,7 +37,7 @@ body {
 
 input[type="text"]::selection,
 input[type="password"]::selection {
-  background-color: var(--selection-colour);
+  background-color: var(--shadow-colour);
 }
 
 h1 {
@@ -208,6 +209,6 @@ input:checked[type="checkbox"]:before {
 }
 
 a {
-  color: var(--content-colour);
+  color: var(--text-colour);
   text-decoration: none;
 }
