@@ -1,5 +1,8 @@
+/* eslint-env browser */
+/* global io*/
+"use strict";
+
 const socket = io.connect(self.location.host);
-let AUTHORISED = false;
 
 socket.on("connect", () => {
   console.log("Server connected");
@@ -17,12 +20,10 @@ socket.on("disconnect", () => {
 
 socket.on("auth", status => {
   if (status) {
-    AUTHORISED = true;
     document.getElementById("login").innerHTML = "Log out";
     document.getElementById("login").href = "/logout";
     console.log("Authenticated with server");
   } else {
-    AUTHORISED = false;
     document.getElementById("login").innerHTML = "Log in";
     document.getElementById("login").href = "/login";
     console.log("Not authenticated");

@@ -1,3 +1,8 @@
+/* eslint-env browser */
+/* global io */
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "table" }]*/
+"use strict";
+
 const socket = io.connect(self.location.host);
 let stock_levels = {};
 let TO_CONFIRM = true;
@@ -7,11 +12,11 @@ let AUTHORISED = false;
 function tableFill() {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
-      if (confirm("Are you sure you want to mark everything as full?") != true) return;
+      if (confirm("Are you sure you want to mark everything as full?") !== true) return;
     }
     console.log("Filling everything 🍻");
     const table = {};
-    for (i = 1; i <= 80; i++) {
+    for (let i = 1; i <= 80; i++) {
       table[i] = "full";
     }
     socket.emit("update table", JSON.stringify(table));
@@ -24,11 +29,11 @@ function tableFill() {
 function tableLow() {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
-      if (confirm("Are you sure you want to mark everything as low?") != true) return;
+      if (confirm("Are you sure you want to mark everything as low?") !== true) return;
     }
     console.log("Lowering everything");
     const table = {};
-    for (i = 1; i <= 80; i++) {
+    for (let i = 1; i <= 80; i++) {
       table[i] = "low";
     }
     socket.emit("update table", JSON.stringify(table));
@@ -41,11 +46,11 @@ function tableLow() {
 function tableEmpty() {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
-      if (confirm("Are you sure you want to mark everything as empty?") != true) return;
+      if (confirm("Are you sure you want to mark everything as empty?") !== true) return;
     }
     console.log("Emptying everything 😧");
     const table = {};
-    for (i = 1; i <= 80; i++) {
+    for (let i = 1; i <= 80; i++) {
       table[i] = "empty";
     }
     socket.emit("update table", JSON.stringify(table));
@@ -64,7 +69,7 @@ function tableUpload() {
       const file = input_element.files[0];
       reader.onload = function() {
         // File type validation
-        if (file.type != "application/json") {
+        if (file.type !== "application/json") {
           alert("Error: this file is not of the right type,\nplease upload a 'state.json' file");
           return;
         }
@@ -77,14 +82,15 @@ function tableUpload() {
 
         // Data validation
         try {
-          let data = JSON.parse(reader.result);
+          const data = JSON.parse(reader.result);
+          if (typeof data !== "object" && data !== null) throw Error;
         } catch (error) {
           alert("Error: could not parse JSON,\nplease upload a valid 'state.json' file");
           return;
         }
 
         if (TO_CONFIRM) {
-          if (confirm("Are you sure you want to use this data?") != true) return;
+          if (confirm("Are you sure you want to use this data?") !== true) return;
         }
         updateRequired(JSON.parse(reader.result));
       };
@@ -100,7 +106,7 @@ function tableUpload() {
 
 function updateRequired(table) {
   for (let [button_number, stock_level] of Object.entries(table)) {
-    if (stock_level != stock_levels[button_number]) {
+    if (stock_level !== stock_levels[button_number]) {
       console.log(`Setting ${button_number} as ${stock_level}`);
       socket.emit("update single", { number: button_number, level: stock_level });
       stock_levels[button_number] = stock_level;

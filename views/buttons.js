@@ -1,3 +1,8 @@
+/* eslint-env browser */
+/* global io */
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "confirmUpdate" }]*/
+"use strict";
+
 const socket = io.connect(self.location.host);
 const empty_colour = getComputedStyle(document.body).getPropertyValue("--empty-colour");
 const low_colour = getComputedStyle(document.body).getPropertyValue("--low-colour");
@@ -18,38 +23,37 @@ const confirmUpdate = button_number => {
 
 // Make sure the user wants to update the selected number
 function goUpdate(button_number, to_confirm = TO_CONFIRM) {
-  const button_id = document.getElementById(`button_${button_number}`);
-  if (LOW_ENABLE == true) {
-    if (stock_levels[button_number] == "full") {
+  if (LOW_ENABLE === true) {
+    if (stock_levels[button_number] === "full") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as low`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as low`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "low" });
-    } else if (stock_levels[button_number] == "low") {
+    } else if (stock_levels[button_number] === "low") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "empty" });
-    } else if (stock_levels[button_number] == "empty") {
+    } else if (stock_levels[button_number] === "empty") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as full`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "full" });
     }
   } else {
-    if (stock_levels[button_number] == "full") {
+    if (stock_levels[button_number] === "full") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "empty" });
-    } else if (stock_levels[button_number] == "low") {
+    } else if (stock_levels[button_number] === "low") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "empty" });
-    } else if (stock_levels[button_number] == "empty") {
+    } else if (stock_levels[button_number] === "empty") {
       if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as full`) != true) return;
+        if (confirm(`Are you sure you want to mark number ${button_number} as full`) !== true) return;
       }
       socket.emit("update single", { number: button_number, level: "full" });
     }
@@ -59,15 +63,15 @@ function goUpdate(button_number, to_confirm = TO_CONFIRM) {
 // Change the colour of the button depending on the stock level
 function updateLevel(button_number, stock_level) {
   const button_id = document.getElementById(`button_${button_number}`);
-  if (stock_level == "empty") {
+  if (stock_level === "empty") {
     console.log(`Setting ${button_number} as empty`);
     stock_levels[button_number] = "empty";
     button_id.style.background = empty_colour;
-  } else if (stock_level == "low") {
+  } else if (stock_level === "low") {
     console.log(`Setting ${button_number} as low`);
     stock_levels[button_number] = "low";
     button_id.style.background = low_colour;
-  } else if (stock_level == "full") {
+  } else if (stock_level === "full") {
     console.log(`Setting ${button_number} as full`);
     stock_levels[button_number] = "full";
     button_id.style.background = full_colour;
@@ -78,12 +82,12 @@ function updateLevel(button_number, stock_level) {
 function updateFromState(stock_levels) {
   console.log("%cUpdating table from:", "font-weight:bold;");
   console.log(stock_levels);
-  for (button_number in stock_levels) {
-    if (stock_levels[button_number] == "empty") {
+  for (const button_number in stock_levels) {
+    if (stock_levels[button_number] === "empty") {
       updateLevel(button_number, "empty");
-    } else if (stock_levels[button_number] == "low") {
+    } else if (stock_levels[button_number] === "low") {
       updateLevel(button_number, "low");
-    } else if (stock_levels[button_number] == "full") {
+    } else if (stock_levels[button_number] === "full") {
       updateLevel(button_number, "full");
     }
   }

@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 const http = require("http");
 const path = require("path");
 
@@ -55,8 +57,8 @@ redisClient.hgetall("stock_levels", (err, reply) => {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
     last_table = reply;
   } else {
-    console.log(`Starting off state matrix`);
-    for (i = 1; i <= 80; i++) {
+    console.log("Starting off state matrix");
+    for (let i = 1; i <= 80; i++) {
       last_table[i] = "full";
     }
     saveState(JSON.stringify(last_table));
@@ -67,11 +69,12 @@ redisClient.hgetall("stock_levels", (err, reply) => {
 redisClient.hgetall("config", (err, reply) => {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
-    const confirm = reply.confirm === "true" ? true : false;
-    const low_enable = reply.low_enable === "true" ? true : false;
+    // Convert the true/false strings to bools
+    const confirm = reply.confirm === "true";
+    const low_enable = reply.low_enable === "true";
     last_config = { confirm: confirm, low_enable: low_enable };
   } else {
-    console.log(`Initialising config`);
+    console.log("Initialising config");
     last_config = { confirm: true, low_enable: false };
   }
   redisClient.hset("config", "confirm", last_config.confirm);
@@ -221,7 +224,7 @@ app.get("/api/stock_levels/:number", (req, res) => {
 });
 
 app.post("/api/stock_levels", (req, res) => {
-  if (ENABLE_API == "true") {
+  if (ENABLE_API === "true") {
     if (Object.keys(req.body).length > 80) {
       console.log("Too many items in JSON");
       res.status(400).send("Too many items in JSON");
@@ -248,7 +251,7 @@ app.post("/api/stock_levels", (req, res) => {
       for (const [number, level] of Object.entries(req.body)) {
         console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
         redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
-        if (last_table[number] != level) {
+        if (last_table[number] !== level) {
           last_table[number] = level;
           io.sockets.emit("update single", { number: number, level: level });
           saveState(JSON.stringify(last_table));
@@ -267,12 +270,12 @@ app.post("/api/stock_levels/:number/:level", (req, res) => {
   const number = req.params.number;
   const level = req.params.level;
 
-  if (ENABLE_API == "true") {
+  if (ENABLE_API === "true") {
     if (number <= 80) {
       // Update the levels one-by-one
       console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
       redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
-      if (last_table[number] != level) {
+      if (last_table[number] !== level) {
         last_table[number] = level;
         io.sockets.emit("update single", { number: number, level: level });
         saveState(JSON.stringify(last_table));

@@ -5,6 +5,7 @@
   },
   "rules": {
     "max-len": ["error", { "code": 120 }],
-    "quotes": ["error", "double"]
+    "quotes": ["error", "double"],
+    "comma-dangle": ["error", "never"]
   }
 }

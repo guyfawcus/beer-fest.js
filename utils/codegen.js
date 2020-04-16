@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+"use strict";
+
 const bcrypt = require("bcryptjs");
 const readline = require("readline");
 const { exec } = require("child_process");
@@ -13,7 +15,7 @@ let hashedCode = "";
 
 const rl = readline.createInterface({
   input: process.stdin,
-  output: process.stdout,
+  output: process.stdout
 });
 
 rl.question("Enter new code: ", (code) => {
