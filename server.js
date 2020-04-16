@@ -30,7 +30,7 @@ let last_table = {};
 // ---------------------------------------------------------------------------
 
 // Set up server
-let redisSession = session({
+const redisSession = session({
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
   resave: false,
@@ -68,8 +68,8 @@ redisClient.hgetall("stock_levels", (err, reply) => {
 redisClient.hgetall("config", (err, reply) => {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
-    let confirm = reply.confirm === "true" ? true : false;
-    let low_enable = reply.low_enable === "true" ? true : false;
+    const confirm = reply.confirm === "true" ? true : false;
+    const low_enable = reply.low_enable === "true" ? true : false;
     last_config = { confirm: confirm, low_enable: low_enable };
   } else {
     console.log(`Initialising config`);
@@ -252,7 +252,7 @@ app.post("/api/stock_levels", (req, res) => {
     } else {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name;
-      for (let [number, level] of Object.entries(req.body)) {
+      for (const [number, level] of Object.entries(req.body)) {
         console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
         redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
         if (last_table[number] != level) {
