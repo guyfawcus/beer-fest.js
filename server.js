@@ -51,7 +51,7 @@ server.listen(process.env.PORT || 8000, () => {
 });
 
 // Read in previous state if it exists, initialise all as full if not
-redisClient.hgetall("stock_levels", function(err, reply) {
+redisClient.hgetall("stock_levels", (err, reply) => {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
     last_table = reply;
@@ -65,7 +65,7 @@ redisClient.hgetall("stock_levels", function(err, reply) {
 });
 
 // Read in previous config settings, initialise with defaults if not
-redisClient.hgetall("config", function(err, reply) {
+redisClient.hgetall("config", (err, reply) => {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
     let confirm = reply.confirm === "true" ? true : false;
@@ -84,31 +84,31 @@ redisClient.hgetall("config", function(err, reply) {
 // ---------------------------------------------------------------------------
 
 // Save the state from a JSON string of stock_levels to redis
-function saveState(stock_levels) {
+const saveState = stock_levels => {
   for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
     redisClient.hset("stock_levels", number, level);
   }
-}
+};
 
 // Used to stop unauthenticated clients getting to pages
-function checkAuthenticated(req, res, next) {
+const checkAuthenticated = (req, res, next) => {
   redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
     if (reply) {
       return next();
     }
     res.redirect("/login");
   });
-}
+};
 
 // Used to stop authenticated clients getting to pages
-function checkNotAuthenticated(req, res, next) {
+const checkNotAuthenticated = (req, res, next) => {
   redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
     if (reply) {
       return res.redirect("/");
     }
     next();
   });
-}
+};
 
 // ---------------------------------------------------------------------------
 // Routes - main
@@ -179,7 +179,7 @@ app.post("/users", (req, res) => {
   const thisSession = req.session.id;
 
   // Check the code entered
-  bcrypt.compare(code, ADMIN_CODE, function(err, resp) {
+  bcrypt.compare(code, ADMIN_CODE, (err, resp) => {
     if (resp) {
       console.log(`Client - ${thisSession} - has entered the correct code`);
       req.session.name = name;
