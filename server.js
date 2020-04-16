@@ -14,7 +14,7 @@ const redis = require("redis");
 const ADMIN_CODE = process.env.ADMIN_CODE;
 const COOKIE_SECRET = process.env.COOKIE_SECRET || "8OarM0c9KnkjM8ucDorbFTU3ssST4VIx";
 const ENABLE_API = process.env.ENABLE_API || "false";
-const REDIS_URL = process.env.REDIS_URL
+const REDIS_URL = process.env.REDIS_URL;
 
 const app = express();
 const server = http.Server(app);
@@ -111,9 +111,10 @@ function checkNotAuthenticated(req, res, next) {
 }
 
 // ---------------------------------------------------------------------------
-// Routes
+// Routes - main
 // ---------------------------------------------------------------------------
 
+// Core pages
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "views/index.html"));
 });
@@ -151,8 +152,24 @@ app.get("/humans.txt", (req, res) => {
   res.sendFile(path.join(__dirname, "humans.txt"));
 });
 
+// Routes for reveal (the slideshow package)
+app.get("/css/reset.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reset.css"));
+});
+app.get("/css/reveal.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reveal.css"));
+});
+app.get("/css/theme/black.css", (req, res) => {
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/theme/black.css"));
+});
+app.get("/js/reveal.js", (req, res) => {
+  res.sendFile(path.join(__dirname, "node_modules/reveal.js/js/reveal.js"));
+});
+
+app.use(express.static(__dirname + "/views/"));
+
 // ---------------------------------------------------------------------------
-// Authentication
+// Routes - authentication
 // ---------------------------------------------------------------------------
 
 app.post("/users", (req, res) => {
@@ -199,7 +216,7 @@ app.get("/logout", (req, res) => {
 });
 
 // ---------------------------------------------------------------------------
-// API
+// Routes - API
 // ---------------------------------------------------------------------------
 
 app.get("/api/stock_levels", (req, res) => {
@@ -278,27 +295,12 @@ app.post("/api/stock_levels/:number/:level", (req, res) => {
   }
 });
 
-// Routes for reveal
-app.get("/css/reset.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reset.css"));
-});
-app.get("/css/reveal.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/reveal.css"));
-});
-app.get("/css/theme/black.css", (req, res) => {
-  res.sendFile(path.join(__dirname, "node_modules/reveal.js/css/theme/black.css"));
-});
-app.get("/js/reveal.js", (req, res) => {
-  res.sendFile(path.join(__dirname, "node_modules/reveal.js/js/reveal.js"));
-});
-
-app.use(express.static(__dirname + "/views/"));
-
 // ---------------------------------------------------------------------------
 // Socket Events
 // ---------------------------------------------------------------------------
 
 io.on("connection", socket => {
+  // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`);
   console.log("Distibuting previous state");
   io.to(`${socket.id}`).emit("update table", JSON.stringify(last_table));
@@ -327,6 +329,7 @@ io.on("connection", socket => {
           }
         });
 
+        // Save the whole table at once
         console.log(`Distibuting whole table from ${socket.id}`);
         last_table = JSON.parse(table);
         socket.broadcast.emit("update table", table);
@@ -344,6 +347,7 @@ io.on("connection", socket => {
 
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
+        // Update the levels one-by-one
         console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
         redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`);
@@ -359,6 +363,7 @@ io.on("connection", socket => {
   socket.on("config", configuration => {
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
+        // Distribute and save the configuration
         console.log("Distributing configuration:");
         console.log(configuration);
         io.sockets.emit("config", configuration);
