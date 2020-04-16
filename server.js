@@ -25,7 +25,32 @@ const RedisStore = require("connect-redis")(session);
 let last_config = {};
 let last_table = {};
 
+// ---------------------------------------------------------------------------
+// Configuration
+// ---------------------------------------------------------------------------
 
+// Set up server
+let redisSession = session({
+  secret: COOKIE_SECRET,
+  store: new RedisStore({ client: redisClient }),
+  resave: false,
+  saveUninitialized: false
+});
+
+io.use(sharedsession(redisSession));
+app.set("view-engine", "ejs");
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(flash());
+app.use(redisSession);
+
+// Start the server
+server.listen(process.env.PORT || 8000, () => {
+  console.log(`Listening on port ${server.address().port}`);
+});
+
+// Read in previous state if it exists, initialise all as full if not
 redisClient.hgetall("stock_levels", function(err, reply) {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
@@ -39,6 +64,7 @@ redisClient.hgetall("stock_levels", function(err, reply) {
   }
 });
 
+// Read in previous config settings, initialise with defaults if not
 redisClient.hgetall("config", function(err, reply) {
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`);
@@ -53,34 +79,36 @@ redisClient.hgetall("config", function(err, reply) {
   redisClient.hset("config", "low_enable", last_config.low_enable);
 });
 
+// ---------------------------------------------------------------------------
+// Functions
+// ---------------------------------------------------------------------------
+
+// Save the state from a JSON string of stock_levels to redis
 function saveState(stock_levels) {
   for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
     redisClient.hset("stock_levels", number, level);
   }
 }
 
-// ---------------------------------------------------------------------------
-// Configuration
-// ---------------------------------------------------------------------------
+// Used to stop unauthenticated clients getting to pages
+function checkAuthenticated(req, res, next) {
+  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
+    if (reply) {
+      return next();
+    }
+    res.redirect("/login");
+  });
+}
 
-server.listen(process.env.PORT || 8000, () => {
-  console.log(`Listening on port ${server.address().port}`);
-});
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-
-let redisSession = session({
-  secret: COOKIE_SECRET,
-  store: new RedisStore({ client: redisClient }),
-  resave: false,
-  saveUninitialized: false
-});
-app.use(redisSession);
-io.use(sharedsession(redisSession));
-
-app.set("view-engine", "ejs");
-app.use(flash());
+// Used to stop authenticated clients getting to pages
+function checkNotAuthenticated(req, res, next) {
+  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
+    if (reply) {
+      return res.redirect("/");
+    }
+    next();
+  });
+}
 
 // ---------------------------------------------------------------------------
 // Routes
@@ -106,11 +134,34 @@ app.get("/login", checkNotAuthenticated, (req, res) => {
   res.render("login.ejs");
 });
 
+// Other routes
+app.get("/robots.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "robots.txt"));
+});
+
+app.get("/.well-known/security.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "security.txt"));
+});
+
+app.get("/.well-known/keybase.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "keybase.txt"));
+});
+
+app.get("/humans.txt", (req, res) => {
+  res.sendFile(path.join(__dirname, "humans.txt"));
+});
+
+// ---------------------------------------------------------------------------
+// Authentication
+// ---------------------------------------------------------------------------
+
 app.post("/users", (req, res) => {
+  // Store the name in the users session
   const name = req.body.name;
   const code = req.body.code;
   const thisSession = req.session.id;
 
+  // Check the code entered
   bcrypt.compare(code, ADMIN_CODE, function(err, resp) {
     if (resp) {
       console.log(`Client - ${thisSession} - has entered the correct code`);
@@ -147,23 +198,10 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.get("/robots.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "robots.txt"));
-});
-
-app.get("/.well-known/security.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "security.txt"));
-});
-
-app.get("/.well-known/keybase.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "keybase.txt"));
-});
-
-app.get("/humans.txt", (req, res) => {
-  res.sendFile(path.join(__dirname, "humans.txt"));
-});
-
+// ---------------------------------------------------------------------------
 // API
+// ---------------------------------------------------------------------------
+
 app.get("/api/stock_levels", (req, res) => {
   res.send(last_table);
 });
@@ -189,11 +227,13 @@ app.post("/api/stock_levels", (req, res) => {
         }
       });
 
+      // Save the whole table at once
       console.log("Saving whole table");
       last_table = req.body;
       io.sockets.emit("update table", JSON.stringify(last_table));
       saveState(JSON.stringify(last_table));
     } else {
+      // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name;
       for (let [number, level] of Object.entries(req.body)) {
         console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
@@ -219,6 +259,7 @@ app.post("/api/stock_levels/:number/:level", (req, res) => {
 
   if (ENABLE_API == "true") {
     if (number <= 80) {
+      // Update the levels one-by-one
       console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`);
       redisClient.zadd("log", Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`);
       if (last_table[number] != level) {
@@ -337,21 +378,3 @@ io.on("connection", socket => {
     redisClient.srem(socket.handshake.session.id, socket.id);
   });
 });
-
-function checkAuthenticated(req, res, next) {
-  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
-    if (reply) {
-      return next();
-    }
-    res.redirect("/login");
-  });
-}
-
-function checkNotAuthenticated(req, res, next) {
-  redisClient.sismember("authed_ids", req.session.id, (err, reply) => {
-    if (reply) {
-      return res.redirect("/");
-    }
-    next();
-  });
-}
