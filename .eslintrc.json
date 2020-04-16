@@ -1,1 +1,10 @@
-{"extends": "strongloop"}
+{
+  "extends": "strongloop",
+  "parserOptions": {
+    "ecmaVersion": 2020
+  },
+  "rules": {
+    "max-len": ["error", { "code": 120 }],
+    "quotes": ["error", "double"]
+  }
+}
