@@ -192,12 +192,6 @@ app.post("/users", (req, res) => {
       res.redirect("/");
     } else {
       console.log(`Client - ${thisSession} - has enterted the wrong code (${code})`);
-      redisClient.srem(["authed_ids", thisSession]);
-      redisClient.smembers(thisSession, (err, reply) => {
-        for (const socket of reply) {
-          io.to(`${socket}`).emit("auth", false);
-        }
-      });
       req.flash("error", "Wrong code, please try again");
       res.redirect("login");
     }
