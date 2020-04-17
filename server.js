@@ -53,6 +53,8 @@ server.listen(process.env.PORT || 8000, () => {
 
 // Read in previous state if it exists, initialise all as full if not
 redisClient.hgetall('stock_levels', (err, reply) => {
+  if (err) handleError("Couldn't get stock levels from Redis", err)
+
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`)
     last_table = reply
@@ -67,6 +69,8 @@ redisClient.hgetall('stock_levels', (err, reply) => {
 
 // Read in previous config settings, initialise with defaults if not
 redisClient.hgetall('config', (err, reply) => {
+  if (err) handleError("Couldn't get config from Redis", err)
+
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`)
     // Convert the true/false strings to bools
@@ -82,6 +86,24 @@ redisClient.hgetall('config', (err, reply) => {
 })
 
 // ---------------------------------------------------------------------------
+// Errors
+// ---------------------------------------------------------------------------
+
+redisClient.on('error', error => {
+  if (error.code === 'ECONNREFUSED') {
+    console.error("Can't connect to Redis")
+  } else {
+    console.error(error.message)
+  }
+  process.exit(1)
+})
+
+const handleError = (message, error) => {
+  console.error(`${message} - ${error.message})`)
+  process.exit(1)
+}
+
+// ---------------------------------------------------------------------------
 // Functions
 // ---------------------------------------------------------------------------
 
@@ -95,6 +117,7 @@ const saveState = stock_levels => {
 // Used to stop unauthenticated clients getting to pages
 const checkAuthenticated = (req, res, next) => {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
+    if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
       return next()
     }
@@ -105,6 +128,7 @@ const checkAuthenticated = (req, res, next) => {
 // Used to stop authenticated clients getting to pages
 const checkNotAuthenticated = (req, res, next) => {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
+    if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
       return res.redirect('/')
     }
@@ -182,11 +206,13 @@ app.post('/users', (req, res) => {
 
   // Check the code entered
   bcrypt.compare(code, ADMIN_CODE, (err, resp) => {
+    if (err) handleError("Couldn't compare codes with bcrypt", err)
     if (resp) {
       console.log(`Client - ${thisSession} - has entered the correct code`)
       req.session.name = name
       redisClient.sadd(['authed_ids', thisSession])
       redisClient.smembers(thisSession, (err, reply) => {
+        if (err) handleError("Couldn't get session members from Redis", err)
         for (const socket of reply) {
           io.to(`${socket}`).emit('auth', true)
         }
@@ -204,6 +230,7 @@ app.get('/logout', (req, res) => {
   const thisSession = req.session.id
   redisClient.srem(['authed_ids', thisSession])
   redisClient.smembers(thisSession, (err, reply) => {
+    if (err) handleError("Couldn't get session members from Redis", err)
     for (const socket of reply) {
       io.to(`${socket}`).emit('auth', false)
     }
@@ -232,6 +259,7 @@ app.post('/api/stock_levels', (req, res) => {
     } else if (Object.keys(req.body).length === 80) {
       // Backup log if it exists and set to expire in a week
       redisClient.exists('log', (err, reply) => {
+        if (err) handleError("Couldn't check if the log exists with Redis", err)
         if (reply) {
           console.log('Backing up and wiping log')
           const log_backup_name = `log-backup-${Date.now()}`
@@ -305,6 +333,7 @@ io.on('connection', socket => {
   redisClient.sadd(socket.handshake.session.id, socket.id)
 
   redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+    if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
       io.to(`${socket.id}`).emit('auth', true)
     } else {
@@ -314,9 +343,11 @@ io.on('connection', socket => {
 
   socket.on('update table', table => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+      if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Backup log if it exists and set to expire in a week
         redisClient.exists('log', (err, reply) => {
+          if (err) handleError("Couldn't check if log exists with Redis", err)
           if (reply) {
             console.log('Backing up and wiping log')
             const log_backup_name = `log-backup-${Date.now()}`
@@ -342,6 +373,7 @@ io.on('connection', socket => {
     const level = stock_level.level
 
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+      if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Update the levels one-by-one
         console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`)
@@ -358,6 +390,7 @@ io.on('connection', socket => {
 
   socket.on('config', configuration => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+      if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Distribute and save the configuration
         console.log('Distributing configuration:')

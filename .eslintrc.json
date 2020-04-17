@@ -6,7 +6,6 @@
   "rules": {
     "comma-dangle": ["error", "never"],
     "camelcase": "off",
-    "space-before-function-paren": ["error", "never"],
-    "handle-callback-err": ["error", "never"]
+    "space-before-function-paren": ["error", "never"]
   }
 }
