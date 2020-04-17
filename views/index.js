@@ -1,5 +1,5 @@
 /* eslint-env browser */
-/* global io*/
+/* global io */
 "use strict";
 
 const socket = io.connect(self.location.host);

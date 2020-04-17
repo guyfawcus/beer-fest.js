@@ -1,13 +1,13 @@
 /* eslint-env browser */
 /* global io */
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "confirmUpdate" }]*/
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "confirmUpdate" }] */
 "use strict";
 
 const socket = io.connect(self.location.host);
 const empty_colour = getComputedStyle(document.body).getPropertyValue("--empty-colour");
 const low_colour = getComputedStyle(document.body).getPropertyValue("--low-colour");
 const full_colour = getComputedStyle(document.body).getPropertyValue("--full-colour");
-let stock_levels = {};
+const stock_levels = {};
 
 let TO_CONFIRM = true;
 let LOW_ENABLE = false;
@@ -101,18 +101,18 @@ socket.on("update table", table => {
 });
 
 socket.on("update single", stock_level => {
-  updateLevel(stock_level["number"], stock_level["level"]);
+  updateLevel(stock_level.number, stock_level.level);
 });
 
 socket.on("config", configuration => {
   console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
-  if (configuration["confirm"]) {
+  if (configuration.confirm) {
     TO_CONFIRM = true;
   } else {
     TO_CONFIRM = false;
   }
-  if (configuration["low_enable"]) {
+  if (configuration.low_enable) {
     LOW_ENABLE = true;
   } else {
     LOW_ENABLE = false;

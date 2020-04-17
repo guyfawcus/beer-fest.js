@@ -1,6 +1,6 @@
 /* eslint-env browser */
 /* global io */
-/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "table" }]*/
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "table" }] */
 "use strict";
 
 const socket = io.connect(self.location.host);
@@ -105,7 +105,7 @@ function tableUpload() {
 }
 
 function updateRequired(table) {
-  for (let [button_number, stock_level] of Object.entries(table)) {
+  for (const [button_number, stock_level] of Object.entries(table)) {
     if (stock_level !== stock_levels[button_number]) {
       console.log(`Setting ${button_number} as ${stock_level}`);
       socket.emit("update single", { number: button_number, level: stock_level });
@@ -147,14 +147,14 @@ low_checkbox.addEventListener("change", event => {
 socket.on("config", configuration => {
   console.log("%cUpdating configuration from:", "font-weight:bold;");
   console.log(configuration);
-  if (configuration["confirm"]) {
+  if (configuration.confirm) {
     TO_CONFIRM = true;
     document.getElementById("confirm_check").checked = true;
   } else {
     TO_CONFIRM = false;
     document.getElementById("confirm_check").checked = false;
   }
-  if (configuration["low_enable"]) {
+  if (configuration.low_enable) {
     LOW_ENABLE = true;
     document.getElementById("low_check").checked = true;
   } else {
@@ -171,8 +171,8 @@ socket.on("update table", table => {
 });
 
 socket.on("update single", stock_level => {
-  console.log(`Setting ${stock_level["number"]} as ${stock_level["level"]}`);
-  stock_levels[stock_level["number"]] = stock_level["level"];
+  console.log(`Setting ${stock_level.number} as ${stock_level.level}`);
+  stock_levels[stock_level.number] = stock_level.level;
 });
 
 socket.on("connect", () => {

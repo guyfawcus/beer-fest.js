@@ -168,7 +168,7 @@ app.get("/js/reveal.js", (req, res) => {
   res.sendFile(path.join(__dirname, "node_modules/reveal.js/js/reveal.js"));
 });
 
-app.use(express.static(__dirname + "/views/"));
+app.use(express.static(path.join(__dirname, "/views/")));
 
 // ---------------------------------------------------------------------------
 // Routes - authentication
@@ -338,8 +338,8 @@ io.on("connection", socket => {
 
   socket.on("update single", stock_level => {
     const name = socket.handshake.session.name;
-    const number = stock_level["number"];
-    const level = stock_level["level"];
+    const number = stock_level.number;
+    const level = stock_level.level;
 
     redisClient.sismember("authed_ids", socket.handshake.session.id, (err, reply) => {
       if (reply) {
