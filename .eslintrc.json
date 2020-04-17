@@ -4,7 +4,6 @@
     "ecmaVersion": 2020
   },
   "rules": {
-    "max-len": ["error", { "code": 120 }],
     "comma-dangle": ["error", "never"],
     "camelcase": "off",
     "space-before-function-paren": ["error", "never"],
