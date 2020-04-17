@@ -10,7 +10,7 @@ socket.on('connect', () => {
 })
 
 socket.on('disconnect', () => {
-  window.setTimeout(function() {
+  window.setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer diconnected!', 'color:red;')
       document.getElementsByClassName('warning_icon')[0].style.display = 'grid'

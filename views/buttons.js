@@ -22,7 +22,7 @@ const confirmUpdate = button_number => {
 }
 
 // Make sure the user wants to update the selected number
-function goUpdate(button_number, to_confirm = TO_CONFIRM) {
+const goUpdate = (button_number, to_confirm = TO_CONFIRM) => {
   if (LOW_ENABLE === true) {
     if (stock_levels[button_number] === 'full') {
       if (to_confirm) {
@@ -61,7 +61,7 @@ function goUpdate(button_number, to_confirm = TO_CONFIRM) {
 }
 
 // Change the colour of the button depending on the stock level
-function updateLevel(button_number, stock_level) {
+const updateLevel = (button_number, stock_level) => {
   const button_id = document.getElementById(`button_${button_number}`)
   if (stock_level === 'empty') {
     console.log(`Setting ${button_number} as empty`)
@@ -79,7 +79,7 @@ function updateLevel(button_number, stock_level) {
 }
 
 // Update the table based on remote changes to the stock levels
-function updateFromState(stock_levels) {
+const updateFromState = stock_levels => {
   console.log('%cUpdating table from:', 'font-weight:bold;')
   console.log(stock_levels)
   for (const button_number in stock_levels) {
@@ -125,7 +125,7 @@ socket.on('connect', () => {
 })
 
 socket.on('disconnect', () => {
-  window.setTimeout(function() {
+  window.setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer diconnected!', 'color:red;')
       document.getElementsByClassName('warning_icon')[0].style.display = 'grid'

@@ -4,7 +4,6 @@
     "ecmaVersion": 2020
   },
   "rules": {
-    "camelcase": "off",
-    "space-before-function-paren": ["error", "never"]
+    "camelcase": "off"
   }
 }

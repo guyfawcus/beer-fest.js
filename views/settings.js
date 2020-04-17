@@ -9,7 +9,7 @@ let TO_CONFIRM = true
 let LOW_ENABLE = false
 let AUTHORISED = false
 
-function tableFill() {
+const tableFill = () => {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
       if (confirm('Are you sure you want to mark everything as full?') !== true) return
@@ -26,7 +26,7 @@ function tableFill() {
   }
 }
 
-function tableLow() {
+const tableLow = () => {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
       if (confirm('Are you sure you want to mark everything as low?') !== true) return
@@ -43,7 +43,7 @@ function tableLow() {
   }
 }
 
-function tableEmpty() {
+const tableEmpty = () => {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
       if (confirm('Are you sure you want to mark everything as empty?') !== true) return
@@ -60,14 +60,14 @@ function tableEmpty() {
   }
 }
 
-function tableUpload() {
+const tableUpload = () => {
   if (AUTHORISED) {
     const input_element = document.createElement('input')
     input_element.type = 'file'
-    input_element.onchange = function() {
+    input_element.onchange = () => {
       const reader = new FileReader()
       const file = input_element.files[0]
-      reader.onload = function() {
+      reader.onload = () => {
         // File type validation
         if (file.type !== 'application/json') {
           alert("Error: this file is not of the right type,\nplease upload a 'state.json' file")
@@ -104,7 +104,7 @@ function tableUpload() {
   }
 }
 
-function updateRequired(table) {
+const updateRequired = table => {
   for (const [button_number, stock_level] of Object.entries(table)) {
     if (stock_level !== stock_levels[button_number]) {
       console.log(`Setting ${button_number} as ${stock_level}`)
@@ -181,7 +181,7 @@ socket.on('connect', () => {
 })
 
 socket.on('disconnect', () => {
-  window.setTimeout(function() {
+  window.setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer diconnected!', 'color:red;')
       document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
