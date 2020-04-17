@@ -1,6 +1,6 @@
 /* eslint-env browser */
 /* global io */
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "confirmUpdate" }] */
+/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "updateNumber" }] */
 'use strict'
 
 const socket = io.connect(self.location.host)
@@ -13,7 +13,7 @@ let TO_CONFIRM = true
 let LOW_ENABLE = false
 let AUTHORISED = false
 
-const confirmUpdate = button_number => {
+const updateNumber = button_number => {
   if (AUTHORISED) {
     goUpdate(button_number)
   } else {
@@ -21,40 +21,34 @@ const confirmUpdate = button_number => {
   }
 }
 
+const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
+  if (to_confirm) {
+    if (confirm(`Are you sure you want to mark number ${number} as ${level}`) !== true) {}
+  }
+}
+
 // Make sure the user wants to update the selected number
-const goUpdate = (button_number, to_confirm = TO_CONFIRM) => {
+const goUpdate = button_number => {
   if (LOW_ENABLE === true) {
     if (stock_levels[button_number] === 'full') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as low`) !== true) return
-      }
+      confirmUpdate(button_number, 'low')
       socket.emit('update single', { number: button_number, level: 'low' })
     } else if (stock_levels[button_number] === 'low') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return
-      }
+      confirmUpdate(button_number, 'empty')
       socket.emit('update single', { number: button_number, level: 'empty' })
     } else if (stock_levels[button_number] === 'empty') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as full`) !== true) return
-      }
+      confirmUpdate(button_number, 'full')
       socket.emit('update single', { number: button_number, level: 'full' })
     }
   } else {
     if (stock_levels[button_number] === 'full') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return
-      }
+      confirmUpdate(button_number, 'empty')
       socket.emit('update single', { number: button_number, level: 'empty' })
     } else if (stock_levels[button_number] === 'low') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as empty`) !== true) return
-      }
+      confirmUpdate(button_number, 'empty')
       socket.emit('update single', { number: button_number, level: 'empty' })
     } else if (stock_levels[button_number] === 'empty') {
-      if (to_confirm) {
-        if (confirm(`Are you sure you want to mark number ${button_number} as full`) !== true) return
-      }
+      confirmUpdate(button_number, 'full')
       socket.emit('update single', { number: button_number, level: 'full' })
     }
   }
