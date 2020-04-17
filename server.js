@@ -277,8 +277,7 @@ app.post('/api/stock_levels', (req, res) => {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name
       for (const [number, level] of Object.entries(req.body)) {
-        console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`)
-        redisClient.zadd('log', Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`)
+        redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
         if (last_table[number] !== level) {
           last_table[number] = level
           io.sockets.emit('update single', { number: number, level: level })
@@ -301,8 +300,7 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
   if (ENABLE_API === 'true') {
     if (number <= 80) {
       // Update the levels one-by-one
-      console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`)
-      redisClient.zadd('log', Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`)
+      redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
       if (last_table[number] !== level) {
         last_table[number] = level
         io.sockets.emit('update single', { number: number, level: level })
@@ -376,8 +374,7 @@ io.on('connection', socket => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Update the levels one-by-one
-        console.log(`${Date.now()}, {"name": ${name}, "number": "${number}", "level": "${level}"}`)
-        redisClient.zadd('log', Date.now(), `{"name": ${name}, "number": "${number}", "level": "${level}"}`)
+        redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`)
         last_table[number] = level
         io.sockets.emit('update single', stock_level)
