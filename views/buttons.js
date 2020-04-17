@@ -27,30 +27,21 @@ const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   }
 }
 
-// Make sure the user wants to update the selected number
 const goUpdate = button_number => {
-  if (LOW_ENABLE === true) {
-    if (stock_levels[button_number] === 'full') {
+  if (stock_levels[button_number] === 'full') {
+    if (LOW_ENABLE === true) {
       confirmUpdate(button_number, 'low')
       socket.emit('update single', { number: button_number, level: 'low' })
-    } else if (stock_levels[button_number] === 'low') {
+    } else {
       confirmUpdate(button_number, 'empty')
       socket.emit('update single', { number: button_number, level: 'empty' })
-    } else if (stock_levels[button_number] === 'empty') {
-      confirmUpdate(button_number, 'full')
-      socket.emit('update single', { number: button_number, level: 'full' })
     }
-  } else {
-    if (stock_levels[button_number] === 'full') {
-      confirmUpdate(button_number, 'empty')
-      socket.emit('update single', { number: button_number, level: 'empty' })
-    } else if (stock_levels[button_number] === 'low') {
-      confirmUpdate(button_number, 'empty')
-      socket.emit('update single', { number: button_number, level: 'empty' })
-    } else if (stock_levels[button_number] === 'empty') {
-      confirmUpdate(button_number, 'full')
-      socket.emit('update single', { number: button_number, level: 'full' })
-    }
+  } else if (stock_levels[button_number] === 'low') {
+    confirmUpdate(button_number, 'empty')
+    socket.emit('update single', { number: button_number, level: 'empty' })
+  } else if (stock_levels[button_number] === 'empty') {
+    confirmUpdate(button_number, 'full')
+    socket.emit('update single', { number: button_number, level: 'full' })
   }
 }
 
