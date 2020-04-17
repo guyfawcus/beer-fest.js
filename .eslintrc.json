@@ -7,7 +7,6 @@
     "max-len": ["error", { "code": 120 }],
     "quotes": ["error", "double"],
     "comma-dangle": ["error", "never"],
-    "semi": ["error", "always"],
     "camelcase": "off",
     "space-before-function-paren": ["error", "never"],
     "handle-callback-err": ["error", "never"]
