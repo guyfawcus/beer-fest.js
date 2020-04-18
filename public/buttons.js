@@ -1,15 +1,12 @@
 /* eslint-env browser */
 'use strict'
 
-import { AUTHORISED, socket } from './core.js'
+import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket } from './core.js'
 
 const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
 const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
 const stock_levels = {}
-
-let TO_CONFIRM = true
-let LOW_ENABLE = false
 
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
@@ -79,21 +76,6 @@ socket.on('update table', table => {
 
 socket.on('update single', stock_level => {
   updateLevel(stock_level.number, stock_level.level)
-})
-
-socket.on('config', configuration => {
-  console.log('%cUpdating configuration from:', 'font-weight:bold;')
-  console.log(configuration)
-  if (configuration.confirm) {
-    TO_CONFIRM = true
-  } else {
-    TO_CONFIRM = false
-  }
-  if (configuration.low_enable) {
-    LOW_ENABLE = true
-  } else {
-    LOW_ENABLE = false
-  }
 })
 
 window.updateNumber = updateNumber

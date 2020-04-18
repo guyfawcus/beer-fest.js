@@ -3,6 +3,8 @@
 'use strict'
 
 export let AUTHORISED = false
+export let TO_CONFIRM = true
+export let LOW_ENABLE = false
 export const socket = io.connect(self.location.host)
 
 socket.on('connect', () => {
@@ -36,5 +38,20 @@ socket.on('auth', status => {
       loginElement.innerHTML = 'Log in'
       loginElement.href = '/login'
     }
+  }
+})
+
+socket.on('config', configuration => {
+  console.log('%cUpdating configuration from:', 'font-weight:bold;')
+  console.log(configuration)
+  if (configuration.confirm) {
+    TO_CONFIRM = true
+  } else {
+    TO_CONFIRM = false
+  }
+  if (configuration.low_enable) {
+    LOW_ENABLE = true
+  } else {
+    LOW_ENABLE = false
   }
 })
