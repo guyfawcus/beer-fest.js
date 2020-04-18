@@ -21,18 +21,18 @@ const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   socket.emit('update single', { number: number, level: level })
 }
 
-const updateNumber = button_number => {
+const updateNumber = number => {
   if (AUTHORISED) {
-    if (stock_levels[button_number] === 'full') {
+    if (stock_levels[number] === 'full') {
       if (LOW_ENABLE === true) {
-        confirmUpdate(button_number, 'low')
+        confirmUpdate(number, 'low')
       } else {
-        confirmUpdate(button_number, 'empty')
+        confirmUpdate(number, 'empty')
       }
-    } else if (stock_levels[button_number] === 'low') {
-      confirmUpdate(button_number, 'empty')
-    } else if (stock_levels[button_number] === 'empty') {
-      confirmUpdate(button_number, 'full')
+    } else if (stock_levels[number] === 'low') {
+      confirmUpdate(number, 'empty')
+    } else if (stock_levels[number] === 'empty') {
+      confirmUpdate(number, 'full')
     }
   } else {
     console.log('Not authorised')
@@ -40,19 +40,19 @@ const updateNumber = button_number => {
 }
 
 // Change the colour of the button depending on the stock level
-const updateLevel = (button_number, stock_level) => {
-  const button_id = document.getElementById(`button_${button_number}`)
-  if (stock_level === 'empty') {
-    console.log(`Setting ${button_number} as empty`)
-    stock_levels[button_number] = 'empty'
+const updateLevel = (number, level) => {
+  const button_id = document.getElementById(`button_${number}`)
+  if (level === 'empty') {
+    console.log(`Setting ${number} as empty`)
+    stock_levels[number] = 'empty'
     button_id.style.background = empty_colour
-  } else if (stock_level === 'low') {
-    console.log(`Setting ${button_number} as low`)
-    stock_levels[button_number] = 'low'
+  } else if (level === 'low') {
+    console.log(`Setting ${number} as low`)
+    stock_levels[number] = 'low'
     button_id.style.background = low_colour
-  } else if (stock_level === 'full') {
-    console.log(`Setting ${button_number} as full`)
-    stock_levels[button_number] = 'full'
+  } else if (level === 'full') {
+    console.log(`Setting ${number} as full`)
+    stock_levels[number] = 'full'
     button_id.style.background = full_colour
   }
 }
@@ -61,13 +61,13 @@ const updateLevel = (button_number, stock_level) => {
 const updateFromState = stock_levels => {
   console.log('%cUpdating table from:', 'font-weight:bold;')
   console.log(stock_levels)
-  for (const button_number in stock_levels) {
-    if (stock_levels[button_number] === 'empty') {
-      updateLevel(button_number, 'empty')
-    } else if (stock_levels[button_number] === 'low') {
-      updateLevel(button_number, 'low')
-    } else if (stock_levels[button_number] === 'full') {
-      updateLevel(button_number, 'full')
+  for (const number in stock_levels) {
+    if (stock_levels[number] === 'empty') {
+      updateLevel(number, 'empty')
+    } else if (stock_levels[number] === 'low') {
+      updateLevel(number, 'low')
+    } else if (stock_levels[number] === 'full') {
+      updateLevel(number, 'full')
     }
   }
 }

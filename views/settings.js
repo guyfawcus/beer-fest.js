@@ -105,11 +105,11 @@ const tableUpload = () => {
 }
 
 const updateRequired = table => {
-  for (const [button_number, stock_level] of Object.entries(table)) {
-    if (stock_level !== stock_levels[button_number]) {
-      console.log(`Setting ${button_number} as ${stock_level}`)
-      socket.emit('update single', { number: button_number, level: stock_level })
-      stock_levels[button_number] = stock_level
+  for (const [number, level] of Object.entries(table)) {
+    if (level !== stock_levels[number]) {
+      console.log(`Setting ${number} as ${level}`)
+      socket.emit('update single', { number: number, level: level })
+      stock_levels[number] = level
     }
   }
 }
