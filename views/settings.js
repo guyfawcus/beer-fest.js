@@ -1,9 +1,8 @@
 /* eslint-env browser */
-/* global io */
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "table" }] */
 'use strict'
 
-const socket = io.connect(self.location.host)
+import { socket } from './core.js'
+
 let stock_levels = {}
 let TO_CONFIRM = true
 let LOW_ENABLE = false
@@ -141,20 +140,6 @@ socket.on('update single', stock_level => {
   stock_levels[stock_level.number] = stock_level.level
 })
 
-socket.on('connect', () => {
-  console.log('Server connected')
-  document.getElementsByClassName('warning_icon')[0].style.display = 'none'
-})
-
-socket.on('disconnect', () => {
-  window.setTimeout(() => {
-    if (socket.connected !== true) {
-      console.log('%cServer diconnected!', 'color:red;')
-      document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
-    }
-  }, 2000)
-})
-
 socket.on('auth', status => {
   if (status) {
     AUTHORISED = true
@@ -164,3 +149,6 @@ socket.on('auth', status => {
     console.log('Not authenticated')
   }
 })
+
+window.updateAllAs = updateAllAs
+window.tableUpload = tableUpload

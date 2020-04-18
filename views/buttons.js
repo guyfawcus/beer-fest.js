@@ -1,9 +1,8 @@
 /* eslint-env browser */
-/* global io */
-/* eslint no-unused-vars: ["error", { "varsIgnorePattern": "updateNumber" }] */
 'use strict'
 
-const socket = io.connect(self.location.host)
+import { socket } from './core.js'
+
 const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
 const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
@@ -98,20 +97,6 @@ socket.on('config', configuration => {
   }
 })
 
-socket.on('connect', () => {
-  console.log('Server connected')
-  document.getElementsByClassName('warning_icon')[0].style.display = 'none'
-})
-
-socket.on('disconnect', () => {
-  window.setTimeout(() => {
-    if (socket.connected !== true) {
-      console.log('%cServer diconnected!', 'color:red;')
-      document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
-    }
-  }, 2000)
-})
-
 socket.on('auth', status => {
   if (status) {
     AUTHORISED = true
@@ -121,3 +106,5 @@ socket.on('auth', status => {
     console.log('Not authenticated')
   }
 })
+
+window.updateNumber = updateNumber
