@@ -13,35 +13,29 @@ let TO_CONFIRM = true
 let LOW_ENABLE = false
 let AUTHORISED = false
 
-const updateNumber = button_number => {
-  if (AUTHORISED) {
-    goUpdate(button_number)
-  } else {
-    console.log('Not authorised')
-  }
-}
-
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
-    if (confirm(`Are you sure you want to mark number ${number} as ${level}`) !== true) {}
+    if (confirm(`Are you sure you want to mark number ${number} as ${level}`) !== true) {
+    }
   }
+  socket.emit('update single', { number: number, level: level })
 }
 
-const goUpdate = button_number => {
-  if (stock_levels[button_number] === 'full') {
-    if (LOW_ENABLE === true) {
-      confirmUpdate(button_number, 'low')
-      socket.emit('update single', { number: button_number, level: 'low' })
-    } else {
+const updateNumber = button_number => {
+  if (AUTHORISED) {
+    if (stock_levels[button_number] === 'full') {
+      if (LOW_ENABLE === true) {
+        confirmUpdate(button_number, 'low')
+      } else {
+        confirmUpdate(button_number, 'empty')
+      }
+    } else if (stock_levels[button_number] === 'low') {
       confirmUpdate(button_number, 'empty')
-      socket.emit('update single', { number: button_number, level: 'empty' })
+    } else if (stock_levels[button_number] === 'empty') {
+      confirmUpdate(button_number, 'full')
     }
-  } else if (stock_levels[button_number] === 'low') {
-    confirmUpdate(button_number, 'empty')
-    socket.emit('update single', { number: button_number, level: 'empty' })
-  } else if (stock_levels[button_number] === 'empty') {
-    confirmUpdate(button_number, 'full')
-    socket.emit('update single', { number: button_number, level: 'full' })
+  } else {
+    console.log('Not authorised')
   }
 }
 
