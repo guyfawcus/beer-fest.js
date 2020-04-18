@@ -40,19 +40,19 @@ const updateNumber = number => {
 
 // Change the colour of the button depending on the stock level
 const updateLevel = (number, level) => {
-  const button_id = document.getElementById(`button_${number}`)
+  const button = document.getElementById(`button_${number}`)
   if (level === 'empty') {
     console.log(`Setting ${number} as empty`)
     stock_levels[number] = 'empty'
-    button_id.style.background = empty_colour
+    button.style.background = empty_colour
   } else if (level === 'low') {
     console.log(`Setting ${number} as low`)
     stock_levels[number] = 'low'
-    button_id.style.background = low_colour
+    button.style.background = low_colour
   } else if (level === 'full') {
     console.log(`Setting ${number} as full`)
     stock_levels[number] = 'full'
-    button_id.style.background = full_colour
+    button.style.background = full_colour
   }
 }
 
