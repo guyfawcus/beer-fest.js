@@ -9,54 +9,20 @@ let TO_CONFIRM = true
 let LOW_ENABLE = false
 let AUTHORISED = false
 
-const tableFill = () => {
+const updateAllAs = level => {
   if (AUTHORISED) {
     if (TO_CONFIRM) {
-      if (confirm('Are you sure you want to mark everything as full?') !== true) return
+      if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
     }
-    console.log('Filling everything 🍻')
+    console.log(`Marking everything as ${level}`)
     const table = {}
     for (let i = 1; i <= 80; i++) {
-      table[i] = 'full'
+      table[i] = level
     }
     socket.emit('update table', JSON.stringify(table))
     stock_levels = table
   } else {
-    console.log('tableFill is not allowed - not authenticated')
-  }
-}
-
-const tableLow = () => {
-  if (AUTHORISED) {
-    if (TO_CONFIRM) {
-      if (confirm('Are you sure you want to mark everything as low?') !== true) return
-    }
-    console.log('Lowering everything')
-    const table = {}
-    for (let i = 1; i <= 80; i++) {
-      table[i] = 'low'
-    }
-    socket.emit('update table', JSON.stringify(table))
-    stock_levels = table
-  } else {
-    console.log('tableLow is not allowed - not authenticated')
-  }
-}
-
-const tableEmpty = () => {
-  if (AUTHORISED) {
-    if (TO_CONFIRM) {
-      if (confirm('Are you sure you want to mark everything as empty?') !== true) return
-    }
-    console.log('Emptying everything 😧')
-    const table = {}
-    for (let i = 1; i <= 80; i++) {
-      table[i] = 'empty'
-    }
-    socket.emit('update table', JSON.stringify(table))
-    stock_levels = table
-  } else {
-    console.log('tableEmpty is not allowed - not authenticated')
+    console.log('updateAllAs is not allowed - not authenticated')
   }
 }
 

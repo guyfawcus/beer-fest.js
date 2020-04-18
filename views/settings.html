@@ -17,9 +17,9 @@
         <a class="button" href="/api/stock_levels" title="Download the current state" download="state.json">Download</a>
       </div>
       <div class="settings_options">
-        <div class="button" onclick="tableFill()" title="Mark everything as full">Fill</div>
-        <div class="button" onclick="tableLow()" title="Mark everything as low">Low</div>
-        <div class="button" onclick="tableEmpty()" title="Mark everything as empty">Empty</div>
+        <div class="button" onclick="updateAllAs('full')" title="Mark everything as full">Fill</div>
+        <div class="button" onclick="updateAllAs('low')" title="Mark everything as low">Low</div>
+        <div class="button" onclick="updateAllAs('empty')" title="Mark everything as empty">Empty</div>
       </div>
       <div class="settings_checkboxes">
         <div title="Enable/disable the confirmation checks">
