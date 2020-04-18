@@ -194,7 +194,7 @@ app.get('/js/reveal.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/js/reveal.js'))
 })
 
-app.use(express.static(path.join(__dirname, '/views/')))
+app.use(express.static('public'))
 
 // ---------------------------------------------------------------------------
 // Routes - authentication
