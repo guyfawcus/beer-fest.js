@@ -1,7 +1,7 @@
 /* eslint-env browser */
 'use strict'
 
-import { socket } from './core.js'
+import { AUTHORISED, socket } from './core.js'
 
 const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
 const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
@@ -10,7 +10,6 @@ const stock_levels = {}
 
 let TO_CONFIRM = true
 let LOW_ENABLE = false
-let AUTHORISED = false
 
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
@@ -94,16 +93,6 @@ socket.on('config', configuration => {
     LOW_ENABLE = true
   } else {
     LOW_ENABLE = false
-  }
-})
-
-socket.on('auth', status => {
-  if (status) {
-    AUTHORISED = true
-    console.log('Authenticated with server')
-  } else {
-    AUTHORISED = false
-    console.log('Not authenticated')
   }
 })
 

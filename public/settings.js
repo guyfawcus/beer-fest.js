@@ -1,12 +1,11 @@
 /* eslint-env browser */
 'use strict'
 
-import { socket } from './core.js'
+import { AUTHORISED, socket } from './core.js'
 
 let stock_levels = {}
 let TO_CONFIRM = true
 let LOW_ENABLE = false
-let AUTHORISED = false
 
 const updateAllAs = level => {
   if (AUTHORISED) {
@@ -138,16 +137,6 @@ socket.on('update table', table => {
 socket.on('update single', stock_level => {
   console.log(`Setting ${stock_level.number} as ${stock_level.level}`)
   stock_levels[stock_level.number] = stock_level.level
-})
-
-socket.on('auth', status => {
-  if (status) {
-    AUTHORISED = true
-    console.log('Authenticated with server')
-  } else {
-    AUTHORISED = false
-    console.log('Not authenticated')
-  }
 })
 
 window.updateAllAs = updateAllAs
