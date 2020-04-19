@@ -138,6 +138,24 @@ div[id^='button_']:hover,
   justify-content: space-around;
 }
 
+.history {
+  height: 75vh;
+  border: solid 2px var(--main-colour);
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+}
+
+.update {
+  display: flex;
+  gap: 15px;
+}
+
 form {
   margin: 5%;
 }

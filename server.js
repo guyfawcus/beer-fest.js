@@ -151,6 +151,10 @@ app.get('/availability', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/buttons.html'))
 })
 
+app.get('/history', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/history.html'))
+})
+
 app.get('/slideshow', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/slideshow.html'))
 })
@@ -380,21 +384,18 @@ io.on('connection', socket => {
         const epochTime = timeObj.getTime()
         const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
         const time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        redisClient.zadd('log', `${epochTime}`, `{"epoch_time": "${epochTime}", "day": "${day}", "time": "${time}", "name": "${name}", "number": "${number}", "level": "${level}"}`)
+        const singleUpdateObj = {
+          epoch_time: epochTime,
+          day: day,
+          time: time,
+          name: name,
+          number: number,
+          level: level
+        }
+        redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`)
-
-        redisClient.zrevrange('log', 0, 3, (err, reply) => {
-          if (err) handleError("Couldn't get log items from Redis", err)
-          if (reply) {
-            reply.forEach((entry) => {
-              const entryJSON = JSON.parse(entry)
-              console.log(entryJSON)
-            })
-          }
-        })
-
         last_table[number] = level
-        io.sockets.emit('update single', stock_level)
+        io.sockets.emit('update single', singleUpdateObj)
         saveState(JSON.stringify(last_table))
       } else {
         console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
