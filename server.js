@@ -376,8 +376,23 @@ io.on('connection', socket => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Update the levels one-by-one
-        redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
+        const timeObj = new Date()
+        const epochTime = timeObj.getTime()
+        const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
+        const time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        redisClient.zadd('log', `${epochTime}`, `{"epoch_time": "${epochTime}", "day": "${day}", "time": "${time}", "name": "${name}", "number": "${number}", "level": "${level}"}`)
         console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`)
+
+        redisClient.zrevrange('log', 0, 3, (err, reply) => {
+          if (err) handleError("Couldn't get log items from Redis", err)
+          if (reply) {
+            reply.forEach((entry) => {
+              const entryJSON = JSON.parse(entry)
+              console.log(entryJSON)
+            })
+          }
+        })
+
         last_table[number] = level
         io.sockets.emit('update single', stock_level)
         saveState(JSON.stringify(last_table))
