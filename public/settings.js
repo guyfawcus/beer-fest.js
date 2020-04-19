@@ -1,11 +1,9 @@
 /* eslint-env browser */
 'use strict'
 
-import { AUTHORISED, socket } from './core.js'
+import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket } from './core.js'
 
 let stock_levels = {}
-let TO_CONFIRM = true
-let LOW_ENABLE = false
 
 const updateAllAs = level => {
   if (AUTHORISED) {
@@ -105,25 +103,6 @@ low_checkbox.addEventListener('change', event => {
   } else {
     low_checkbox.removeEventListener('change', event)
     console.log('low_checkbox is not allowed - not authenticated')
-  }
-})
-
-socket.on('config', configuration => {
-  console.log('%cUpdating configuration from:', 'font-weight:bold;')
-  console.log(configuration)
-  if (configuration.confirm) {
-    TO_CONFIRM = true
-    document.getElementById('confirm_check').checked = true
-  } else {
-    TO_CONFIRM = false
-    document.getElementById('confirm_check').checked = false
-  }
-  if (configuration.low_enable) {
-    LOW_ENABLE = true
-    document.getElementById('low_check').checked = true
-  } else {
-    LOW_ENABLE = false
-    document.getElementById('low_check').checked = false
   }
 })
 

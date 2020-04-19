@@ -42,16 +42,23 @@ socket.on('auth', status => {
 })
 
 socket.on('config', configuration => {
+  const confirmCheck = document.getElementById('confirm_check')
+  const lowCheck = document.getElementById('low_check')
+
   console.log('%cUpdating configuration from:', 'font-weight:bold;')
   console.log(configuration)
   if (configuration.confirm) {
     TO_CONFIRM = true
+    if (confirmCheck) confirmCheck.checked = true
   } else {
     TO_CONFIRM = false
+    if (confirmCheck) confirmCheck.checked = false
   }
   if (configuration.low_enable) {
     LOW_ENABLE = true
+    if (lowCheck) lowCheck.checked = true
   } else {
     LOW_ENABLE = false
+    if (lowCheck) lowCheck.checked = false
   }
 })
