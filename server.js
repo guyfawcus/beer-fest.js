@@ -36,7 +36,7 @@ const redisSession = session({
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
   resave: false,
-  saveUninitialized: false
+  saveUninitialized: true
 })
 
 io.use(sharedsession(redisSession))
