@@ -139,7 +139,7 @@ div[id^='button_']:hover,
 }
 
 .history {
-  height: 75vh;
+  height: calc(31em);
   border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
@@ -149,12 +149,33 @@ div[id^='button_']:hover,
   flex-direction: column;
   align-items: center;
   justify-content: start;
+  grid-gap: 5px;
+  padding-top: 20px;
 }
 
 .update {
   display: flex;
-  gap: 15px;
+  width: 100%;
+  justify-content: space-evenly;
+  text-align: center;
 }
+
+.time {
+width: 5em;
+}
+
+.name {
+width: 8em;
+}
+
+.number {
+width: 2em;
+}
+
+.level {
+width: 5em;
+}
+
 
 form {
   margin: 5%;
