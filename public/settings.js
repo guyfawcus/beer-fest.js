@@ -15,7 +15,7 @@ const updateAllAs = level => {
     for (let i = 1; i <= 80; i++) {
       table[i] = level
     }
-    socket.emit('update table', JSON.stringify(table))
+    socket.emit('update table', table)
     stock_levels = table
   } else {
     console.log('updateAllAs is not allowed - not authenticated')
@@ -109,8 +109,8 @@ low_checkbox.addEventListener('change', event => {
 // Update the state when remotes send updates
 socket.on('update table', table => {
   console.log('%cUpdating table from:', 'font-weight:bold;')
-  console.log(JSON.parse(table))
-  stock_levels = JSON.parse(table)
+  console.log(table)
+  stock_levels = table
 })
 
 socket.on('update single', stock_level => {

@@ -65,7 +65,7 @@ redisClient.hgetall('stock_levels', (err, reply) => {
     for (let i = 1; i <= 80; i++) {
       last_table[i] = 'full'
     }
-    saveState(JSON.stringify(last_table))
+    saveState(last_table)
   }
 })
 
@@ -128,7 +128,7 @@ const updateSingle = (name, number, level) => {
   if (last_table[number] !== level) {
     last_table[number] = level
     io.sockets.emit('update single', singleUpdateObj)
-    saveState(JSON.stringify(last_table))
+    saveState(last_table)
   }
 }
 
@@ -146,14 +146,14 @@ const updateAll = (name, stock_levels) => {
 
   // Save the whole table at once
   console.log(`Distibuting whole table from ${name}`)
-  last_table = JSON.parse(stock_levels)
+  last_table = stock_levels
   io.sockets.emit('update table', stock_levels)
   saveState(stock_levels)
 }
 
 // Save the state from a JSON string of stock_levels to redis
 const saveState = stock_levels => {
-  for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
+  for (const [number, level] of Object.entries(stock_levels)) {
     redisClient.hset('stock_levels', number, level)
   }
 }
@@ -306,7 +306,7 @@ app.post('/api/stock_levels', (req, res) => {
       res.status(400).send('Too many items in JSON')
       return
     } else if (Object.keys(req.body).length === 80) {
-      updateAll(name, JSON.stringify(req.body))
+      updateAll(name, req.body)
     } else {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name || 'API'
@@ -348,7 +348,7 @@ io.on('connection', socket => {
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
   console.log('Distibuting previous state')
-  io.to(`${socket.id}`).emit('update table', JSON.stringify(last_table))
+  io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
 
   redisClient.sadd(socket.handshake.session.id, socket.id)

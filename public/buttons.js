@@ -70,7 +70,7 @@ const updateFromState = stock_levels => {
 // Update the state when remotes send updates
 socket.on('update table', table => {
   console.groupCollapsed('Updating all entities')
-  updateFromState(JSON.parse(table))
+  updateFromState(table)
   console.groupEnd()
 })
 
