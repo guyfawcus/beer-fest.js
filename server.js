@@ -109,6 +109,29 @@ const handleError = (message, error) => {
 // Functions
 // ---------------------------------------------------------------------------
 
+// Update a single level
+const updateSingle = (name, number, level) => {
+  const timeObj = new Date()
+  const epochTime = timeObj.getTime()
+  const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
+  const time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  const singleUpdateObj = {
+    epoch_time: epochTime,
+    day: day,
+    time: time,
+    name: name,
+    number: number,
+    level: level
+  }
+  redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
+  console.log(`Distibuting updates from ${name} (number ${number} = ${level})`)
+  if (last_table[number] !== level) {
+    last_table[number] = level
+    io.sockets.emit('update single', singleUpdateObj)
+    saveState(JSON.stringify(last_table))
+  }
+}
+
 // Save the state from a JSON string of stock_levels to redis
 const saveState = stock_levels => {
   for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
@@ -281,14 +304,9 @@ app.post('/api/stock_levels', (req, res) => {
       saveState(JSON.stringify(last_table))
     } else {
       // If the number of entries is under 80, update the levels one-by-one
-      const name = req.session.name
+      const name = req.session.name || 'API'
       for (const [number, level] of Object.entries(req.body)) {
-        redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
-        if (last_table[number] !== level) {
-          last_table[number] = level
-          io.sockets.emit('update single', { number: number, level: level })
-          saveState(JSON.stringify(last_table))
-        }
+        updateSingle(name, number, level)
       }
     }
     res.send(last_table)
@@ -299,19 +317,13 @@ app.post('/api/stock_levels', (req, res) => {
 })
 
 app.post('/api/stock_levels/:number/:level', (req, res) => {
-  const name = req.session.name
+  const name = req.session.name || 'API'
   const number = req.params.number
   const level = req.params.level
 
   if (ENABLE_API === 'true') {
     if (number <= 80) {
-      // Update the levels one-by-one
-      redisClient.zadd('log', Date.now(), `{"name": "${name}", "number": "${number}", "level": "${level}"}`)
-      if (last_table[number] !== level) {
-        last_table[number] = level
-        io.sockets.emit('update single', { number: number, level: level })
-        saveState(JSON.stringify(last_table))
-      }
+      updateSingle(name, number, level)
       res.send(last_table)
     } else {
       console.log('Number too high')
@@ -379,24 +391,7 @@ io.on('connection', socket => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
-        // Update the levels one-by-one
-        const timeObj = new Date()
-        const epochTime = timeObj.getTime()
-        const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
-        const time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
-        const singleUpdateObj = {
-          epoch_time: epochTime,
-          day: day,
-          time: time,
-          name: name,
-          number: number,
-          level: level
-        }
-        redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
-        console.log(`Distibuting updates from ${socket.id} (number ${number} = ${level})`)
-        last_table[number] = level
-        io.sockets.emit('update single', singleUpdateObj)
-        saveState(JSON.stringify(last_table))
+        updateSingle(name, number, level)
       } else {
         console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
       }
