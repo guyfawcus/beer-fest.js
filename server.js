@@ -132,6 +132,25 @@ const updateSingle = (name, number, level) => {
   }
 }
 
+const updateAll = (name, stock_levels) => {
+  // Backup log if it exists and set to expire in a week
+  redisClient.exists('log', (err, reply) => {
+    if (err) handleError("Couldn't check if log exists with Redis", err)
+    if (reply) {
+      console.log('Backing up and wiping log')
+      const log_backup_name = `log-backup-${Date.now()}`
+      redisClient.rename('log', log_backup_name)
+      redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7)
+    }
+  })
+
+  // Save the whole table at once
+  console.log(`Distibuting whole table from ${name}`)
+  last_table = JSON.parse(stock_levels)
+  io.sockets.emit('update table', stock_levels)
+  saveState(stock_levels)
+}
+
 // Save the state from a JSON string of stock_levels to redis
 const saveState = stock_levels => {
   for (const [number, level] of Object.entries(JSON.parse(stock_levels))) {
@@ -280,28 +299,14 @@ app.get('/api/stock_levels/:number', (req, res) => {
 })
 
 app.post('/api/stock_levels', (req, res) => {
+  const name = req.session.name || 'API'
   if (ENABLE_API === 'true') {
     if (Object.keys(req.body).length > 80) {
       console.log('Too many items in JSON')
       res.status(400).send('Too many items in JSON')
       return
     } else if (Object.keys(req.body).length === 80) {
-      // Backup log if it exists and set to expire in a week
-      redisClient.exists('log', (err, reply) => {
-        if (err) handleError("Couldn't check if the log exists with Redis", err)
-        if (reply) {
-          console.log('Backing up and wiping log')
-          const log_backup_name = `log-backup-${Date.now()}`
-          redisClient.rename('log', log_backup_name)
-          redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7)
-        }
-      })
-
-      // Save the whole table at once
-      console.log('Saving whole table')
-      last_table = req.body
-      io.sockets.emit('update table', JSON.stringify(last_table))
-      saveState(JSON.stringify(last_table))
+      updateAll(name, JSON.stringify(req.body))
     } else {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name || 'API'
@@ -358,25 +363,11 @@ io.on('connection', socket => {
   })
 
   socket.on('update table', table => {
+    const name = socket.handshake.session.name
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
-        // Backup log if it exists and set to expire in a week
-        redisClient.exists('log', (err, reply) => {
-          if (err) handleError("Couldn't check if log exists with Redis", err)
-          if (reply) {
-            console.log('Backing up and wiping log')
-            const log_backup_name = `log-backup-${Date.now()}`
-            redisClient.rename('log', log_backup_name)
-            redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7)
-          }
-        })
-
-        // Save the whole table at once
-        console.log(`Distibuting whole table from ${socket.id}`)
-        last_table = JSON.parse(table)
-        socket.broadcast.emit('update table', table)
-        saveState(table)
+        updateAll(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
       }
