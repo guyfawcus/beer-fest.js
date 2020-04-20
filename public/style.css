@@ -161,21 +161,20 @@ div[id^='button_']:hover,
 }
 
 .time {
-width: 5em;
+  width: 5em;
 }
 
 .name {
-width: 8em;
+  width: 8em;
 }
 
 .number {
-width: 2em;
+  width: 2em;
 }
 
 .level {
-width: 5em;
+  width: 5em;
 }
-
 
 form {
   margin: 5%;
