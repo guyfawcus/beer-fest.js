@@ -151,6 +151,11 @@ div[id^='button_']:hover,
   justify-content: start;
   padding: 20px;
 }
+.settings_utils,
+.settings_options,
+.history {
+  background: var(--main-shade-colour);
+}
 
 .update {
   display: flex;
