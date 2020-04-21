@@ -139,7 +139,7 @@ div[id^='button_']:hover,
 }
 
 .history {
-  height: calc(31em);
+  height: calc(37em);
   border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
@@ -149,7 +149,6 @@ div[id^='button_']:hover,
   flex-direction: column;
   align-items: center;
   justify-content: start;
-  row-gap: 5px;
   padding: 20px;
 }
 
@@ -158,6 +157,9 @@ div[id^='button_']:hover,
   width: 100%;
   justify-content: space-evenly;
   text-align: center;
+  padding: 5px;
+  box-shadow: inset 0px 0px 0.2rem 0px var(--shadow-shade-colour), 0px 0px 0.1rem 0px var(--shadow-colour);
+  border-radius: 4px;
 }
 
 .time {

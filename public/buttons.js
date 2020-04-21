@@ -1,11 +1,8 @@
 /* eslint-env browser */
 'use strict'
 
-import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket } from './core.js'
+import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket, empty_colour, low_colour, full_colour } from './core.js'
 
-const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
-const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
-const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
 const stock_levels = {}
 
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {

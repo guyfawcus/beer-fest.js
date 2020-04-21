@@ -7,6 +7,10 @@ export let TO_CONFIRM = true
 export let LOW_ENABLE = false
 export const socket = io.connect(self.location.host)
 
+export const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
+export const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
+export const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
+
 socket.on('connect', () => {
   console.log('Server connected')
   document.getElementsByClassName('warning_icon')[0].style.display = 'none'
