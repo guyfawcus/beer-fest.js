@@ -114,7 +114,8 @@ const updateSingle = (name, number, level) => {
   const timeObj = new Date()
   const epochTime = timeObj.getTime()
   const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
-  const time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  let time = timeObj.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+  time = time.replace(' AM', '').replace(' PM', '') // Fix for Heroku - it shouldn't add this?
   const singleUpdateObj = {
     epoch_time: epochTime,
     day: day,
