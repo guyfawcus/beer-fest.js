@@ -32,3 +32,8 @@ socket.on('update single', stock_level => {
   document.getElementById('history').prepend(div)
   numberOfUpdates += 1
 })
+
+socket.on('update table', stock_level => {
+  document.getElementById('history').innerHTML = ''
+  numberOfUpdates = 0
+})
