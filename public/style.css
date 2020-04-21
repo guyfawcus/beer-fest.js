@@ -250,3 +250,18 @@ a {
   color: var(--text-colour);
   text-decoration: none;
 }
+
+.settings_container,
+.grid {
+  animation: load-animation 500ms;
+}
+
+@keyframes load-animation {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
