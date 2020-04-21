@@ -8,6 +8,7 @@ const stock_levels = {}
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
     if (confirm(`Are you sure you want to mark number ${number} as ${level}`) !== true) {
+      return
     }
   }
   socket.emit('update single', { number: number, level: level })
