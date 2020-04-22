@@ -7,9 +7,8 @@ let stock_levels = {}
 
 const updateAllAs = level => {
   if (AUTHORISED) {
-    if (TO_CONFIRM) {
-      if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
-    }
+    if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
+
     console.log(`Marking everything as ${level}`)
     const table = {}
     for (let i = 1; i <= 80; i++) {
@@ -51,9 +50,7 @@ const tableUpload = () => {
           return
         }
 
-        if (TO_CONFIRM) {
-          if (confirm('Are you sure you want to use this data?') !== true) return
-        }
+        if (confirm('Are you sure you want to use this data?') !== true) return
         updateRequired(JSON.parse(reader.result))
       }
 
