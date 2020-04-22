@@ -3,11 +3,19 @@
 
 import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket, empty_colour, low_colour, full_colour } from './core.js'
 
+let beers = []
 const stock_levels = {}
 
 const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
-    if (confirm(`Are you sure you want to mark number ${number} as ${level}`) !== true) {
+    const thisBeer = beers[number - 1]
+    let message = ''
+    if (thisBeer != undefined) {
+      message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
+    } else {
+      message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`
+    }
+    if (confirm(message) !== true) {
       return
     }
   }
@@ -76,4 +84,24 @@ socket.on('update single', stock_level => {
   updateLevel(stock_level.number, stock_level.level)
 })
 
+socket.on('beers', beerList => {
+  beers = beerList
+  for (let i = 1; i < 80; i++) {
+    const button = document.getElementById(`button_${i}`)
+    const thisBeer = beers[i - 1]
+    if (thisBeer != undefined) {
+      let vegan = ''
+      if (thisBeer.vegan === 'y') {
+        vegan = '(Ve)'
+      }
+      let gluten_free = ''
+      if (thisBeer.gluten_free === 'y') {
+        gluten_free = '(GF)'
+      }
+      const header = `${thisBeer.beer_number} - ${thisBeer.beer_name} ${vegan} ${gluten_free}`
+      const divider = '-'.repeat(header.length + 10)
+      button.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}`
+    }
+  }
+})
 window.updateNumber = updateNumber

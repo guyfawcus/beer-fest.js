@@ -6,6 +6,7 @@ const http = require('http')
 const path = require('path')
 
 const bcrypt = require('bcryptjs')
+const csv = require('csvtojson')
 const express = require('express')
 const flash = require('express-flash')
 const helmet = require('helmet')
@@ -17,6 +18,7 @@ const ADMIN_CODE = process.env.ADMIN_CODE
 const COOKIE_SECRET = process.env.COOKIE_SECRET || '8OarM0c9KnkjM8ucDorbFTU3ssST4VIx'
 const ENABLE_API = process.env.ENABLE_API || 'false'
 const REDIS_URL = process.env.REDIS_URL
+const BEERS_FILE = process.env.BEERS_FILE || './public/2020-beers.csv'
 
 const app = express()
 const server = http.Server(app)
@@ -26,10 +28,19 @@ const RedisStore = require('connect-redis')(session)
 
 let last_config = {}
 let last_table = {}
+let beers = {}
 
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
+
+// Read in beers list CSV file - FIXME
+//!WARNING: This is async, need to make sure that this runs before any clients connect!
+csv()
+  .fromFile(BEERS_FILE)
+  .then(jsonObj => {
+    beers = jsonObj
+  })
 
 // Set up server
 const redisSession = session({
@@ -351,6 +362,8 @@ io.on('connection', socket => {
   console.log('Distibuting previous state')
   io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
+  if (JSON.stringify(beers) == '{}') console.error('Client sent empty beers list')
+  io.to(`${socket.id}`).emit('beers', beers)
 
   redisClient.sadd(socket.handshake.session.id, socket.id)
 
