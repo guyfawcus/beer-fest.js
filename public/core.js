@@ -5,11 +5,29 @@
 export let AUTHORISED = false
 export let TO_CONFIRM = true
 export let LOW_ENABLE = false
+export let BEERS = []
 export const socket = io.connect(self.location.host)
 
 export const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
 export const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 export const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
+
+export const setTooltip = (number, element) => {
+  const thisBeer = BEERS[number - 1]
+  if (thisBeer != undefined) {
+    let vegan = ''
+    if (thisBeer.vegan === 'y') {
+      vegan = '(Ve)'
+    }
+    let gluten_free = ''
+    if (thisBeer.gluten_free === 'y') {
+      gluten_free = '(GF)'
+    }
+    const header = `${thisBeer.beer_number} - ${thisBeer.beer_name} ${vegan} ${gluten_free}`
+    const divider = '-'.repeat(header.length + 10)
+    element.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}`
+  }
+}
 
 socket.on('connect', () => {
   console.log('Server connected')
@@ -65,4 +83,8 @@ socket.on('config', configuration => {
     LOW_ENABLE = false
     if (lowCheck) lowCheck.checked = false
   }
+})
+
+socket.on('beers', beerList => {
+  BEERS = beerList
 })
