@@ -221,6 +221,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
   res.render('login.ejs')
 })
 
+app.get('/downloads', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/downloads.html'))
+})
+
 // Other routes
 app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'robots.txt'))
