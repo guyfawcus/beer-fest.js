@@ -35,7 +35,7 @@ let beers = {}
 // ---------------------------------------------------------------------------
 
 // Read in beers list CSV file - FIXME
-//!WARNING: This is async, need to make sure that this runs before any clients connect!
+// !WARNING: This is async, need to make sure that this runs before any clients connect!
 csv()
   .fromFile(BEERS_FILE)
   .then(jsonObj => {
@@ -366,7 +366,7 @@ io.on('connection', socket => {
   console.log('Distibuting previous state')
   io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
-  if (JSON.stringify(beers) == '{}') console.error('Client sent empty beers list')
+  if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
   io.to(`${socket.id}`).emit('beers', beers)
 
   redisClient.sadd(socket.handshake.session.id, socket.id)

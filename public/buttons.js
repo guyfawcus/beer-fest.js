@@ -19,7 +19,7 @@ const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   if (to_confirm) {
     const thisBeer = BEERS[number - 1]
     let message = ''
-    if (thisBeer != undefined) {
+    if (thisBeer !== undefined) {
       message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
     } else {
       message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`

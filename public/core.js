@@ -14,7 +14,7 @@ export const full_colour = getComputedStyle(document.body).getPropertyValue('--f
 
 export const setTooltip = (number, element) => {
   const thisBeer = BEERS[number - 1]
-  if (thisBeer != undefined) {
+  if (thisBeer !== undefined) {
     let vegan = ''
     if (thisBeer.vegan === 'y') {
       vegan = '(Ve)'
