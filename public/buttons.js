@@ -94,7 +94,7 @@ socket.on('update single', stock_level => {
 })
 
 socket.on('beers', beerList => {
-  for (let i = 1; i < 80; i++) {
+  for (let i = 1; i <= 80; i++) {
     const button = document.getElementById(`button_${i}`)
     setTooltip(i, button)
   }
