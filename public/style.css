@@ -19,6 +19,11 @@ html {
   height: 100%;
 }
 
+@font-face {
+  font-family: 'HackerFiveTwo';
+  src: url('HackerFiveTwoOpti-UltraBld.otf');
+}
+
 body {
   background-image: radial-gradient(
     circle farthest-corner at 50% 50%,
@@ -26,7 +31,7 @@ body {
     var(--main-colour) 100%
   );
   color: var(--text-colour);
-  font-family: 'Helvetica', 'Arial', sans-serif;
+  font-family: 'Arial', 'sans-serif';
   margin: 0px;
   overflow-x: hidden;
 }
@@ -43,6 +48,7 @@ input[type='password']::selection {
 h1 {
   font-size: 48px;
   color: var(--button-bg-colour);
+  font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
 }
 
 div[id^='button_'],
