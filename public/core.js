@@ -184,7 +184,7 @@ function updateRequired (table) {
   for (const [number, level] of Object.entries(table)) {
     if (level !== stock_levels[number]) {
       console.log(`Setting ${number} as ${level}`)
-      socket.emit('update single', { number: number, level: level })
+      socket.emit('update single', { number: Number(number), level: level })
       stock_levels[number] = level
     }
   }
