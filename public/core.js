@@ -37,6 +37,18 @@ export function setTooltip (number, element) {
   }
 }
 
+export function setColour (level, element) {
+  if (level === 'empty') {
+    element.style.background = empty_colour
+  }
+  if (level === 'low') {
+    element.style.background = low_colour
+  }
+  if (level === 'full') {
+    element.style.background = full_colour
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Buttons functions
 // ---------------------------------------------------------------------------
@@ -77,18 +89,17 @@ export function updateNumber (number) {
 // Change the colour of the button depending on the stock level
 export function updateLevel (number, level) {
   const button = document.getElementById(`button_${number}`)
+  setColour(level, button)
+
   if (level === 'empty') {
     console.log(`Setting ${number} as empty`)
     stock_levels[number] = 'empty'
-    button.style.background = empty_colour
   } else if (level === 'low') {
     console.log(`Setting ${number} as low`)
     stock_levels[number] = 'low'
-    button.style.background = low_colour
   } else if (level === 'full') {
     console.log(`Setting ${number} as full`)
     stock_levels[number] = 'full'
-    button.style.background = full_colour
   }
 }
 

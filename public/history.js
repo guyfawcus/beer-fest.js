@@ -1,7 +1,7 @@
 /* eslint-env browser */
 'use strict'
 
-import { setTooltip, socket, empty_colour, low_colour, full_colour } from './core.js'
+import { setTooltip, socket, setColour } from './core.js'
 
 let numberOfUpdates = 0
 
@@ -21,16 +21,8 @@ socket.on('update single', stock_level => {
                    <div class="level">${stock_level.level}</div>`
 
   setTooltip(stock_level.number, div)
+  setColour(stock_level.level, div)
 
-  if (stock_level.level === 'empty') {
-    div.style.background = empty_colour
-  }
-  if (stock_level.level === 'low') {
-    div.style.background = low_colour
-  }
-  if (stock_level.level === 'full') {
-    div.style.background = full_colour
-  }
   document.getElementById('history').prepend(div)
   numberOfUpdates += 1
 })
