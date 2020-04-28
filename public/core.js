@@ -16,6 +16,7 @@ const full_colour = getComputedStyle(document.body).getPropertyValue('--full-col
 window.updateNumber = updateNumber
 window.updateAllAs = updateAllAs
 window.tableUpload = tableUpload
+window.stock_levels = stock_levels
 
 // ---------------------------------------------------------------------------
 // Shared functions
