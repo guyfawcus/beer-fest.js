@@ -15,7 +15,7 @@ import {
 
 const stock_levels = {}
 
-const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
+function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   if (to_confirm) {
     const thisBeer = BEERS[number - 1]
     let message = ''
@@ -31,7 +31,7 @@ const confirmUpdate = (number, level, to_confirm = TO_CONFIRM) => {
   socket.emit('update single', { number: number, level: level })
 }
 
-const updateNumber = number => {
+function updateNumber (number) {
   if (AUTHORISED) {
     if (stock_levels[number] === 'full') {
       if (LOW_ENABLE === true) {
@@ -50,7 +50,7 @@ const updateNumber = number => {
 }
 
 // Change the colour of the button depending on the stock level
-const updateLevel = (number, level) => {
+function updateLevel (number, level) {
   const button = document.getElementById(`button_${number}`)
   if (level === 'empty') {
     console.log(`Setting ${number} as empty`)
@@ -68,7 +68,7 @@ const updateLevel = (number, level) => {
 }
 
 // Update the table based on remote changes to the stock levels
-const updateFromState = stock_levels => {
+function updateFromState (stock_levels) {
   console.log('%cUpdating table from:', 'font-weight:bold;')
   console.log(stock_levels)
   for (const number in stock_levels) {

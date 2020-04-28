@@ -12,7 +12,7 @@ export const empty_colour = getComputedStyle(document.body).getPropertyValue('--
 export const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 export const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
 
-export const setTooltip = (number, element) => {
+export function setTooltip (number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
     let vegan = ''

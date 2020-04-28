@@ -5,7 +5,7 @@ import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket } from './core.js'
 
 let stock_levels = {}
 
-const updateAllAs = level => {
+function updateAllAs (level) {
   if (AUTHORISED) {
     if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
@@ -21,7 +21,7 @@ const updateAllAs = level => {
   }
 }
 
-const tableUpload = () => {
+function tableUpload () {
   if (AUTHORISED) {
     const input_element = document.createElement('input')
     input_element.type = 'file'
@@ -63,7 +63,7 @@ const tableUpload = () => {
   }
 }
 
-const updateRequired = table => {
+function updateRequired (table) {
   for (const [number, level] of Object.entries(table)) {
     if (level !== stock_levels[number]) {
       console.log(`Setting ${number} as ${level}`)
@@ -74,6 +74,7 @@ const updateRequired = table => {
 }
 
 const confirm_checkbox = document.getElementById('confirm_check')
+const low_checkbox = document.getElementById('low_check')
 
 confirm_checkbox.addEventListener('change', event => {
   if (AUTHORISED) {
@@ -87,8 +88,6 @@ confirm_checkbox.addEventListener('change', event => {
     console.log('confirm_checkbox is not allowed - not authenticated')
   }
 })
-
-const low_checkbox = document.getElementById('low_check')
 
 low_checkbox.addEventListener('change', event => {
   if (AUTHORISED) {
