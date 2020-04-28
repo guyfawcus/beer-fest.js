@@ -227,19 +227,19 @@ app.get('/downloads', (req, res) => {
 
 // Other routes
 app.get('/robots.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'robots.txt'))
+  res.sendFile(path.join(__dirname, 'views/misc/robots.txt'))
 })
 
 app.get('/.well-known/security.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'security.txt'))
+  res.sendFile(path.join(__dirname, 'views/misc/security.txt'))
 })
 
 app.get('/.well-known/keybase.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'keybase.txt'))
+  res.sendFile(path.join(__dirname, 'views/misc/keybase.txt'))
 })
 
 app.get('/humans.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'humans.txt'))
+  res.sendFile(path.join(__dirname, 'views/misc/humans.txt'))
 })
 
 // Routes for reveal (the slideshow package)
