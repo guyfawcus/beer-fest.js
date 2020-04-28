@@ -13,6 +13,9 @@ const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-c
 const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
 
+// ---------------------------------------------------------------------------
+// Shared functions
+// ---------------------------------------------------------------------------
 export function setTooltip (number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
@@ -30,6 +33,9 @@ export function setTooltip (number, element) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Buttons functions
+// ---------------------------------------------------------------------------
 function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   if (to_confirm) {
     const thisBeer = BEERS[number - 1]
@@ -97,6 +103,9 @@ export function updateFromState (stock_levels) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Socket events
+// ---------------------------------------------------------------------------
 socket.on('connect', () => {
   console.log('Server connected')
   document.getElementsByClassName('warning_icon')[0].style.display = 'none'
