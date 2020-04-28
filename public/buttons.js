@@ -4,7 +4,6 @@
 import {
   setTooltip,
   socket,
-  updateNumber,
   updateLevel,
   updateFromState
 } from './core.js'
