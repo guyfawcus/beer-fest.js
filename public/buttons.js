@@ -2,85 +2,12 @@
 'use strict'
 
 import {
-  AUTHORISED,
-  TO_CONFIRM,
-  LOW_ENABLE,
-  BEERS,
   setTooltip,
   socket,
-  empty_colour,
-  low_colour,
-  full_colour
+  updateNumber,
+  updateLevel,
+  updateFromState
 } from './core.js'
-
-const stock_levels = {}
-
-function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
-  if (to_confirm) {
-    const thisBeer = BEERS[number - 1]
-    let message = ''
-    if (thisBeer !== undefined) {
-      message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
-    } else {
-      message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`
-    }
-    if (confirm(message) !== true) {
-      return
-    }
-  }
-  socket.emit('update single', { number: number, level: level })
-}
-
-function updateNumber (number) {
-  if (AUTHORISED) {
-    if (stock_levels[number] === 'full') {
-      if (LOW_ENABLE === true) {
-        confirmUpdate(number, 'low')
-      } else {
-        confirmUpdate(number, 'empty')
-      }
-    } else if (stock_levels[number] === 'low') {
-      confirmUpdate(number, 'empty')
-    } else if (stock_levels[number] === 'empty') {
-      confirmUpdate(number, 'full')
-    }
-  } else {
-    console.log('Not authorised')
-  }
-}
-
-// Change the colour of the button depending on the stock level
-function updateLevel (number, level) {
-  const button = document.getElementById(`button_${number}`)
-  if (level === 'empty') {
-    console.log(`Setting ${number} as empty`)
-    stock_levels[number] = 'empty'
-    button.style.background = empty_colour
-  } else if (level === 'low') {
-    console.log(`Setting ${number} as low`)
-    stock_levels[number] = 'low'
-    button.style.background = low_colour
-  } else if (level === 'full') {
-    console.log(`Setting ${number} as full`)
-    stock_levels[number] = 'full'
-    button.style.background = full_colour
-  }
-}
-
-// Update the table based on remote changes to the stock levels
-function updateFromState (stock_levels) {
-  console.log('%cUpdating table from:', 'font-weight:bold;')
-  console.log(stock_levels)
-  for (const number in stock_levels) {
-    if (stock_levels[number] === 'empty') {
-      updateLevel(number, 'empty')
-    } else if (stock_levels[number] === 'low') {
-      updateLevel(number, 'low')
-    } else if (stock_levels[number] === 'full') {
-      updateLevel(number, 'full')
-    }
-  }
-}
 
 // Update the state when remotes send updates
 socket.on('update table', table => {
