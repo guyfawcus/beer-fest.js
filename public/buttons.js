@@ -26,4 +26,3 @@ socket.on('beers', beerList => {
     setTooltip(i, button)
   }
 })
-window.updateNumber = updateNumber

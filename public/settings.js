@@ -45,6 +45,3 @@ socket.on('update single', stock_level => {
   console.log(`Setting ${stock_level.number} as ${stock_level.level}`)
   stock_levels[stock_level.number] = stock_level.level
 })
-
-window.updateAllAs = updateAllAs
-window.tableUpload = tableUpload

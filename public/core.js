@@ -13,6 +13,10 @@ const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-c
 const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
 const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
 
+window.updateNumber = updateNumber
+window.updateAllAs = updateAllAs
+window.tableUpload = tableUpload
+
 // ---------------------------------------------------------------------------
 // Shared functions
 // ---------------------------------------------------------------------------
