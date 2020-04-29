@@ -2,6 +2,8 @@ beer-fest.js
 ============
 Web app to display available beers at a festival
 
+<img src="/docs/images/availability-empty.png" width="384">
+
 Installation
 ------------
 1. Install [Node.js](https://nodejs.org/)
