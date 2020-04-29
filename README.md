@@ -65,6 +65,7 @@ then this is by far the best option.
 * You won't need to configure every single client with the IP address of the server
 * You won't need to run any video cabling (if each screen can connect to the website, either by itself or via a Pi)
 * You don't have to worry about a single point of failure because the app can be run over multiple servers
+* It can be configured remotely so tech support is much easier
 * Anyone can connect to it with only the website address (which could be linked from the festivals website)
 
 ### The others ways
