@@ -25,13 +25,13 @@ export function setTooltip (number, element) {
   if (thisBeer !== undefined) {
     let vegan = ''
     if (thisBeer.vegan === 'y') {
-      vegan = '(Ve)'
+      vegan = ' (Ve)'
     }
-    let gluten_free = ''
+    let glutenFree = ''
     if (thisBeer.gluten_free === 'y') {
-      gluten_free = '(GF)'
+      glutenFree = ' (GF)'
     }
-    const header = `${thisBeer.beer_number} - ${thisBeer.beer_name} ${vegan} ${gluten_free}`
+    const header = `${thisBeer.beer_number} - ${thisBeer.beer_name}${vegan}${glutenFree}`
     const divider = '-'.repeat(header.length + 10)
     element.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}`
   }
