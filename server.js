@@ -18,7 +18,7 @@ const ADMIN_CODE = process.env.ADMIN_CODE
 const COOKIE_SECRET = process.env.COOKIE_SECRET || '8OarM0c9KnkjM8ucDorbFTU3ssST4VIx'
 const ENABLE_API = process.env.ENABLE_API || 'false'
 const REDIS_URL = process.env.REDIS_URL
-const BEERS_FILE = process.env.BEERS_FILE || './public/2020-beers.csv'
+const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
 
 const app = express()
 const server = http.Server(app)
