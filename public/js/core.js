@@ -6,7 +6,7 @@ export let AUTHORISED = false
 export let TO_CONFIRM = true
 export let LOW_ENABLE = false
 export let BEERS = []
-export let stock_levels = {}
+export let STOCK_LEVELS = {}
 export const socket = io.connect(self.location.host)
 
 const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
@@ -70,15 +70,15 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
 
 export function updateNumber (number) {
   if (!AUTHORISED) return
-  if (stock_levels[number] === 'full') {
+  if (STOCK_LEVELS[number] === 'full') {
     if (LOW_ENABLE === true) {
       confirmUpdate(number, 'low')
     } else {
       confirmUpdate(number, 'empty')
     }
-  } else if (stock_levels[number] === 'low') {
+  } else if (STOCK_LEVELS[number] === 'low') {
     confirmUpdate(number, 'empty')
-  } else if (stock_levels[number] === 'empty') {
+  } else if (STOCK_LEVELS[number] === 'empty') {
     confirmUpdate(number, 'full')
   }
 }
@@ -90,13 +90,13 @@ export function updateLevel (number, level) {
 
   if (level === 'empty') {
     console.log(`Setting ${number} as empty`)
-    stock_levels[number] = 'empty'
+    STOCK_LEVELS[number] = 'empty'
   } else if (level === 'low') {
     console.log(`Setting ${number} as low`)
-    stock_levels[number] = 'low'
+    STOCK_LEVELS[number] = 'low'
   } else if (level === 'full') {
     console.log(`Setting ${number} as full`)
-    stock_levels[number] = 'full'
+    STOCK_LEVELS[number] = 'full'
   }
 }
 
@@ -128,7 +128,7 @@ export function updateAllAs (level) {
     table[i] = level
   }
   socket.emit('update table', table)
-  stock_levels = table
+  STOCK_LEVELS = table
 }
 
 export function tableUpload () {
@@ -172,10 +172,10 @@ export function tableUpload () {
 
 function updateRequired (table) {
   for (const [number, level] of Object.entries(table)) {
-    if (level !== stock_levels[number]) {
+    if (level !== STOCK_LEVELS[number]) {
       console.log(`Setting ${number} as ${level}`)
       socket.emit('update single', { number: Number(number), level: level })
-      stock_levels[number] = level
+      STOCK_LEVELS[number] = level
     }
   }
 }
