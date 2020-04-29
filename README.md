@@ -1,6 +1,8 @@
 beer-fest.js
 ============
-Web app to display available beers at a festival - try it out at https://acbf-2020.herokuapp.com
+Web app to display available beers at a festival
+
+Try it out at https://acbf-2020.herokuapp.com and take a look at the [walkthrough tutorial](/docs/walkthrough.md) to get started.
 
 <img src="/docs/images/availability-empty.png" width="384">
 
