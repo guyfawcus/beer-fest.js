@@ -4,6 +4,7 @@ Web app to display available beers at a festival
 
 <img src="/docs/images/availability-empty.png" width="384">
 
+********
 Use case
 --------
 This project was designed for use at [The Aston Clinton Beer Festival](http://www.astonclintonbeerfestival.co.uk/).
@@ -31,19 +32,21 @@ Because the this is a web app, it can be run on a server [like this one](https:/
 to check the availability of a beer or to update it!
 (Don't worry, you can't change anything without logging in first)
 
-It could also be run locally on minimimal hardware (laptop, Raspberry Pi, whatever you fancy) so if you wanted, you could keep using 'the old way' while testing out this system without much bother.
+It could also be run locally on minimimal hardware (laptop, Raspberry Pi, whatever you fancy) so if you wanted,
+you could keep using *the old way* while testing out this system without much bother.
 
-
+****************
 Tech information
 ----------------
 There are a few different ways to implement this system and each has it's positives and negatives:
 
 ### The most basic way
 One machine to run the server and the browser - open two browser windows and connect an external monitor.
-Navigate to the 'Slideshow' page in one window and maximise it on the external screen.
-On the local screen, navigate to the 'Availability' page and maximise the browser window.
+Navigate to the *Slideshow* page in one window and maximise it on the external screen.
+On the local screen, navigate to the *Availability* page and maximise the browser window.
 
-This method has the advantage of being simple and quick to set up, but it does require running video cable from the computer to all of the displays.
+This method has the advantage of being simple and quick to set up,
+but it does require running video cable from the computer to all of the displays.
 
 You could put this computer on a network and then connect to it over Wi-Fi from any number of devices,
 but this would mean that anyone connected would likely not be able to use mobile data,
@@ -54,7 +57,7 @@ also it's a single point of failure. If you want external clients, you're probab
 One machine to run the server - this computer just runs the web app and is only connected to a local network, you could have an access point on the network to wirelessly connect other clients.
 
 This main disadvantage to this is the same as the last method, any clients who connect will likely not be able to access their mobile data.
-If that's not an issue though, and all of the clients are just 'show machines' then this is the best option if connecting to the internet is not easy...
+If that's not an issue though, and all of the clients are just *show machines* then this is the best option if connecting to the internet is not easy...
 
 ### The internet way
 No server setup required - If the venue has internet access or decent mobile service, and you can easily get the main display machine online,
@@ -69,6 +72,7 @@ There are of course a load of different variations of the above and it really de
 The easiest option will pretty much always be using *The internet way* and getting myself (@guyfawcus / Chesney) to confugure it.
 This software is all open source though so if you're brave enough to go it alone...
 
+************
 Installation
 ------------
 1. Install [Node.js](https://nodejs.org/)
