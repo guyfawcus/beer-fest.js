@@ -70,20 +70,17 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
 }
 
 export function updateNumber (number) {
-  if (AUTHORISED) {
-    if (stock_levels[number] === 'full') {
-      if (LOW_ENABLE === true) {
-        confirmUpdate(number, 'low')
-      } else {
-        confirmUpdate(number, 'empty')
-      }
-    } else if (stock_levels[number] === 'low') {
+  if (!AUTHORISED) return
+  if (stock_levels[number] === 'full') {
+    if (LOW_ENABLE === true) {
+      confirmUpdate(number, 'low')
+    } else {
       confirmUpdate(number, 'empty')
-    } else if (stock_levels[number] === 'empty') {
-      confirmUpdate(number, 'full')
     }
-  } else {
-    console.log('Not authorised')
+  } else if (stock_levels[number] === 'low') {
+    confirmUpdate(number, 'empty')
+  } else if (stock_levels[number] === 'empty') {
+    confirmUpdate(number, 'full')
   }
 }
 
@@ -123,61 +120,55 @@ export function updateFromState (stock_levels) {
 // Settings functions
 // ---------------------------------------------------------------------------
 export function updateAllAs (level) {
-  if (AUTHORISED) {
-    if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
+  if (!AUTHORISED) return
+  if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
-    console.log(`Marking everything as ${level}`)
-    const table = {}
-    for (let i = 1; i <= 80; i++) {
-      table[i] = level
-    }
-    socket.emit('update table', table)
-    stock_levels = table
-  } else {
-    console.log('updateAllAs is not allowed - not authenticated')
+  console.log(`Marking everything as ${level}`)
+  const table = {}
+  for (let i = 1; i <= 80; i++) {
+    table[i] = level
   }
+  socket.emit('update table', table)
+  stock_levels = table
 }
 
 export function tableUpload () {
-  if (AUTHORISED) {
-    const input_element = document.createElement('input')
-    input_element.type = 'file'
-    input_element.onchange = () => {
-      const reader = new FileReader()
-      const file = input_element.files[0]
-      reader.onload = () => {
-        // File type validation
-        if (file.type !== 'application/json') {
-          alert("Error: this file is not of the right type,\nplease upload a 'state.json' file")
-          return
-        }
-
-        // File size validation
-        if (file.size > 1032) {
-          alert("Error: this file is too large,\nplease upload a valid 'state.json' file")
-          return
-        }
-
-        // Data validation
-        try {
-          const data = JSON.parse(reader.result)
-          if (typeof data !== 'object' && data !== null) throw Error
-        } catch (error) {
-          alert("Error: could not parse JSON,\nplease upload a valid 'state.json' file")
-          return
-        }
-
-        if (confirm('Are you sure you want to use this data?') !== true) return
-        updateRequired(JSON.parse(reader.result))
+  if (!AUTHORISED) return
+  const input_element = document.createElement('input')
+  input_element.type = 'file'
+  input_element.onchange = () => {
+    const reader = new FileReader()
+    const file = input_element.files[0]
+    reader.onload = () => {
+      // File type validation
+      if (file.type !== 'application/json') {
+        alert("Error: this file is not of the right type,\nplease upload a 'state.json' file")
+        return
       }
 
-      reader.readAsText(file)
-      console.log(`Reading in ${file.size} bytes from ${file.name}`)
+      // File size validation
+      if (file.size > 1032) {
+        alert("Error: this file is too large,\nplease upload a valid 'state.json' file")
+        return
+      }
+
+      // Data validation
+      try {
+        const data = JSON.parse(reader.result)
+        if (typeof data !== 'object' && data !== null) throw Error
+      } catch (error) {
+        alert("Error: could not parse JSON,\nplease upload a valid 'state.json' file")
+        return
+      }
+
+      if (confirm('Are you sure you want to use this data?') !== true) return
+      updateRequired(JSON.parse(reader.result))
     }
-    input_element.click()
-  } else {
-    console.log('tableUpload is not allowed - not authenticated')
+
+    reader.readAsText(file)
+    console.log(`Reading in ${file.size} bytes from ${file.name}`)
   }
+  input_element.click()
 }
 
 function updateRequired (table) {
