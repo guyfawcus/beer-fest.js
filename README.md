@@ -85,3 +85,10 @@ Installation
 5. `npm install`
 5. `node server.js`
 6. Open [127.0.0.1:8000](http://127.0.0.1:8000/) in an up-to-date browser
+
+### Environment variables
+* `ADMIN_CODE`- A bcrypt hashed password (take a look at [/utils/codegen.js](/utils/codegen.js))
+* `COOKIE_SECRET` - A random string (take a look at [/utils/codegen.js](/utils/codegen.js))
+* `ENABLE_API` - `true` or `false` depending on whether you want to enable the API POST endpoints or not
+* `NODE_ENV` - set to `production` if deployed
+* `REDIS_URL`- the `redis://` URL
