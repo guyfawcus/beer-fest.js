@@ -361,13 +361,18 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 // ---------------------------------------------------------------------------
 
 io.on('connection', socket => {
+  const pathname = new URL(socket.handshake.headers.referer).pathname.slice(1)
+
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
   console.log('Distibuting previous state')
   io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
-  if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
-  io.to(`${socket.id}`).emit('beers', beers)
+
+  if (pathname == 'history' || pathname == 'availability') {
+    if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
+    io.to(`${socket.id}`).emit('beers', beers)
+  }
 
   redisClient.sadd(socket.handshake.session.id, socket.id)
 
