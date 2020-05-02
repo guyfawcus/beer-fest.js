@@ -3,15 +3,7 @@
 
 import { setTooltip, socket, setColour } from './core.js'
 
-let numberOfUpdates = 0
-
 socket.on('update single', stock_level => {
-  if (numberOfUpdates > 19) {
-    const parentDiv = document.getElementById('history')
-    const childDiv = parentDiv.getElementsByClassName('update')[19]
-    parentDiv.removeChild(childDiv)
-  }
-
   console.log(stock_level)
   const div = document.createElement('div')
   div.classList.add('update')
@@ -24,12 +16,10 @@ socket.on('update single', stock_level => {
   setColour(stock_level.level, div)
 
   document.getElementById('history').prepend(div)
-  numberOfUpdates += 1
 })
 
 socket.on('update table', stock_level => {
   document.getElementById('history').innerHTML = ''
-  numberOfUpdates = 0
 })
 
 socket.on('beers', beerList => {

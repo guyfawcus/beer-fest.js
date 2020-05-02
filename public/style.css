@@ -162,6 +162,7 @@ div[id^='button_']:hover,
   align-items: center;
   justify-content: start;
   padding: 20px;
+  overflow: auto;
 }
 .settings_utils,
 .settings_options,
