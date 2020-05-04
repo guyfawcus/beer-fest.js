@@ -13,6 +13,10 @@
 
   --warning-bg-color: #e84118bf;
   --warning-text-colour: #222933bf;
+
+  --default-link-colour: #0000ee;
+  --default-visited-colour: #551a8b;
+  --default-selection-colour: #b4d5ff;
 }
 
 html {
@@ -40,9 +44,8 @@ body {
   background-color: transparent;
 }
 
-input[type='text']::selection,
-input[type='password']::selection {
-  background-color: var(--shadow-colour);
+input::selection {
+  background-color: var(--default-selection-colour);
 }
 
 h1 {
@@ -308,11 +311,11 @@ a {
 }
 
 #noscript a:link {
-  color: #0000ee;
+  color: var(--default-link-colour);
 }
 #noscript a:visited {
-  color: #551a8b;
+  color: var(--default-visited-colour);
 }
 #noscript ::selection {
-  background-color: #b4d5ff;
+  background-color: var(--default-selection-colour);
 }
