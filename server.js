@@ -393,6 +393,7 @@ io.on('connection', socket => {
         updateAll(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        io.to(`${socket.id}`).emit('update table', last_table)
       }
     })
   })
@@ -408,6 +409,7 @@ io.on('connection', socket => {
         updateSingle(name, number, level)
       } else {
         console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
+        io.to(`${socket.id}`).emit('update table', last_table)
       }
     })
   })
@@ -427,6 +429,7 @@ io.on('connection', socket => {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
         )
+        io.to(`${socket.id}`).emit('config', last_config)
       }
     })
   })
