@@ -65,10 +65,9 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
       return
     }
   }
-  updateLevel (number, level)
+  updateLevel(number, level)
   socket.emit('update single', { number: number, level: level })
 }
-
 
 export function updateNumber (number) {
   if (!AUTHORISED) return

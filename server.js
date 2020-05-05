@@ -369,7 +369,7 @@ io.on('connection', socket => {
   io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
 
-  if (pathname == 'history' || pathname == 'availability') {
+  if (pathname === 'history' || pathname === 'availability') {
     if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
     io.to(`${socket.id}`).emit('beers', beers)
   }
