@@ -54,7 +54,7 @@ h1 {
   font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
 }
 
-div[id^='button_'],
+.availability_button,
 .button {
   background: var(--full-colour);
   display: flex;
@@ -69,7 +69,7 @@ div[id^='button_'],
   transition: all 150ms;
 }
 
-div[id^='button_']:hover,
+.availability_button:hover,
 .button:hover {
   transform: translateY(-3px) scale(1.05);
   border-radius: 50px;
