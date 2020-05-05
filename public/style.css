@@ -117,7 +117,7 @@ input:checked[type='checkbox']:before {
 }
 
 /* ------------------------------------------------------------------------ */
-/*  nocsript                                                                */
+/*  noscript                                                                */
 /* ------------------------------------------------------------------------ */
 .noscript {
   background-color: #ffffff3f;
@@ -150,39 +150,11 @@ input:checked[type='checkbox']:before {
 }
 
 /* ------------------------------------------------------------------------ */
-/* Classes                                                                  */
+/* Positioning                                                              */
 /* ------------------------------------------------------------------------ */
-.availability_button,
-.button {
-  background: var(--full-colour);
-  display: flex;
-  width: 100%;
-  height: 120px;
-  font-size: 3rem;
-  font-weight: bold;
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  transition: all 150ms;
-}
-
-.availability_button:hover,
-.button:hover {
-  transform: translateY(-3px) scale(1.05);
-  border-radius: 50px;
-  box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 1rem 0px var(--shadow-shade-colour),
-    0px 0px 1.5rem 0px var(--shadow-colour);
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-}
-
+/* -------------------------------- */
+/* Common                           */
+/* -------------------------------- */
 .buttons_header {
   grid-column-start: 1;
   grid-column-end: -1;
@@ -247,10 +219,17 @@ input:checked[type='checkbox']:before {
   text-align: center;
 }
 
-.checkbox {
-  width: 130px;
+/* -------------------------------- */
+/* Availability                     */
+/* -------------------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
 }
 
+/* -------------------------------- */
+/* History                          */
+/* -------------------------------- */
 .history {
   height: calc(37em);
   border: solid 2px var(--main-colour);
@@ -266,6 +245,33 @@ input:checked[type='checkbox']:before {
   overflow: auto;
 }
 
+/* ------------------------------------------------------------------------ */
+/* Main styles                                                              */
+/* ------------------------------------------------------------------------ */
+/* -------------------------------- */
+/* Common                           */
+/* -------------------------------- */
+.warning_icon {
+  background: var(--warning-bg-color);
+  color: var(--warning-text-colour);
+  width: 40px;
+  height: 40px;
+  margin: 0 auto;
+  border-radius: 50%;
+  position: absolute;
+  top: 40px;
+  right: 40px;
+  font-size: 2em;
+  border-radius: 50%;
+  display: none;
+  place-items: center;
+}
+
+.settings_container,
+.grid {
+  animation: load-animation 500ms;
+}
+
 .settings_utils,
 .settings_options,
 .settings_checkboxes,
@@ -273,6 +279,53 @@ input:checked[type='checkbox']:before {
   background: var(--main-shade-colour);
 }
 
+.availability_button,
+.button {
+  background: var(--full-colour);
+  display: flex;
+  width: 100%;
+  height: 120px;
+  font-size: 3rem;
+  font-weight: bold;
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: all 150ms;
+}
+
+.availability_button:hover,
+.button:hover {
+  transform: translateY(-3px) scale(1.05);
+  border-radius: 50px;
+  box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 1.5rem 0px var(--shadow-colour);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.button {
+  margin: 7.5px;
+  height: 60px;
+  background: var(--button-bg-colour);
+  font-size: 2rem;
+  font-weight: normal;
+  width: 95%;
+}
+
+/* -------------------------------- */
+/* Login                            */
+/* -------------------------------- */
+.login_fields {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* -------------------------------- */
+/* History                          */
+/* -------------------------------- */
 .update {
   display: flex;
   width: 100%;
@@ -303,38 +356,9 @@ form {
   margin: 5%;
 }
 
-.button {
-  margin: 7.5px;
-  height: 60px;
-  background: var(--button-bg-colour);
-  font-size: 2rem;
-  font-weight: normal;
-  width: 95%;
-}
-
-.login_fields {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.warning_icon {
-  background: var(--warning-bg-color);
-  color: var(--warning-text-colour);
-  width: 40px;
-  height: 40px;
-  margin: 0 auto;
-  border-radius: 50%;
-  position: absolute;
-  top: 40px;
-  right: 40px;
-  font-size: 2em;
-  border-radius: 50%;
-  display: none;
-  place-items: center;
-}
-
-.settings_container,
-.grid {
-  animation: load-animation 500ms;
+/* -------------------------------- */
+/* Settings                         */
+/* -------------------------------- */
+.checkbox {
+  width: 130px;
 }
