@@ -9,10 +9,6 @@ export let BEERS = []
 export let STOCK_LEVELS = {}
 export const socket = io.connect(self.location.host)
 
-const empty_colour = getComputedStyle(document.body).getPropertyValue('--empty-colour')
-const low_colour = getComputedStyle(document.body).getPropertyValue('--low-colour')
-const full_colour = getComputedStyle(document.body).getPropertyValue('--full-colour')
-
 window.updateNumber = updateNumber
 window.updateAllAs = updateAllAs
 window.tableUpload = tableUpload
@@ -39,13 +35,13 @@ export function setTooltip (number, element) {
 
 export function setColour (level, element) {
   if (level === 'empty') {
-    element.style.background = empty_colour
+    element.style.background = 'var(--empty-colour)'
   }
   if (level === 'low') {
-    element.style.background = low_colour
+    element.style.background = 'var(--low-colour)'
   }
   if (level === 'full') {
-    element.style.background = full_colour
+    element.style.background = 'var(--full-colour)'
   }
 }
 
