@@ -121,7 +121,7 @@ const handleError = (message, error) => {
 // ---------------------------------------------------------------------------
 
 // Update a single level
-const updateSingle = (name, number, level) => {
+function updateSingle (name, number, level) {
   const timeObj = new Date()
   const epochTime = timeObj.getTime()
   const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
@@ -144,7 +144,7 @@ const updateSingle = (name, number, level) => {
   }
 }
 
-const updateAll = (name, stock_levels) => {
+function updateAll (name, stock_levels) {
   // Backup log if it exists and set to expire in a week
   redisClient.exists('log', (err, reply) => {
     if (err) handleError("Couldn't check if log exists with Redis", err)
@@ -164,14 +164,14 @@ const updateAll = (name, stock_levels) => {
 }
 
 // Save the state from a JSON string of stock_levels to redis
-const saveState = stock_levels => {
+function saveState (stock_levels) {
   for (const [number, level] of Object.entries(stock_levels)) {
     redisClient.hset('stock_levels', number, level)
   }
 }
 
 // Used to stop unauthenticated clients getting to pages
-const checkAuthenticated = (req, res, next) => {
+function checkAuthenticated (req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
@@ -182,7 +182,7 @@ const checkAuthenticated = (req, res, next) => {
 }
 
 // Used to stop authenticated clients getting to pages
-const checkNotAuthenticated = (req, res, next) => {
+function checkNotAuthenticated (req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
