@@ -2,11 +2,21 @@
 'use strict'
 
 import {
+  setCross,
   setTooltip,
   socket,
   updateLevel,
   updateFromState
 } from './core.js'
+
+for (let number = 1; number <= 80; number++) {
+  const checkedState = localStorage.getItem(number)
+  if (checkedState === 'checked') {
+    setCross(number)
+  } else {
+    setCross(number, false)
+  }
+}
 
 // Update the state when remotes send updates
 socket.on('update table', table => {

@@ -65,13 +65,16 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   socket.emit('update single', { number: number, level: level })
 }
 
-function setCross (number, checked = true) {
+export function setCross (number, checked = true) {
   const button = document.getElementById(`button_${number}`)
 
   if (checked === false) {
-    button.removeChild(button.children[0])
+    localStorage.removeItem(number)
+    if (button.children[0]) button.removeChild(button.children[0])
     return
   }
+
+  localStorage.setItem(number, 'checked')
 
   const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
