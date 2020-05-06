@@ -65,35 +65,46 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   socket.emit('update single', { number: number, level: level })
 }
 
+function setCross (number, checked = true) {
+  const button = document.getElementById(`button_${number}`)
+
+  if (checked === false) {
+    button.removeChild(button.children[0])
+    return
+  }
+
+  const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
+  const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+  const forward_slash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
+
+  cross.setAttribute('class', 'cross')
+  cross.setAttribute('id', `cross_${number}`)
+
+  backslash.setAttribute('class', 'backslash')
+  backslash.setAttribute('x1', '10')
+  backslash.setAttribute('y1', '10')
+  backslash.setAttribute('x2', '90')
+  backslash.setAttribute('y2', '90')
+
+  forward_slash.setAttribute('class', 'forward_slash')
+  forward_slash.setAttribute('x1', '10')
+  forward_slash.setAttribute('y1', '90')
+  forward_slash.setAttribute('x2', '90')
+  forward_slash.setAttribute('y2', '10')
+
+  cross.appendChild(backslash)
+  cross.appendChild(forward_slash)
+  button.appendChild(cross)
+}
+
 export function updateNumber (number) {
   if (!AUTHORISED) {
+    // If the number has a cross on it already, remove it. Otherwise, set it.
     const button = document.getElementById(`button_${number}`)
-
     if (button.children[0]) {
-      button.removeChild(button.children[0])
+      setCross(number, false)
     } else {
-      const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-      const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-      const forward_slash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-
-      cross.setAttribute('class', 'cross')
-      cross.setAttribute('id', `cross_${number}`)
-
-      backslash.setAttribute('class', 'backslash')
-      backslash.setAttribute('x1', '10')
-      backslash.setAttribute('y1', '10')
-      backslash.setAttribute('x2', '90')
-      backslash.setAttribute('y2', '90')
-
-      forward_slash.setAttribute('class', 'forward_slash')
-      forward_slash.setAttribute('x1', '10')
-      forward_slash.setAttribute('y1', '90')
-      forward_slash.setAttribute('x2', '90')
-      forward_slash.setAttribute('y2', '10')
-
-      cross.appendChild(backslash)
-      cross.appendChild(forward_slash)
-      button.appendChild(cross)
+      setCross(number)
     }
     return
   }
