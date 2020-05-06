@@ -10,6 +10,7 @@
   --main-shade-colour: #7493b3;
   --text-colour: #222933;
   --button-bg-colour: #f5f6fa;
+  --cross-colour: #000000;
 
   --shadow-colour: #000000;
   --shadow-shade-colour: #00000080;
@@ -313,6 +314,23 @@ input:checked[type='checkbox']:before {
   font-size: 2rem;
   font-weight: normal;
   width: 95%;
+}
+
+/* -------------------------------- */
+/* Availability                     */
+/* -------------------------------- */
+.cross {
+  pointer-events: none;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.backslash,
+.forward_slash {
+  stroke: var(--cross-colour);
+  stroke-width: 4px;
+  stroke-linecap: round;
 }
 
 /* -------------------------------- */
