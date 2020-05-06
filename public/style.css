@@ -329,7 +329,7 @@ input:checked[type='checkbox']:before {
 .backslash,
 .forward_slash {
   stroke: var(--cross-colour);
-  stroke-width: 4px;
+  stroke-width: 10px;
   stroke-linecap: round;
 }
 
