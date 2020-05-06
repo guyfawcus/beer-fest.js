@@ -69,15 +69,17 @@ export function updateNumber (number) {
   if (!AUTHORISED) {
     const button = document.getElementById(`button_${number}`)
 
-    const cross = document.createElement('img')
-    cross.src = 'cross.svg'
-    cross.style.height = '100%'
-    cross.style.width = '100%'
-    cross.style.position = 'absolute'
-    button.appendChild(cross)
-
-    return
+    if (button.children[0]) {
+      button.removeChild(button.children[0])
+    } else {
+      const cross = document.createElement('object')
+      cross.data = 'cross.svg'
+      cross.style.pointerEvents = 'none'
+      cross.style.position = 'absolute'
+      button.appendChild(cross)
     }
+    return
+  }
 
   if (STOCK_LEVELS[number] === 'full') {
     if (LOW_ENABLE === true) {
