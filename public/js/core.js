@@ -66,7 +66,19 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
 }
 
 export function updateNumber (number) {
-  if (!AUTHORISED) return
+  if (!AUTHORISED) {
+    const button = document.getElementById(`button_${number}`)
+
+    const cross = document.createElement('img')
+    cross.src = 'cross.svg'
+    cross.style.height = '100%'
+    cross.style.width = '100%'
+    cross.style.position = 'absolute'
+    button.appendChild(cross)
+
+    return
+    }
+
   if (STOCK_LEVELS[number] === 'full') {
     if (LOW_ENABLE === true) {
       confirmUpdate(number, 'low')
