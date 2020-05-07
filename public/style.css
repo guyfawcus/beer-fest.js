@@ -322,10 +322,16 @@ input:checked[type='checkbox']:before {
 /* Availability                     */
 /* -------------------------------- */
 .cross {
+  opacity: 0;
+  transition: opacity 150ms ease;
   pointer-events: none;
   position: absolute;
   width: 100px;
   height: 100px;
+}
+
+.checked {
+  opacity: 1;
 }
 
 .backslash,

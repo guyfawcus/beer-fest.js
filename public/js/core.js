@@ -67,46 +67,24 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
 
 export function setCross (number, checked = true) {
   const button = document.getElementById(`button_${number}`)
+  const cross = button.getElementsByClassName('cross')[0]
 
   if (checked === false) {
+    cross.classList.remove('checked')
     localStorage.removeItem(number)
-    if (button.children[0]) button.removeChild(button.children[0])
     return
   }
 
+  cross.classList.add('checked')
   localStorage.setItem(number, 'checked')
-
-  const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-  const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-  const forward_slash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
-
-  cross.setAttribute('class', 'cross')
-  cross.setAttribute('id', `cross_${number}`)
-  // Layer the cross underneath the number
-  // cross.setAttribute('style', 'z-index:-1')
-
-  backslash.setAttribute('class', 'backslash')
-  backslash.setAttribute('x1', '10')
-  backslash.setAttribute('y1', '10')
-  backslash.setAttribute('x2', '90')
-  backslash.setAttribute('y2', '90')
-
-  forward_slash.setAttribute('class', 'forward_slash')
-  forward_slash.setAttribute('x1', '10')
-  forward_slash.setAttribute('y1', '90')
-  forward_slash.setAttribute('x2', '90')
-  forward_slash.setAttribute('y2', '10')
-
-  cross.appendChild(backslash)
-  cross.appendChild(forward_slash)
-  button.appendChild(cross)
 }
 
 export function updateNumber (number) {
   if (!AUTHORISED) {
     // If the number has a cross on it already, remove it. Otherwise, set it.
     const button = document.getElementById(`button_${number}`)
-    if (button.children[0]) {
+    const cross = button.getElementsByClassName('cross')[0]
+    if (cross.classList.contains('checked')) {
       setCross(number, false)
     } else {
       setCross(number)
