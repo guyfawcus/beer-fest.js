@@ -294,6 +294,7 @@ input:checked[type='checkbox']:before {
   justify-content: center;
   align-items: center;
   transition: all 150ms;
+  z-index: 1;
 }
 
 .availability_button:hover,
@@ -305,6 +306,7 @@ input:checked[type='checkbox']:before {
     0px 0px 1.5rem 0px var(--shadow-colour);
   border-radius: 8px;
   cursor: pointer;
+  z-index: 2;
 }
 
 .button {

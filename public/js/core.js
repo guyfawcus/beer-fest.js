@@ -82,6 +82,8 @@ export function setCross (number, checked = true) {
 
   cross.setAttribute('class', 'cross')
   cross.setAttribute('id', `cross_${number}`)
+  // Layer the cross underneath the number
+  // cross.setAttribute('style', 'z-index:-1')
 
   backslash.setAttribute('class', 'backslash')
   backslash.setAttribute('x1', '10')
