@@ -323,7 +323,7 @@ input:checked[type='checkbox']:before {
 /* -------------------------------- */
 .cross {
   opacity: 0;
-  transition: opacity 150ms ease;
+  transition-delay: 150ms;
   pointer-events: none;
   position: absolute;
   width: 100px;
@@ -332,6 +332,7 @@ input:checked[type='checkbox']:before {
 
 .checked {
   opacity: 1;
+  transition-delay: 0ms;
 }
 
 .backslash,
@@ -339,6 +340,15 @@ input:checked[type='checkbox']:before {
   stroke: var(--cross-colour);
   stroke-width: 10px;
   stroke-linecap: round;
+  transition: all 150ms;
+  stroke-dasharray: 0, 100;
+  stroke-dashoffset: -56.568;
+}
+
+.checked .backslash,
+.checked .forward_slash {
+  stroke-dasharray: 113.137, 100;
+  stroke-dashoffset: 0;
 }
 
 /* -------------------------------- */
