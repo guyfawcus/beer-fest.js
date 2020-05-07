@@ -9,14 +9,26 @@ import {
   updateFromState
 } from './core.js'
 
-for (let number = 1; number <= 80; number++) {
-  const checkedState = localStorage.getItem(number)
-  if (checkedState === 'checked') {
-    setCross(number)
-  } else {
-    setCross(number, false)
+function updateChecked () {
+  for (let number = 1; number <= 80; number++) {
+    const checkedState = localStorage.getItem(number)
+    if (checkedState === 'checked') {
+      setCross(number)
+    } else {
+      setCross(number, false)
+    }
   }
 }
+
+function keyUp (e) {
+  if (e.ctrlKey && e.keyCode === 67) {
+    localStorage.clear()
+    updateChecked()
+  }
+}
+
+updateChecked()
+document.addEventListener('keyup', keyUp, false)
 
 // Update the state when remotes send updates
 socket.on('update table', table => {
