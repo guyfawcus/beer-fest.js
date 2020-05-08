@@ -344,7 +344,6 @@ input:checked[type='checkbox']:before {
   transition: all 150ms;
   stroke-dasharray: 0, 100;
   stroke-dashoffset: -56.568;
-  will-change: stroke-dasharray, stroke-dashoffset;
 }
 
 .checked .backslash,
