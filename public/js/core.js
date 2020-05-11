@@ -72,11 +72,10 @@ export function setCross (number, checked = true) {
   if (checked === false) {
     cross.classList.remove('checked')
     localStorage.removeItem(number)
-    return
+  } else {
+    cross.classList.add('checked')
+    localStorage.setItem(number, 'checked')
   }
-
-  cross.classList.add('checked')
-  localStorage.setItem(number, 'checked')
 }
 
 export function updateNumber (number) {
