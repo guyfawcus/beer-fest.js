@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "pretest": "eslint --ignore-path .gitignore .",
-    "test": ""
+    "test": "",
+    "doc": "jsdoc -c jsdoc.json"
   },
   "author": "guyfawcus",
   "license": "MIT",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "eslint": "^6.8.0",
     "husky": "^4.2.5",
+    "jsdoc": "^3.6.4",
     "nodemon": "^2.0.3",
     "prettier": "^1.19.1",
     "standard": "^14.3.3"
