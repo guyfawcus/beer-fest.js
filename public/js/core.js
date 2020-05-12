@@ -201,7 +201,6 @@ function updateRequired (table) {
   }
 }
 
-
 // ---------------------------------------------------------------------------
 // Events
 // ---------------------------------------------------------------------------
@@ -212,21 +211,21 @@ This decreases the GPU usage from ~17MB to ~6MB when the tab is in the backgroun
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     console.debug('Enabling GPU offloading')
-    const buttons = document.getElementsByClassName('button');
+    const buttons = document.getElementsByClassName('button')
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].style.willChange = 'transform'
     }
-    const availability_buttons = document.getElementsByClassName('availability_button');
+    const availability_buttons = document.getElementsByClassName('availability_button')
     for (let i = 0; i < availability_buttons.length; i++) {
       availability_buttons[i].style.willChange = 'transform'
     }
   } else {
     console.debug('Disabling GPU offloading')
-    const buttons = document.getElementsByClassName('button');
+    const buttons = document.getElementsByClassName('button')
     for (let i = 0; i < buttons.length; i++) {
       buttons[i].style.willChange = 'unset'
     }
-    const availability_buttons = document.getElementsByClassName('availability_button');
+    const availability_buttons = document.getElementsByClassName('availability_button')
     for (let i = 0; i < availability_buttons.length; i++) {
       availability_buttons[i].style.willChange = 'unset'
     }

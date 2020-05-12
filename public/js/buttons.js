@@ -9,7 +9,6 @@ import {
   updateFromState
 } from './core.js'
 
-
 for (let number = 1; number <= 80; number++) {
   const button = document.getElementById(`button_${number}`)
 
