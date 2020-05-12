@@ -128,7 +128,17 @@ export function generateCheckedHexURL (updateURL = false) {
  * @returns {Array.<number>} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData (checkedHexData) {
-  if (!checkedHexData) return
+  // Make sure the input is the right length 10 bytes (20 nibbles)
+  if (!checkedHexData) {
+    return
+  } else if (checkedHexData.length < 20) {
+    console.debug(`Padding checkedHexData (${checkedHexData}) with ${20 - checkedHexData.length} nibble(s)`)
+    checkedHexData = checkedHexData.padEnd(20, '0')
+  } else if (checkedHexData.length > 20) {
+    console.debug(`Trimming ${checkedHexData.length - 20} nibble(s) from checkedHexData (${checkedHexData.slice(checkedHexData.length - 20)})`)
+    checkedHexData = checkedHexData.slice(0, 20)
+  }
+
   const checkedData = new Uint8Array(checkedHexData.match(/.{1,2}/g).map(byte => parseInt(byte, 16)))
   const numbersChecked = []
 
