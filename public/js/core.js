@@ -78,6 +78,77 @@ export function setCross (number, checked = true) {
   }
 }
 
+/**
+ * This loops over all of the entries in local storage see what numbers are checked.
+ * It then makes an array of Uint8 bytes where each bit represents the checked state of a number,
+ * for example, if the first byte was `0b01001011` (`0x4a`) then numbers 2, 5, 7 and 8 are checked.
+ * It returns the the array formatted as base-16 hex so that it can be used in a URL.
+ * @returns {string} hex formatted string
+ */
+function generateCheckedHexData () {
+  const checkedData = new Uint8Array(10)
+  let byteNum = 0
+  let bitNum = 0
+
+  for (let number = 1; number <= 80; number++) {
+    const checked = localStorage.getItem(number.toString())
+
+    // Set the bit if the number is checked
+    if (checked) checkedData[byteNum] |= 1 << 7 - bitNum
+
+    if (number % 8 === 0) {
+      byteNum += 1
+      bitNum = 0
+    } else {
+      bitNum++
+    }
+  }
+
+  const checkedHexData = checkedData.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '')
+  return checkedHexData
+}
+
+/**
+ * This uses generateCheckedHexData() and adds the result to a URL.
+ * This is used if you want to share the numbers that you've checked off with somone / back them up.
+ * @param {boolean} [updateURL] If set to true, the URL of the page will be updated with the result (optional)
+ * @returns {URL} The full URL including the checked hex data as a search parameter
+ */
+export function generateCheckedHexURL (updateURL = false) {
+  const checkedHexData = generateCheckedHexData()
+  const url = new URL(window.location.href)
+  url.searchParams.set('checked', checkedHexData)
+  if (updateURL) history.replaceState(null, '', url.toString())
+  return url
+}
+
+/**
+ * This parses the checkedHexData and adds the crosses on the buttons using setCross().
+ * @param {string} checkedHexData A hex formatted string containg the checked data
+ * @returns {Array.<number>} A list of all of the numbers that are checked
+ */
+export function parseCheckedHexData (checkedHexData) {
+  if (!checkedHexData) return
+  const checkedData = new Uint8Array(checkedHexData.match(/.{1,2}/g).map(byte => parseInt(byte, 16)))
+  const numbersChecked = []
+
+  // Loop over all of the bits in each byte
+  for (let byteNum = 0; byteNum < checkedData.length; byteNum++) {
+    for (let bitNum = 0; bitNum < 8; bitNum++) {
+      const overallBitNum = (byteNum * 8 + bitNum) + 1
+
+      // If the bit is set it means that the number is checked
+      if ((checkedData[byteNum] & 1 << 7 - bitNum) !== 0) {
+        numbersChecked.push(overallBitNum)
+        setCross(overallBitNum)
+      } else {
+        setCross(overallBitNum, false)
+      }
+    }
+  }
+  return numbersChecked
+}
+
 export function updateNumber (number) {
   if (!AUTHORISED) {
     // If the number has a cross on it already, remove it. Otherwise, set it.

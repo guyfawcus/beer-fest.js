@@ -2,6 +2,8 @@
 'use strict'
 
 import {
+  generateCheckedHexURL,
+  parseCheckedHexData,
   setCross,
   setTooltip,
   socket,
@@ -54,9 +56,22 @@ function keyUp (e) {
     localStorage.clear()
     updateChecked()
   }
+  if (e.ctrlKey && e.keyCode === 65) {
+    generateCheckedHexURL(true)
+  }
 }
 
-updateChecked()
+// Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
+const checkedHexData = new URL(window.location.href).searchParams.get('checked')
+if (checkedHexData) {
+  parseCheckedHexData(checkedHexData)
+
+  // Remove the checkedHexData from the URL so that it's not used if you refresh the page
+  history.replaceState(null, '', window.location.href.split('?')[0])
+} else {
+  updateChecked()
+}
+
 document.addEventListener('keyup', keyUp, false)
 
 // Update the state when remotes send updates
