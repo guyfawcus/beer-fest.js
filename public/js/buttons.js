@@ -42,7 +42,7 @@ for (let number = 1; number <= 80; number++) {
 
 function updateChecked () {
   for (let number = 1; number <= 80; number++) {
-    const checkedState = localStorage.getItem(number)
+    const checkedState = localStorage.getItem(number.toString())
     if (checkedState === 'checked') {
       setCross(number)
     } else {

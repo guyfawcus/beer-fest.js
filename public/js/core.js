@@ -1,21 +1,69 @@
 /* eslint-env browser */
-/* global io */
+/* global globalThis */
 'use strict'
 
+/** `true` is a user is logged in */
 export let AUTHORISED = false
-export let TO_CONFIRM = true
-export let LOW_ENABLE = false
-export let BEERS = []
-export let STOCK_LEVELS = {}
-export const socket = io.connect(self.location.host)
 
-window.updateNumber = updateNumber
-window.updateAllAs = updateAllAs
-window.tableUpload = tableUpload
+/** `true` if the confimation window should pop up before an update */
+export let TO_CONFIRM = true
+
+/** `true` if the middle 'low' level is to be used as a state */
+export let LOW_ENABLE = false
+
+/**
+ * A list of [beer objects]{@link beersObj} containing inforamtion for each beer
+ * @type{beersObj[]}
+ */
+export let BEERS = []
+
+/**
+ * Simple key value store that conforms to {@link stockLevelsObj},
+ * where a number is the key and a [level]{@link levelValues} is the value
+ * @type{stockLevelsObj}
+ */
+export let STOCK_LEVELS = {}
+
+/** The socket.io socket object */
+export const socket = globalThis.io.connect(self.location.host)
+
+globalThis.updateNumber = updateNumber
+globalThis.updateAllAs = updateAllAs
+globalThis.tableUpload = tableUpload
+
+// ---------------------------------------------------------------------------
+// Type definitions
+// ---------------------------------------------------------------------------
+/**
+ * The different level values that can be used
+ * @typedef {('empty'|'low'|'full')} levelValues
+ */
+
+/**
+ * Object structure that represents each beer. Used in {@link BEERS}
+ * @typedef {object} beersObj
+ * @property {string} beer_number The number of the beer
+ * @property {string} beer_name The name of the beer
+ * @property {string} brewer The brewer of the beer
+ * @property {string} abv The alcohol by volume of the beer
+ * @property {string} beer_style The style of the beer
+ * @property {string} vegan 'y' if the beer is vegan
+ * @property {string} gluten_free 'y' if the beer is gluten free
+ * @property {string} description A description of the beer
+ */
+
+/** Object to store the stock level for a particular beer. Used in {@link STOCK_LEVELS}
+ * @typedef {Object.<number, levelValues>} stockLevelsObj
+ */
 
 // ---------------------------------------------------------------------------
 // Shared functions
 // ---------------------------------------------------------------------------
+/**
+ * Function that updates the tooltip for the selected number
+ * @param {number} number The number that of the beer - used as an ID to get data from {@link BEERS}
+ * @param {Element} element The element that the tooltip is to be added to
+ */
 export function setTooltip (number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
@@ -33,6 +81,11 @@ export function setTooltip (number, element) {
   }
 }
 
+/**
+ * Function to change the backgound colour of an element depending on the level.
+ * @param {levelValues} level The level that the element is to be changed to
+ * @param {HTMLElement} element The element whose background is to be changed
+ */
 export function setColour (level, element) {
   if (level === 'empty') {
     element.style.background = 'var(--empty-colour)'
@@ -48,6 +101,13 @@ export function setColour (level, element) {
 // ---------------------------------------------------------------------------
 // Buttons functions
 // ---------------------------------------------------------------------------
+/**
+ * Simple wrapper function that pops up a confirmation window if required.
+ * The update is then passed to {@link updateLevel}.
+ * @param {number} number The number to be updated
+ * @param {levelValues} level The level that the number will be set to
+ * @param {boolean} [to_confirm={@link TO_CONFIRM}] If set to `true`, a pop-up will appear asking the user to confirm the action
+ */
 function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   if (to_confirm) {
     const thisBeer = BEERS[number - 1]
@@ -65,16 +125,21 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
   socket.emit('update single', { number: number, level: level })
 }
 
+/**
+ * Add or remove the cross on the selected number.
+ * @param {number} number The number to set or remove the cross on
+ * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
+ */
 export function setCross (number, checked = true) {
   const button = document.getElementById(`button_${number}`)
   const cross = button.getElementsByClassName('cross')[0]
 
   if (checked === false) {
     cross.classList.remove('checked')
-    localStorage.removeItem(number)
+    localStorage.removeItem(number.toString())
   } else {
     cross.classList.add('checked')
-    localStorage.setItem(number, 'checked')
+    localStorage.setItem(number.toString(), 'checked')
   }
 }
 
@@ -109,9 +174,9 @@ function generateCheckedHexData () {
 }
 
 /**
- * This uses generateCheckedHexData() and adds the result to a URL.
+ * This uses {@link generateCheckedHexData} and adds the result to a URL.
  * This is used if you want to share the numbers that you've checked off with somone / back them up.
- * @param {boolean} [updateURL] If set to true, the URL of the page will be updated with the result (optional)
+ * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
 export function generateCheckedHexURL (updateURL = false) {
@@ -125,7 +190,7 @@ export function generateCheckedHexURL (updateURL = false) {
 /**
  * This parses the checkedHexData and adds the crosses on the buttons using setCross().
  * @param {string} checkedHexData A hex formatted string containg the checked data
- * @returns {Array.<number>} A list of all of the numbers that are checked
+ * @returns {number[]} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData (checkedHexData) {
   // Make sure the input is the right length 10 bytes (20 nibbles)
@@ -159,6 +224,11 @@ export function parseCheckedHexData (checkedHexData) {
   return numbersChecked
 }
 
+/**
+ * If a user is logged in ({@link AUTHORISED}) then this will update the level of the beer using {@link confirmUpdate}.
+ * If not, then the number will be checked off (a cross will be added / removed using {@link setCross}
+ * @param {number} number The number to update the level of / set the cross
+ */
 export function updateNumber (number) {
   if (!AUTHORISED) {
     // If the number has a cross on it already, remove it. Otherwise, set it.
@@ -185,7 +255,12 @@ export function updateNumber (number) {
   }
 }
 
-// Change the colour of the button depending on the stock level
+/**
+ * This uses {@link setColour} to change the colour of the button,
+ * then updates {@link STOCK_LEVELS} with the level.
+ * @param {number} number The button number to update
+ * @param {levelValues} level The level to set
+ */
 export function updateLevel (number, level) {
   const button = document.getElementById(`button_${number}`)
   setColour(level, button)
@@ -202,17 +277,20 @@ export function updateLevel (number, level) {
   }
 }
 
-// Update the table based on remote changes to the stock levels
+/**
+ * Update the table based on remote changes to the stock levels
+ * @param {stockLevelsObj} stock_levels
+ */
 export function updateFromState (stock_levels) {
   console.log('%cUpdating table from:', 'font-weight:bold;')
   console.log(stock_levels)
   for (const number in stock_levels) {
     if (stock_levels[number] === 'empty') {
-      updateLevel(number, 'empty')
+      updateLevel(Number(number), 'empty')
     } else if (stock_levels[number] === 'low') {
-      updateLevel(number, 'low')
+      updateLevel(Number(number), 'low')
     } else if (stock_levels[number] === 'full') {
-      updateLevel(number, 'full')
+      updateLevel(Number(number), 'full')
     }
   }
 }
@@ -220,11 +298,16 @@ export function updateFromState (stock_levels) {
 // ---------------------------------------------------------------------------
 // Settings functions
 // ---------------------------------------------------------------------------
+/**
+ * Set every beer as empty, low or full
+ * @param {levelValues} level
+ */
 export function updateAllAs (level) {
   if (!AUTHORISED) return
   if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
   console.log(`Marking everything as ${level}`)
+  /** @type{stockLevelsObj} */
   const table = {}
   for (let i = 1; i <= 80; i++) {
     table[i] = level
@@ -233,6 +316,10 @@ export function updateAllAs (level) {
   STOCK_LEVELS = table
 }
 
+/**
+ * This creates a hidden element that pops up an upload dialog that allows
+ * sending the a previous state to the server for distribution
+ */
 export function tableUpload () {
   if (!AUTHORISED) return
   const input_element = document.createElement('input')
@@ -255,7 +342,7 @@ export function tableUpload () {
 
       // Data validation
       try {
-        const data = JSON.parse(reader.result)
+        const data = JSON.parse(reader.result.toString())
         if (typeof data !== 'object' && data !== null) throw Error
       } catch (error) {
         alert("Error: could not parse JSON,\nplease upload a valid 'state.json' file")
@@ -263,7 +350,7 @@ export function tableUpload () {
       }
 
       if (confirm('Are you sure you want to use this data?') !== true) return
-      updateRequired(JSON.parse(reader.result))
+      updateRequired(JSON.parse(reader.result.toString()))
     }
 
     reader.readAsText(file)
@@ -272,6 +359,10 @@ export function tableUpload () {
   input_element.click()
 }
 
+/**
+ * This is used by {@link tableUpload} to only update the beers that are different from the current state
+ * @param {stockLevelsObj} table
+ */
 function updateRequired (table) {
   for (const [number, level] of Object.entries(table)) {
     if (level !== STOCK_LEVELS[number]) {
@@ -285,10 +376,10 @@ function updateRequired (table) {
 // ---------------------------------------------------------------------------
 // Events
 // ---------------------------------------------------------------------------
-/*
-Disable the will-change events on the buttons when the page is not open
-This decreases the GPU usage from ~17MB to ~6MB when the tab is in the background
-*/
+/**
+ * Disable the will-change events on the buttons when the page is not open
+ * This decreases the GPU usage from ~17MB to ~6MB when the tab is in the background
+ */
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
     console.debug('Enabling GPU offloading')
@@ -317,11 +408,13 @@ document.addEventListener('visibilitychange', () => {
 // Socket events
 // ---------------------------------------------------------------------------
 socket.on('connect', () => {
+  // Hide warning icon
   console.log('Server connected')
   document.getElementsByClassName('warning_icon')[0].style.display = 'none'
 })
 
 socket.on('disconnect', () => {
+  // Display warning icon if the server has been disonnected for over 2 seconds
   window.setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer diconnected!', 'color:red;')
@@ -331,6 +424,7 @@ socket.on('disconnect', () => {
 })
 
 socket.on('auth', status => {
+  // Change the test of the login button depending of the state of AUTHORISED
   const loginElement = document.getElementById('login')
 
   if (status) {
@@ -351,6 +445,7 @@ socket.on('auth', status => {
 })
 
 socket.on('config', configuration => {
+  // Check or un-check the checkboxes if updates are recieved
   const confirmCheck = document.getElementById('confirm_check')
   const lowCheck = document.getElementById('low_check')
 
