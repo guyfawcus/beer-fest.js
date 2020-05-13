@@ -121,7 +121,7 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
       return
     }
   }
-  updateLevel(number, level)
+  setColour(level, document.getElementById(`button_${number}`))
   socket.emit('update single', { number: number, level: level })
 }
 
