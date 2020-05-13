@@ -62,7 +62,7 @@ globalThis.tableUpload = tableUpload
 /**
  * Function that updates the tooltip for the selected number
  * @param {number} number The number that of the beer - used as an ID to get data from {@link BEERS}
- * @param {Element} element The element that the tooltip is to be added to
+ * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
 export function setTooltip (number, element) {
   const thisBeer = BEERS[number - 1]
@@ -106,9 +106,11 @@ export function setColour (level, element) {
  * The update is then passed to {@link updateLevel}.
  * @param {number} number The number to be updated
  * @param {levelValues} level The level that the number will be set to
- * @param {boolean} [to_confirm={@link TO_CONFIRM}] If set to `true`, a pop-up will appear asking the user to confirm the action
+ * @param {boolean} [to_confirm = TO_CONFIRM] If set to `true`, a pop-up will appear asking the user to confirm the action
  */
 function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
+  const button = document.getElementById(`button_${number}`)
+
   if (to_confirm) {
     const thisBeer = BEERS[number - 1]
     let message = ''
@@ -121,7 +123,7 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
       return
     }
   }
-  setColour(level, document.getElementById(`button_${number}`))
+  setColour(level, button)
   socket.emit('update single', { number: number, level: level })
 }
 
@@ -190,7 +192,7 @@ export function generateCheckedHexURL (updateURL = false) {
 /**
  * This parses the checkedHexData and adds the crosses on the buttons using setCross().
  * @param {string} checkedHexData A hex formatted string containg the checked data
- * @returns {number[]} A list of all of the numbers that are checked
+ * @returns {number[] | undefined} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData (checkedHexData) {
   // Make sure the input is the right length 10 bytes (20 nibbles)

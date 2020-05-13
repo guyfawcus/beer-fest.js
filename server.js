@@ -14,21 +14,40 @@ const session = require('express-session')
 const sharedsession = require('express-socket.io-session')
 const redis = require('redis')
 
-const ADMIN_CODE = process.env.ADMIN_CODE
+const ADMIN_CODE = process.env.ADMIN_CODE || ''
 const COOKIE_SECRET = process.env.COOKIE_SECRET || '8OarM0c9KnkjM8ucDorbFTU3ssST4VIx'
 const ENABLE_API = process.env.ENABLE_API || 'false'
-const REDIS_URL = process.env.REDIS_URL
+const REDIS_URL = process.env.REDIS_URL || ''
 const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
 
 const app = express()
-const server = http.Server(app)
+const server = new http.Server(app)
 const io = require('socket.io')(server)
-const redisClient = redis.createClient(REDIS_URL)
+const redisClient = redis.createClient({ url: REDIS_URL })
 const RedisStore = require('connect-redis')(session)
 
+/** @type {configObj} */
 let last_config = {}
+
+/** @type{stockLevelsObj} */
 let last_table = {}
+
+/** @type{beersObj} */
 let beers = {}
+
+// ---------------------------------------------------------------------------
+// Type definitions
+// ---------------------------------------------------------------------------
+/**
+ * Object to store the configuration state
+ * @typedef {object} configObj
+ * @property {boolean} confirm
+ * @property {boolean} low_enable
+*/
+
+/** @typedef {import('public/js/core.js').stockLevelsObj} stockLevelsObj */
+/** @typedef {import('public/js/core.js').beersObj} beersObj */
+/** @typedef {import('public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
 // Configuration
@@ -94,8 +113,8 @@ redisClient.hgetall('config', (err, reply) => {
     console.log('Initialising config')
     last_config = { confirm: true, low_enable: false }
   }
-  redisClient.hset('config', 'confirm', last_config.confirm)
-  redisClient.hset('config', 'low_enable', last_config.low_enable)
+  redisClient.hset('config', 'confirm', last_config.confirm.toString())
+  redisClient.hset('config', 'low_enable', last_config.low_enable.toString())
 })
 
 // ---------------------------------------------------------------------------
@@ -119,8 +138,12 @@ const handleError = (message, error) => {
 // ---------------------------------------------------------------------------
 // Functions
 // ---------------------------------------------------------------------------
-
-// Update a single level
+/**
+ * Update a single level
+ * @param {string} name The of the user
+ * @param {number} number The number of the beer
+ * @param {levelValues} level The level it the beer is being set to
+ */
 function updateSingle (name, number, level) {
   const timeObj = new Date()
   const epochTime = timeObj.getTime()
@@ -144,6 +167,11 @@ function updateSingle (name, number, level) {
   }
 }
 
+/**
+ * This takes in a {@link stockLevelsObj} and emits it to all connected clients
+ * @param {string} name The nameof the user
+ * @param {stockLevelsObj} stock_levels The object with all of the stock levels
+ */
 function updateAll (name, stock_levels) {
   // Backup log if it exists and set to expire in a week
   redisClient.exists('log', (err, reply) => {
@@ -163,14 +191,17 @@ function updateAll (name, stock_levels) {
   saveState(stock_levels)
 }
 
-// Save the state from a JSON string of stock_levels to redis
+/**
+ * Save the state from a JSON string of stock_levels to redis
+ * @param {stockLevelsObj} stock_levels The object with all of the stock levels
+ */
 function saveState (stock_levels) {
   for (const [number, level] of Object.entries(stock_levels)) {
     redisClient.hset('stock_levels', number, level)
   }
 }
 
-// Used to stop unauthenticated clients getting to pages
+/** Used to stop unauthenticated clients getting to pages */
 function checkAuthenticated (req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -181,7 +212,7 @@ function checkAuthenticated (req, res, next) {
   })
 }
 
-// Used to stop authenticated clients getting to pages
+/** Used to stop authenticated clients getting to pages */
 function checkNotAuthenticated (req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -274,7 +305,7 @@ app.post('/users', (req, res) => {
     if (resp) {
       console.log(`Client - ${thisSession} - has entered the correct code`)
       req.session.name = name
-      redisClient.sadd(['authed_ids', thisSession])
+      redisClient.sadd('authed_ids', thisSession)
       redisClient.smembers(thisSession, (err, reply) => {
         if (err) handleError("Couldn't get session members from Redis", err)
         for (const socket of reply) {
@@ -292,7 +323,7 @@ app.post('/users', (req, res) => {
 
 app.get('/logout', (req, res) => {
   const thisSession = req.session.id
-  redisClient.srem(['authed_ids', thisSession])
+  redisClient.srem('authed_ids', thisSession)
   redisClient.smembers(thisSession, (err, reply) => {
     if (err) handleError("Couldn't get session members from Redis", err)
     for (const socket of reply) {
@@ -327,7 +358,7 @@ app.post('/api/stock_levels', (req, res) => {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name || 'API'
       for (const [number, level] of Object.entries(req.body)) {
-        updateSingle(name, number, level)
+        updateSingle(name, Number(number), level)
       }
     }
     res.send(last_table)
@@ -339,7 +370,7 @@ app.post('/api/stock_levels', (req, res) => {
 
 app.post('/api/stock_levels/:number/:level', (req, res) => {
   const name = req.session.name || 'API'
-  const number = req.params.number
+  const number = Number(req.params.number)
   const level = req.params.level
 
   if (ENABLE_API === 'true') {

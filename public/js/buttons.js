@@ -51,11 +51,19 @@ function updateChecked () {
   }
 }
 
+/**
+ * Capture keyboard event
+ * This is only a temporary function while a better solution is implemented
+ * @param {KeyboardEvent} e
+ */
 function keyUp (e) {
+  // If Ctrl+C clear the checks
   if (e.ctrlKey && e.keyCode === 67) {
+    console.log(e)
     localStorage.clear()
     updateChecked()
   }
+  // If Ctrl+A add the CheckedHexData to the URL
   if (e.ctrlKey && e.keyCode === 65) {
     generateCheckedHexURL(true)
   }
