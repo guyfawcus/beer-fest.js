@@ -405,6 +405,15 @@ io.on('connection', socket => {
     io.to(`${socket.id}`).emit('beers', beers)
   }
 
+  if (pathname === 'history') {
+    redisClient.zrange('log', 0, -1, (err, reply) => {
+      if (err) handleError("Couldn't check get log from Redis", err)
+      const history = []
+      reply.forEach(update => history.push(JSON.parse(update)))
+      io.to(`${socket.id}`).emit('update history', history)
+    })
+  }
+
   redisClient.sadd(socket.handshake.session.id, socket.id)
 
   redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {

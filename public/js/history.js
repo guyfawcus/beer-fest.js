@@ -3,7 +3,7 @@
 
 import { setTooltip, socket, setColour } from './core.js'
 
-socket.on('update single', stock_level => {
+function updateHistory (stock_level) {
   console.log(stock_level)
   const div = document.createElement('div')
   div.classList.add('update')
@@ -16,10 +16,19 @@ socket.on('update single', stock_level => {
   setColour(stock_level.number, stock_level.level, div)
 
   document.getElementById('history').prepend(div)
+}
+
+socket.on('update single', stock_level => {
+  updateHistory(stock_level)
 })
 
 socket.on('update table', stock_level => {
   document.getElementById('history').innerHTML = ''
+})
+
+socket.on('update history', history => {
+  document.getElementById('history').innerHTML = ''
+  history.forEach(stock_level => updateHistory(stock_level))
 })
 
 socket.on('beers', beerList => {
