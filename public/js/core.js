@@ -24,6 +24,15 @@ export let BEERS = []
  */
 export let STOCK_LEVELS = {}
 
+/** `true` if you want to hide beers with no information */
+const HIDE_NO_INFORMATION = (localStorage.HIDE_NO_INFORMATION === 'true')
+
+/** `true` if you want to hide non-vegan beers */
+const HIDE_NOT_VEGAN = (localStorage.HIDE_NOT_VEGAN === 'true')
+
+/** `true` if you want to hide non-gluten free beers */
+const HIDE_NOT_GLUTEN_FREE = (localStorage.HIDE_NOT_GLUTEN_FREE === 'true')
+
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(self.location.host)
 
@@ -83,10 +92,16 @@ export function setTooltip (number, element) {
 
 /**
  * Function to change the backgound colour of an element depending on the level.
- * @param {levelValues} level The level that the element is to be changed to
+ * @param {number} number The number to be updated
+ * @param {levelValues} level The level that the element is to be changed to. If this is undefined, the last level will be used
  * @param {HTMLElement} element The element whose background is to be changed
+ * This can't be inferred from the number because this function is used in other places,
+ * namely the history page, where the div doesn't have an ID in the format `button_<number>`
  */
-export function setColour (level, element) {
+export function setColour (number, level, element) {
+  const thisBeer = BEERS[number - 1]
+  if (!level) level = STOCK_LEVELS[number]
+
   if (level === 'empty') {
     element.style.background = 'var(--empty-colour)'
   }
@@ -95,6 +110,18 @@ export function setColour (level, element) {
   }
   if (level === 'full') {
     element.style.background = 'var(--full-colour)'
+  }
+
+  if (HIDE_NO_INFORMATION && !thisBeer) {
+    element.style.background = 'var(--hide-colour)'
+  }
+
+  if (HIDE_NOT_VEGAN && thisBeer && thisBeer.vegan !== 'y') {
+    element.style.background = 'var(--hide-colour)'
+  }
+
+  if (HIDE_NOT_GLUTEN_FREE && thisBeer && thisBeer.gluten_free !== 'y') {
+    element.style.background = 'var(--hide-colour)'
   }
 }
 
@@ -123,7 +150,7 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
       return
     }
   }
-  setColour(level, button)
+  setColour(number, level, button)
   socket.emit('update single', { number: number, level: level })
 }
 
@@ -265,7 +292,7 @@ export function updateNumber (number) {
  */
 export function updateLevel (number, level) {
   const button = document.getElementById(`button_${number}`)
-  setColour(level, button)
+  setColour(number, level, button)
 
   if (level === 'empty') {
     console.log(`Setting ${number} as empty`)

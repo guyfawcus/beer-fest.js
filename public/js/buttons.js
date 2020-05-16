@@ -4,6 +4,7 @@
 import {
   generateCheckedHexURL,
   parseCheckedHexData,
+  setColour,
   setCross,
   setTooltip,
   socket,
@@ -97,5 +98,6 @@ socket.on('beers', beerList => {
   for (let i = 1; i <= 80; i++) {
     const button = document.getElementById(`button_${i}`)
     setTooltip(i, button)
+    setColour(i, undefined, button)
   }
 })

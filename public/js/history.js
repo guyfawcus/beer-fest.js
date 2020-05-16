@@ -13,7 +13,7 @@ socket.on('update single', stock_level => {
                    <div class="level">${stock_level.level}</div>`
 
   setTooltip(stock_level.number, div)
-  setColour(stock_level.level, div)
+  setColour(stock_level.number, stock_level.level, div)
 
   document.getElementById('history').prepend(div)
 })
