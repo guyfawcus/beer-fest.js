@@ -43,7 +43,7 @@ let beers = {}
  * @typedef {object} configObj
  * @property {boolean} confirm
  * @property {boolean} low_enable
-*/
+ */
 
 /** @typedef {import('public/js/core.js').stockLevelsObj} stockLevelsObj */
 /** @typedef {import('public/js/core.js').beersObj} beersObj */
@@ -144,7 +144,7 @@ const handleError = (message, error) => {
  * @param {number} number The number of the beer
  * @param {levelValues} level The level it the beer is being set to
  */
-function updateSingle (name, number, level) {
+function updateSingle(name, number, level) {
   const timeObj = new Date()
   const epochTime = timeObj.getTime()
   const day = timeObj.toLocaleDateString('en-GB', { weekday: 'long' })
@@ -172,7 +172,7 @@ function updateSingle (name, number, level) {
  * @param {string} name The nameof the user
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
  */
-function updateAll (name, stock_levels) {
+function updateAll(name, stock_levels) {
   // Backup log if it exists and set to expire in a week
   redisClient.exists('log', (err, reply) => {
     if (err) handleError("Couldn't check if log exists with Redis", err)
@@ -195,14 +195,14 @@ function updateAll (name, stock_levels) {
  * Save the state from a JSON string of stock_levels to redis
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
  */
-function saveState (stock_levels) {
+function saveState(stock_levels) {
   for (const [number, level] of Object.entries(stock_levels)) {
     redisClient.hset('stock_levels', number, level)
   }
 }
 
 /** Used to stop unauthenticated clients getting to pages */
-function checkAuthenticated (req, res, next) {
+function checkAuthenticated(req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
@@ -213,7 +213,7 @@ function checkAuthenticated (req, res, next) {
 }
 
 /** Used to stop authenticated clients getting to pages */
-function checkNotAuthenticated (req, res, next) {
+function checkNotAuthenticated(req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {

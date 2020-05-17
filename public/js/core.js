@@ -25,13 +25,13 @@ export let BEERS = []
 export let STOCK_LEVELS = {}
 
 /** `true` if you want to hide beers with no information */
-const HIDE_NO_INFORMATION = (localStorage.HIDE_NO_INFORMATION === 'true')
+const HIDE_NO_INFORMATION = localStorage.HIDE_NO_INFORMATION === 'true'
 
 /** `true` if you want to hide non-vegan beers */
-const HIDE_NOT_VEGAN = (localStorage.HIDE_NOT_VEGAN === 'true')
+const HIDE_NOT_VEGAN = localStorage.HIDE_NOT_VEGAN === 'true'
 
 /** `true` if you want to hide non-gluten free beers */
-const HIDE_NOT_GLUTEN_FREE = (localStorage.HIDE_NOT_GLUTEN_FREE === 'true')
+const HIDE_NOT_GLUTEN_FREE = localStorage.HIDE_NOT_GLUTEN_FREE === 'true'
 
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(self.location.host)
@@ -73,7 +73,7 @@ globalThis.tableUpload = tableUpload
  * @param {number} number The number that of the beer - used as an ID to get data from {@link BEERS}
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
-export function setTooltip (number, element) {
+export function setTooltip(number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
     let vegan = ''
@@ -98,7 +98,7 @@ export function setTooltip (number, element) {
  * This can't be inferred from the number because this function is used in other places,
  * namely the history page, where the div doesn't have an ID in the format `button_<number>`
  */
-export function setColour (number, level, element) {
+export function setColour(number, level, element) {
   const thisBeer = BEERS[number - 1]
   if (!level) level = STOCK_LEVELS[number]
 
@@ -135,7 +135,7 @@ export function setColour (number, level, element) {
  * @param {levelValues} level The level that the number will be set to
  * @param {boolean} [to_confirm = TO_CONFIRM] If set to `true`, a pop-up will appear asking the user to confirm the action
  */
-function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
+function confirmUpdate(number, level, to_confirm = TO_CONFIRM) {
   const button = document.getElementById(`button_${number}`)
 
   if (to_confirm) {
@@ -159,7 +159,7 @@ function confirmUpdate (number, level, to_confirm = TO_CONFIRM) {
  * @param {number} number The number to set or remove the cross on
  * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
  */
-export function setCross (number, checked = true) {
+export function setCross(number, checked = true) {
   const button = document.getElementById(`button_${number}`)
   const cross = button.getElementsByClassName('cross')[0]
 
@@ -179,7 +179,7 @@ export function setCross (number, checked = true) {
  * It returns the the array formatted as base-16 hex so that it can be used in a URL.
  * @returns {string} hex formatted string
  */
-function generateCheckedHexData () {
+function generateCheckedHexData() {
   const checkedData = new Uint8Array(10)
   let byteNum = 0
   let bitNum = 0
@@ -188,7 +188,7 @@ function generateCheckedHexData () {
     const checked = localStorage.getItem(number.toString())
 
     // Set the bit if the number is checked
-    if (checked) checkedData[byteNum] |= 1 << 7 - bitNum
+    if (checked) checkedData[byteNum] |= 1 << (7 - bitNum)
 
     if (number % 8 === 0) {
       byteNum += 1
@@ -208,7 +208,7 @@ function generateCheckedHexData () {
  * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
-export function generateCheckedHexURL (updateURL = false) {
+export function generateCheckedHexURL(updateURL = false) {
   const checkedHexData = generateCheckedHexData()
   const url = new URL(window.location.href)
   url.searchParams.set('checked', checkedHexData)
@@ -221,7 +221,7 @@ export function generateCheckedHexURL (updateURL = false) {
  * @param {string} checkedHexData A hex formatted string containg the checked data
  * @returns {number[] | undefined} A list of all of the numbers that are checked
  */
-export function parseCheckedHexData (checkedHexData) {
+export function parseCheckedHexData(checkedHexData) {
   // Make sure the input is the right length 10 bytes (20 nibbles)
   if (!checkedHexData) {
     return
@@ -229,7 +229,11 @@ export function parseCheckedHexData (checkedHexData) {
     console.debug(`Padding checkedHexData (${checkedHexData}) with ${20 - checkedHexData.length} nibble(s)`)
     checkedHexData = checkedHexData.padEnd(20, '0')
   } else if (checkedHexData.length > 20) {
-    console.debug(`Trimming ${checkedHexData.length - 20} nibble(s) from checkedHexData (${checkedHexData.slice(checkedHexData.length - 20)})`)
+    console.debug(
+      `Trimming ${checkedHexData.length - 20} nibble(s) from checkedHexData (${checkedHexData.slice(
+        checkedHexData.length - 20
+      )})`
+    )
     checkedHexData = checkedHexData.slice(0, 20)
   }
 
@@ -239,10 +243,10 @@ export function parseCheckedHexData (checkedHexData) {
   // Loop over all of the bits in each byte
   for (let byteNum = 0; byteNum < checkedData.length; byteNum++) {
     for (let bitNum = 0; bitNum < 8; bitNum++) {
-      const overallBitNum = (byteNum * 8 + bitNum) + 1
+      const overallBitNum = byteNum * 8 + bitNum + 1
 
       // If the bit is set it means that the number is checked
-      if ((checkedData[byteNum] & 1 << 7 - bitNum) !== 0) {
+      if ((checkedData[byteNum] & (1 << (7 - bitNum))) !== 0) {
         numbersChecked.push(overallBitNum)
         setCross(overallBitNum)
       } else {
@@ -258,7 +262,7 @@ export function parseCheckedHexData (checkedHexData) {
  * If not, then the number will be checked off (a cross will be added / removed using {@link setCross}
  * @param {number} number The number to update the level of / set the cross
  */
-export function updateNumber (number) {
+export function updateNumber(number) {
   if (!AUTHORISED) {
     // If the number has a cross on it already, remove it. Otherwise, set it.
     const button = document.getElementById(`button_${number}`)
@@ -290,7 +294,7 @@ export function updateNumber (number) {
  * @param {number} number The button number to update
  * @param {levelValues} level The level to set
  */
-export function updateLevel (number, level) {
+export function updateLevel(number, level) {
   const button = document.getElementById(`button_${number}`)
   setColour(number, level, button)
 
@@ -310,7 +314,7 @@ export function updateLevel (number, level) {
  * Update the table based on remote changes to the stock levels
  * @param {stockLevelsObj} stock_levels
  */
-export function updateFromState (stock_levels) {
+export function updateFromState(stock_levels) {
   console.log('%cUpdating table from:', 'font-weight:bold;')
   console.log(stock_levels)
   for (const number in stock_levels) {
@@ -331,7 +335,7 @@ export function updateFromState (stock_levels) {
  * Set every beer as empty, low or full
  * @param {levelValues} level
  */
-export function updateAllAs (level) {
+export function updateAllAs(level) {
   if (!AUTHORISED) return
   if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
@@ -349,7 +353,7 @@ export function updateAllAs (level) {
  * This creates a hidden element that pops up an upload dialog that allows
  * sending the a previous state to the server for distribution
  */
-export function tableUpload () {
+export function tableUpload() {
   if (!AUTHORISED) return
   const input_element = document.createElement('input')
   input_element.type = 'file'
@@ -392,7 +396,7 @@ export function tableUpload () {
  * This is used by {@link tableUpload} to only update the beers that are different from the current state
  * @param {stockLevelsObj} table
  */
-function updateRequired (table) {
+function updateRequired(table) {
   for (const [number, level] of Object.entries(table)) {
     if (level !== STOCK_LEVELS[number]) {
       console.log(`Setting ${number} as ${level}`)

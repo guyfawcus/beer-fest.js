@@ -41,7 +41,7 @@ for (let number = 1; number <= 80; number++) {
   button.appendChild(cross)
 }
 
-function updateChecked () {
+function updateChecked() {
   for (let number = 1; number <= 80; number++) {
     const checkedState = localStorage.getItem(number.toString())
     if (checkedState === 'checked') {
@@ -57,7 +57,7 @@ function updateChecked () {
  * This is only a temporary function while a better solution is implemented
  * @param {KeyboardEvent} e
  */
-function keyUp (e) {
+function keyUp(e) {
   // If Ctrl+C clear the checks
   if (e.ctrlKey && e.keyCode === 67) {
     console.log(e)

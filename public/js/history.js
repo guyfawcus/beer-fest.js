@@ -3,7 +3,7 @@
 
 import { setTooltip, socket, setColour } from './core.js'
 
-function updateHistory (stock_level) {
+function updateHistory(stock_level) {
   console.log(stock_level)
   const div = document.createElement('div')
   div.classList.add('update')
