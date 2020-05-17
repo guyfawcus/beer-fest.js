@@ -4,7 +4,8 @@
   "description": "Web app to display ale availability at the ACBF",
   "main": "server.js",
   "scripts": {
-    "pretest": "eslint --ignore-path .gitignore .",
+    "eslint": "eslint --ignore-path .gitignore .",
+    "pretest": "npm run eslint",
     "test": "",
     "doc": "jsdoc -c jsdoc.json",
     "type-check": "tsc"
@@ -50,6 +51,15 @@
     "hooks": {
       "pre-commit": "npm run test",
       "pre-push": "npm run test"
+    }
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "parserOptions": {
+      "ecmaVersion": 2020
+    },
+    "rules": {
+      "camelcase": "off"
     }
   }
 }
