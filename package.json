@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "eslint": "eslint --ignore-path .gitignore .",
-    "pretest": "npm run eslint",
+    "prettier": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.css' '**/*.md'",
+    "pretest": "npm run prettier && npm run eslint",
     "test": "",
     "doc": "jsdoc -c jsdoc.json",
     "type-check": "tsc"
@@ -52,6 +53,13 @@
       "pre-commit": "npm run test",
       "pre-push": "npm run test"
     }
+  },
+  "prettier": {
+    "arrowParens": "avoid",
+    "printWidth": 120,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
   },
   "eslintConfig": {
     "extends": "standard",
