@@ -1,38 +1,38 @@
-Walkthrough
-========
+# Walkthrough
+
 This document will walk you through every page and describe their functionality.
 
-Homepage
---------
+## Homepage
+
 <img src="/docs/images/homepage.png" width="384">
 
-* **Log in** - Required to access the settings page and to edit the availability of the beers
-* **Settings** - Various admin functions related to updating the state of the beers
-* **Downloads** - Various files releated to the festival like the list of beers
-* **Availability** - Displayes the availability of all of the beers
-* **Slideshow** - Displays the availability page among other slides in a loop
-* **History** - Displays a list of recent changes
+- **Log in** - Required to access the settings page and to edit the availability of the beers
+- **Settings** - Various admin functions related to updating the state of the beers
+- **Downloads** - Various files releated to the festival like the list of beers
+- **Availability** - Displayes the availability of all of the beers
+- **Slideshow** - Displays the availability page among other slides in a loop
+- **History** - Displays a list of recent changes
 
-Login
-------
+## Login
+
 <img src="/docs/images/login.png" width="384">
 
-Settings
---------
+## Settings
+
 <img src="/docs/images/settings.png" width="384">
 
-Downloads
----------
+## Downloads
+
 <img src="/docs/images/downloads.png" width="384">
 
-Availability
-------------
+## Availability
+
 <img src="/docs/images/availability.png" width="384">
 
-Slideshow
----------
+## Slideshow
+
 <img src="/docs/images/slideshow.png" width="384">
 
-History
--------
+## History
+
 <img src="/docs/images/history.png" width="384">
