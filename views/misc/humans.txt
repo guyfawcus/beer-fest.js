@@ -9,9 +9,10 @@ Location: Hertfordshire, United Kingdom
 /* THANKS */
 Dev Ed - https://www.youtube.com/channel/UClb90NQQcskPUGDIXsQEz5Q
 Web Dev Simplified - https://www.youtube.com/channel/UCFbNIlppjAuEX4znoulh0Cw
+@Okewood - For pointers along the way!
 
 /* SITE */
-Last update: 2020/04/18
+Last update: 2020/05/18
 Standards: HTML5, CSS3
 Components: Node.js with express, socket.io, reveal.js, redis, bcrypt and more
 Software: Visual Studio Code
