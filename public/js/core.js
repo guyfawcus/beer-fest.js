@@ -164,6 +164,18 @@ export function setCross(number, checked = true) {
 }
 
 /**
+ * This simple wrapper function just runs
+ * {@link setTooltip} and {@link setColour} every button.
+ */
+export function rereshButtons() {
+  for (let i = 1; i <= 80; i++) {
+    const button = document.getElementById(`button_${i}`)
+    setTooltip(i, button)
+    setColour(i, undefined, button)
+  }
+}
+
+/**
  * This loops over all of the entries in local storage see what numbers are checked.
  * It then makes an array of Uint8 bytes where each bit represents the checked state of a number,
  * for example, if the first byte was `0b01001011` (`0x4a`) then numbers 2, 5, 7 and 8 are checked.
