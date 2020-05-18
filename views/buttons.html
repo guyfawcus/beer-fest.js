@@ -21,8 +21,29 @@
         </div>
       </div>
     </noscript>
+    <div class="popup-background" id="popup-background"></div>
+    <div class="popup-menu" id="popup-menu">
+      <div id="check-share">
+        Share your checks with:
+        <a id="check-share-url" href="http://127.0.0.1:8000/availability?checked=">this link</a>
+      </div>
+      <div class="button" id="clear-checks" title="Clear check marks">Clear checks</div>
+      <div class="checkbox" title="Hide beers with no infomation">
+        <input type="checkbox" id="info_check" />
+      </div>
+      <div class="checkbox-label"><label for="info_check">Hide beers with no infomation</label></div>
+      <div class="checkbox" title="Hide non-vegan beers">
+        <input type="checkbox" id="vegan_check" />
+      </div>
+      <div class="checkbox-label"><label for="vegan_check">Hide non-vegan beers</label></div>
+      <div class="checkbox" title="Hide non-gluten free beers">
+        <input type="checkbox" id="gluten_free_check" />
+      </div>
+      <div class="checkbox-label"><label for="gluten_free_check">Hide non-gluten free beers</label></div>
+    </div>
+
     <section class="grid">
-      <div class="buttons_header"><h1>ACBF 2020 Ale Availability</h1></div>
+      <div class="buttons_header" id="buttons_header"><h1>ACBF 2020 Ale Availability</h1></div>
       <div class="availability_button" id="button_1" onclick="updateNumber(1)">1</div>
       <div class="availability_button" id="button_2" onclick="updateNumber(2)">2</div>
       <div class="availability_button" id="button_3" onclick="updateNumber(3)">3</div>

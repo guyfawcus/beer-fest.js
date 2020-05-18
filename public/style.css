@@ -356,6 +356,75 @@ input[type='checkbox']:hover {
   stroke-dashoffset: 0;
 }
 
+/* ------------ */
+/*  Menu        */
+/* ------------ */
+.buttons_header {
+  cursor: context-menu;
+}
+.popup-background {
+  display: none;
+  background-color: var(--noscript-background);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 900;
+}
+
+.popup-menu {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  left: 50%;
+  width: 180px;
+  transform: translate(-50%, -50%);
+  background-color: var(--main-shade-colour);
+  border: 2px solid var(--shadow-colour);
+  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  padding: 20px;
+  z-index: 901;
+}
+
+.popup-background.show {
+  display: unset;
+}
+
+.popup-menu.show {
+  display: flex;
+}
+
+.checkbox {
+  padding-top: 15px;
+}
+
+.checkbox-label {
+  padding-top: 2px;
+  padding-bottom: 15px;
+  font-size: 1.2em;
+}
+
+#check-share {
+  padding-top: 2px;
+  padding-bottom: 15px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+#check-share-url:link {
+  color: var(--default-link-colour);
+}
+#check-share-url:visited {
+  color: var(--default-visited-colour);
+}
+
+#clear-checks {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 /* -------------------------------- */
 /* Login                            */
 /* -------------------------------- */

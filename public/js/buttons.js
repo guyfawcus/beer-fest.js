@@ -96,3 +96,77 @@ socket.on('update single', stock_level => {
 socket.on('beers', beerList => {
   rereshButtons()
 })
+
+const info_checkbox = document.getElementById('info_check')
+const vegan_checkbox = document.getElementById('vegan_check')
+const gluten_free_checkbox = document.getElementById('gluten_free_check')
+
+// Get previous option states
+if (localStorage.getItem('HIDE_NO_INFORMATION') === 'true') {
+  info_checkbox.checked = true
+} else {
+  info_checkbox.checked = false
+}
+if (localStorage.getItem('HIDE_NOT_VEGAN') === 'true') {
+  vegan_checkbox.checked = true
+} else {
+  vegan_checkbox.checked = false
+}
+if (localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true') {
+  gluten_free_checkbox.checked = true
+} else {
+  gluten_free_checkbox.checked = false
+}
+
+// Add event listeners for options
+info_checkbox.addEventListener('change', event => {
+  if (event.target.checked) {
+    localStorage.setItem('HIDE_NO_INFORMATION', 'true')
+    rereshButtons()
+  } else {
+    localStorage.removeItem('HIDE_NO_INFORMATION')
+    rereshButtons()
+  }
+})
+vegan_checkbox.addEventListener('change', event => {
+  if (event.target.checked) {
+    localStorage.setItem('HIDE_NOT_VEGAN', 'true')
+    rereshButtons()
+  } else {
+    localStorage.removeItem('HIDE_NOT_VEGAN')
+    rereshButtons()
+  }
+})
+gluten_free_checkbox.addEventListener('change', event => {
+  if (event.target.checked) {
+    localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'true')
+    rereshButtons()
+  } else {
+    localStorage.removeItem('HIDE_NOT_GLUTEN_FREE')
+    rereshButtons()
+  }
+})
+
+// Show menu
+document.getElementById('buttons_header').addEventListener('click', () => {
+  // Update check share URL
+  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
+  document.getElementById('popup-background').classList.add('show')
+  document.getElementById('popup-menu').classList.add('show')
+})
+
+// Hide menu
+document.addEventListener('click', () => {
+  if (!event.target.closest('#popup-menu') && !event.target.closest('#buttons_header')) {
+    document.getElementById('popup-background').classList.remove('show')
+    document.getElementById('popup-menu').classList.remove('show')
+  }
+})
+
+// Clear checks
+document.getElementById('clear-checks').addEventListener('click', event => {
+  if (!confirm('Are you sure you want to clear all of your check marks?')) return
+  localStorage.clear()
+  updateChecked()
+  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
+})
