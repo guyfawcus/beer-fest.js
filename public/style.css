@@ -298,7 +298,6 @@ input[type='checkbox']:hover {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  transition: all 150ms;
   z-index: 1;
   will-change: transform;
 }
