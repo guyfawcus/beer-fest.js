@@ -24,15 +24,6 @@ export let BEERS = []
  */
 export let STOCK_LEVELS = {}
 
-/** `true` if you want to hide beers with no information */
-const HIDE_NO_INFORMATION = localStorage.HIDE_NO_INFORMATION === 'true'
-
-/** `true` if you want to hide non-vegan beers */
-const HIDE_NOT_VEGAN = localStorage.HIDE_NOT_VEGAN === 'true'
-
-/** `true` if you want to hide non-gluten free beers */
-const HIDE_NOT_GLUTEN_FREE = localStorage.HIDE_NOT_GLUTEN_FREE === 'true'
-
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(self.location.host)
 
@@ -112,15 +103,15 @@ export function setColour(number, level, element) {
     element.style.background = 'var(--full-colour)'
   }
 
-  if (HIDE_NO_INFORMATION && !thisBeer) {
+  if (localStorage.HIDE_NO_INFORMATION === 'true' && !thisBeer) {
     element.style.background = 'var(--hide-colour)'
   }
 
-  if (HIDE_NOT_VEGAN && thisBeer && thisBeer.vegan !== 'y') {
+  if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
     element.style.background = 'var(--hide-colour)'
   }
 
-  if (HIDE_NOT_GLUTEN_FREE && thisBeer && thisBeer.gluten_free !== 'y') {
+  if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
     element.style.background = 'var(--hide-colour)'
   }
 }
