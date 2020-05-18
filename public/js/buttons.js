@@ -51,24 +51,6 @@ function updateChecked() {
   }
 }
 
-/**
- * Capture keyboard event
- * This is only a temporary function while a better solution is implemented
- * @param {KeyboardEvent} e
- */
-function keyUp(e) {
-  // If Ctrl+C clear the checks
-  if (e.ctrlKey && e.keyCode === 67) {
-    console.log(e)
-    localStorage.clear()
-    updateChecked()
-  }
-  // If Ctrl+A add the CheckedHexData to the URL
-  if (e.ctrlKey && e.keyCode === 65) {
-    generateCheckedHexURL(true)
-  }
-}
-
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
 const checkedHexData = new URL(window.location.href).searchParams.get('checked')
 if (checkedHexData) {
@@ -79,8 +61,6 @@ if (checkedHexData) {
 } else {
   updateChecked()
 }
-
-document.addEventListener('keyup', keyUp, false)
 
 // Update the state when remotes send updates
 socket.on('update table', table => {
