@@ -146,7 +146,7 @@ document.addEventListener('click', () => {
 // Clear checks
 document.getElementById('clear-checks').addEventListener('click', event => {
   if (!confirm('Are you sure you want to clear all of your check marks?')) return
-  localStorage.clear()
+  for (let number = 1; number <= 80; number++) localStorage.removeItem(number)
   updateChecked()
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
 })
