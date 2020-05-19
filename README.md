@@ -83,24 +83,4 @@ then this is by far the best option.
 
 There are of course a load of different variations of the above and it really depends on what you want from this system as to the best way to implement it.
 The easiest option will pretty much always be using _The internet way_ and getting myself (@guyfawcus / Chesney) to confugure it.
-This software is all open source though so if you're brave enough to go it alone...
-
----
-
-## Installation
-
-1. Install [Node.js](https://nodejs.org/)
-2. Install and run [Redis](https://redis.io/download)
-3. `git clone https://github.com/guyfawcus/beer-fest.git`
-4. `cd beer-fest`
-5. `npm install`
-6. `node server.js`
-7. Open [127.0.0.1:8000](http://127.0.0.1:8000/) in an up-to-date browser
-
-### Environment variables
-
-- `ADMIN_CODE`- A bcrypt hashed password (take a look at [/utils/codegen.js](/utils/codegen.js))
-- `COOKIE_SECRET` - A random string (take a look at [/utils/codegen.js](/utils/codegen.js))
-- `ENABLE_API` - `true` or `false` depending on whether you want to enable the API POST endpoints or not
-- `NODE_ENV` - set to `production` if deployed
-- `REDIS_URL`- the `redis://` URL
+This software is all open source though so if you're brave enough to go it alone, take a look at the [development instructions](/docs/development.md).

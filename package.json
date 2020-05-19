@@ -8,7 +8,7 @@
     "prettier": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.css' '**/*.md'",
     "pretest": "npm run prettier && npm run eslint",
     "test": "",
-    "doc": "jsdoc -c jsdoc.json",
+    "docs": "jsdoc -c jsdoc.json",
     "type-check": "tsc"
   },
   "author": "guyfawcus",
