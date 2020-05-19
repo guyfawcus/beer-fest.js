@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <title>ACBF Bridge</title>
+    <link href="style.css" type="text/css" rel="stylesheet" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script type="module" src="js/bridge.js"></script>
+  </head>
+  <body>
+    <h1 style="text-align: center;">QLC+ Bridge</h1>
+    <div class="noscript__content">
+      This page listens to socket events from the beer-fest.js server just as any other client would, it then translates
+      those messages to native websockets messages for QLC+.<br /><br />
+      To use this bridge, open <a href="https://qlcplus.org/">QLC+.</a> with the
+      <a href="https://qlcplus.org/docs/html_en_EN/webinterface.html">web interface</a> enabled by running
+      <text style="font-family: monospace;">qlcplus -w</text>, load up <a href="downloads/qlcplus.qxw">qlcplus.qxw</a>,
+      then refresh this page. <br /><br />
+      Have a look at the JavaScript <a href="js/bridge.js">source code for this page</a> to see how it works.
+    </div>
+  </body>
+</html>
