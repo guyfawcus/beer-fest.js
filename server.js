@@ -256,6 +256,10 @@ app.get('/downloads', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/downloads.html'))
 })
 
+app.get('/bridge', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/bridge.html'))
+})
+
 // Other routes
 app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/misc/robots.txt'))

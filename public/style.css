@@ -144,15 +144,16 @@ input[type='checkbox']:hover {
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 20px;
+  text-align: center;
 }
 
-.noscript a:link {
+.noscript__content a:link {
   color: var(--default-link-colour);
 }
-.noscript a:visited {
+.noscript__content a:visited {
   color: var(--default-visited-colour);
 }
-.noscript ::selection {
+.noscript__content ::selection {
   background-color: var(--default-selection-colour);
 }
 
