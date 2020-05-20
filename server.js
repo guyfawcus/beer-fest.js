@@ -8,6 +8,7 @@ const path = require('path')
 const bcrypt = require('bcryptjs')
 const csv = require('csvtojson')
 const express = require('express')
+const express_enforces_ssl = require('express-enforces-ssl')
 const flash = require('express-flash')
 const helmet = require('helmet')
 const session = require('express-session')
@@ -17,6 +18,7 @@ const redis = require('redis')
 const ADMIN_CODE = process.env.ADMIN_CODE || ''
 const COOKIE_SECRET = process.env.COOKIE_SECRET || '8OarM0c9KnkjM8ucDorbFTU3ssST4VIx'
 const ENABLE_API = process.env.ENABLE_API || 'false'
+const NODE_ENV = process.env.NODE_ENV || ''
 const REDIS_URL = process.env.REDIS_URL || ''
 const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
 
@@ -71,6 +73,9 @@ const redisSession = session({
 
 io.use(sharedsession(redisSession))
 app.set('view-engine', 'ejs')
+app.enable('trust proxy')
+
+if (NODE_ENV === 'production') app.use(express_enforces_ssl())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
