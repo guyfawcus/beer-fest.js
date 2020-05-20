@@ -1,2 +1,3 @@
+Sitemap: https://acbf-2020.herokuapp.com/sitemap.xml
 User-agent: *
 Disallow: /
