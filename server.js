@@ -270,6 +270,10 @@ app.get('/robots.txt', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/misc/robots.txt'))
 })
 
+app.get('/manifest.json', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/misc/manifest.json'))
+})
+
 app.get('/sitemap.xml', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/misc/sitemap.xml'))
 })
