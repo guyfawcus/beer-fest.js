@@ -137,13 +137,16 @@ input[type='checkbox']:hover {
 .noscript__content {
   display: block;
   position: absolute;
-  top: 25%;
+  /* From the top, down the height of the title and half of a button */
+  top: calc(119px + 60px);
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
+  transform: translate(-50%, 20%) scale(1.4);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
-  padding: 20px;
+  padding: 2rem;
+  padding-top: 0rem;
   text-align: center;
 }
 
@@ -378,10 +381,12 @@ input[type='checkbox']:hover {
   align-items: center;
   position: absolute;
   text-align: center;
-  top: 40%;
+  /* From the top, down the height of the title and half of a button */
+  top: calc(119px + 60px);
   left: 50%;
   width: 180px;
-  transform: translate(-50%, -50%);
+  /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
+  transform: translate(-50%, 20%) scale(1.4);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
