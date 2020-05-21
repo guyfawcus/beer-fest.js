@@ -55,6 +55,26 @@ let beers = {}
 // Security
 // ---------------------------------------------------------------------------
 app.use(helmet())
+app.use(
+  helmet.contentSecurityPolicy({
+    directives: {
+      reportUri: '/report-violation'
+    }
+  })
+)
+
+const cspParser = express.json({
+  type: ['json', 'application/csp-report']
+})
+
+app.post('/report-violation', cspParser, (req, res) => {
+  if (req.body) {
+    console.log('CSP Violation: ', req.body)
+  } else {
+    console.log('CSP Violation: No data received!')
+  }
+  res.status(204).end()
+})
 
 // ---------------------------------------------------------------------------
 // Configuration
