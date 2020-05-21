@@ -58,6 +58,14 @@ app.use(helmet())
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
+      defaultSrc: ["'none'"],
+      connectSrc: ["'self'", 'ws:'],
+      fontSrc: ["'self'"],
+      frameSrc: ["'self'"],
+      imgSrc: ["'self'"],
+      manifestSrc: ["'self'"],
+      scriptSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
       reportUri: '/report-violation'
     }
   })
