@@ -80,7 +80,7 @@ app.use(
       frameSrc: ["'self'"],
       imgSrc: ["'self'"],
       manifestSrc: ["'self'"],
-      scriptSrc: ["'self'", "'unsafe-inline'"],
+      scriptSrc: ["'self'"],
       styleSrc: ["'self'", "'unsafe-inline'"],
       reportUri: '/report-violation'
     }
@@ -92,6 +92,14 @@ const cspParser = express.json({
 })
 
 app.post('/report-violation', cspParser, (req, res) => {
+  const srcFile = (req.body['csp-report'] && req.body['csp-report']['source-file']) || ''
+
+  // Ignore violations because of onloadwff.js, it's a LastPass thing that can be ignored
+  if (srcFile.includes('onloadwff.js')) {
+    res.status(204).end()
+    return
+  }
+
   if (req.body) {
     console.log('CSP Violation: ', req.body)
   } else {
