@@ -76,6 +76,10 @@ h1 {
   font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
 }
 
+h2 {
+  margin: 0em;
+}
+
 ::selection {
   background-color: transparent;
 }
@@ -146,7 +150,6 @@ input[type='checkbox']:hover {
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 2rem;
-  padding-top: 0rem;
   text-align: center;
 }
 
@@ -281,6 +284,10 @@ input[type='checkbox']:hover {
 .settings_container,
 .grid {
   animation: load-animation 500ms;
+}
+
+.container_header {
+  margin: 0.25em;
 }
 
 .settings_utils,
