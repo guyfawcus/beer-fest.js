@@ -55,6 +55,7 @@ let beers = {}
 // Security
 // ---------------------------------------------------------------------------
 app.use(helmet())
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
