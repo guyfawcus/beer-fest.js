@@ -27,10 +27,6 @@ export let STOCK_LEVELS = {}
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(self.location.host)
 
-globalThis.updateNumber = updateNumber
-globalThis.updateAllAs = updateAllAs
-globalThis.tableUpload = tableUpload
-
 // ---------------------------------------------------------------------------
 // Type definitions
 // ---------------------------------------------------------------------------

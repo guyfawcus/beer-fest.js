@@ -19,13 +19,13 @@
     <div class="settings_container">
       <div class="settings_header"><h1>ACBF Settings</h1></div>
       <div class="settings_utils">
-        <div class="button" onclick="tableUpload()" title="Upload a previous state">Upload</div>
+        <div class="button" id="uploadButton" title="Upload a previous state">Upload</div>
         <a class="button" href="/api/stock_levels" title="Download the current state" download="state.json">Download</a>
       </div>
       <div class="settings_options">
-        <div class="button" onclick="updateAllAs('full')" title="Mark everything as full">Fill</div>
-        <div class="button" onclick="updateAllAs('low')" title="Mark everything as low">Low</div>
-        <div class="button" onclick="updateAllAs('empty')" title="Mark everything as empty">Empty</div>
+        <div class="button" id="fullButton" title="Mark everything as full">Fill</div>
+        <div class="button" id="lowButton" title="Mark everything as low">Low</div>
+        <div class="button" id="emptyButton" title="Mark everything as empty">Empty</div>
       </div>
       <div class="settings_checkboxes">
         <div class="checkbox" title="Enable/disable the confirmation checks">
