@@ -52,6 +52,11 @@ let beers = {}
 /** @typedef {import('public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
+// Security
+// ---------------------------------------------------------------------------
+app.use(helmet())
+
+// ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
 
@@ -80,7 +85,6 @@ if (NODE_ENV === 'production') app.use(express_enforces_ssl())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(flash())
-app.use(helmet())
 app.use(redisSession)
 
 // Start the server
