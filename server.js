@@ -57,6 +57,21 @@ let beers = {}
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(
+  helmet.featurePolicy({
+    features: {
+      accelerometer: ["'none'"],
+      ambientLightSensor: ["'none'"],
+      camera: ["'none'"],
+      geolocation: ["'none'"],
+      gyroscope: ["'none'"],
+      magnetometer: ["'none'"],
+      microphone: ["'none'"],
+      serial: ["'none'"],
+      usb: ["'none'"]
+    }
+  })
+)
+app.use(
   helmet.contentSecurityPolicy({
     directives: {
       defaultSrc: ["'none'"],
