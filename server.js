@@ -54,6 +54,8 @@ let beers = {}
 // ---------------------------------------------------------------------------
 // Security
 // ---------------------------------------------------------------------------
+if (NODE_ENV === 'production') app.use(express_enforces_ssl())
+
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(
@@ -132,8 +134,6 @@ const redisSession = session({
 io.use(sharedsession(redisSession))
 app.set('view-engine', 'ejs')
 app.enable('trust proxy')
-
-if (NODE_ENV === 'production') app.use(express_enforces_ssl())
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
