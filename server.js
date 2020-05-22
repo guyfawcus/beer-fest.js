@@ -122,6 +122,7 @@ csv()
 
 // Set up server
 const redisSession = session({
+  cookie: { sameSite: 'strict' },
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
   resave: false,
