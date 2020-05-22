@@ -17,6 +17,9 @@
     "type": "git",
     "url": "https://github.com/guyfawcus/beer-fest.js.git"
   },
+  "engines": {
+    "node": "^12.x"
+  },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "connect-redis": "^4.0.4",
