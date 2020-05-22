@@ -71,6 +71,7 @@ body {
 }
 
 h1 {
+  text-align: center;
   font-size: 48px;
   color: var(--button-bg-colour);
   font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
@@ -288,6 +289,14 @@ input[type='checkbox']:hover {
 
 .container_header {
   margin: 0.25em;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.code {
+  font-family: monospace;
 }
 
 .settings_utils,

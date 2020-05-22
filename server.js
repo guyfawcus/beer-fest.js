@@ -81,7 +81,7 @@ app.use(
       imgSrc: ["'self'"],
       manifestSrc: ["'self'"],
       scriptSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
+      styleSrc: ["'self'"],
       reportUri: '/report-violation'
     }
   })
