@@ -166,8 +166,12 @@ export function setCross(number, checked = true) {
 export function rereshButtons() {
   for (let i = 1; i <= 80; i++) {
     const button = document.getElementById(`button_${i}`)
+    // Deactivate transitions because transitioning everything causes jank on mobile
+    button.style.transition = 'none'
     setTooltip(i, button)
     setColour(i, undefined, button)
+    // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
+    setTimeout(() => (button.style.transition = 'all 150ms'), 0)
   }
 }
 

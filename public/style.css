@@ -326,6 +326,7 @@ input[type='checkbox']:hover {
   align-items: center;
   z-index: 1;
   will-change: transform;
+  transition: all 150ms;
 }
 
 .availability_button:hover,
