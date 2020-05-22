@@ -145,13 +145,19 @@ input[type='checkbox']:hover {
   /* From the top, down the height of the title and half of a button */
   top: calc(119px + 60px);
   left: 50%;
-  /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
-  transform: translate(-50%, 20%) scale(1.4);
+  transform: translate(-50%);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 2rem;
   text-align: center;
+}
+
+@media (orientation: portrait) {
+  .noscript__content {
+    /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
+    transform: translate(-50%, 50%) scale(2);
+  }
 }
 
 .noscript__content a:link {
@@ -401,13 +407,19 @@ input[type='checkbox']:hover {
   top: calc(119px + 60px);
   left: 50%;
   width: 180px;
-  /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
-  transform: translate(-50%, 20%) scale(1.4);
+  transform: translate(-50%);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 20px;
   z-index: 901;
+}
+
+@media (orientation: portrait) {
+  .popup-menu {
+    /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
+    transform: translate(-50%, 20%) scale(1.4);
+  }
 }
 
 .popup-background.show {
