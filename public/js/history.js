@@ -18,22 +18,22 @@ function updateHistory(stock_level) {
   document.getElementById('history').prepend(div)
 }
 
-socket.on('update single', stock_level => {
+socket.on('update single', (stock_level) => {
   updateHistory(stock_level)
 })
 
-socket.on('update table', stock_level => {
+socket.on('update table', (stock_level) => {
   document.getElementById('history').innerHTML = ''
 })
 
-socket.on('update history', history => {
+socket.on('update history', (history) => {
   document.getElementById('history').innerHTML = ''
-  history.forEach(stock_level => updateHistory(stock_level))
+  history.forEach((stock_level) => updateHistory(stock_level))
 })
 
-socket.on('beers', beerList => {
+socket.on('beers', (beerList) => {
   // Update the existing entries' tooltips with the new information
-  document.querySelectorAll('.update').forEach(element => {
+  document.querySelectorAll('.update').forEach((element) => {
     setTooltip(Number(element.getElementsByClassName('number')[0].textContent), element)
   })
 })

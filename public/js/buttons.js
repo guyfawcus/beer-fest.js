@@ -15,7 +15,7 @@ import {
 for (let number = 1; number <= 80; number++) {
   const button = document.getElementById(`button_${number}`)
 
-  button.addEventListener('click', event => updateNumber(number))
+  button.addEventListener('click', (event) => updateNumber(number))
 
   const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
@@ -66,17 +66,17 @@ if (checkedHexData) {
 }
 
 // Update the state when remotes send updates
-socket.on('update table', table => {
+socket.on('update table', (table) => {
   console.groupCollapsed('Updating all entities')
   updateFromState(table)
   console.groupEnd()
 })
 
-socket.on('update single', stock_level => {
+socket.on('update single', (stock_level) => {
   updateLevel(stock_level.number, stock_level.level)
 })
 
-socket.on('beers', beerList => {
+socket.on('beers', (beerList) => {
   rereshButtons()
 })
 
@@ -102,7 +102,7 @@ if (localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true') {
 }
 
 // Add event listeners for options
-info_checkbox.addEventListener('change', event => {
+info_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NO_INFORMATION', 'true')
     rereshButtons()
@@ -111,7 +111,7 @@ info_checkbox.addEventListener('change', event => {
     rereshButtons()
   }
 })
-vegan_checkbox.addEventListener('change', event => {
+vegan_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NOT_VEGAN', 'true')
     rereshButtons()
@@ -120,7 +120,7 @@ vegan_checkbox.addEventListener('change', event => {
     rereshButtons()
   }
 })
-gluten_free_checkbox.addEventListener('change', event => {
+gluten_free_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'true')
     rereshButtons()
@@ -147,7 +147,7 @@ document.addEventListener('click', () => {
 })
 
 // Clear checks
-document.getElementById('clear-checks').addEventListener('click', event => {
+document.getElementById('clear-checks').addEventListener('click', (event) => {
   if (!confirm('Are you sure you want to clear all of your check marks?')) return
   for (let number = 1; number <= 80; number++) localStorage.removeItem(number)
   updateChecked()

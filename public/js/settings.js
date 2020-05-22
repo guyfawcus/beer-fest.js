@@ -10,12 +10,12 @@ const emptyButton = document.getElementById('emptyButton')
 const confirm_checkbox = document.getElementById('confirm_check')
 const low_checkbox = document.getElementById('low_check')
 
-uploadButton.addEventListener('click', event => tableUpload())
-fullButton.addEventListener('click', event => updateAllAs('full'))
-lowButton.addEventListener('click', event => updateAllAs('low'))
-emptyButton.addEventListener('click', event => updateAllAs('empty'))
+uploadButton.addEventListener('click', (event) => tableUpload())
+fullButton.addEventListener('click', (event) => updateAllAs('full'))
+lowButton.addEventListener('click', (event) => updateAllAs('low'))
+emptyButton.addEventListener('click', (event) => updateAllAs('empty'))
 
-confirm_checkbox.addEventListener('change', event => {
+confirm_checkbox.addEventListener('change', (event) => {
   if (!AUTHORISED) return
   if (event.target.checked) {
     socket.emit('config', { confirm: true, low_enable: LOW_ENABLE })
@@ -24,7 +24,7 @@ confirm_checkbox.addEventListener('change', event => {
   }
 })
 
-low_checkbox.addEventListener('change', event => {
+low_checkbox.addEventListener('change', (event) => {
   if (!AUTHORISED) return
   if (event.target.checked) {
     socket.emit('config', { low_enable: true, confirm: TO_CONFIRM })

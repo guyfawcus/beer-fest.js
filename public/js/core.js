@@ -236,7 +236,7 @@ export function parseCheckedHexData(checkedHexData) {
     checkedHexData = checkedHexData.slice(0, 20)
   }
 
-  const checkedData = new Uint8Array(checkedHexData.match(/.{1,2}/g).map(byte => parseInt(byte, 16)))
+  const checkedData = new Uint8Array(checkedHexData.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
   const numbersChecked = []
 
   // Loop over all of the bits in each byte
@@ -455,7 +455,7 @@ socket.on('disconnect', () => {
   }, 2000)
 })
 
-socket.on('auth', status => {
+socket.on('auth', (status) => {
   // Change the test of the login button depending of the state of AUTHORISED
   const loginElement = document.getElementById('login')
 
@@ -476,7 +476,7 @@ socket.on('auth', status => {
   }
 })
 
-socket.on('config', configuration => {
+socket.on('config', (configuration) => {
   // Check or un-check the checkboxes if updates are recieved
   const confirmCheck = document.getElementById('confirm_check')
   const lowCheck = document.getElementById('low_check')
@@ -499,6 +499,6 @@ socket.on('config', configuration => {
   }
 })
 
-socket.on('beers', beerList => {
+socket.on('beers', (beerList) => {
   BEERS = beerList
 })

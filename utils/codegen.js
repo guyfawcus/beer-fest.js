@@ -18,7 +18,7 @@ const rl = readline.createInterface({
   output: process.stdout
 })
 
-rl.question('Enter new code: ', code => {
+rl.question('Enter new code: ', (code) => {
   hashedCode = bcrypt.hashSync(code, 6)
   console.log(hashedCode)
   exec(`heroku config:set ADMIN_CODE='${hashedCode}'`)

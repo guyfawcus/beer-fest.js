@@ -116,7 +116,7 @@ app.post('/report-violation', cspParser, (req, res) => {
 // !WARNING: This is async, need to make sure that this runs before any clients connect!
 csv()
   .fromFile(BEERS_FILE)
-  .then(jsonObj => {
+  .then((jsonObj) => {
     beers = jsonObj
   })
 
@@ -182,7 +182,7 @@ redisClient.hgetall('config', (err, reply) => {
 // Errors
 // ---------------------------------------------------------------------------
 
-redisClient.on('error', error => {
+redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
     console.error("Can't connect to Redis")
   } else {
@@ -464,7 +464,7 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 // Socket Events
 // ---------------------------------------------------------------------------
 
-io.on('connection', socket => {
+io.on('connection', (socket) => {
   const pathname = new URL(socket.handshake.headers.referer).pathname.slice(1)
 
   // When a new client connects, update them with the current state of things
@@ -482,7 +482,7 @@ io.on('connection', socket => {
     redisClient.zrange('log', 0, -1, (err, reply) => {
       if (err) handleError("Couldn't check get log from Redis", err)
       const history = []
-      reply.forEach(update => history.push(JSON.parse(update)))
+      reply.forEach((update) => history.push(JSON.parse(update)))
       io.to(`${socket.id}`).emit('update history', history)
     })
   }
@@ -498,7 +498,7 @@ io.on('connection', socket => {
     }
   })
 
-  socket.on('update table', table => {
+  socket.on('update table', (table) => {
     const name = socket.handshake.session.name
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -511,7 +511,7 @@ io.on('connection', socket => {
     })
   })
 
-  socket.on('update single', stock_level => {
+  socket.on('update single', (stock_level) => {
     const name = socket.handshake.session.name
     const number = stock_level.number
     const level = stock_level.level
@@ -527,7 +527,7 @@ io.on('connection', socket => {
     })
   })
 
-  socket.on('config', configuration => {
+  socket.on('config', (configuration) => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {

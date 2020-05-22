@@ -53,13 +53,13 @@ qlcSocket.onclose = () => {
 }
 
 // Send data to QLC+ when messages are recieved from beer-fest.js
-bfjsSocket.on('update single', stock_level => {
+bfjsSocket.on('update single', (stock_level) => {
   const number = stock_level.number
   const level = stock_level.level
   sendData(number, level)
 })
 
-bfjsSocket.on('update table', stock_levels => {
+bfjsSocket.on('update table', (stock_levels) => {
   for (const number in stock_levels) {
     sendData(number, stock_levels[number])
   }
