@@ -171,7 +171,8 @@ export function rereshButtons() {
     setTooltip(i, button)
     setColour(i, undefined, button)
     // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
-    setTimeout(() => (button.style.transition = 'all 150ms'), 0)
+    const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
+    setTimeout(() => (button.style.transition = `all ${transitionTime}`), 0)
   }
 }
 

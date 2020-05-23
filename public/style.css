@@ -23,6 +23,8 @@
   --default-link-colour: #0000ee;
   --default-visited-colour: #551a8b;
   --default-selection-colour: #b4d5ff;
+
+  --transition-time: 150ms;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -98,7 +100,7 @@ input[type='checkbox'] {
   background: var(--button-bg-colour);
   outline: none;
   border-radius: 20px;
-  transition: 150ms;
+  transition: var(--transition-time);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
 }
 
@@ -117,7 +119,7 @@ input[type='checkbox']:before {
   background: var(--button-bg-colour);
   transform: scale(1.1);
   box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
-  transition: 150ms;
+  transition: var(--transition-time);
 }
 
 input:checked[type='checkbox']:before {
@@ -326,7 +328,7 @@ input[type='checkbox']:hover {
   align-items: center;
   z-index: 1;
   will-change: transform;
-  transition: all 150ms;
+  transition: all var(--transition-time);
 }
 
 .availability_button:hover,
@@ -364,7 +366,7 @@ input[type='checkbox']:hover {
 /* -------------------------------- */
 .cross {
   opacity: 0;
-  transition-delay: 150ms;
+  transition-delay: var(--transition-time);
   pointer-events: none;
   position: absolute;
   width: 100px;
@@ -381,7 +383,7 @@ input[type='checkbox']:hover {
   stroke: var(--cross-colour);
   stroke-width: 10px;
   stroke-linecap: round;
-  transition: all 150ms;
+  transition: all var(--transition-time);
   stroke-dasharray: 0, 100;
   stroke-dashoffset: -56.568;
 }
