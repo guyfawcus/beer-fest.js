@@ -9,7 +9,8 @@ import {
   socket,
   updateLevel,
   updateNumber,
-  updateFromState
+  updateFromState,
+  applyChecks
 } from './core.js'
 
 for (let number = 1; number <= 80; number++) {
@@ -57,7 +58,8 @@ function updateChecked() {
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
 const checkedHexData = new URL(window.location.href).searchParams.get('checked')
 if (checkedHexData) {
-  parseCheckedHexData(checkedHexData)
+  const numbersChecked = parseCheckedHexData(checkedHexData)
+  applyChecks(numbersChecked)
 
   // Remove the checkedHexData from the URL so that it's not used if you refresh the page
   history.replaceState(null, '', window.location.href.split('?')[0])

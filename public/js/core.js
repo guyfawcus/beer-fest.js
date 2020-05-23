@@ -254,13 +254,24 @@ export function parseCheckedHexData(checkedHexData) {
       // If the bit is set it means that the number is checked
       if ((checkedData[byteNum] & (1 << (7 - bitNum))) !== 0) {
         numbersChecked.push(overallBitNum)
-        setCross(overallBitNum)
-      } else {
-        setCross(overallBitNum, false)
       }
     }
   }
   return numbersChecked
+}
+
+/**
+ * Takes a list of the numbers checked using {@link parseCheckedHexData} then sets them using {@link setCross}
+ * @param {array} numbersChecked The numbers checked
+ */
+export function applyChecks(numbersChecked) {
+  for (let number = 1; number <= 80; number++) {
+    if (numbersChecked.includes(number)) {
+      setCross(number)
+    } else {
+      setCross(number, false)
+    }
+  }
 }
 
 /**
