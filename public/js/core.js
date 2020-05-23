@@ -164,14 +164,16 @@ export function setCross(number, checked = true) {
  * {@link setTooltip} and {@link setColour} every button.
  */
 export function rereshButtons() {
+  const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
+
   for (let i = 1; i <= 80; i++) {
     const button = document.getElementById(`button_${i}`)
+
     // Deactivate transitions because transitioning everything causes jank on mobile
     button.style.transition = 'none'
     setTooltip(i, button)
     setColour(i, undefined, button)
     // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
-    const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
     setTimeout(() => (button.style.transition = `all ${transitionTime}`), 0)
   }
 }
