@@ -350,6 +350,15 @@ input[type='checkbox']:hover {
   width: 95%;
 }
 
+/* Use the crosshair cursor on mobile - stops from flashing (selection highlight?) */
+@media (any-pointer: coarse) {
+  input[type='checkbox']:hover,
+  .availability_button:hover,
+  .button:hover {
+    cursor: crosshair;
+  }
+}
+
 /* -------------------------------- */
 /* Availability                     */
 /* -------------------------------- */
