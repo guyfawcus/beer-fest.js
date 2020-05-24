@@ -6,8 +6,8 @@ import {
   generateCheckedHexURL,
   parseCheckedHexData,
   rereshButtons,
-  setCross,
   socket,
+  updateChecked,
   updateLevel,
   updateNumber,
   updateFromState,
@@ -18,17 +18,6 @@ for (let number = 1; number <= 80; number++) {
   const button = document.getElementById(`button_${number}`)
   button.addEventListener('click', (event) => updateNumber(number))
   buildCross(number)
-}
-
-function updateChecked() {
-  for (let number = 1; number <= 80; number++) {
-    const checkedState = localStorage.getItem(number.toString())
-    if (checkedState === 'checked') {
-      setCross(number)
-    } else {
-      setCross(number, false)
-    }
-  }
 }
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not

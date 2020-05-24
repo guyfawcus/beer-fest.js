@@ -179,7 +179,7 @@ export function buildCross(number) {
  * @param {number} number The number to set or remove the cross on
  * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
  */
-export function setCross(number, checked = true) {
+function setCross(number, checked = true) {
   const button = document.getElementById(`button_${number}`)
   const cross = button.getElementsByClassName('cross')[0]
 
@@ -300,6 +300,21 @@ export function parseCheckedHexData(checkedHexData) {
 export function applyChecks(numbersChecked) {
   for (let number = 1; number <= 80; number++) {
     if (numbersChecked.includes(number)) {
+      setCross(number)
+    } else {
+      setCross(number, false)
+    }
+  }
+}
+
+/**
+ * Simple wrapper that loops over all of the numbers in local storage, then sets
+ * the crosses with {@link setCross} if they are checked or removes them if not
+ */
+export function updateChecked() {
+  for (let number = 1; number <= 80; number++) {
+    const checkedState = localStorage.getItem(number.toString())
+    if (checkedState === 'checked') {
       setCross(number)
     } else {
       setCross(number, false)
