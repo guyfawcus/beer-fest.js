@@ -85,7 +85,7 @@ export function setTooltip(number, element) {
  * This can't be inferred from the number because this function is used in other places,
  * namely the history page, where the div doesn't have an ID in the format `button_<number>`
  */
-export function setColour(number, level, element) {
+function setColour(number, level, element) {
   const thisBeer = BEERS[number - 1]
   if (!level) level = STOCK_LEVELS[number]
 
@@ -391,6 +391,31 @@ export function updateFromState(stock_levels) {
       updateLevel(Number(number), 'full')
     }
   }
+}
+
+// ---------------------------------------------------------------------------
+// History functions
+// --------------------------------------------------------------------------
+/**
+ * Function that creates a div with info about about a recent changes
+ * and adds it to the history div.
+ *
+ * Uses {@link setTooltip} {@link setColour}
+ * @param {stockLevelsObj} stock_level
+ */
+export function updateHistory(stock_level) {
+  console.log(stock_level)
+  const div = document.createElement('div')
+  div.classList.add('update')
+  div.innerHTML = `<div class="time">${stock_level.time}</div>
+                   <div class="name">${stock_level.name}</div>
+                   <div class="number">${stock_level.number}</div>
+                   <div class="level">${stock_level.level}</div>`
+
+  setTooltip(stock_level.number, div)
+  setColour(stock_level.number, stock_level.level, div)
+
+  document.getElementById('history').prepend(div)
 }
 
 // ---------------------------------------------------------------------------
