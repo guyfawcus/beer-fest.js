@@ -13,10 +13,10 @@
 ### Environment variables
 
 - `ADMIN_CODE`- A bcrypt hashed password (take a look at [/utils/codegen.js](/utils/codegen.js))
-- `COOKIE_SECRET` - A random string (take a look at [/utils/codegen.js](/utils/codegen.js))
-- `ENABLE_API` - `true` or `false` depending on whether you want to enable the API POST endpoints or not
-- `NODE_ENV` - set to `production` if deployed
-- `REDIS_URL`- the `redis://` URL
+- `COOKIE_SECRET` - A cryptographically secure random string (take a look at [/utils/codegen.js](/utils/codegen.js))
+- `ENABLE_API` - `true` or `false` depending on whether you want to enable the API POST endpoints or not (can be left unset, defaults to `false`)
+- `NODE_ENV` - set to `production` if deployed (can be left unset when developing)
+- `REDIS_URL`- the `redis://` URL (can be left unset if using Redis with it's default settings)
 
 ## Coding
 
