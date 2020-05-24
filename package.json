@@ -78,7 +78,13 @@
     },
     "rules": {
       "camelcase": "off",
-      "space-before-function-paren": "off"
+      "space-before-function-paren": "off",
+      "import/no-unused-modules": [
+        1,
+        {
+          "unusedExports": true
+        }
+      ]
     }
   }
 }
