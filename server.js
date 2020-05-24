@@ -2,6 +2,7 @@
 
 'use strict'
 
+const crypto = require('crypto')
 const http = require('http')
 const path = require('path')
 
@@ -16,8 +17,25 @@ const session = require('express-session')
 const sharedsession = require('express-socket.io-session')
 const redis = require('redis')
 
-const ADMIN_CODE = process.env.ADMIN_CODE || ''
-const COOKIE_SECRET = process.env.COOKIE_SECRET || '8OarM0c9KnkjM8ucDorbFTU3ssST4VIx'
+const TEMP_UNHASHED = crypto.randomBytes(24).toString('hex')
+const ADMIN_CODE = process.env.ADMIN_CODE || bcrypt.hashSync(TEMP_UNHASHED, 10)
+const COOKIE_SECRET = process.env.COOKIE_SECRET || crypto.randomBytes(64).toString('hex')
+
+if (!process.env.ADMIN_CODE) {
+  console.log(
+    '\x1b[33m%s\x1b[0m',
+    `To be able to log in easily, please generate a secure $ADMIN_CODE environment variable using utils/codegen.js
+For the moment though, you can log in with "${TEMP_UNHASHED}"\n`
+  )
+}
+
+if (!process.env.COOKIE_SECRET) {
+  console.log(
+    '\x1b[33m%s\x1b[0m',
+    'To have logins persist, please generate a secure $COOKIE_SECRET environment variable using utils/codegen.js\n'
+  )
+}
+
 const ENABLE_API = process.env.ENABLE_API || 'false'
 const NODE_ENV = process.env.NODE_ENV || ''
 const REDIS_URL = process.env.REDIS_URL || ''
