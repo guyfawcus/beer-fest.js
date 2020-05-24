@@ -25,7 +25,7 @@ let BEERS = []
 let STOCK_LEVELS = {}
 
 /** The socket.io socket object */
-export const socket = globalThis.io.connect(self.location.host)
+export const socket = globalThis.io.connect(location.host)
 
 // ---------------------------------------------------------------------------
 // Type definitions
