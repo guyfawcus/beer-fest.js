@@ -21,13 +21,13 @@ for (let number = 1; number <= 80; number++) {
 }
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
-const checkedHexData = new URL(window.location.href).searchParams.get('checked')
+const checkedHexData = new URL(location.href).searchParams.get('checked')
 if (checkedHexData) {
   const numbersChecked = parseCheckedHexData(checkedHexData)
   applyChecks(numbersChecked)
 
   // Remove the checkedHexData from the URL so that it's not used if you refresh the page
-  history.replaceState(null, '', window.location.href.split('?')[0])
+  history.replaceState(null, '', location.href.split('?')[0])
 } else {
   updateChecked()
 }

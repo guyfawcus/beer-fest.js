@@ -249,7 +249,7 @@ function generateCheckedHexData() {
  */
 export function generateCheckedHexURL(updateURL = false) {
   const checkedHexData = generateCheckedHexData()
-  const url = new URL(window.location.href)
+  const url = new URL(location.href)
   url.searchParams.set('checked', checkedHexData)
   if (updateURL) history.replaceState(null, '', url.toString())
   return url
@@ -513,7 +513,7 @@ socket.on('connect', () => {
 
 socket.on('disconnect', () => {
   // Display warning icon if the server has been disonnected for over 2 seconds
-  window.setTimeout(() => {
+  setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer diconnected!', 'color:red;')
       document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
