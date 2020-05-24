@@ -56,7 +56,7 @@ export const socket = globalThis.io.connect(self.location.host)
 // Shared functions
 // ---------------------------------------------------------------------------
 /**
- * Function that updates the tooltip for the selected number
+ * Function that updates the tooltip for the selected number.
  * @param {number} number The number that of the beer - used as an ID to get data from {@link BEERS}
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
@@ -113,7 +113,7 @@ export function setColour(number, level, element) {
 }
 
 // ---------------------------------------------------------------------------
-// Buttons functions
+// Button / Availability functions
 // ---------------------------------------------------------------------------
 /**
  * Simple wrapper function that pops up a confirmation window if required.
@@ -142,7 +142,7 @@ function confirmUpdate(number, level, to_confirm = TO_CONFIRM) {
 }
 
 /**
- * This function generates an SVG cross and adds it to an element
+ * This function generates an SVG cross and adds it to a button element.
  * @param {number} number The button number to add the cross to
  */
 export function buildCross(number) {
@@ -294,7 +294,7 @@ export function parseCheckedHexData(checkedHexData) {
 }
 
 /**
- * Takes a list of the numbers checked using {@link parseCheckedHexData} then sets them using {@link setCross}
+ * Takes a list of the numbers checked using {@link parseCheckedHexData} then sets them using {@link setCross}.
  * @param {array} numbersChecked The numbers checked
  */
 export function applyChecks(numbersChecked) {
@@ -309,7 +309,7 @@ export function applyChecks(numbersChecked) {
 
 /**
  * Simple wrapper that loops over all of the numbers in local storage, then sets
- * the crosses with {@link setCross} if they are checked or removes them if not
+ * the crosses with {@link setCross} if they are checked or removes them if not.
  */
 export function updateChecked() {
   for (let number = 1; number <= 80; number++) {
@@ -376,7 +376,7 @@ export function updateLevel(number, level) {
 }
 
 /**
- * Update the table based on remote changes to the stock levels
+ * Update the table based on remote changes to the stock levels.
  * @param {stockLevelsObj} stock_levels
  */
 export function updateFromState(stock_levels) {
@@ -397,7 +397,7 @@ export function updateFromState(stock_levels) {
 // Settings functions
 // ---------------------------------------------------------------------------
 /**
- * Set every beer as empty, low or full
+ * Set every beer as empty, low or full.
  * @param {levelValues} level
  */
 export function updateAllAs(level) {
@@ -416,7 +416,7 @@ export function updateAllAs(level) {
 
 /**
  * This creates a hidden element that pops up an upload dialog that allows
- * sending the a previous state to the server for distribution
+ * sending the a previous state to the server for distribution.
  */
 export function tableUpload() {
   if (!AUTHORISED) return
@@ -458,7 +458,7 @@ export function tableUpload() {
 }
 
 /**
- * This is used by {@link tableUpload} to only update the beers that are different from the current state
+ * This is used by {@link tableUpload} to only update the beers that are different from the current state.
  * @param {stockLevelsObj} table
  */
 function updateRequired(table) {
@@ -476,7 +476,7 @@ function updateRequired(table) {
 // ---------------------------------------------------------------------------
 /**
  * Disable the will-change events on the buttons when the page is not open
- * This decreases the GPU usage from ~17MB to ~6MB when the tab is in the background
+ * This decreases the GPU usage from ~17MB to ~6MB when the tab is in the background.
  */
 document.addEventListener('visibilitychange', () => {
   if (document.visibilityState === 'visible') {
@@ -522,7 +522,7 @@ socket.on('disconnect', () => {
 })
 
 socket.on('auth', (status) => {
-  // Change the test of the login button depending of the state of AUTHORISED
+  // Change the text of the login button depending of the state of AUTHORISED
   const loginElement = document.getElementById('login')
 
   if (status) {
