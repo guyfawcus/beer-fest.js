@@ -31,6 +31,18 @@ Installation will give you the following to help in working with this software:
 - [ESLint](https://eslint.org/) - Static analysis tool to for catching problems before they appear
 - [JSDoc](https://jsdoc.app/) - For generating documentation
 
+### Setup
+
+By default, if the if the `ADMIN_CODE` environment variable is not set,
+the server will generate a random one on startup.
+This will mean that you won't have any idea what the login code is.
+
+Also, if the `COOKIE_SECRET` environment variable is not set,
+the server will generate a new one on startup.
+This will have the effect of logging you out after every restart.
+
+For these reasons it is recoomended to run `node utils/codegen.js` and follow the instructions on how to set these two variables before you run the server.
+
 ### Dev workflow
 
 1. Swap to a new branch with `git checkout -b`
