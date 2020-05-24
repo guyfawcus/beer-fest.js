@@ -15,14 +15,14 @@ export let LOW_ENABLE = false
  * A list of [beer objects]{@link beersObj} containing inforamtion for each beer
  * @type{beersObj[]}
  */
-export let BEERS = []
+let BEERS = []
 
 /**
  * Simple key value store that conforms to {@link stockLevelsObj},
  * where a number is the key and a [level]{@link levelValues} is the value
  * @type{stockLevelsObj}
  */
-export let STOCK_LEVELS = {}
+let STOCK_LEVELS = {}
 
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(self.location.host)
