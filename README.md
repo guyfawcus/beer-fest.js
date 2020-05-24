@@ -2,7 +2,7 @@
 
 Web app to display available beers at a festival
 
-Try it out at https://acbf-2020.herokuapp.com and take a look at the [walkthrough tutorial](/docs/walkthrough.md) to get started.
+Try it out at [acbf-2020.herokuapp.com](https://acbf-2020.herokuapp.com/) and take a look at the [walkthrough tutorial](/docs/walkthrough.md) to get started.
 
 <img src="/docs/images/availability-empty.png" width="384">
 
@@ -26,7 +26,7 @@ Not ideal for the punters or the one who has to do all of the updating!
 
 ### The new way
 
-After a logging in, it's as simple as:
+After logging in, it's as simple as:
 
 - Open the [availability page](https://acbf-2020.herokuapp.com/availability) on your phone / laptop
 - Mark the selected beer as empty
