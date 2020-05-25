@@ -74,6 +74,7 @@ let beers = {}
 // Security
 // ---------------------------------------------------------------------------
 const sessionOptions = {
+  name: 'sessionId',
   cookie: { sameSite: 'strict' },
   secret: COOKIE_SECRET,
   store: new RedisStore({ client: redisClient }),
