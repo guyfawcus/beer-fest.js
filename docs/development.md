@@ -26,7 +26,7 @@ Installation will give you the following to help in working with this software:
 - [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme) - For type checking and usage notes in your IDE
 - [nodemon](https://nodemon.io/) - Restarts the server when you make a change to the code
 - [Husky](https://github.com/typicode/husky#readme) - For running tests before committing and pushing with Git
-- [Prettier](https://prettier.io/) - Code formatter to keep the style consistant
+- [Prettier](https://prettier.io/) - Code formatter to keep the style consistent
 - [Standard JS](https://standardjs.com/) - Rules for linting the code with...
 - [ESLint](https://eslint.org/) - Static analysis tool to for catching problems before they appear
 - [JSDoc](https://jsdoc.app/) - For generating documentation
@@ -41,9 +41,9 @@ Also, if the `COOKIE_SECRET` environment variable is not set,
 the server will generate a new one on startup.
 This will have the effect of logging you out after every restart.
 
-For these reasons it is recoomended to run `node utils/codegen.js` and follow the instructions on how to set these two variables before you run the server.
+For these reasons it is recommended to run `node utils/codegen.js` and follow the instructions on how to set these two variables before you run the server.
 
-This prjoect has been written using Visual Studio Code.
+This project has been written using Visual Studio Code.
 It's not essential that you do as well,
 but if you would like to make the most of the type annotations and pre-commit formatting,
 install the [Prettier extension](https://github.com/prettier/prettier-vscode)
@@ -72,14 +72,14 @@ A number of security measures have been implemented in the server
 and throughout the codebase to try and prevent any nefarious activity from taking place,
 or at least slow someone down until all of the beer is gone!
 
-These are unlikey to get in the way of development,
+These are unlikely to get in the way of development,
 but if you keep running into errors that you don't understand (likely Content Security Policy related ones),
 then just comment out the security section in the server,
 hack away, open a pull request then discuss the issue.
 Please DO NOT deploy this application in an insecure state.
 
 The other place you may run into problems is with the static type checker (ESLint).
-These checks are there to help prevent bugs and to ensure a consistant style.
+These checks are there to help prevent bugs and to ensure a consistent style.
 All of these checks must pass before a commit to the master branch,
 but f you're just hacking away and want to try something out,
 do it in a new branch then commit with `git commit --no-verify`,

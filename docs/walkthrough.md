@@ -8,8 +8,8 @@ This document will walk you through every page and describe their functionality.
 
 - **Log in** - Required to access the settings page and to edit the availability of the beers
 - **Settings** - Various admin functions related to updating the state of the beers
-- **Downloads** - Various files releated to the festival like the list of beers
-- **Availability** - Displayes the availability of all of the beers
+- **Downloads** - Various files related to the festival like the list of beers
+- **Availability** - Displays the availability of all of the beers
 - **Slideshow** - Displays the availability page among other slides in a loop
 - **History** - Displays a list of recent changes
 

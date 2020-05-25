@@ -31,11 +31,11 @@ rl.question('Enter new code: ', (code) => {
     exec(`heroku config:set ADMIN_CODE='${hashedCode}' COOKIE_SECRET='${cookieSecret}'`)
   } else {
     console.log(
-      'Plese set the $ADMIN_CODE environment variable by running:\n' + '\x1b[33m%s\x1b[0m',
+      'Please set the $ADMIN_CODE environment variable by running:\n' + '\x1b[33m%s\x1b[0m',
       `export ADMIN_CODE='${hashedCode}'\n`
     )
     console.log(
-      'Plese set the $COOKIE_SECRET environment variable by running:\n' + '\x1b[33m%s\x1b[0m',
+      'Please set the $COOKIE_SECRET environment variable by running:\n' + '\x1b[33m%s\x1b[0m',
       `export COOKIE_SECRET='${cookieSecret}'\n`
     )
   }

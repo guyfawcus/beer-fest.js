@@ -20,7 +20,7 @@ function rgbFromVar(colour_variable) {
   return [r, g, b]
 }
 
-// Tranform the data and send it to QLC+
+// Transform the data and send it to QLC+
 function sendData(number, level) {
   if (level === 'empty') [r, g, b] = rgbFromVar('--empty-colour')
   if (level === 'low') [r, g, b] = rgbFromVar('--low-colour')
@@ -52,7 +52,7 @@ qlcSocket.onclose = () => {
   console.log('Disconnected from QLC+')
 }
 
-// Send data to QLC+ when messages are recieved from beer-fest.js
+// Send data to QLC+ when messages are received from beer-fest.js
 bfjsSocket.on('update single', (stock_level) => {
   const number = stock_level.number
   const level = stock_level.level

@@ -241,7 +241,7 @@ function updateSingle(name, number, level) {
     level: level
   }
   redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
-  console.log(`Distibuting updates from ${name} (number ${number} = ${level})`)
+  console.log(`Distributing updates from ${name} (number ${number} = ${level})`)
   if (last_table[number] !== level) {
     last_table[number] = level
     io.sockets.emit('update single', singleUpdateObj)
@@ -251,7 +251,7 @@ function updateSingle(name, number, level) {
 
 /**
  * This takes in a {@link stockLevelsObj} and emits it to all connected clients
- * @param {string} name The nameof the user
+ * @param {string} name The name of the user
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
  */
 function updateAll(name, stock_levels) {
@@ -267,7 +267,7 @@ function updateAll(name, stock_levels) {
   })
 
   // Save the whole table at once
-  console.log(`Distibuting whole table from ${name}`)
+  console.log(`Distributing whole table from ${name}`)
   last_table = stock_levels
   io.sockets.emit('update table', stock_levels)
   saveState(stock_levels)
@@ -408,7 +408,7 @@ app.post('/users', (req, res) => {
       })
       res.redirect('/')
     } else {
-      console.log(`Client - ${thisSession} - has enterted the wrong code (${code})`)
+      console.log(`Client - ${thisSession} - has entered the wrong code (${code})`)
       req.flash('error', 'Wrong code, please try again')
       res.redirect('login')
     }
@@ -490,7 +490,7 @@ io.on('connection', (socket) => {
 
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
-  console.log('Distibuting previous state')
+  console.log('Distributing previous state')
   io.to(`${socket.id}`).emit('update table', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
 

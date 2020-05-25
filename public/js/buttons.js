@@ -5,7 +5,7 @@ import {
   buildCross,
   generateCheckedHexURL,
   parseCheckedHexData,
-  rereshButtons,
+  refreshButtons,
   socket,
   updateChecked,
   updateLevel,
@@ -44,7 +44,7 @@ socket.on('update single', (stock_level) => {
 })
 
 socket.on('beers', (beerList) => {
-  rereshButtons()
+  refreshButtons()
 })
 
 const info_checkbox = document.getElementById('info_check')
@@ -72,28 +72,28 @@ if (localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true') {
 info_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NO_INFORMATION', 'true')
-    rereshButtons()
+    refreshButtons()
   } else {
     localStorage.removeItem('HIDE_NO_INFORMATION')
-    rereshButtons()
+    refreshButtons()
   }
 })
 vegan_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NOT_VEGAN', 'true')
-    rereshButtons()
+    refreshButtons()
   } else {
     localStorage.removeItem('HIDE_NOT_VEGAN')
-    rereshButtons()
+    refreshButtons()
   }
 })
 gluten_free_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'true')
-    rereshButtons()
+    refreshButtons()
   } else {
     localStorage.removeItem('HIDE_NOT_GLUTEN_FREE')
-    rereshButtons()
+    refreshButtons()
   }
 })
 

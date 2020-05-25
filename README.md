@@ -39,7 +39,7 @@ Because the this is a web app, it can be run on a server [like this one](https:/
 to check the availability of a beer or to update it!
 (Don't worry, you can't change anything without logging in first)
 
-It could also be run locally on minimimal hardware (laptop, Raspberry Pi, whatever you fancy) so if you wanted,
+It could also be run locally on minimal hardware (laptop, Raspberry Pi, whatever you fancy) so if you wanted,
 you could keep using _the old way_ while testing out this system without much bother.
 
 ---
@@ -82,5 +82,5 @@ then this is by far the best option.
 ### The others ways
 
 There are of course a load of different variations of the above and it really depends on what you want from this system as to the best way to implement it.
-The easiest option will pretty much always be using _The internet way_ and getting myself (@guyfawcus / Chesney) to confugure it.
+The easiest option will pretty much always be using _The internet way_ and getting myself (@guyfawcus / Chesney) to configure it.
 This software is all open source though so if you're brave enough to go it alone, take a look at the [development instructions](/docs/development.md).

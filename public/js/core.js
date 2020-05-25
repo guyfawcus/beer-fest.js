@@ -5,14 +5,14 @@
 /** `true` is a user is logged in */
 export let AUTHORISED = false
 
-/** `true` if the confimation window should pop up before an update */
+/** `true` if the confirmation window should pop up before an update */
 export let TO_CONFIRM = true
 
 /** `true` if the middle 'low' level is to be used as a state */
 export let LOW_ENABLE = false
 
 /**
- * A list of [beer objects]{@link beersObj} containing inforamtion for each beer
+ * A list of [beer objects]{@link beersObj} containing information for each beer
  * @type{beersObj[]}
  */
 let BEERS = []
@@ -78,7 +78,7 @@ export function setTooltip(number, element) {
 }
 
 /**
- * Function to change the backgound colour of an element depending on the level.
+ * Function to change the background colour of an element depending on the level.
  * @param {number} number The number to be updated
  * @param {levelValues} level The level that the element is to be changed to. If this is undefined, the last level will be used
  * @param {HTMLElement} element The element whose background is to be changed
@@ -196,7 +196,7 @@ function setCross(number, checked = true) {
  * This simple wrapper function just runs
  * {@link setTooltip} and {@link setColour} every button.
  */
-export function rereshButtons() {
+export function refreshButtons() {
   const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
 
   for (let i = 1; i <= 80; i++) {
@@ -243,7 +243,7 @@ function generateCheckedHexData() {
 
 /**
  * This uses {@link generateCheckedHexData} and adds the result to a URL.
- * This is used if you want to share the numbers that you've checked off with somone / back them up.
+ * This is used if you want to share the numbers that you've checked off with someone / back them up.
  * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
@@ -257,7 +257,7 @@ export function generateCheckedHexURL(updateURL = false) {
 
 /**
  * This parses the checkedHexData and adds the crosses on the buttons using setCross().
- * @param {string} checkedHexData A hex formatted string containg the checked data
+ * @param {string} checkedHexData A hex formatted string containing the checked data
  * @returns {number[] | undefined} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData(checkedHexData) {
@@ -525,10 +525,10 @@ socket.on('connect', () => {
 })
 
 socket.on('disconnect', () => {
-  // Display warning icon if the server has been disonnected for over 2 seconds
+  // Display warning icon if the server has been disconnected for over 2 seconds
   setTimeout(() => {
     if (socket.connected !== true) {
-      console.log('%cServer diconnected!', 'color:red;')
+      console.log('%cServer disconnected!', 'color:red;')
       document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
     }
   }, 2000)
@@ -556,7 +556,7 @@ socket.on('auth', (status) => {
 })
 
 socket.on('config', (configuration) => {
-  // Check or un-check the checkboxes if updates are recieved
+  // Check or un-check the checkboxes if updates are received
   const confirmCheck = document.getElementById('confirm_check')
   const lowCheck = document.getElementById('low_check')
 
