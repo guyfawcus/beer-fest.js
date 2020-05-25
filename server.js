@@ -43,7 +43,7 @@ const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
 
 const app = express()
 const server = new http.Server(app)
-const io = require('socket.io')(server)
+const io = require('socket.io')(server, { cookie: false })
 const redisClient = redis.createClient({ url: REDIS_URL })
 const RedisStore = require('connect-redis')(session)
 
