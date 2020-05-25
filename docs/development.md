@@ -43,6 +43,18 @@ This will have the effect of logging you out after every restart.
 
 For these reasons it is recoomended to run `node utils/codegen.js` and follow the instructions on how to set these two variables before you run the server.
 
+This prjoect has been written using Visual Studio Code.
+It's not essential that you do as well,
+but if you would like to make the most of the type annotations and pre-commit formatting,
+install the [Prettier extension](https://github.com/prettier/prettier-vscode)
+then add the following lines to your [settings.json](https://code.visualstudio.com/docs/getstarted/settings):
+
+```
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "javascript.implicitProjectConfig.checkJs": true,
+```
+
 ### Dev workflow
 
 1. Swap to a new branch with `git checkout -b`
