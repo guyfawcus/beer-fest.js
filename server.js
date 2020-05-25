@@ -73,7 +73,19 @@ let beers = {}
 // ---------------------------------------------------------------------------
 // Security
 // ---------------------------------------------------------------------------
-if (NODE_ENV === 'production') app.use(express_enforces_ssl())
+const sessionOptions = {
+  cookie: { sameSite: 'strict' },
+  secret: COOKIE_SECRET,
+  store: new RedisStore({ client: redisClient }),
+  resave: false,
+  saveUninitialized: true
+}
+
+if (NODE_ENV === 'production') {
+  app.use(express_enforces_ssl())
+  app.enable('trust proxy')
+  sessionOptions.cookie.secure = true
+}
 
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
@@ -142,17 +154,10 @@ csv()
   })
 
 // Set up server
-const redisSession = session({
-  cookie: { sameSite: 'strict' },
-  secret: COOKIE_SECRET,
-  store: new RedisStore({ client: redisClient }),
-  resave: false,
-  saveUninitialized: true
-})
+const redisSession = session(sessionOptions)
 
 io.use(sharedsession(redisSession))
 app.set('view-engine', 'ejs')
-app.enable('trust proxy')
 
 app.use(compression())
 app.use(express.json())
