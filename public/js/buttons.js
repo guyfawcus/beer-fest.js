@@ -14,6 +14,7 @@ import {
   updateFromState
 } from './core.js'
 
+// Add event listeners and build a cross for each button
 for (let number = 1; number <= 80; number++) {
   const button = document.getElementById(`button_${number}`)
   button.addEventListener('click', (event) => updateNumber(number))
@@ -32,21 +33,10 @@ if (checkedHexData) {
   applyChecks(getChecks())
 }
 
-// Update the state when remotes send updates
-socket.on('update table', (table) => {
-  console.groupCollapsed('Updating all entities')
-  updateFromState(table)
-  console.groupEnd()
-})
-
-socket.on('update single', (stock_level) => {
-  updateLevel(stock_level.number, stock_level.level)
-})
-
-socket.on('beers', (beerList) => {
-  refreshButtons()
-})
-
+// ---------------------------------------------------------------------------
+// Menu
+// ---------------------------------------------------------------------------
+const clear_checks = document.getElementById('clear-checks')
 const info_checkbox = document.getElementById('info_check')
 const vegan_checkbox = document.getElementById('vegan_check')
 const gluten_free_checkbox = document.getElementById('gluten_free_check')
@@ -69,6 +59,12 @@ if (localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true') {
 }
 
 // Add event listeners for options
+clear_checks.addEventListener('click', (event) => {
+  if (!confirm('Are you sure you want to clear all of your check marks?')) return
+  applyChecks([])
+  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
+})
+
 info_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NO_INFORMATION', 'true')
@@ -97,7 +93,7 @@ gluten_free_checkbox.addEventListener('change', (event) => {
   }
 })
 
-// Show menu
+// Show menu if the header is clicked on
 document.getElementById('buttons_header').addEventListener('click', () => {
   // Update check share URL
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
@@ -105,7 +101,7 @@ document.getElementById('buttons_header').addEventListener('click', () => {
   document.getElementById('popup-menu').classList.add('show')
 })
 
-// Hide menu
+// Hide menu if anywhere other than the popup is clicked on
 document.addEventListener('click', () => {
   if (!event.target.closest('#popup-menu') && !event.target.closest('#buttons_header')) {
     document.getElementById('popup-background').classList.remove('show')
@@ -113,9 +109,20 @@ document.addEventListener('click', () => {
   }
 })
 
-// Clear checks
-document.getElementById('clear-checks').addEventListener('click', (event) => {
-  if (!confirm('Are you sure you want to clear all of your check marks?')) return
-  applyChecks([])
-  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
+// ---------------------------------------------------------------------------
+// Socket events
+// ---------------------------------------------------------------------------
+// Update the state when remotes send updates
+socket.on('update table', (table) => {
+  console.groupCollapsed('Updating all entities')
+  updateFromState(table)
+  console.groupEnd()
+})
+
+socket.on('update single', (stock_level) => {
+  updateLevel(stock_level.number, stock_level.level)
+})
+
+socket.on('beers', (beerList) => {
+  refreshButtons()
 })
