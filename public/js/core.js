@@ -213,21 +213,35 @@ export function refreshButtons() {
 
 /**
  * This loops over all of the entries in local storage see what numbers are checked.
+ * @returns {array} a list of all of the checked numbers
+ */
+function getChecks() {
+  const numbersChecked = []
+  for (let number = 1; number <= 80; number++) {
+    const checked = localStorage.getItem(number.toString())
+    if (checked === 'checked') {
+      numbersChecked.push(number)
+    }
+  }
+  return numbersChecked
+}
+
+/**
+ * This reads in the checks array see what numbers are checked.
  * It then makes an array of Uint8 bytes where each bit represents the checked state of a number,
  * for example, if the first byte was `0b01001011` (`0x4a`) then numbers 2, 5, 7 and 8 are checked.
  * It returns the the array formatted as base-16 hex so that it can be used in a URL.
+ * @param {array} numbersChecked list of all of the checked numbers
  * @returns {string} hex formatted string
  */
-function generateCheckedHexData() {
+function generateCheckedHexData(numbersChecked) {
   const checkedData = new Uint8Array(10)
   let byteNum = 0
   let bitNum = 0
 
   for (let number = 1; number <= 80; number++) {
-    const checked = localStorage.getItem(number.toString())
-
     // Set the bit if the number is checked
-    if (checked) checkedData[byteNum] |= 1 << (7 - bitNum)
+    if (numbersChecked.includes(number)) checkedData[byteNum] |= 1 << (7 - bitNum)
 
     if (number % 8 === 0) {
       byteNum += 1
@@ -242,13 +256,14 @@ function generateCheckedHexData() {
 }
 
 /**
- * This uses {@link generateCheckedHexData} and adds the result to a URL.
+ * This uses {@link getChecks} and {@link generateCheckedHexData} to add the CheckedHexData to a URL.
  * This is used if you want to share the numbers that you've checked off with someone / back them up.
  * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
 export function generateCheckedHexURL(updateURL = false) {
-  const checkedHexData = generateCheckedHexData()
+  const numbersChecked = getChecks()
+  const checkedHexData = generateCheckedHexData(numbersChecked)
   const url = new URL(location.href)
   url.searchParams.set('checked', checkedHexData)
   if (updateURL) history.replaceState(null, '', url.toString())
@@ -297,7 +312,7 @@ export function parseCheckedHexData(checkedHexData) {
  * Takes a list of the numbers checked using {@link parseCheckedHexData} then sets them using {@link setCross}.
  * @param {array} numbersChecked The numbers checked
  */
-export function applyChecks(numbersChecked) {
+export function applyChecks(numbersChecked = []) {
   for (let number = 1; number <= 80; number++) {
     if (numbersChecked.includes(number)) {
       setCross(number)
