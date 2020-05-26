@@ -86,6 +86,7 @@ if (NODE_ENV === 'production') {
   app.use(express_enforces_ssl())
   app.enable('trust proxy')
   sessionOptions.cookie.secure = true
+  sessionOptions.name = '__Host-sessionId'
 }
 
 app.use(helmet())
