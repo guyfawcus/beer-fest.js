@@ -215,7 +215,7 @@ export function refreshButtons() {
  * This loops over all of the entries in local storage see what numbers are checked.
  * @returns {array} a list of all of the checked numbers
  */
-function getChecks() {
+export function getChecks() {
   const numbersChecked = []
   for (let number = 1; number <= 80; number++) {
     const checked = localStorage.getItem(number.toString())
@@ -309,27 +309,12 @@ export function parseCheckedHexData(checkedHexData) {
 }
 
 /**
- * Takes a list of the numbers checked using {@link parseCheckedHexData} then sets them using {@link setCross}.
+ * Takes a list of the numbers checked then sets them using {@link setCross}.
  * @param {array} numbersChecked The numbers checked
  */
 export function applyChecks(numbersChecked = []) {
   for (let number = 1; number <= 80; number++) {
     if (numbersChecked.includes(number)) {
-      setCross(number)
-    } else {
-      setCross(number, false)
-    }
-  }
-}
-
-/**
- * Simple wrapper that loops over all of the numbers in local storage, then sets
- * the crosses with {@link setCross} if they are checked or removes them if not.
- */
-export function updateChecked() {
-  for (let number = 1; number <= 80; number++) {
-    const checkedState = localStorage.getItem(number.toString())
-    if (checkedState === 'checked') {
       setCross(number)
     } else {
       setCross(number, false)

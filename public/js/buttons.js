@@ -2,16 +2,16 @@
 'use strict'
 
 import {
+  applyChecks,
   buildCross,
   generateCheckedHexURL,
+  getChecks,
   parseCheckedHexData,
   refreshButtons,
   socket,
-  updateChecked,
   updateLevel,
   updateNumber,
-  updateFromState,
-  applyChecks
+  updateFromState
 } from './core.js'
 
 for (let number = 1; number <= 80; number++) {
@@ -29,7 +29,7 @@ if (checkedHexData) {
   // Remove the checkedHexData from the URL so that it's not used if you refresh the page
   history.replaceState(null, '', location.href.split('?')[0])
 } else {
-  updateChecked()
+  applyChecks(getChecks())
 }
 
 // Update the state when remotes send updates
@@ -116,7 +116,6 @@ document.addEventListener('click', () => {
 // Clear checks
 document.getElementById('clear-checks').addEventListener('click', (event) => {
   if (!confirm('Are you sure you want to clear all of your check marks?')) return
-  for (let number = 1; number <= 80; number++) localStorage.removeItem(number)
-  updateChecked()
+  applyChecks([])
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
 })
