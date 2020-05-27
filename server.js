@@ -508,6 +508,20 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 // ---------------------------------------------------------------------------
 
 io.on('connection', (socket) => {
+  // Track which sockets are related to each session
+  redisClient.sadd(socket.handshake.session.id, socket.id)
+
+  // Check if the socket belongs to an authorised session
+  redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+    if (err) handleError("Couldn't check authed_ids from Redis", err)
+    if (reply) {
+      io.to(`${socket.id}`).emit('auth', true)
+    } else {
+      io.to(`${socket.id}`).emit('auth', false)
+    }
+  })
+
+  // Find out which path the socket originated from
   const pathname = new URL(socket.handshake.headers.referer).pathname.slice(1)
 
   // When a new client connects, update them with the current state of things
@@ -516,6 +530,9 @@ io.on('connection', (socket) => {
   io.to(`${socket.id}`).emit('replace-all', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
 
+  /* -------------------------------- */
+  /* Path specific actions            */
+  /* -------------------------------- */
   if (pathname === 'history' || pathname === 'availability') {
     if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
     io.to(`${socket.id}`).emit('beers', beers)
@@ -530,17 +547,9 @@ io.on('connection', (socket) => {
     })
   }
 
-  redisClient.sadd(socket.handshake.session.id, socket.id)
-
-  redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-    if (err) handleError("Couldn't check authed_ids from Redis", err)
-    if (reply) {
-      io.to(`${socket.id}`).emit('auth', true)
-    } else {
-      io.to(`${socket.id}`).emit('auth', false)
-    }
-  })
-
+  /* -------------------------------- */
+  /* eventName specific actions       */
+  /* -------------------------------- */
   socket.on('update-all', (table) => {
     const name = socket.handshake.session.name
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
