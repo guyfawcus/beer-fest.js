@@ -272,10 +272,11 @@ function updateRequired(name, stock_levels) {
 
 /**
  * This takes in a {@link stockLevelsObj} and emits it to all connected clients
+ * after backing up and wiping the current log
  * @param {string} name The name of the user
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
  */
-function updateAll(name, stock_levels) {
+function replaceAll(name, stock_levels) {
   // Backup log if it exists and set to expire in a week
   redisClient.exists('log', (err, reply) => {
     if (err) handleError("Couldn't check if log exists with Redis", err)
@@ -468,7 +469,7 @@ app.post('/api/stock_levels', (req, res) => {
       res.status(400).send('Too many items in JSON')
       return
     } else if (Object.keys(req.body).length === 80) {
-      updateAll(name, req.body)
+      replaceAll(name, req.body)
     } else {
       // If the number of entries is under 80, update the levels one-by-one
       const name = req.session.name || 'API'
@@ -558,7 +559,7 @@ io.on('connection', (socket) => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
-        updateAll(name, table)
+        replaceAll(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
         io.to(`${socket.id}`).emit('update table', last_table)
