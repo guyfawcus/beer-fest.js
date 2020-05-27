@@ -391,13 +391,13 @@ app.get('/humans.txt', (req, res) => {
 
 // Routes for reveal (the slideshow package)
 app.get('/css/reveal.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/css/reveal.css'))
+  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/reveal.css'))
 })
 app.get('/css/theme/black.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/css/theme/black.css'))
+  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/theme/black.css'))
 })
 app.get('/js/reveal.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/js/reveal.js'))
+  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/reveal.js'))
 })
 
 app.use(express.static('public'))

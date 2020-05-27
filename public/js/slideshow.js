@@ -1,10 +1,12 @@
 /* global globalThis */
 
-// More info about config & dependencies:
-// - https://github.com/hakimel/reveal.js#configuration
-// - https://github.com/hakimel/reveal.js#dependencies]
+// More info about configuration & plugins:
+// - https://revealjs.com/config/
+// - https://revealjs.com/plugins/]
 
-globalThis.Reveal.initialize({
+const deck = new globalThis.Reveal()
+
+deck.initialize({
   preloadIframes: true,
   autoSlideStoppable: false,
   progress: false,
@@ -15,6 +17,6 @@ globalThis.Reveal.initialize({
   transitionSpeed: 'slow'
 })
 
-globalThis.Reveal.configure({
+deck.configure({
   autoSlide: 2000
 })
