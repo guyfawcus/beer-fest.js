@@ -473,27 +473,16 @@ export function tableUpload() {
       }
 
       if (confirm('Are you sure you want to use this data?') !== true) return
-      updateRequired(JSON.parse(reader.result.toString()))
+
+      const newTable = JSON.parse(reader.result.toString())
+      socket.emit('update required', newTable)
+      STOCK_LEVELS = newTable
     }
 
     reader.readAsText(file)
     console.log(`Reading in ${file.size} bytes from ${file.name}`)
   }
   input_element.click()
-}
-
-/**
- * This is used by {@link tableUpload} to only update the beers that are different from the current state.
- * @param {stockLevelsObj} table
- */
-function updateRequired(table) {
-  for (const [number, level] of Object.entries(table)) {
-    if (level !== STOCK_LEVELS[number]) {
-      console.log(`Setting ${number} as ${level}`)
-      socket.emit('update single', { number: Number(number), level: level })
-      STOCK_LEVELS[number] = level
-    }
-  }
 }
 
 // ---------------------------------------------------------------------------

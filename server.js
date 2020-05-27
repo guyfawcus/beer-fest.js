@@ -257,6 +257,20 @@ function updateSingle(name, number, level) {
 }
 
 /**
+ * This takes in a {@link stockLevelsObj} and emits any differences from
+ * the current state using {@link updateSingle}.
+ * @param {string} name The name of the user
+ * @param {stockLevelsObj} stock_levels The object with all of the stock levels
+ */
+function updateRequired(name, stock_levels) {
+  for (const [number, level] of Object.entries(stock_levels)) {
+    if (level !== last_table[number]) {
+      updateSingle(name, Number(number), level)
+    }
+  }
+}
+
+/**
  * This takes in a {@link stockLevelsObj} and emits it to all connected clients
  * @param {string} name The name of the user
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
@@ -524,6 +538,19 @@ io.on('connection', (socket) => {
     } else {
       io.to(`${socket.id}`).emit('auth', false)
     }
+  })
+
+  socket.on('update required', (table) => {
+    const name = socket.handshake.session.name
+    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+      if (err) handleError("Couldn't check authed_ids from Redis", err)
+      if (reply) {
+        updateRequired(name, table)
+      } else {
+        console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        io.to(`${socket.id}`).emit('update table', last_table)
+      }
+    })
   })
 
   socket.on('update table', (table) => {
