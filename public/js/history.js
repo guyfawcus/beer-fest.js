@@ -3,15 +3,15 @@
 
 import { setTooltip, socket, updateHistory } from './core.js'
 
-socket.on('update single', (stock_level) => {
+socket.on('update-single', (stock_level) => {
   updateHistory(stock_level)
 })
 
-socket.on('update table', (stock_level) => {
+socket.on('replace-all', (stock_level) => {
   document.getElementById('history').innerHTML = ''
 })
 
-socket.on('update history', (history) => {
+socket.on('history', (history) => {
   document.getElementById('history').innerHTML = ''
   history.forEach((stock_level) => updateHistory(stock_level))
 })

@@ -138,7 +138,7 @@ function confirmUpdate(number, level, to_confirm = TO_CONFIRM) {
     }
   }
   setColour(number, level, button)
-  socket.emit('update single', { number: number, level: level })
+  socket.emit('update-single', { number: number, level: level })
 }
 
 /**
@@ -435,7 +435,7 @@ export function updateAllAs(level) {
   for (let i = 1; i <= 80; i++) {
     table[i] = level
   }
-  socket.emit('update table', table)
+  socket.emit('replace-all', table)
   STOCK_LEVELS = table
 }
 
@@ -475,7 +475,7 @@ export function tableUpload() {
       if (confirm('Are you sure you want to use this data?') !== true) return
 
       const newTable = JSON.parse(reader.result.toString())
-      socket.emit('update required', newTable)
+      socket.emit('update-all', newTable)
       STOCK_LEVELS = newTable
     }
 

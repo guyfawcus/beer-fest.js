@@ -113,13 +113,13 @@ document.addEventListener('click', () => {
 // Socket events
 // ---------------------------------------------------------------------------
 // Update the state when remotes send updates
-socket.on('update table', (table) => {
+socket.on('replace-all', (table) => {
   console.groupCollapsed('Updating all entities')
   updateFromState(table)
   console.groupEnd()
 })
 
-socket.on('update single', (stock_level) => {
+socket.on('update-single', (stock_level) => {
   updateLevel(stock_level.number, stock_level.level)
 })
 

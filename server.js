@@ -251,7 +251,7 @@ function updateSingle(name, number, level) {
   console.log(`Distributing updates from ${name} (number ${number} = ${level})`)
   if (last_table[number] !== level) {
     last_table[number] = level
-    io.sockets.emit('update single', singleUpdateObj)
+    io.sockets.emit('update-single', singleUpdateObj)
     saveState(last_table)
   }
 }
@@ -291,7 +291,7 @@ function replaceAll(name, stock_levels) {
   // Save the whole table at once
   console.log(`Distributing whole table from ${name}`)
   last_table = stock_levels
-  io.sockets.emit('update table', stock_levels)
+  io.sockets.emit('replace-all', stock_levels)
   saveState(stock_levels)
 }
 
@@ -513,7 +513,7 @@ io.on('connection', (socket) => {
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
   console.log('Distributing previous state')
-  io.to(`${socket.id}`).emit('update table', last_table)
+  io.to(`${socket.id}`).emit('replace-all', last_table)
   io.to(`${socket.id}`).emit('config', last_config)
 
   if (pathname === 'history' || pathname === 'availability') {
@@ -526,7 +526,7 @@ io.on('connection', (socket) => {
       if (err) handleError("Couldn't check get log from Redis", err)
       const history = []
       reply.forEach((update) => history.push(JSON.parse(update)))
-      io.to(`${socket.id}`).emit('update history', history)
+      io.to(`${socket.id}`).emit('history', history)
     })
   }
 
@@ -541,7 +541,7 @@ io.on('connection', (socket) => {
     }
   })
 
-  socket.on('update required', (table) => {
+  socket.on('update-all', (table) => {
     const name = socket.handshake.session.name
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -549,12 +549,12 @@ io.on('connection', (socket) => {
         updateRequired(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(`${socket.id}`).emit('update table', last_table)
+        io.to(`${socket.id}`).emit('replace-all', last_table)
       }
     })
   })
 
-  socket.on('update table', (table) => {
+  socket.on('replace-all', (table) => {
     const name = socket.handshake.session.name
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -562,12 +562,12 @@ io.on('connection', (socket) => {
         replaceAll(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(`${socket.id}`).emit('update table', last_table)
+        io.to(`${socket.id}`).emit('replace-all', last_table)
       }
     })
   })
 
-  socket.on('update single', (stock_level) => {
+  socket.on('update-single', (stock_level) => {
     const name = socket.handshake.session.name
     const number = stock_level.number
     const level = stock_level.level
@@ -578,7 +578,7 @@ io.on('connection', (socket) => {
         updateSingle(name, number, level)
       } else {
         console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
-        io.to(`${socket.id}`).emit('update table', last_table)
+        io.to(`${socket.id}`).emit('replace-all', last_table)
       }
     })
   })
