@@ -3,6 +3,7 @@
 'use strict'
 
 const crypto = require('crypto')
+const fs = require('fs')
 const http = require('http')
 const path = require('path')
 
@@ -146,14 +147,6 @@ app.post('/report-violation', cspParser, (req, res) => {
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
-
-// Read in beers list CSV file - FIXME
-// !WARNING: This is async, need to make sure that this runs before any clients connect!
-csv()
-  .fromFile(BEERS_FILE)
-  .then((jsonObj) => {
-    beers = jsonObj
-  })
 
 // Set up server
 const redisSession = session(sessionOptions)
@@ -534,8 +527,33 @@ io.on('connection', (socket) => {
   /* Path specific actions            */
   /* -------------------------------- */
   if (pathname === 'history' || pathname === 'availability') {
-    if (JSON.stringify(beers) === '{}') console.error('Client sent empty beers list')
-    io.to(`${socket.id}`).emit('beers', beers)
+    // Send information about all of the beers
+    // Check if the beers file has already been read in
+    if (JSON.stringify(beers) === '{}') {
+      console.log('Beers object empty')
+
+      // Check if the beers file exists. If it does, read it in and send it
+      fs.access(BEERS_FILE, fs.F_OK, (err) => {
+        if (err) {
+          console.error('No beers file found')
+        } else {
+          console.log('Reading in beers file')
+          csv()
+            .fromFile(BEERS_FILE)
+            .then((jsonObj) => {
+              beers = jsonObj
+            })
+            .then(() => {
+              console.log('Sending newly created beers object')
+              io.to(`${socket.id}`).emit('beers', beers)
+            })
+        }
+      })
+    } else {
+      // Send a previously generated beers object
+      console.debug('Sending beers object')
+      io.to(`${socket.id}`).emit('beers', beers)
+    }
   }
 
   if (pathname === 'history') {
