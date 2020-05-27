@@ -1,12 +1,10 @@
-/* global globalThis */
-
 // More info about configuration & plugins:
 // - https://revealjs.com/config/
 // - https://revealjs.com/plugins/]
 
-const deck = new globalThis.Reveal()
+import Reveal from './reveal.esm.js'
 
-deck.initialize({
+Reveal.initialize({
   preloadIframes: true,
   autoSlideStoppable: false,
   progress: false,
@@ -17,6 +15,6 @@ deck.initialize({
   transitionSpeed: 'slow'
 })
 
-deck.configure({
+Reveal.configure({
   autoSlide: 2000
 })
