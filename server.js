@@ -390,9 +390,6 @@ app.get('/humans.txt', (req, res) => {
 })
 
 // Routes for reveal (the slideshow package)
-app.get('/css/reset.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/reveal.js/css/reset.css'))
-})
 app.get('/css/reveal.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/css/reveal.css'))
 })
