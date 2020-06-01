@@ -1,23 +1,31 @@
 #!/usr/bin/env node
-
 'use strict'
 
+// Built in packages
 const crypto = require('crypto')
 const fs = require('fs')
 const http = require('http')
 const path = require('path')
 
-const bcrypt = require('bcryptjs')
+// Express related packages
 const compression = require('compression')
-const csv = require('csvtojson')
+const connectRedis = require('connect-redis')
 const express = require('express')
-const express_enforces_ssl = require('express-enforces-ssl')
-const flash = require('express-flash')
+const expressEnforcesSsl = require('express-enforces-ssl')
+const expressFlash = require('express-flash')
+const expressSocketIoSession = require('express-socket.io-session')
 const helmet = require('helmet')
 const session = require('express-session')
-const sharedsession = require('express-socket.io-session')
+
+// Other packages
+const bcrypt = require('bcryptjs')
+const csvToJson = require('csvtojson')
+const socketIo = require('socket.io')
 const redis = require('redis')
 
+// ---------------------------------------------------------------------------
+// Variable definitions
+// ---------------------------------------------------------------------------
 const TEMP_UNHASHED = crypto.randomBytes(24).toString('hex')
 const ADMIN_CODE = process.env.ADMIN_CODE || bcrypt.hashSync(TEMP_UNHASHED, 10)
 const COOKIE_SECRET = process.env.COOKIE_SECRET || crypto.randomBytes(64).toString('hex')
@@ -41,12 +49,6 @@ const ENABLE_API = process.env.ENABLE_API || 'false'
 const NODE_ENV = process.env.NODE_ENV || ''
 const REDIS_URL = process.env.REDIS_URL || ''
 const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
-
-const app = express()
-const server = new http.Server(app)
-const io = require('socket.io')(server, { cookie: false })
-const redisClient = redis.createClient({ url: REDIS_URL })
-const RedisStore = require('connect-redis')(session)
 
 /** @type {configObj} */
 let last_config = {}
@@ -72,6 +74,13 @@ let beers = {}
 /** @typedef {import('public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
+// Initial setup
+// ---------------------------------------------------------------------------
+const app = express()
+const redisClient = redis.createClient({ url: REDIS_URL })
+const RedisStore = connectRedis(session)
+
+// ---------------------------------------------------------------------------
 // Security
 // ---------------------------------------------------------------------------
 const sessionOptions = {
@@ -84,7 +93,7 @@ const sessionOptions = {
 }
 
 if (NODE_ENV === 'production') {
-  app.use(express_enforces_ssl())
+  app.use(expressEnforcesSsl())
   app.enable('trust proxy')
   sessionOptions.cookie.secure = true
   sessionOptions.name = '__Host-sessionId'
@@ -147,17 +156,18 @@ app.post('/report-violation', cspParser, (req, res) => {
 // ---------------------------------------------------------------------------
 // Configuration
 // ---------------------------------------------------------------------------
-
 // Set up server
+const server = new http.Server(app)
+const io = socketIo(server, { cookie: false })
 const redisSession = session(sessionOptions)
 
-io.use(sharedsession(redisSession))
+io.use(expressSocketIoSession(redisSession))
 app.set('view-engine', 'ejs')
 
 app.use(compression())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(flash())
+app.use(expressFlash())
 app.use(redisSession)
 
 // Start the server
@@ -202,7 +212,6 @@ redisClient.hgetall('config', (err, reply) => {
 // ---------------------------------------------------------------------------
 // Errors
 // ---------------------------------------------------------------------------
-
 redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
     console.error("Can't connect to Redis")
@@ -323,7 +332,6 @@ function checkNotAuthenticated(req, res, next) {
 // ---------------------------------------------------------------------------
 // Routes - main
 // ---------------------------------------------------------------------------
-
 // Core pages
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/index.html'))
@@ -401,7 +409,6 @@ app.use(express.static('public'))
 // ---------------------------------------------------------------------------
 // Routes - authentication
 // ---------------------------------------------------------------------------
-
 app.post('/users', (req, res) => {
   // Store the name in the users session
   const name = req.body.name
@@ -445,7 +452,6 @@ app.get('/logout', (req, res) => {
 // ---------------------------------------------------------------------------
 // Routes - API
 // ---------------------------------------------------------------------------
-
 app.get('/api/stock_levels', (req, res) => {
   res.send(last_table)
 })
@@ -499,7 +505,6 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 // ---------------------------------------------------------------------------
 // Socket Events
 // ---------------------------------------------------------------------------
-
 io.on('connection', (socket) => {
   // Track which sockets are related to each session
   redisClient.sadd(socket.handshake.session.id, socket.id)
@@ -538,7 +543,7 @@ io.on('connection', (socket) => {
           console.error('No beers file found')
         } else {
           console.log('Reading in beers file')
-          csv()
+          csvToJson()
             .fromFile(BEERS_FILE)
             .then((jsonObj) => {
               beers = jsonObj
