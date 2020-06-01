@@ -1,3 +1,10 @@
+/*!
+ * https://github.com/guyfawcus/beer-fest.js
+ *
+ * (c) 2020 - James Fawcus-Robinson
+ * Released under the MIT License.
+ */
+
 /* eslint-env browser */
 /* global globalThis */
 'use strict'
