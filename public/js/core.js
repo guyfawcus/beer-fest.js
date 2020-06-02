@@ -56,7 +56,19 @@ export const socket = globalThis.io.connect(location.host)
  */
 
 /** Object to store the stock level for a particular beer. Used in {@link STOCK_LEVELS}
- * @typedef {Object.<number, levelValues>} stockLevelsObj
+ * @typedef {Object} stockLevelsObj
+ * @property {number} number The number of the beer
+ * @property {levelValues} level The level that the beer is set to
+ */
+
+/** Object to store the stock level and other info for an update. Used in {@link updateHistory}
+ * @typedef {Object} singleUpdateObj
+ * @property {number} epoch_time Time since the the Unix epoch that the update was performed
+ * @property {string} day The day name when the update was performed
+ * @property {string} time The time in 24hr format when the update was performed
+ * @property {string} name The name of the person who generated the update
+ * @property {number} number The number of the beer that was changed
+ * @property {levelValues} level The level that the beer is set to
  */
 
 // ---------------------------------------------------------------------------
@@ -406,7 +418,7 @@ export function updateFromState(stock_levels) {
  * and adds it to the history div.
  *
  * Uses {@link setTooltip} {@link setColour}
- * @param {stockLevelsObj} stock_level
+ * @param {singleUpdateObj} stock_level
  */
 export function updateHistory(stock_level) {
   console.log(stock_level)
