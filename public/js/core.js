@@ -123,32 +123,6 @@ function setColour(number, level, element) {
 // Button / Availability functions
 // ---------------------------------------------------------------------------
 /**
- * Simple wrapper function that pops up a confirmation window if required.
- * The update is then passed to {@link updateLevel}.
- * @param {number} number The number to be updated
- * @param {levelValues} level The level that the number will be set to
- * @param {boolean} [to_confirm = TO_CONFIRM] If set to `true`, a pop-up will appear asking the user to confirm the action
- */
-function confirmUpdate(number, level, to_confirm = TO_CONFIRM) {
-  const button = document.getElementById(`button_${number}`)
-
-  if (to_confirm) {
-    const thisBeer = BEERS[number - 1]
-    let message = ''
-    if (thisBeer !== undefined) {
-      message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
-    } else {
-      message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`
-    }
-    if (confirm(message) !== true) {
-      return
-    }
-  }
-  setColour(number, level, button)
-  socket.emit('update-single', { number: number, level: level })
-}
-
-/**
  * This function generates an SVG cross and adds it to a button element.
  * @param {number} number The button number to add the cross to
  */
@@ -330,15 +304,18 @@ export function applyChecks(numbersChecked = []) {
 }
 
 /**
- * If a user is logged in ({@link AUTHORISED}) then this will update the level of the beer using {@link confirmUpdate}.
- * If not, then the number will be checked off (a cross will be added / removed using {@link setCross}
+ * If a user is not logged in ({@link AUTHORISED}) then the number will be checked off
+ * (a cross will be added / removed using {@link setCross}.
+ * If they are logged in then the level of the beer will be updated
+ * (the colour will be changed using {@link setColour}).
  * @param {number} number The number to update the level of / set the cross
  */
 export function updateNumber(number) {
+  const button = document.getElementById(`button_${number}`)
+  const cross = button.getElementsByClassName('cross')[0]
+
   if (!AUTHORISED) {
     // If the number has a cross on it already, remove it. Otherwise, set it.
-    const button = document.getElementById(`button_${number}`)
-    const cross = button.getElementsByClassName('cross')[0]
     if (cross.classList.contains('checked')) {
       setCross(number, false)
     } else {
@@ -347,16 +324,37 @@ export function updateNumber(number) {
     return
   }
 
+  /**
+   * Pop up a confirmation window if `TO_CONFIRM` is true
+   * @param {levelValues} level The level that the number will be set to
+   */
+  const confirmUpdate = (level) => {
+    if (TO_CONFIRM) {
+      const thisBeer = BEERS[number - 1]
+      let message = ''
+      if (thisBeer !== undefined) {
+        message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
+      } else {
+        message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`
+      }
+      if (confirm(message) !== true) {
+        return
+      }
+    }
+    setColour(number, level, button)
+    socket.emit('update-single', { number: number, level: level })
+  }
+
   if (STOCK_LEVELS[number] === 'full') {
     if (LOW_ENABLE === true) {
-      confirmUpdate(number, 'low')
+      confirmUpdate('low')
     } else {
-      confirmUpdate(number, 'empty')
+      confirmUpdate('empty')
     }
   } else if (STOCK_LEVELS[number] === 'low') {
-    confirmUpdate(number, 'empty')
+    confirmUpdate('empty')
   } else if (STOCK_LEVELS[number] === 'empty') {
-    confirmUpdate(number, 'full')
+    confirmUpdate('full')
   }
 }
 
