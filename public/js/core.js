@@ -393,24 +393,6 @@ export function updateLevel(number, level) {
   }
 }
 
-/**
- * Update the table based on remote changes to the stock levels.
- * @param {stockLevelsObj} stock_levels
- */
-export function updateFromState(stock_levels) {
-  console.log('%cUpdating table from:', 'font-weight:bold;')
-  console.log(stock_levels)
-  for (const number in stock_levels) {
-    if (stock_levels[number] === 'empty') {
-      updateLevel(Number(number), 'empty')
-    } else if (stock_levels[number] === 'low') {
-      updateLevel(Number(number), 'low')
-    } else if (stock_levels[number] === 'full') {
-      updateLevel(Number(number), 'full')
-    }
-  }
-}
-
 // ---------------------------------------------------------------------------
 // History functions
 // --------------------------------------------------------------------------

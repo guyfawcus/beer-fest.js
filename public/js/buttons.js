@@ -10,8 +10,7 @@ import {
   refreshButtons,
   socket,
   updateLevel,
-  updateNumber,
-  updateFromState
+  updateNumber
 } from './core.js'
 
 // Add event listeners and build a cross for each button
@@ -115,7 +114,11 @@ document.addEventListener('click', () => {
 // Update the state when remotes send updates
 socket.on('replace-all', (table) => {
   console.groupCollapsed('Updating all entities')
-  updateFromState(table)
+  console.log('%cUpdating table from:', 'font-weight:bold;')
+  console.log(table)
+  for (const number in table) {
+    updateLevel(Number(number), table[number])
+  }
   console.groupEnd()
 })
 
