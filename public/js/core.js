@@ -353,6 +353,7 @@ export function updateNumber(number) {
         return
       }
     }
+    // Change the colour for instant feedback but don't change any local state, just send the update
     setColour(number, level, button)
     socket.emit('update-single', { number: number, level: level })
   }
