@@ -30,6 +30,7 @@ Installation will give you the following to help in working with this software:
 - [Standard JS](https://standardjs.com/) - Rules for linting the code with...
 - [ESLint](https://eslint.org/) - Static analysis tool to for catching problems before they appear
 - [JSDoc](https://jsdoc.app/) - For generating documentation
+- [Cypress](https://www.cypress.io/) - For end-to-end testing
 
 ### Setup
 
@@ -61,10 +62,11 @@ then add the following lines to your [settings.json](https://code.visualstudio.c
 2. Run `nodemon server.js`
 3. Make some changes
 4. Run `npm run test`
-5. Ensure your changes have had the desired effect
-6. Commit your code with a message about what has changed (`git commit -a`)
-7. Create a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
-8. Have a beer!
+5. (optional) Run `npm run cypress:run` to test that the interface is still functional
+6. Ensure your changes have had the desired effect
+7. Commit your code with a message about what has changed (`git commit -a`)
+8. Create a [pull request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests)
+9. Have a beer!
 
 ### Security
 
@@ -78,10 +80,11 @@ then just comment out the security section in the server,
 hack away, open a pull request then discuss the issue.
 Please DO NOT deploy this application in an insecure state.
 
-The other place you may run into problems is with the static type checker (ESLint).
-These checks are there to help prevent bugs and to ensure a consistent style.
+The other place you may run into problems is with the static type checker (ESLint) or the testing framework (Cypress).
+These checks are there to help prevent bugs, to ensure a consistent style,
+and to test that the interface still works as expected.
 All of these checks must pass before a commit to the master branch,
-but f you're just hacking away and want to try something out,
+but if you're just hacking away and want to try something out,
 do it in a new branch then commit with `git commit --no-verify`,
 then like with a security problem,
 just open a pull request or an issue and someone will help you out.
