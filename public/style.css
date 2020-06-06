@@ -81,6 +81,13 @@ h1 {
   font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
 }
 
+/* "Fix" header spacing on mobile */
+@media (orientation: portrait) {
+  .settings_header {
+    padding-top: 2em;
+  }
+}
+
 h2 {
   margin: 0em;
 }
