@@ -21,7 +21,9 @@
 
   --noscript-background: #ffffff3f;
   --default-link-colour: #0000ee;
+  --shaded-link-colour: #3232f1;
   --default-visited-colour: #551a8b;
+  --shaded-visited-colour: #7647a2;
   --default-selection-colour: #b4d5ff;
 
   --transition-time: 150ms;
@@ -89,6 +91,24 @@ h2 {
 
 input::selection {
   background-color: var(--default-selection-colour);
+}
+
+footer {
+  position: absolute;
+  bottom: 1em;
+  width: 100%;
+  text-align: center;
+}
+
+footer::selection,
+footer a::selection {
+  background-color: var(--default-selection-colour);
+}
+footer a:link {
+  color: var(--shaded-link-colour);
+}
+footer a:visited {
+  color: var(--default-visited-colour);
 }
 
 input[type='checkbox'] {
