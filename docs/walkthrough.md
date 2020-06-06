@@ -27,7 +27,7 @@ This document will walk you through every page and describe their functionality.
 
 ## Availability
 
-<img src="/docs/images/availability.png" width="384">
+<img src="/docs/images/availability.png" width="384"> <img src="/docs/images/availability-menu.png" width="384">
 
 ## Slideshow
 
