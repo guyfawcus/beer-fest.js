@@ -244,7 +244,10 @@ function generateCheckedHexData(numbersChecked) {
     }
   }
 
-  const checkedHexData = checkedData.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '')
+  // Transform byte array to a hex string
+  let checkedHexData = checkedData.reduce((str, byte) => str + byte.toString(16).padStart(2, '0'), '')
+  // Remove the last nibble if it's empty as it's not needed for decoding
+  if (checkedHexData[checkedHexData.length - 1] === '0') checkedHexData = checkedHexData.slice(0, -1)
   return checkedHexData
 }
 
@@ -269,21 +272,10 @@ export function generateCheckedHexURL(updateURL = false) {
  * @returns {number[] | undefined} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData(checkedHexData) {
-  // Make sure the input is the right length 10 bytes (20 nibbles)
-  if (!checkedHexData) {
-    return
-  } else if (checkedHexData.length < 20) {
-    console.debug(`Padding checkedHexData (${checkedHexData}) with ${20 - checkedHexData.length} nibble(s)`)
-    checkedHexData = checkedHexData.padEnd(20, '0')
-  } else if (checkedHexData.length > 20) {
-    console.debug(
-      `Trimming ${checkedHexData.length - 20} nibble(s) from checkedHexData (${checkedHexData.slice(
-        checkedHexData.length - 20
-      )})`
-    )
-    checkedHexData = checkedHexData.slice(0, 20)
-  }
+  // Pad string to be a multiple of an 8 bit byte if the string ends in a nibble
+  if (checkedHexData.length % 2 !== 0) checkedHexData = checkedHexData += '0'
 
+  // Parse the hex string into a Uint8Array
   const checkedData = new Uint8Array(checkedHexData.match(/.{1,2}/g).map((byte) => parseInt(byte, 16)))
   const numbersChecked = []
 
