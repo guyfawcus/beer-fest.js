@@ -25,12 +25,14 @@ const checkedHexData = new URL(location.href).searchParams.get('checked')
 if (checkedHexData) {
   const numbersChecked = parseCheckedHexData(checkedHexData)
   applyChecks(numbersChecked)
-
-  // Remove the checkedHexData from the URL so that it's not used if you refresh the page
-  history.replaceState(null, '', location.href.split('?')[0])
 } else {
   applyChecks(getChecks())
 }
+
+// Remove the checkedHexData from the URL so that it's not used if you refresh the page
+const newUrl = new URL(location.href)
+newUrl.searchParams.delete('checked')
+history.replaceState(null, '', newUrl.toString())
 
 // ---------------------------------------------------------------------------
 // Menu
