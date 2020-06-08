@@ -5,7 +5,6 @@ import {
   applyChecks,
   buildCross,
   generateCheckedHexURL,
-  getChecks,
   parseCheckedHexData,
   refreshButtons,
   socket,
@@ -22,12 +21,10 @@ for (const button of buttons) {
 }
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
-const checkedHexData = new URL(location.href).searchParams.get('checked')
+const checkedHexData = new URL(location.href).searchParams.get('checked') || localStorage.getItem('checkedHexData')
 if (checkedHexData) {
   const numbersChecked = parseCheckedHexData(checkedHexData)
   applyChecks(numbersChecked)
-} else {
-  applyChecks(getChecks())
 }
 
 // Remove the checkedHexData from the URL so that it's not used if you refresh the page

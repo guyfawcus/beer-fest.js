@@ -175,18 +175,29 @@ export function buildCross(number) {
  * Add or remove the cross on the selected number.
  * @param {number} number The number to set or remove the cross on
  * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
+ * @param {boolean} [store] If 'true', the checkedHexData in localStorage will be updated
  */
-function setCross(number, checked = true) {
+function setCross(number, checked = true, store = true) {
   const button = document.getElementById(`button_${number}`)
   if (!button) return
   const cross = button.getElementsByClassName('cross')[0]
 
   if (checked === false) {
     cross.classList.remove('checked')
-    localStorage.removeItem(number.toString())
   } else {
     cross.classList.add('checked')
-    localStorage.setItem(number.toString(), 'checked')
+  }
+
+  if (store === true) {
+    const numbersChecked = parseCheckedHexData(localStorage.getItem('checkedHexData')) || []
+
+    if (checked === false) {
+      const index = numbersChecked.indexOf(number)
+      if (index > -1) numbersChecked.splice(index, 1)
+    } else {
+      if (!(number in numbersChecked)) numbersChecked.push(number)
+    }
+    localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
   }
 }
 
@@ -210,21 +221,6 @@ export function refreshButtons() {
 }
 
 /**
- * This loops over all of the entries in local storage see what numbers are checked.
- * @returns {array} a list of all of the checked numbers
- */
-export function getChecks() {
-  const numbersChecked = []
-  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
-    const checked = localStorage.getItem(number.toString())
-    if (checked === 'checked') {
-      numbersChecked.push(number)
-    }
-  }
-  return numbersChecked
-}
-
-/**
  * This reads in the checks array see what numbers are checked.
  * It then makes an array of Uint8 bytes where each bit represents the checked state of a number,
  * for example, if the first byte was `0b01001011` (`0x4a`) then numbers 2, 5, 7 and 8 are checked.
@@ -232,7 +228,7 @@ export function getChecks() {
  * @param {array} numbersChecked list of all of the checked numbers
  * @returns {string} hex formatted string
  */
-function generateCheckedHexData(numbersChecked) {
+function generateCheckedHexData(numbersChecked = []) {
   if (!numbersChecked || numbersChecked.length === 0) return ''
 
   const biggestNumber = Math.max(...numbersChecked)
@@ -261,13 +257,14 @@ function generateCheckedHexData(numbersChecked) {
 }
 
 /**
- * This uses {@link getChecks} and {@link generateCheckedHexData} to add the CheckedHexData to a URL.
+ * This gets all of the checks then generates checkedHexData to add to a URL
+ * by using {@link parseCheckedHexData} and {@link generateCheckedHexData}.
  * This is used if you want to share the numbers that you've checked off with someone / back them up.
  * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
 export function generateCheckedHexURL(updateURL = false) {
-  const numbersChecked = getChecks()
+  const numbersChecked = parseCheckedHexData(localStorage.getItem('checkedHexData'))
   const checkedHexData = generateCheckedHexData(numbersChecked)
   const url = new URL(location.href)
   url.searchParams.set('checked', checkedHexData)
@@ -276,11 +273,12 @@ export function generateCheckedHexURL(updateURL = false) {
 }
 
 /**
- * This parses the checkedHexData and adds the crosses on the buttons using setCross().
+ * This parses the checkedHexData and returns a list of the numbers checked.
  * @param {string} checkedHexData A hex formatted string containing the checked data
  * @returns {number[] | undefined} A list of all of the numbers that are checked
  */
 export function parseCheckedHexData(checkedHexData) {
+  if (!checkedHexData) return
   // Pad string to be a multiple of an 8 bit byte if the string ends in a nibble
   if (checkedHexData.length % 2 !== 0) checkedHexData = checkedHexData += '0'
 
@@ -307,11 +305,13 @@ export function parseCheckedHexData(checkedHexData) {
  * @param {array} numbersChecked The numbers checked
  */
 export function applyChecks(numbersChecked = []) {
+  localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
+
   for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     if (numbersChecked.includes(number)) {
-      setCross(number)
+      setCross(number, true, false)
     } else {
-      setCross(number, false)
+      setCross(number, false, false)
     }
   }
 }
