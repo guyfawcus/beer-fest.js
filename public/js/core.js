@@ -202,6 +202,22 @@ function setCross(number, checked = true, store = true) {
 }
 
 /**
+ * Takes a list of the numbers checked then sets them using {@link setCross}.
+ * @param {array} numbersChecked The numbers checked
+ */
+export function applyChecks(numbersChecked = []) {
+  localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
+
+  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+    if (numbersChecked.includes(number)) {
+      setCross(number, true, false)
+    } else {
+      setCross(number, false, false)
+    }
+  }
+}
+
+/**
  * This simple wrapper function just runs
  * {@link setTooltip} and {@link setColour} every button.
  */
@@ -298,22 +314,6 @@ export function parseCheckedHexData(checkedHexData) {
     }
   }
   return numbersChecked
-}
-
-/**
- * Takes a list of the numbers checked then sets them using {@link setCross}.
- * @param {array} numbersChecked The numbers checked
- */
-export function applyChecks(numbersChecked = []) {
-  localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
-
-  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
-    if (numbersChecked.includes(number)) {
-      setCross(number, true, false)
-    } else {
-      setCross(number, false, false)
-    }
-  }
 }
 
 /**
