@@ -14,8 +14,9 @@ import {
 } from './core.js'
 
 // Add event listeners and build a cross for each button
-for (let number = 1; number <= 80; number++) {
-  const button = document.getElementById(`button_${number}`)
+const buttons = document.getElementsByClassName('availability_button')
+for (const button of buttons) {
+  const number = button.id.split('_')[1]
   button.addEventListener('click', (event) => updateNumber(number))
   buildCross(number)
 }

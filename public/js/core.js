@@ -31,6 +31,9 @@ let BEERS = []
  */
 let STOCK_LEVELS = {}
 
+/** The total number of availability buttons */
+const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 80
+
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(location.host)
 
@@ -105,6 +108,7 @@ export function setTooltip(number, element) {
  * namely the history page, where the div doesn't have an ID in the format `button_<number>`
  */
 function setColour(number, level, element) {
+  if (!element) return
   const thisBeer = BEERS[number - 1]
   if (!level) level = STOCK_LEVELS[number]
 
@@ -174,6 +178,7 @@ export function buildCross(number) {
  */
 function setCross(number, checked = true) {
   const button = document.getElementById(`button_${number}`)
+  if (!button) return
   const cross = button.getElementsByClassName('cross')[0]
 
   if (checked === false) {
@@ -191,14 +196,14 @@ function setCross(number, checked = true) {
  */
 export function refreshButtons() {
   const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
+  const buttons = document.getElementsByClassName('availability_button')
 
-  for (let i = 1; i <= 80; i++) {
-    const button = document.getElementById(`button_${i}`)
-
+  for (const button of buttons) {
+    const number = button.id.split('_')[1]
     // Deactivate transitions because transitioning everything causes jank on mobile
     button.style.transition = 'none'
-    setTooltip(i, button)
-    setColour(i, undefined, button)
+    setTooltip(number, button)
+    setColour(number, undefined, button)
     // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
     setTimeout(() => (button.style.transition = `all ${transitionTime}`), 0)
   }
@@ -210,7 +215,7 @@ export function refreshButtons() {
  */
 export function getChecks() {
   const numbersChecked = []
-  for (let number = 1; number <= 80; number++) {
+  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     const checked = localStorage.getItem(number.toString())
     if (checked === 'checked') {
       numbersChecked.push(number)
@@ -228,11 +233,15 @@ export function getChecks() {
  * @returns {string} hex formatted string
  */
 function generateCheckedHexData(numbersChecked) {
-  const checkedData = new Uint8Array(10)
+  if (!numbersChecked || numbersChecked.length === 0) return ''
+
+  const biggestNumber = Math.max(...numbersChecked)
+  const numOfBytesNeeded = Math.ceil(biggestNumber / 8)
+  const checkedData = new Uint8Array(numOfBytesNeeded)
   let byteNum = 0
   let bitNum = 0
 
-  for (let number = 1; number <= 80; number++) {
+  for (let number = 1; number <= biggestNumber; number++) {
     // Set the bit if the number is checked
     if (numbersChecked.includes(number)) checkedData[byteNum] |= 1 << (7 - bitNum)
 
@@ -298,7 +307,7 @@ export function parseCheckedHexData(checkedHexData) {
  * @param {array} numbersChecked The numbers checked
  */
 export function applyChecks(numbersChecked = []) {
-  for (let number = 1; number <= 80; number++) {
+  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     if (numbersChecked.includes(number)) {
       setCross(number)
     } else {
@@ -348,6 +357,12 @@ export function updateNumber(number) {
     // Change the colour for instant feedback but don't change any local state, just send the update
     setColour(number, level, button)
     socket.emit('update-single', { number: number, level: level })
+  }
+
+  // This is needed if buttons have been added but STOCK_LEVELS doesn't have the keys yet
+  if (!(number in STOCK_LEVELS)) {
+    STOCK_LEVELS[number] = 'full'
+    console.debug(`Added ${number} before updating`)
   }
 
   if (STOCK_LEVELS[number] === 'full') {
@@ -424,8 +439,8 @@ export function updateAllAs(level) {
   console.log(`Marking everything as ${level}`)
   /** @type{stockLevelsObj} */
   const table = {}
-  for (let i = 1; i <= 80; i++) {
-    table[i] = level
+  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+    table[number] = level
   }
   socket.emit('replace-all', table)
   STOCK_LEVELS = table

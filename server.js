@@ -59,6 +59,9 @@ let last_table = {}
 /** @type{beersObj} */
 let beers = {}
 
+/** The total number of availability buttons */
+const NUM_OF_BUTTONS = 80
+
 // ---------------------------------------------------------------------------
 // Type definitions
 // ---------------------------------------------------------------------------
@@ -184,8 +187,8 @@ redisClient.hgetall('stock_levels', (err, reply) => {
     last_table = reply
   } else {
     console.log('Starting off state matrix')
-    for (let i = 1; i <= 80; i++) {
-      last_table[i] = 'full'
+    for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+      last_table[number] = 'full'
     }
     saveState(last_table)
   }
@@ -463,14 +466,14 @@ app.get('/api/stock_levels/:number', (req, res) => {
 app.post('/api/stock_levels', (req, res) => {
   const name = req.session.name || 'API'
   if (ENABLE_API === 'true') {
-    if (Object.keys(req.body).length > 80) {
+    if (Object.keys(req.body).length > NUM_OF_BUTTONS) {
       console.log('Too many items in JSON')
       res.status(400).send('Too many items in JSON')
       return
-    } else if (Object.keys(req.body).length === 80) {
+    } else if (Object.keys(req.body).length === NUM_OF_BUTTONS) {
       replaceAll(name, req.body)
     } else {
-      // If the number of entries is under 80, update the levels one-by-one
+      // If the number of entries is under NUM_OF_BUTTONS, update the levels one-by-one
       const name = req.session.name || 'API'
       for (const [number, level] of Object.entries(req.body)) {
         updateSingle(name, Number(number), level)
@@ -489,7 +492,7 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
   const level = req.params.level
 
   if (ENABLE_API === 'true') {
-    if (number <= 80) {
+    if (number <= NUM_OF_BUTTONS) {
       updateSingle(name, number, level)
       res.send(last_table)
     } else {
