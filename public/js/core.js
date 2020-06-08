@@ -199,7 +199,7 @@ export function refreshButtons() {
   const buttons = document.getElementsByClassName('availability_button')
 
   for (const button of buttons) {
-    const number = button.id.split('_')[1]
+    const number = Number(button.id.split('_')[1])
     // Deactivate transitions because transitioning everything causes jank on mobile
     button.style.transition = 'none'
     setTooltip(number, button)
