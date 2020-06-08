@@ -111,7 +111,6 @@ document.addEventListener('click', () => {
 // ---------------------------------------------------------------------------
 // Socket events
 // ---------------------------------------------------------------------------
-// Update the state when remotes send updates
 socket.on('replace-all', (table) => {
   console.groupCollapsed('Updating all entities')
   console.log('%cUpdating table from:', 'font-weight:bold;')
