@@ -161,7 +161,7 @@ app.post('/report-violation', cspParser, (req, res) => {
 // ---------------------------------------------------------------------------
 // Set up server
 const server = new http.Server(app)
-const io = socketIo(server, { cookie: false })
+const io = socketIo(server, { cookie: false, serveClient: false })
 const redisSession = session(sessionOptions)
 
 io.use(expressSocketIoSession(redisSession))
