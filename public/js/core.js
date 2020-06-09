@@ -195,7 +195,7 @@ function setCross(number, checked = true, store = true) {
       const index = numbersChecked.indexOf(number)
       if (index > -1) numbersChecked.splice(index, 1)
     } else {
-      if (!(number in numbersChecked)) numbersChecked.push(number)
+      numbersChecked.push(number)
     }
     localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
   }
