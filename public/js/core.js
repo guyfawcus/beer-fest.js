@@ -273,15 +273,13 @@ function generateCheckedHexData(numbersChecked = []) {
 }
 
 /**
- * This gets all of the checks then generates checkedHexData to add to a URL
- * by using {@link parseCheckedHexData} and {@link generateCheckedHexData}.
+ * This gets the checkedHexData from localStorage and adds it to a URL.
  * This is used if you want to share the numbers that you've checked off with someone / back them up.
  * @param {boolean} [updateURL] If set to `true`, the URL of the page will be updated with the result
  * @returns {URL} The full URL including the checked hex data as a search parameter
  */
 export function generateCheckedHexURL(updateURL = false) {
-  const numbersChecked = parseCheckedHexData(localStorage.getItem('checkedHexData'))
-  const checkedHexData = generateCheckedHexData(numbersChecked)
+  const checkedHexData = localStorage.getItem('checkedHexData') || ''
   const url = new URL(location.href)
   url.searchParams.set('checked', checkedHexData)
   if (updateURL) history.replaceState(null, '', url.toString())
