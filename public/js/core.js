@@ -197,7 +197,12 @@ function setCross(number, checked = true, store = true) {
     } else {
       numbersChecked.push(number)
     }
-    localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
+
+    if (numbersChecked.length === 0) {
+      localStorage.removeItem('checkedHexData')
+    } else {
+      localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
+    }
   }
 }
 
