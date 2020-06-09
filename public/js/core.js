@@ -211,14 +211,18 @@ function setCross(number, checked = true, store = true) {
  * @param {array} numbersChecked The numbers checked
  */
 export function applyChecks(numbersChecked = []) {
-  localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
-
   for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     if (numbersChecked.includes(number)) {
       setCross(number, true, false)
     } else {
       setCross(number, false, false)
     }
+  }
+
+  if (numbersChecked.length === 0) {
+    localStorage.removeItem('checkedHexData')
+  } else {
+    localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
   }
 }
 
