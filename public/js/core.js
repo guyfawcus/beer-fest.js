@@ -392,14 +392,12 @@ export function updateLevel(number, level) {
   const button = document.getElementById(`button_${number}`)
   setColour(number, level, button)
 
+  console.log(`Setting ${number} as ${level}`)
   if (level === 'empty') {
-    console.log(`Setting ${number} as empty`)
     STOCK_LEVELS[number] = 'empty'
   } else if (level === 'low') {
-    console.log(`Setting ${number} as low`)
     STOCK_LEVELS[number] = 'low'
   } else if (level === 'full') {
-    console.log(`Setting ${number} as full`)
     STOCK_LEVELS[number] = 'full'
   }
 }
@@ -415,7 +413,7 @@ export function updateLevel(number, level) {
  * @param {singleUpdateObj} stock_level
  */
 export function updateHistory(stock_level) {
-  console.log(stock_level)
+  console.log(`Setting ${stock_level.number} as ${stock_level.level}`)
   const div = document.createElement('div')
   div.classList.add('update')
   div.innerHTML = `<div class="time">${stock_level.time}</div>
@@ -440,7 +438,7 @@ export function updateAllAs(level) {
   if (!AUTHORISED) return
   if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
-  console.log(`Marking everything as ${level}`)
+  console.log(`Setting everything as ${level}`)
   /** @type{stockLevelsObj} */
   const table = {}
   for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
@@ -491,7 +489,7 @@ export function tableUpload() {
     }
 
     reader.readAsText(file)
-    console.log(`Reading in ${file.size} bytes from ${file.name}`)
+    console.debug(`Reading in ${file.size} bytes from ${file.name}`)
   }
   input_element.click()
 }
@@ -547,7 +545,7 @@ socket.on('auth', (status) => {
     }
   } else {
     AUTHORISED = false
-    console.log('Not authenticated')
+    console.debug('Not authenticated')
     if (loginElement) {
       loginElement.innerHTML = 'Log in'
       loginElement.href = '/login'
@@ -560,8 +558,8 @@ socket.on('config', (configuration) => {
   const confirmCheck = document.getElementById('confirm_check')
   const lowCheck = document.getElementById('low_check')
 
-  console.log('%cUpdating configuration from:', 'font-weight:bold;')
-  console.log(configuration)
+  console.debug('%cUpdating configuration from:', 'font-weight:bold;')
+  console.debug(configuration)
   if (configuration.confirm) {
     TO_CONFIRM = true
     if (confirmCheck) confirmCheck.checked = true

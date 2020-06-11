@@ -113,8 +113,8 @@ document.addEventListener('click', () => {
 // ---------------------------------------------------------------------------
 socket.on('replace-all', (table) => {
   console.groupCollapsed('Updating all entities')
-  console.log('%cUpdating table from:', 'font-weight:bold;')
-  console.log(table)
+  console.debug('%cUpdating table from:', 'font-weight:bold;')
+  console.debug(table)
   for (const number in table) {
     updateLevel(Number(number), table[number])
   }
