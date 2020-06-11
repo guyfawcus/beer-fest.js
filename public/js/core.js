@@ -59,13 +59,13 @@ export const socket = globalThis.io.connect(location.host)
  */
 
 /** Object to store the stock level for a particular beer. Used in {@link STOCK_LEVELS}
- * @typedef {Object} stockLevelsObj
+ * @typedef {object} stockLevelsObj
  * @property {number} number The number of the beer
  * @property {levelValues} level The level that the beer is set to
  */
 
 /** Object to store the stock level and other info for an update. Used in {@link updateHistory}
- * @typedef {Object} singleUpdateObj
+ * @typedef {object} singleUpdateObj
  * @property {number} epoch_time Time since the the Unix epoch that the update was performed
  * @property {string} day The day name when the update was performed
  * @property {string} time The time in 24hr format when the update was performed
@@ -407,16 +407,21 @@ export function updateLevel(number, level) {
  * @param {singleUpdateObj} stock_level
  */
 export function updateHistory(stock_level) {
-  console.log(`Setting ${stock_level.number} as ${stock_level.level}`)
+  const number = stock_level.number
+  const level = stock_level.level
+
+  console.log(`Setting ${number} as ${level}`)
+  console.debug(stock_level)
+
   const div = document.createElement('div')
   div.classList.add('update')
   div.innerHTML = `<div class="time">${stock_level.time}</div>
                    <div class="name">${stock_level.name}</div>
-                   <div class="number">${stock_level.number}</div>
-                   <div class="level">${stock_level.level}</div>`
+                   <div class="number">${number}</div>
+                   <div class="level">${level}</div>`
 
-  setTooltip(stock_level.number, div)
-  setColour(stock_level.number, stock_level.level, div)
+  setTooltip(number, div)
+  setColour(number, level, div)
 
   document.getElementById('history').prepend(div)
 }
