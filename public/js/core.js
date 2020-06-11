@@ -385,21 +385,15 @@ export function updateNumber(number) {
 /**
  * This uses {@link setColour} to change the colour of the button,
  * then updates {@link STOCK_LEVELS} with the level.
+ * This should only be called by a socket event which confirms that the level has actually been changed.
  * @param {number} number The button number to update
  * @param {levelValues} level The level to set
  */
 export function updateLevel(number, level) {
   const button = document.getElementById(`button_${number}`)
-  setColour(number, level, button)
-
   console.log(`Setting ${number} as ${level}`)
-  if (level === 'empty') {
-    STOCK_LEVELS[number] = 'empty'
-  } else if (level === 'low') {
-    STOCK_LEVELS[number] = 'low'
-  } else if (level === 'full') {
-    STOCK_LEVELS[number] = 'full'
-  }
+  setColour(number, level, button)
+  STOCK_LEVELS[number] = level
 }
 
 // ---------------------------------------------------------------------------
