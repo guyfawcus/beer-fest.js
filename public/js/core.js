@@ -109,29 +109,26 @@ export function setTooltip(number, element) {
  */
 function setColour(number, level, element) {
   if (!element) return
+
+  // Get the information for this beer to see if it's vegan or gluten-free
   const thisBeer = BEERS[number - 1]
+
+  // Use the previous state if a new level is not defined
   if (!level) level = STOCK_LEVELS[number]
 
-  if (level === 'empty') {
-    element.style.background = 'var(--empty-colour)'
-  }
-  if (level === 'low') {
-    element.style.background = 'var(--low-colour)'
-  }
-  if (level === 'full') {
-    element.style.background = 'var(--full-colour)'
-  }
-
+  // Apply the 'hide-colour' to buttons that are to be hidden or set the level colour if not
   if (localStorage.HIDE_NO_INFORMATION === 'true' && !thisBeer) {
     element.style.background = 'var(--hide-colour)'
-  }
-
-  if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
+  } else if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
     element.style.background = 'var(--hide-colour)'
-  }
-
-  if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
+  } else if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
     element.style.background = 'var(--hide-colour)'
+  } else if (level === 'empty') {
+    element.style.background = 'var(--empty-colour)'
+  } else if (level === 'low') {
+    element.style.background = 'var(--low-colour)'
+  } else if (level === 'full') {
+    element.style.background = 'var(--full-colour)'
   }
 }
 
