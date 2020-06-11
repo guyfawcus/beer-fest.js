@@ -369,16 +369,16 @@ export function updateNumber(number) {
     console.debug(`Added ${number} before updating`)
   }
 
-  if (STOCK_LEVELS[number] === 'full') {
+  if (STOCK_LEVELS[number] === 'empty') {
+    confirmUpdate('full')
+  } else if (STOCK_LEVELS[number] === 'low') {
+    confirmUpdate('empty')
+  } else if (STOCK_LEVELS[number] === 'full') {
     if (LOW_ENABLE === true) {
       confirmUpdate('low')
     } else {
       confirmUpdate('empty')
     }
-  } else if (STOCK_LEVELS[number] === 'low') {
-    confirmUpdate('empty')
-  } else if (STOCK_LEVELS[number] === 'empty') {
-    confirmUpdate('full')
   }
 }
 
