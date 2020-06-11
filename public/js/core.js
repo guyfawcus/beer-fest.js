@@ -194,12 +194,7 @@ function setCross(number, checked = true, store = true) {
     } else {
       numbersChecked.push(number)
     }
-
-    if (numbersChecked.length === 0) {
-      localStorage.removeItem('checkedHexData')
-    } else {
-      localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
-    }
+    storeChecks(numbersChecked)
   }
 }
 
@@ -215,12 +210,34 @@ export function applyChecks(numbersChecked = []) {
       setCross(number, false, false)
     }
   }
+  storeChecks(numbersChecked)
+}
 
+/**
+ * Takes a list of the numbers checked then stores them as `checkedHexData` in localStorage,
+ * it also appends that data to `checkedHexDataHistory` in sessionStorage.
+ * @param {array} numbersChecked The numbers checked
+ */
+function storeChecks(numbersChecked) {
+  const checkedHexData = generateCheckedHexData(numbersChecked)
+  const previousHistory = sessionStorage.getItem('checkedHexDataHistory')
+  let historyList = []
+
+  // Add the current state to localStorage or remove it if nothing is checked
   if (numbersChecked.length === 0) {
     localStorage.removeItem('checkedHexData')
   } else {
     localStorage.setItem('checkedHexData', generateCheckedHexData(numbersChecked))
   }
+
+  // Parse the previous history into an array
+  if (previousHistory) historyList = previousHistory.split(',')
+
+  // Add a new history entry but only if it's not the same as the last one - prevents page reloads from filling up the history
+  if (historyList[historyList.length - 1] !== checkedHexData) historyList.push(checkedHexData)
+
+  // Save the history list into sessionStorage
+  sessionStorage.setItem('checkedHexDataHistory', historyList.toString())
 }
 
 /**
