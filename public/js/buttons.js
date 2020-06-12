@@ -4,6 +4,7 @@
 import {
   applyChecks,
   buildCross,
+  checkHistory,
   generateCheckedHexURL,
   parseCheckedHexData,
   refreshButtons,
@@ -16,7 +17,10 @@ import {
 const buttons = document.getElementsByClassName('availability_button')
 for (const button of buttons) {
   const number = Number(button.id.split('_')[1])
-  button.addEventListener('click', (event) => updateNumber(number))
+  button.addEventListener('click', (event) => {
+    checkHistory.clearFuture()
+    updateNumber(number)
+  })
   buildCross(number)
 }
 
@@ -24,6 +28,7 @@ for (const button of buttons) {
 const checkedHexData = new URL(location.href).searchParams.get('checked') || localStorage.getItem('checkedHexData')
 if (checkedHexData) {
   const numbersChecked = parseCheckedHexData(checkedHexData)
+  checkHistory.clearFuture()
   applyChecks(numbersChecked)
 }
 
@@ -31,6 +36,14 @@ if (checkedHexData) {
 const newUrl = new URL(location.href)
 newUrl.searchParams.delete('checked')
 history.replaceState(null, '', newUrl.toString())
+
+// Add listeners for Ctrl+Z and Ctrl+Y to undo or redo a check mark
+function KeyPress(e) {
+  const eventObj = window.event ? event : e
+  if (eventObj.keyCode === 90 && eventObj.ctrlKey) checkHistory.undo()
+  if (eventObj.keyCode === 89 && eventObj.ctrlKey) checkHistory.redo()
+}
+document.onkeydown = KeyPress
 
 // ---------------------------------------------------------------------------
 // Menu
@@ -60,6 +73,7 @@ if (localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true') {
 // Add event listeners for options
 clear_checks.addEventListener('click', (event) => {
   if (!confirm('Are you sure you want to clear all of your check marks?')) return
+  checkHistory.clearFuture()
   applyChecks([])
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
 })

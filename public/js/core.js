@@ -241,6 +241,68 @@ function storeChecks(numbersChecked) {
 }
 
 /**
+ * Functions to manage the undo and redo-ing of the check marks on the buttons.
+ * Utilises sessionStorage for the history and future stacks.
+ */
+export const checkHistory = {
+  /** Go back to the previous check state */
+  undo() {
+    // Parse the history stack into an array
+    const checkedHexDataHistory = sessionStorage.getItem('checkedHexDataHistory')
+    const historyList = checkedHexDataHistory && checkedHexDataHistory.split(',')
+    if (!historyList || historyList[0] === '') return
+
+    // Grab the current state so it can be added to the future stack
+    const currentEntry = historyList.pop()
+
+    // 'Save' this state (with the most recent popped off) so that it can be stored later
+    const newHistory = historyList.slice()
+
+    // Move the most recent state to the future stack
+    const futureHistory = sessionStorage.getItem('checkedHexDataFuture')
+    if (futureHistory) {
+      const futureList = futureHistory.split(',')
+      futureList.push(currentEntry)
+      sessionStorage.setItem('checkedHexDataFuture', futureList.toString())
+    } else {
+      sessionStorage.setItem('checkedHexDataFuture', currentEntry)
+    }
+
+    // Apply the previous state
+    applyChecks(parseCheckedHexData(historyList.pop()))
+
+    // Overwrite the checkedHexDataHistory so we don't end up in a loop
+    sessionStorage.setItem('checkedHexDataHistory', newHistory.toString())
+  },
+
+  /** Go forward to the next check state after an undo */
+  redo() {
+    const checkedHexDataFuture = sessionStorage.getItem('checkedHexDataFuture')
+    const futureList = checkedHexDataFuture && checkedHexDataFuture.split(',')
+    if (!futureList || futureList[0] === '') return
+    applyChecks(parseCheckedHexData(futureList.pop()))
+    sessionStorage.setItem('checkedHexDataFuture', futureList.toString())
+  },
+
+  /** Clear the future check stack */
+  clearFuture() {
+    sessionStorage.removeItem('checkedHexDataFuture')
+  },
+
+  /** `true` if there are entries in the history check stack */
+  get canUndo() {
+    const checkedHexDataHistory = sessionStorage.getItem('checkedHexDataHistory')
+    return (checkedHexDataHistory && checkedHexDataHistory.length > 0) || false
+  },
+
+  /** `true` if there are entries in the future check stack */
+  get canRedo() {
+    const checkedHexDataFuture = sessionStorage.getItem('checkedHexDataFuture')
+    return (checkedHexDataFuture && checkedHexDataFuture.length > 0) || false
+  }
+}
+
+/**
  * This simple wrapper function just runs
  * {@link setTooltip} and {@link setColour} every button.
  */
