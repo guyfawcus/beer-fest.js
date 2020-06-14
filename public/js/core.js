@@ -307,7 +307,6 @@ export const checkHistory = {
  * {@link setTooltip} and {@link setColour} every button.
  */
 export function refreshButtons() {
-  const transitionTime = getComputedStyle(document.body).getPropertyValue('--transition-time')
   const buttons = document.getElementsByClassName('availability_button')
 
   for (const button of buttons) {
@@ -317,7 +316,7 @@ export function refreshButtons() {
     setTooltip(number, button)
     setColour(number, undefined, button)
     // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
-    setTimeout(() => (button.style.transition = `all ${transitionTime}`), 0)
+    setTimeout(() => (button.style.transition = 'all var(--transition-time)'), 0)
   }
 }
 
