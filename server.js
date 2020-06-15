@@ -531,7 +531,14 @@ io.on('connection', (socket) => {
   })
 
   // Find out which path the socket originated from
-  const pathname = new URL(socket.handshake.headers.referer).pathname.slice(1)
+  let pathname = ''
+  const referer = socket.handshake.headers.referrer
+  if (referer) {
+    pathname = new URL(referer).pathname.slice(1)
+  } else {
+    // If there is no header information, it's likely originated from a bot
+    pathname = 'bot'
+  }
 
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
@@ -542,7 +549,7 @@ io.on('connection', (socket) => {
   /* -------------------------------- */
   /* Path specific actions            */
   /* -------------------------------- */
-  if (pathname === 'history' || pathname === 'availability') {
+  if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
     // Send information about all of the beers
     // Check if the beers file has already been read in
     if (JSON.stringify(beers) === '{}') {
@@ -572,7 +579,7 @@ io.on('connection', (socket) => {
     }
   }
 
-  if (pathname === 'history') {
+  if (pathname === 'history' || pathname === 'bot') {
     redisClient.zrange('log', 0, -1, (err, reply) => {
       if (err) handleError("Couldn't check get log from Redis", err)
       const history = []
