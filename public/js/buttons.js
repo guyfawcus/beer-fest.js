@@ -13,16 +13,84 @@ import {
   updateNumber
 } from './core.js'
 
-// Add event listeners and build a cross for each button
+// ---------------------------------------------------------------------------
+// Wrapper functions
+// ---------------------------------------------------------------------------
+function clickButton(number) {
+  checkHistory.clearFuture()
+  updateNumber(number)
+}
+
+function openMenu() {
+  // Update check share URL
+  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
+  document.getElementById('popup-background').classList.add('show')
+  document.getElementById('popup-menu').classList.add('show')
+}
+
+function closeMenu() {
+  document.getElementById('popup-background').classList.remove('show')
+  document.getElementById('popup-menu').classList.remove('show')
+}
+
+// ---------------------------------------------------------------------------
+// Main
+// ---------------------------------------------------------------------------
+// Perform actions to prepare each button
 const buttons = document.getElementsByClassName('availability_button')
 for (const button of buttons) {
   const number = Number(button.id.split('_')[1])
-  button.addEventListener('click', (event) => {
-    checkHistory.clearFuture()
-    updateNumber(number)
-  })
+
+  // Build a cross on the button
   buildCross(number)
+
+  // Allow tabbing through the buttons
+  button.setAttribute('tabindex', '0')
+
+  // Handle a normal pointer click
+  button.addEventListener('click', (event) => {
+    clickButton(number)
+  })
+
+  // Handle a click by using the 'Enter' key if the button is focused
+  button.onkeyup = (eventObj) => {
+    if (eventObj.key === 'Enter') {
+      clickButton(number)
+    }
+  }
 }
+
+// Add listeners for keypress events
+document.onkeydown = (eventObj) => {
+  if (eventObj.ctrlKey && eventObj.key === 'z') checkHistory.undo()
+  if (eventObj.ctrlKey && eventObj.key === 'y') checkHistory.redo()
+  if (eventObj.key === 'Escape') {
+    closeMenu()
+    document.body.classList.remove('keyboardControl')
+  }
+
+  // Activate 'keyboardControl' mode if 'Tab' or 'Shift+Tab' are pressed
+  if (eventObj.key === 'Tab' || (eventObj.shiftKey && eventObj.key === 'Tab')) {
+    document.body.classList.add('keyboardControl')
+  }
+}
+
+// Deactivate 'keyboardControl' mode if the mouse is moved
+document.onmousemove = (eventObj) => {
+  document.body.classList.remove('keyboardControl')
+}
+
+// Show menu if the header is clicked on
+document.getElementById('buttons_header').addEventListener('click', () => {
+  openMenu()
+})
+
+// Hide menu if anywhere other than the popup is clicked on
+document.addEventListener('click', () => {
+  if (!event.target.closest('#popup-menu') && !event.target.closest('#buttons_header')) {
+    closeMenu()
+  }
+})
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
 const checkedHexData = new URL(location.href).searchParams.get('checked') || localStorage.getItem('checkedHexData')
@@ -36,14 +104,6 @@ if (checkedHexData) {
 const newUrl = new URL(location.href)
 newUrl.searchParams.delete('checked')
 history.replaceState(null, '', newUrl.toString())
-
-// Add listeners for Ctrl+Z and Ctrl+Y to undo or redo a check mark
-function KeyPress(e) {
-  const eventObj = window.event ? event : e
-  if (eventObj.keyCode === 90 && eventObj.ctrlKey) checkHistory.undo()
-  if (eventObj.keyCode === 89 && eventObj.ctrlKey) checkHistory.redo()
-}
-document.onkeydown = KeyPress
 
 // ---------------------------------------------------------------------------
 // Menu
@@ -103,22 +163,6 @@ gluten_free_checkbox.addEventListener('change', (event) => {
   } else {
     localStorage.removeItem('HIDE_NOT_GLUTEN_FREE')
     refreshButtons()
-  }
-})
-
-// Show menu if the header is clicked on
-document.getElementById('buttons_header').addEventListener('click', () => {
-  // Update check share URL
-  document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
-  document.getElementById('popup-background').classList.add('show')
-  document.getElementById('popup-menu').classList.add('show')
-})
-
-// Hide menu if anywhere other than the popup is clicked on
-document.addEventListener('click', () => {
-  if (!event.target.closest('#popup-menu') && !event.target.closest('#buttons_header')) {
-    document.getElementById('popup-background').classList.remove('show')
-    document.getElementById('popup-menu').classList.remove('show')
   }
 })
 

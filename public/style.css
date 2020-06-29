@@ -356,10 +356,14 @@ input[type='checkbox']:hover {
   z-index: 1;
   will-change: transform;
   transition: all var(--transition-time);
+  outline: none;
 }
 
-.availability_button:hover,
-.button:hover {
+/* XOR the hover and focus styles depending on the 'keyboardControl' mode */
+body:not(.keyboardControl) .availability_button:hover,
+body.keyboardControl .availability_button:focus,
+body:not(.keyboardControl) .button:hover,
+body.keyboardControl .button:focus {
   transform: translateY(-3px) scale(1.05);
   border-radius: 50px;
   box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
@@ -387,7 +391,7 @@ input[type='checkbox']:hover {
   .availability_button:hover,
   .button,
   .button:hover {
-    cursor: crosshair;
+    cursor: crosshair !important;
   }
 }
 
