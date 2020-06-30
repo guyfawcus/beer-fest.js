@@ -14,6 +14,7 @@ const express = require('express')
 const expressEnforcesSsl = require('express-enforces-ssl')
 const expressFlash = require('express-flash')
 const expressSocketIoSession = require('express-socket.io-session')
+const featurePolicy = require('feature-policy')
 const helmet = require('helmet')
 const session = require('express-session')
 
@@ -105,7 +106,7 @@ if (NODE_ENV === 'production') {
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(
-  helmet.featurePolicy({
+  featurePolicy({
     features: {
       accelerometer: ["'none'"],
       ambientLightSensor: ["'none'"],
