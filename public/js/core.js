@@ -67,8 +67,6 @@ export const socket = globalThis.io.connect(location.host, { transports: ['webso
 /** Object to store the stock level and other info for an update. Used in {@link updateHistory}
  * @typedef {object} singleUpdateObj
  * @property {number} epoch_time Time since the the Unix epoch that the update was performed
- * @property {string} day The day name when the update was performed
- * @property {string} time The time in 24hr format when the update was performed
  * @property {string} name The name of the person who generated the update
  * @property {number} number The number of the beer that was changed
  * @property {levelValues} level The level that the beer is set to
@@ -485,6 +483,10 @@ export function updateLevel(number, level) {
  * @param {singleUpdateObj} stock_level
  */
 export function updateHistory(stock_level) {
+  const date = new Date(stock_level.epoch_time)
+  // const day = date.toLocaleDateString([], { weekday: 'long' })
+  const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+
   const number = stock_level.number
   const level = stock_level.level
 
@@ -493,7 +495,7 @@ export function updateHistory(stock_level) {
 
   const div = document.createElement('div')
   div.classList.add('update')
-  div.innerHTML = `<div class="time">${stock_level.time}</div>
+  div.innerHTML = `<div class="time">${time}</div>
                    <div class="name">${stock_level.name}</div>
                    <div class="number">${number}</div>
                    <div class="level">${level}</div>`
