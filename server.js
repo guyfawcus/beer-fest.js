@@ -230,6 +230,27 @@ const handleError = (message, error) => {
   process.exit(1)
 }
 
+process.once('SIGINT', () => gracefulShutdown())
+process.once('SIGQUIT', () => gracefulShutdown())
+process.once('SIGTERM', () => gracefulShutdown())
+process.once('SIGUSR2', () => gracefulShutdown())
+
+const gracefulShutdown = () => {
+  console.log('Shutting down server')
+
+  // Clean up old session-socket mapping(s), new mappings will be created on restart
+  redisClient.scan('0', 'match', 'sock:*', (err, reply) => {
+    if (err) handleError("Couldn't get socket mappings from Redis", err)
+
+    redisClient.del(reply[1], (err, reply) => {
+      if (err) handleError("Couldn't delete socket mappings from Redis", err)
+      console.log(`Removed ${reply} session-socket mapping(s)`)
+
+      process.exit()
+    })
+  })
+}
+
 // ---------------------------------------------------------------------------
 // Functions
 // ---------------------------------------------------------------------------
