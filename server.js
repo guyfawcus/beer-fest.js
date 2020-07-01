@@ -432,7 +432,7 @@ app.post('/users', (req, res) => {
       redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
         if (err) handleError("Couldn't get session members from Redis", err)
         for (const socket of reply) {
-          io.to(`${socket}`).emit('auth', true)
+          io.to(socket).emit('auth', true)
         }
       })
       res.redirect('/')
@@ -450,7 +450,7 @@ app.get('/logout', (req, res) => {
   redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
     if (err) handleError("Couldn't get session members from Redis", err)
     for (const socket of reply) {
-      io.to(`${socket}`).emit('auth', false)
+      io.to(socket).emit('auth', false)
     }
   })
   res.redirect('/')
@@ -520,9 +520,9 @@ io.on('connection', (socket) => {
   redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
     if (err) handleError("Couldn't check authed_ids from Redis", err)
     if (reply) {
-      io.to(`${socket.id}`).emit('auth', true)
+      io.to(socket.id).emit('auth', true)
     } else {
-      io.to(`${socket.id}`).emit('auth', false)
+      io.to(socket.id).emit('auth', false)
     }
   })
 
@@ -539,8 +539,8 @@ io.on('connection', (socket) => {
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected`)
   console.log('Distributing previous state')
-  io.to(`${socket.id}`).emit('replace-all', last_table)
-  io.to(`${socket.id}`).emit('config', last_config)
+  io.to(socket.id).emit('replace-all', last_table)
+  io.to(socket.id).emit('config', last_config)
 
   /* -------------------------------- */
   /* Path specific actions            */
@@ -564,14 +564,14 @@ io.on('connection', (socket) => {
             })
             .then(() => {
               console.log('Sending newly created beers object')
-              io.to(`${socket.id}`).emit('beers', beers)
+              io.to(socket.id).emit('beers', beers)
             })
         }
       })
     } else {
       // Send a previously generated beers object
       console.debug('Sending beers object')
-      io.to(`${socket.id}`).emit('beers', beers)
+      io.to(socket.id).emit('beers', beers)
     }
   }
 
@@ -580,7 +580,7 @@ io.on('connection', (socket) => {
       if (err) handleError("Couldn't check get log from Redis", err)
       const history = []
       reply.forEach((update) => history.push(JSON.parse(update)))
-      io.to(`${socket.id}`).emit('history', history)
+      io.to(socket.id).emit('history', history)
     })
   }
 
@@ -595,7 +595,7 @@ io.on('connection', (socket) => {
         updateRequired(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(`${socket.id}`).emit('replace-all', last_table)
+        io.to(socket.id).emit('replace-all', last_table)
       }
     })
   })
@@ -608,7 +608,7 @@ io.on('connection', (socket) => {
         replaceAll(name, table)
       } else {
         console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(`${socket.id}`).emit('replace-all', last_table)
+        io.to(socket.id).emit('replace-all', last_table)
       }
     })
   })
@@ -624,7 +624,7 @@ io.on('connection', (socket) => {
         updateSingle(name, number, level)
       } else {
         console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
-        io.to(`${socket.id}`).emit('replace-all', last_table)
+        io.to(socket.id).emit('replace-all', last_table)
       }
     })
   })
@@ -644,7 +644,7 @@ io.on('connection', (socket) => {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
         )
-        io.to(`${socket.id}`).emit('config', last_config)
+        io.to(socket.id).emit('config', last_config)
       }
     })
   })
