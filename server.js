@@ -429,7 +429,7 @@ app.post('/users', (req, res) => {
       console.log(`Client - ${thisSession} - has entered the correct code`)
       req.session.name = name
       redisClient.sadd('authed_ids', thisSession)
-      redisClient.smembers(thisSession, (err, reply) => {
+      redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
         if (err) handleError("Couldn't get session members from Redis", err)
         for (const socket of reply) {
           io.to(`${socket}`).emit('auth', true)
@@ -447,7 +447,7 @@ app.post('/users', (req, res) => {
 app.get('/logout', (req, res) => {
   const thisSession = req.session.id
   redisClient.srem('authed_ids', thisSession)
-  redisClient.smembers(thisSession, (err, reply) => {
+  redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
     if (err) handleError("Couldn't get session members from Redis", err)
     for (const socket of reply) {
       io.to(`${socket}`).emit('auth', false)
@@ -514,7 +514,7 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 // ---------------------------------------------------------------------------
 io.on('connection', (socket) => {
   // Track which sockets are related to each session
-  redisClient.sadd(socket.handshake.session.id, socket.id)
+  redisClient.sadd(`sock:${socket.handshake.session.id}`, socket.id)
 
   // Check if the socket belongs to an authorised session
   redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
@@ -651,6 +651,6 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', () => {
     console.log(`Client ${socket.id} disconnected`)
-    redisClient.srem(socket.handshake.session.id, socket.id)
+    redisClient.srem(`sock:${socket.handshake.session.id}`, socket.id)
   })
 })
