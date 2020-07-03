@@ -1,4 +1,5 @@
 # beer-fest.js
+[![Discord chat](https://img.shields.io/discord/728418000952360980)](https://discord.com/channels/728418000952360980/)
 
 Web app to display available beers at a festival
 
