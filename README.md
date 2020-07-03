@@ -1,4 +1,5 @@
 # beer-fest.js
+
 [![Discord chat](https://img.shields.io/discord/728418000952360980)](https://discord.com/channels/728418000952360980/)
 
 Web app to display available beers at a festival
@@ -6,6 +7,11 @@ Web app to display available beers at a festival
 Try it out at [acbf-2020.herokuapp.com](https://acbf-2020.herokuapp.com/) and take a look at the [walkthrough tutorial](/docs/walkthrough.md) to get started.
 
 <img src="/docs/images/availability-empty.png" width="384">
+
+> **Note:** This web app is under development. It's first outing was likely to be the _Aston Clinton Beer Festival 2020_ (hence the titles/URL), however that has now [been cancelled](https://www.facebook.com/341405185896402/posts/2925670634136498).
+> Fingers cossed for some normality to return next year and that everyone makes it though these crazy times!
+>
+> The beer information (used for the tooltips, Ve/GF hiding) is from the 2019 beer fest and is being used as a placeholder to assist development.
 
 ---
 
