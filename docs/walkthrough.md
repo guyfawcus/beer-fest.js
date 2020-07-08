@@ -15,6 +15,8 @@ This document will walk you through every page and describe their functionality.
 
 ## Login
 
+<img src="/docs/images/login.png" width="384">
+
 Not much to say about this one. It's where you log in.
 Without doing this, you won't be able to get to the settings page or to change the availability of a beer.
 
@@ -22,9 +24,9 @@ The name does not need to be unique or to be pre-registered. It is only used for
 
 There is only one code and it is set up before the event. It can be changed mid-event but it requires the assistance of the admin. Don't leave it lying around on a Post-it note!
 
-<img src="/docs/images/login.png" width="384">
-
 ## Settings
+
+<img src="/docs/images/settings.png" width="384">
 
 The settings page is only accessible to logged in users. The three main functions are state management, resetting, and configuration.
 
@@ -36,15 +38,15 @@ The settings page is only accessible to logged in users. The three main function
 - **Confirmations** - Enables or disables the confirmation checks when updating the level of a beer. Disabling this is not recommended.
 - **'Low' level enable** - Enables or disables the 'low' level in the update cycle. For example, if this is disabled and a beer is 'full', then clicking on it will bypass 'low' and go straight to 'empty'.
 
-<img src="/docs/images/settings.png" width="384">
-
 ## Downloads
-
-This page contains the beer info spreadsheet as well as the `.csv` files for each year that are generated from it. The `.csv` file for the current year is used to display information about each beer on the 'Availability' and 'History' pages. This should be set in stone before the event but can be updated during it by the admin.
 
 <img src="/docs/images/downloads.png" width="384">
 
+This page contains the beer info spreadsheet as well as the `.csv` files for each year that are generated from it. The `.csv` file for the current year is used to display information about each beer on the 'Availability' and 'History' pages. This should be set in stone before the event but can be updated during it by the admin.
+
 ## Availability
+
+<img src="/docs/images/availability.png" width="384">
 
 The main attraction! This page displays the status of each beer. It will behave differently if you're logged-in or not.
 
@@ -61,16 +63,14 @@ The rest of the functionality can be used by anyone:
 - Pressing `Ctrl + Z` will undo the the most recent check mark
 - Pressing `Ctrl + Y` will redo the previously undone check mark
 
-<img src="/docs/images/availability.png" width="384"> <img src="/docs/images/availability-menu.png" width="384">
-
 ## Slideshow
-
-This slideshow contains sponsor slides and event information as well as an embedded 'Availability' page.
 
 <img src="/docs/images/slideshow.png" width="384">
 
+This slideshow contains sponsor slides and event information as well as an embedded 'Availability' page.
+
 ## History
 
-This page displays recent updates to beer availability.
-
 <img src="/docs/images/history.png" width="384">
+
+This page displays recent updates to beer availability.

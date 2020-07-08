@@ -33,7 +33,7 @@ Installation will give you the following to help in working with this software:
 
 ### Setup
 
-By default, if the if the `ADMIN_CODE` environment variable is not set,
+By default, if the `ADMIN_CODE` environment variable is not set,
 the server will generate a random one on startup.
 This will mean that you won't have any idea what the login code is.
 
