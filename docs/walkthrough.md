@@ -46,7 +46,7 @@ This page contains the beer info spreadsheet as well as the `.csv` files for eac
 
 ## Availability
 
-<img src="/docs/images/availability.png" width="384">
+<img src="/docs/images/availability.png" width="384"> <img src="/docs/images/availability-menu.png" width="384">
 
 The main attraction! This page displays the status of each beer. It will behave differently if you're logged-in or not.
 
