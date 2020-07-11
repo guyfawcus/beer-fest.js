@@ -61,16 +61,20 @@ client.keys('sess:*', (err, reply) => {
   })
 })
 
-function parseAll(clients) {
+function parseAll(sessions) {
   // Sort by time
-  clients.sort((a, b) => a.time - b.time)
+  sessions.sort((a, b) => a.time - b.time)
 
   // Print out the information for each session
-  clients.forEach((client) => {
-    console.log(
-      client.time.toLocaleTimeString([], { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false }),
-      `(${client.ttl.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })} left)`,
-      client.session
-    )
+  sessions.forEach((session) => {
+    const sessionConnectionTime = session.time.toLocaleTimeString([], {
+      weekday: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    })
+    const timeLeftMin = ('0' + session.ttl.getUTCHours()).slice(-2)
+    const timeLeftSec = ('0' + session.ttl.getUTCMinutes()).slice(-2)
+    console.log(`${sessionConnectionTime} (${timeLeftMin}:${timeLeftSec} left) ${session.session}`)
   })
 }
