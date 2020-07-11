@@ -62,8 +62,8 @@ client.keys('sess:*', (err, reply) => {
 })
 
 function parseAll(sessions) {
-  // Sort by time
-  sessions.sort((a, b) => a.time - b.time)
+  // Sort by time (most recent first)
+  sessions.sort((a, b) => b.time - a.time)
 
   // Print out the information for each session
   sessions.forEach((session) => {
