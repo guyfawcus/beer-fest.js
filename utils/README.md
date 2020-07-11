@@ -4,7 +4,7 @@ This folder contains several scripts to assist in the development and use of bee
 
 ## [2dgen.js](../utils/2dgen.js)
 
-Generates and prints out some XML to be inserted into a [QLC+ save file](public/downloads/qlcplus.qxw).
+Generates and prints out some XML to be inserted into a [QLC+ save file](../public/downloads/qlcplus.qxw).
 The XML lays out a grid of fixtures for use in the 2D View of the [Fixture monitor](https://www.qlcplus.org/docs/html_en_EN/fixturemonitor.html).
 You only need to re-run this you want to change the number of fixtures or layout of the view.
 
