@@ -9,7 +9,7 @@ echo -e "${ORANGE}Be sure to run this script from the beer-fest.js root director
 echo -e "${GREEN}source ./utils/clean.sh${COLOUR_END}\n"
 
 echo -e "${RED}WARNING: This script is ruthless, use it at your own risk!${COLOUR_END}"
-read -p "Are you sure you want to wipe out the redis database, env var secrets and the docs? (y/n) "
+read -p "Are you sure you want to wipe out the redis database, env var secrets, beer information, and the docs? (y/n) "
 
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
@@ -20,6 +20,9 @@ then
     #   source ./utils/clean.sh
     unset ADMIN_CODE
     unset COOKIE_SECRET
+
+    # Wipe out the current beer information
+    rm ./public/downloads/current-beers.csv
 
     # Wipe out the docs
     rm -r ./docs/jsdoc

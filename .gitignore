@@ -3,3 +3,4 @@ notes.txt
 docs/jsdoc/
 dist
 .ipynb_checkpoints/
+public/downloads/current-beers.csv

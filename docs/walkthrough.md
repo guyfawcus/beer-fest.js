@@ -28,7 +28,11 @@ There is only one code and it is set up before the event. It can be changed mid-
 
 <img src="/docs/images/settings.png" width="384">
 
-The settings page is only accessible to logged in users. The three main functions are state management, resetting, and configuration.
+The settings page is only accessible to logged in users. The four main functions are beer information management, state management, resetting, and configuration.
+
+- **Upload** - Allows uploading new beer information. This will update the tooltips and Ve/GF hide states for every connected client and replace `/downloads/current-beers.csv`.
+  (Note: You can upload an empty file with a `.csv` extension to clear the current information)
+- **Download** - Downloads the current beer information from `/downloads/current-beers.csv`.
 
 - **Upload** - Allows uploading a previous state. This will cause the beers to be updated one-by-one so if you want a fresh start, use one of the reset buttons first (set all as _x_).
 - **Download** - Makes a call to the API at `/api/stock_levels` and initiates a download of the resulting JSON. This can be uploaded later or stored for future reference.
@@ -42,7 +46,8 @@ The settings page is only accessible to logged in users. The three main function
 
 <img src="/docs/images/downloads.png" width="384">
 
-This page contains the beer info spreadsheet as well as the `.csv` files for each year that are generated from it. The `.csv` file for the current year is used to display information about each beer on the 'Availability' and 'History' pages. This should be set in stone before the event but can be updated during it by the admin.
+This page contains the beer information spreadsheet as well as the `.csv` files for each year that are exported from it.
+The `.csv` file can be uploaded (`Settings` -> `Beer Information` -> `Upload`) and is used to display information about each beer on the 'Availability' and 'History' pages and 'hide' any non Ve/GF beers (if set).
 
 ## Availability
 

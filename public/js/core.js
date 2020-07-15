@@ -80,7 +80,7 @@ export const socket = globalThis.io.connect(location.host, { transports: ['webso
  * @param {number} number The number that of the beer - used as an ID to get data from {@link BEERS}
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
-export function setTooltip(number, element) {
+function setTooltip(number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
     let vegan = ''
@@ -94,6 +94,8 @@ export function setTooltip(number, element) {
     const header = `${thisBeer.beer_number} - ${thisBeer.beer_name}${vegan}${glutenFree}`
     const divider = '-'.repeat(header.length + 10)
     element.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}`
+  } else {
+    element.title = ''
   }
 }
 
@@ -565,6 +567,41 @@ export function tableUpload() {
       const newTable = JSON.parse(reader.result.toString())
       socket.emit('update-all', newTable)
       STOCK_LEVELS = newTable
+    }
+
+    reader.readAsText(file)
+    console.debug(`Reading in ${file.size} bytes from ${file.name}`)
+  }
+  input_element.click()
+}
+
+/**
+ * This creates a hidden element that pops up an upload dialog that allows
+ * sending new beer information to the server for distribution.
+ */
+export function beersUpload() {
+  if (!AUTHORISED) return
+  const input_element = document.createElement('input')
+  input_element.type = 'file'
+  input_element.onchange = () => {
+    const reader = new FileReader()
+    const file = input_element.files[0]
+    reader.onload = () => {
+      // File type validation
+      if (file.type !== 'text/csv') {
+        alert("Error: this file is not of the right type,\nplease upload a valid 'beers.csv' file")
+        return
+      }
+
+      // File size validation
+      if (file.size > 100000) {
+        alert("Error: this file is too large,\nplease upload a valid 'beers.csv' file")
+        return
+      }
+
+      if (confirm('Are you sure you want to use this information?') !== true) return
+
+      socket.emit('beers-file', reader.result.toString())
     }
 
     reader.readAsText(file)

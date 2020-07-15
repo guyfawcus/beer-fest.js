@@ -49,7 +49,7 @@ if (!process.env.COOKIE_SECRET) {
 const ENABLE_API = process.env.ENABLE_API || 'false'
 const NODE_ENV = process.env.NODE_ENV || ''
 const REDIS_URL = process.env.REDIS_URL || ''
-const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/2020-beers.csv'
+const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/current-beers.csv'
 
 /** @type {configObj} */
 let last_config = {}
@@ -665,6 +665,33 @@ io.on('connection', (socket) => {
       } else {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
+        )
+        io.to(socket.id).emit('config', last_config)
+      }
+    })
+  })
+
+  socket.on('beers-file', (beersFileText) => {
+    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
+      if (err) handleError("Couldn't check authed_ids from Redis", err)
+      if (reply) {
+        csvToJson()
+          .fromString(beersFileText)
+          .then((jsonObj) => {
+            beers = jsonObj
+            console.log('Sending updated beer information')
+            io.sockets.emit('beers', beers)
+
+            fs.writeFile('public/downloads/current-beers.csv', beersFileText, (err) => {
+              if (err) {
+                return console.log(err)
+              }
+              console.log('New beer information file saved')
+            })
+          })
+      } else {
+        console.log(
+          `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
         )
         io.to(socket.id).emit('config', last_config)
       }

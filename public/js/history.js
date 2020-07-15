@@ -1,24 +1,31 @@
 /* eslint-env browser */
 'use strict'
 
-import { setTooltip, socket, updateHistory } from './core.js'
+import { socket, updateHistory } from './core.js'
+
+let historyLog = []
 
 socket.on('update-single', (stock_level) => {
+  historyLog.push(stock_level)
   updateHistory(stock_level)
 })
 
 socket.on('replace-all', (stock_level) => {
+  historyLog = []
   document.getElementById('history').innerHTML = ''
 })
 
 socket.on('history', (history) => {
   document.getElementById('history').innerHTML = ''
-  history.forEach((stock_level) => updateHistory(stock_level))
+  history.forEach((stock_level) => {
+    historyLog.push(stock_level)
+    updateHistory(stock_level)
+  })
 })
 
 socket.on('beers', (beerList) => {
-  // Update the existing entries' tooltips with the new information
-  document.querySelectorAll('.update').forEach((element) => {
-    setTooltip(Number(element.getElementsByClassName('number')[0].textContent), element)
+  document.getElementById('history').innerHTML = ''
+  historyLog.forEach((stock_level) => {
+    updateHistory(stock_level)
   })
 })
