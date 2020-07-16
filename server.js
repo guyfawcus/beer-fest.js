@@ -583,8 +583,6 @@ io.on('connection', (socket) => {
             .fromFile(BEERS_FILE)
             .then((jsonObj) => {
               beers = jsonObj
-            })
-            .then(() => {
               console.log('Sending newly created beers object')
               io.to(socket.id).emit('beers', beers)
             })
