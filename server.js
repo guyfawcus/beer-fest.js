@@ -600,6 +600,8 @@ io.on('connection', (socket) => {
   if (pathname === 'history' || pathname === 'bot') {
     redisClient.zrange('log', 0, -1, (err, reply) => {
       if (err) handleError("Couldn't check get log from Redis", err)
+
+      // Parse each log entry then send them all
       const history = []
       reply.forEach((update) => history.push(JSON.parse(update)))
       io.to(socket.id).emit('history', history)
