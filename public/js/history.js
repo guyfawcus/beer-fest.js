@@ -22,6 +22,7 @@ socket.on('history', (history) => {
   document.getElementById('history').innerHTML = ''
 
   console.groupCollapsed('Updating all entities')
+  historyLog = []
   history.forEach((stock_level) => {
     historyLog.push(stock_level)
     updateHistory(stock_level)

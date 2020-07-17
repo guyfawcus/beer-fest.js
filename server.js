@@ -559,16 +559,15 @@ io.on('connection', (socket) => {
   }
 
   // When a new client connects, update them with the current state of things
-  console.log(`Client ${socket.id} connected`)
-  console.log('Distributing previous state')
-  io.to(socket.id).emit('replace-all', last_table)
-  io.to(socket.id).emit('config', last_config)
+  console.log(`Client ${socket.id} connected (${pathname})`)
 
-  /* -------------------------------- */
-  /* Path specific actions            */
-  /* -------------------------------- */
+  // Send the configuration settings
+  if (pathname === 'settings' || pathname === 'availability' || pathname === 'bot') {
+    io.to(socket.id).emit('config', last_config)
+  }
+
+  // Send information about all of the beers
   if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
-    // Send information about all of the beers
     // Check if the beers file has already been read in
     if (JSON.stringify(beers) === '{}') {
       console.log('Beers object empty')
@@ -583,18 +582,24 @@ io.on('connection', (socket) => {
             .fromFile(BEERS_FILE)
             .then((jsonObj) => {
               beers = jsonObj
-              console.log('Sending newly created beers object')
+              console.log(`Sending newly created beers object to ${socket.id}`)
               io.to(socket.id).emit('beers', beers)
             })
         }
       })
     } else {
       // Send a previously generated beers object
-      console.debug('Sending beers object')
       io.to(socket.id).emit('beers', beers)
     }
   }
 
+  // Send the current state of all of the beers
+  if (pathname !== 'history') {
+    console.log(`Sending all to ${socket.id}`)
+    io.to(socket.id).emit('replace-all', last_table)
+  }
+
+  // Send the log of the previous states of all of the beers
   if (pathname === 'history' || pathname === 'bot') {
     redisClient.zrange('log', 0, -1, (err, reply) => {
       if (err) handleError("Couldn't check get log from Redis", err)
