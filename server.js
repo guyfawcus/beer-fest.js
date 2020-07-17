@@ -595,7 +595,6 @@ io.on('connection', (socket) => {
 
   // Send the current state of all of the beers
   if (pathname !== 'history') {
-    console.log(`Sending all to ${socket.id}`)
     io.to(socket.id).emit('replace-all', last_table)
   }
 
