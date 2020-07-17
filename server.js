@@ -550,9 +550,9 @@ io.on('connection', (socket) => {
 
   // Find out which path the socket originated from
   let pathname = ''
-  const referer = socket.handshake.headers.referrer
-  if (referer) {
-    pathname = new URL(referer).pathname.slice(1)
+  const referrer = socket.handshake.query.referrer
+  if (referrer) {
+    pathname = referrer.slice(1)
   } else {
     // If there is no header information, it's likely originated from a bot
     pathname = 'bot'
