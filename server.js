@@ -353,6 +353,9 @@ function checkNotAuthenticated(req, res, next) {
 // ---------------------------------------------------------------------------
 // Routes - main
 // ---------------------------------------------------------------------------
+// Public files
+app.use(express.static('public'))
+
 // Core pages
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/index.html'))
@@ -432,8 +435,6 @@ app.get('/js/reveal.esm.js', (req, res) => {
 app.get('/js/reveal.esm.js.map', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/reveal.esm.js.map'))
 })
-
-app.use(express.static('public'))
 
 // ---------------------------------------------------------------------------
 // Routes - authentication
@@ -529,6 +530,20 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
     console.log('API use is not enabled')
     res.status(403).send('API use is not enabled')
   }
+})
+
+// ---------------------------------------------------------------------------
+// Routes - errors
+// ---------------------------------------------------------------------------
+// Handle 404
+app.use(function (req, res) {
+  res.sendFile(path.join(__dirname, 'views/misc/404.html'), 404)
+})
+
+// Handle 500
+app.use(function (error, req, res, next) {
+  res.sendFile(path.join(__dirname, 'views/misc/500.html'), 500)
+  console.log('Server error:', error)
 })
 
 // ---------------------------------------------------------------------------
