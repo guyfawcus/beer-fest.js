@@ -105,6 +105,39 @@ const newUrl = new URL(location.href)
 newUrl.searchParams.delete('checked')
 history.replaceState(null, '', newUrl.toString())
 
+// Update this page if changes are made to another one on the same device
+window.onstorage = (event) => {
+  const changeEvent = new Event('change')
+  if (event.key === 'HIDE_NO_INFORMATION') {
+    if (event.newValue === 'true') {
+      info_checkbox.checked = true
+      info_checkbox.dispatchEvent(changeEvent)
+    } else {
+      info_checkbox.checked = false
+      info_checkbox.dispatchEvent(changeEvent)
+    }
+  } else if (event.key === 'HIDE_NOT_VEGAN') {
+    if (event.newValue === 'true') {
+      vegan_checkbox.checked = true
+      vegan_checkbox.dispatchEvent(changeEvent)
+    } else {
+      vegan_checkbox.checked = false
+      vegan_checkbox.dispatchEvent(changeEvent)
+    }
+  } else if (event.key === 'HIDE_NOT_GLUTEN_FREE') {
+    if (event.newValue === 'true') {
+      gluten_free_checkbox.checked = true
+      gluten_free_checkbox.dispatchEvent(changeEvent)
+    } else {
+      gluten_free_checkbox.checked = false
+      gluten_free_checkbox.dispatchEvent(changeEvent)
+    }
+  } else if (event.key === 'checkedHexData') {
+    const numbersChecked = parseCheckedHexData(event.newValue)
+    applyChecks(numbersChecked, false)
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Menu
 // ---------------------------------------------------------------------------

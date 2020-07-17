@@ -200,9 +200,10 @@ function setCross(number, checked = true, store = true) {
 
 /**
  * Takes a list of the numbers checked then sets them using {@link setCross}.
- * @param {array} numbersChecked The numbers checked
+ * @param {array} [numbersChecked] The numbers checked
+ * @param {boolean} [store] If 'true', they will be stored as checkedHexData in localStorage
  */
-export function applyChecks(numbersChecked = []) {
+export function applyChecks(numbersChecked = [], store = true) {
   for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     if (numbersChecked.includes(number)) {
       setCross(number, true, false)
@@ -210,17 +211,17 @@ export function applyChecks(numbersChecked = []) {
       setCross(number, false, false)
     }
   }
-  storeChecks(numbersChecked)
+  if (store) storeChecks(numbersChecked)
 }
 
 /**
  * Takes a list of the numbers checked then stores them as `checkedHexData` in localStorage,
- * it also appends that data to `checkedHexDataHistory` in sessionStorage.
+ * it also appends that data to `checkedHexDataHistory` in localStorage.
  * @param {array} numbersChecked The numbers checked
  */
 function storeChecks(numbersChecked) {
   const checkedHexData = generateCheckedHexData(numbersChecked)
-  const previousHistory = sessionStorage.getItem('checkedHexDataHistory')
+  const previousHistory = localStorage.getItem('checkedHexDataHistory')
   let historyList = []
 
   // Add the current state to localStorage or remove it if nothing is checked
@@ -236,19 +237,19 @@ function storeChecks(numbersChecked) {
   // Add a new history entry but only if it's not the same as the last one - prevents page reloads from filling up the history
   if (historyList[historyList.length - 1] !== checkedHexData) historyList.push(checkedHexData)
 
-  // Save the history list into sessionStorage
-  sessionStorage.setItem('checkedHexDataHistory', historyList.toString())
+  // Save the history list into localStorage
+  localStorage.setItem('checkedHexDataHistory', historyList.toString())
 }
 
 /**
  * Functions to manage the undo and redo-ing of the check marks on the buttons.
- * Utilises sessionStorage for the history and future stacks.
+ * Utilises localStorage for the history and future stacks.
  */
 export const checkHistory = {
   /** Go back to the previous check state */
   undo() {
     // Parse the history stack into an array
-    const checkedHexDataHistory = sessionStorage.getItem('checkedHexDataHistory')
+    const checkedHexDataHistory = localStorage.getItem('checkedHexDataHistory')
     const historyList = checkedHexDataHistory && checkedHexDataHistory.split(',')
     if (!historyList || historyList[0] === '') return
 
@@ -259,45 +260,45 @@ export const checkHistory = {
     const newHistory = historyList.slice()
 
     // Move the most recent state to the future stack
-    const futureHistory = sessionStorage.getItem('checkedHexDataFuture')
+    const futureHistory = localStorage.getItem('checkedHexDataFuture')
     if (futureHistory) {
       const futureList = futureHistory.split(',')
       futureList.push(currentEntry)
-      sessionStorage.setItem('checkedHexDataFuture', futureList.toString())
+      localStorage.setItem('checkedHexDataFuture', futureList.toString())
     } else {
-      sessionStorage.setItem('checkedHexDataFuture', currentEntry)
+      localStorage.setItem('checkedHexDataFuture', currentEntry)
     }
 
     // Apply the previous state
     applyChecks(parseCheckedHexData(historyList.pop()))
 
     // Overwrite the checkedHexDataHistory so we don't end up in a loop
-    sessionStorage.setItem('checkedHexDataHistory', newHistory.toString())
+    localStorage.setItem('checkedHexDataHistory', newHistory.toString())
   },
 
   /** Go forward to the next check state after an undo */
   redo() {
-    const checkedHexDataFuture = sessionStorage.getItem('checkedHexDataFuture')
+    const checkedHexDataFuture = localStorage.getItem('checkedHexDataFuture')
     const futureList = checkedHexDataFuture && checkedHexDataFuture.split(',')
     if (!futureList || futureList[0] === '') return
     applyChecks(parseCheckedHexData(futureList.pop()))
-    sessionStorage.setItem('checkedHexDataFuture', futureList.toString())
+    localStorage.setItem('checkedHexDataFuture', futureList.toString())
   },
 
   /** Clear the future check stack */
   clearFuture() {
-    sessionStorage.removeItem('checkedHexDataFuture')
+    localStorage.removeItem('checkedHexDataFuture')
   },
 
   /** `true` if there are entries in the history check stack */
   get canUndo() {
-    const checkedHexDataHistory = sessionStorage.getItem('checkedHexDataHistory')
+    const checkedHexDataHistory = localStorage.getItem('checkedHexDataHistory')
     return (checkedHexDataHistory && checkedHexDataHistory.length > 0) || false
   },
 
   /** `true` if there are entries in the future check stack */
   get canRedo() {
-    const checkedHexDataFuture = sessionStorage.getItem('checkedHexDataFuture')
+    const checkedHexDataFuture = localStorage.getItem('checkedHexDataFuture')
     return (checkedHexDataFuture && checkedHexDataFuture.length > 0) || false
   }
 }
