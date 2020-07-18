@@ -300,22 +300,31 @@ function updateRequired(name, stock_levels) {
  * @param {stockLevelsObj} stock_levels The object with all of the stock levels
  */
 function replaceAll(name, stock_levels) {
-  // Backup log if it exists and set to expire in a week
-  redisClient.exists('log', (err, reply) => {
-    if (err) handleError("Couldn't check if log exists with Redis", err)
-    if (reply) {
-      console.log('Backing up and wiping log')
-      const log_backup_name = `log-backup-${Date.now()}`
-      redisClient.rename('log', log_backup_name)
-      redisClient.expire(log_backup_name, 1 * 60 * 60 * 24 * 7)
-    }
-  })
-
   // Save the whole table at once
-  console.log(`Distributing whole table from ${name}`)
-  last_table = stock_levels
-  io.sockets.emit('replace-all', stock_levels)
-  saveState(stock_levels)
+  console.log(`Distributing whole table from "${name}", backing up and wiping log`)
+
+  // Before replacing all, perform backups and set them to expire in a week
+  const epochTime = Date.now()
+  const logBackupName = `backup:log:${epochTime}`
+  const stockBackupName = `backup:stock_levels:${epochTime}`
+  const allBackupName = 'backup:all'
+
+  redisClient.exists('log', (err, reply) => {
+    // Backup log if it exists by renaming it
+    if (err) handleError("Couldn't check if log exists with Redis", err)
+    if (reply) redisClient.rename('log', logBackupName)
+
+    // Backup the current state
+    for (const [number, level] of Object.entries(last_table)) redisClient.hset(stockBackupName, number, level)
+
+    // Add to the list of backups
+    redisClient.sadd(allBackupName, epochTime)
+
+    // Finally, replace the state and send it off
+    last_table = stock_levels
+    saveState(stock_levels)
+    io.sockets.emit('replace-all', stock_levels)
+  })
 }
 
 /**
