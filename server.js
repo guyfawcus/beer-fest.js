@@ -49,7 +49,8 @@ if (!process.env.COOKIE_SECRET) {
 const ENABLE_API = process.env.ENABLE_API || 'false'
 const NODE_ENV = process.env.NODE_ENV || ''
 const REDIS_URL = process.env.REDIS_URL || ''
-const BEERS_FILE = process.env.BEERS_FILE || './public/downloads/current-beers.csv'
+const BEERS_FILE = process.env.BEERS_FILE || ''
+const CURRENT_BEERS_FILE = './public/downloads/current-beers.csv'
 
 /** @type {configObj} */
 let last_config = {}
@@ -596,21 +597,27 @@ io.on('connection', (socket) => {
     if (JSON.stringify(beers) === '{}') {
       console.log('Beers object empty')
 
-      // Check if the beers file exists. If it does, read it in and send it
-      fs.access(BEERS_FILE, fs.F_OK, (err) => {
-        if (err) {
-          console.error('No beers file found')
-        } else {
-          console.log('Reading in beers file')
-          csvToJson()
-            .fromFile(BEERS_FILE)
-            .then((jsonObj) => {
-              beers = jsonObj
-              console.log(`Sending newly created beers object to ${socket.id}`)
-              io.to(socket.id).emit('beers', beers)
-            })
+      // Check that the current beers file exists
+      try {
+        fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
+      } catch (err) {
+        try {
+          console.error(`No current beers file found, trying default (${BEERS_FILE})`)
+          fs.accessSync(BEERS_FILE, fs.F_OK)
+          fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+        } catch (err) {
+          console.error('No current or default beers files found, making a blank one to use instead')
+          fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
         }
-      })
+      }
+      console.log('Reading in current beers file')
+      csvToJson()
+        .fromFile(CURRENT_BEERS_FILE)
+        .then((jsonObj) => {
+          beers = jsonObj
+          console.log(`Sending newly created beers object to ${socket.id}`)
+          io.to(socket.id).emit('beers', beers)
+        })
     } else {
       // Send a previously generated beers object
       io.to(socket.id).emit('beers', beers)
