@@ -59,7 +59,7 @@ let last_config = {}
 let last_table = {}
 
 /** @type{beersObj} */
-let beers = {}
+let beers = null
 
 /** The total number of availability buttons */
 const NUM_OF_BUTTONS = 80
@@ -594,8 +594,8 @@ io.on('connection', (socket) => {
   // Send information about all of the beers
   if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
     // Check if the beers file has already been read in
-    if (JSON.stringify(beers) === '{}') {
-      console.log('Beers object empty')
+    if (beers === null) {
+      console.log('Beer information does not exist yet')
 
       // Check that the current beers file exists
       try {
@@ -615,11 +615,11 @@ io.on('connection', (socket) => {
         .fromFile(CURRENT_BEERS_FILE)
         .then((jsonObj) => {
           beers = jsonObj
-          console.log(`Sending newly created beers object to ${socket.id}`)
+          console.log(`Sending newly created beers list to ${socket.id}`)
           io.to(socket.id).emit('beers', beers)
         })
     } else {
-      // Send a previously generated beers object
+      // Send a previously generated beers list
       io.to(socket.id).emit('beers', beers)
     }
   }
