@@ -338,6 +338,20 @@ function saveState(stock_levels) {
   }
 }
 
+/**
+ * Save the beers list to redis
+ * @param {beersObj} beers The list containing all of the beer objects
+ */
+function saveBeers(beers) {
+  redisClient.del('beers', (err, reply) => {
+    if (err) handleError("Couldn't delete beers list from Redis", err)
+
+    beers.forEach((beer) => {
+      redisClient.hset('beers', beer.beer_number, JSON.stringify(beer))
+    })
+  })
+}
+
 /** Used to stop unauthenticated clients getting to pages */
 function checkAuthenticated(req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
@@ -591,37 +605,83 @@ io.on('connection', (socket) => {
     io.to(socket.id).emit('config', last_config)
   }
 
-  // Send information about all of the beers
   if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
+    // ---------------------------------------------------------------------------
+    // This section deals with reading in and/or sending the beer information.
+    // All paths end in CURRENT_BEERS_FILE. The priority order is:
+    // Redis -> CURRENT_BEERS_FILE -> BEERS_FILE -> generated empty file
+    // ---------------------------------------------------------------------------
     // Check if the beers file has already been read in
     if (beers === null) {
       console.log('Beer information does not exist yet')
 
-      // Check that the current beers file exists
-      try {
-        fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
-      } catch (err) {
-        try {
-          console.error(`No current beers file found, trying default (${BEERS_FILE})`)
-          fs.accessSync(BEERS_FILE, fs.F_OK)
-          fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
-        } catch (err) {
-          console.error('No current or default beers files found, making a blank one to use instead')
-          fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
-        }
-      }
-      console.log('Reading in current beers file')
-      csvToJson()
-        .fromFile(CURRENT_BEERS_FILE)
-        .then((jsonObj) => {
-          beers = jsonObj
-          console.log(`Sending newly created beers list to ${socket.id}`)
+      redisClient.hgetall('beers', (err, reply) => {
+        if (err) handleError("Couldn't beers list from Redis", err)
+
+        if (reply === null) {
+          // Check that the current beers file exists
+          try {
+            fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
+          } catch (err) {
+            try {
+              console.error(`No current beers file found, trying default (${BEERS_FILE})`)
+              fs.accessSync(BEERS_FILE, fs.F_OK)
+              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+            } catch (err) {
+              console.error('No current or default beers files found, making a blank one to use instead')
+              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
+            }
+          }
+          console.log('Reading in current beers file')
+          csvToJson()
+            .fromFile(CURRENT_BEERS_FILE)
+            .then((jsonObj) => {
+              beers = jsonObj
+              console.log(`Sending newly created beers list to ${socket.id}`)
+              io.to(socket.id).emit('beers', beers)
+
+              saveBeers(beers)
+            })
+        } else {
+          // Initialise the beers array
+          beers = []
+
+          // Start off the CSV string with the header
+          let csvStr = '"beer_number","beer_name","brewer","abv","beer_style","vegan","gluten_free","description"\n'
+
+          // For every beer
+          for (const beerNumber in reply) {
+            const beer = JSON.parse(reply[beerNumber])
+
+            // add it to the beers array
+            beers.push(beer)
+
+            // then parse out each entry as a CSV line
+            let csvEntry = ''
+            for (const value of Object.values(beer)) {
+              // Use quote marks if the value is not empty
+              const quote = value === '' ? '' : '"'
+              csvEntry += `${quote}${value}${quote},`
+            }
+            // Strip the last comma off the end then add a newline
+            csvStr += `${csvEntry.slice(0, -1)}\n`
+          }
+
+          console.log('Sending beers from Redis')
           io.to(socket.id).emit('beers', beers)
-        })
+
+          console.log('Saving CSV from Redis')
+          fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
+            if (err) throw err
+          })
+        }
+      })
     } else {
       // Send a previously generated beers list
       io.to(socket.id).emit('beers', beers)
     }
+    // ---------------------------------------------------------------------------
+    // ---------------------------------------------------------------------------
   }
 
   // Send the current state of all of the beers
@@ -723,6 +783,8 @@ io.on('connection', (socket) => {
               }
               console.log('New beer information file saved')
             })
+
+            saveBeers(beers)
           })
       } else {
         console.log(
