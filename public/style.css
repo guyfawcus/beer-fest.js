@@ -83,7 +83,8 @@ h1 {
 
 /* "Fix" header spacing on mobile */
 @media (orientation: portrait) {
-  .settings_header {
+  .settings_header,
+  .history_header {
     padding-top: 2em;
   }
 }
@@ -292,8 +293,25 @@ input[type='checkbox']:hover {
 /* -------------------------------- */
 /* History                          */
 /* -------------------------------- */
+.history_container {
+  display: grid;
+  grid-template-columns: 1fr 375px 1fr;
+  grid-template-rows: 119px auto auto;
+  row-gap: 20px;
+}
+
+.history_header {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .history {
-  height: calc(37em);
+  height: calc(42em);
   border: solid 2px var(--main-colour);
   grid-column-start: 2;
   grid-column-end: 3;
@@ -541,7 +559,7 @@ body.keyboardControl .button:focus {
 }
 
 .time {
-  width: 5em;
+  width: 8em;
 }
 
 .name {
@@ -553,7 +571,7 @@ body.keyboardControl .button:focus {
 }
 
 .level {
-  width: 5em;
+  width: 6em;
 }
 
 form {

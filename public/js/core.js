@@ -490,7 +490,7 @@ export function updateLevel(number, level) {
 export function updateHistory(stock_level) {
   const date = new Date(stock_level.epoch_time)
   // const day = date.toLocaleDateString([], { weekday: 'long' })
-  const time = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false })
+  const time = date.toLocaleTimeString([], { weekday: 'short', hour: '2-digit', minute: '2-digit', hour12: false })
 
   const number = stock_level.number
   const level = stock_level.level
