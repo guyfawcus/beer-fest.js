@@ -378,9 +378,6 @@ function checkNotAuthenticated(req, res, next) {
 // ---------------------------------------------------------------------------
 // Routes - main
 // ---------------------------------------------------------------------------
-// Public files
-app.use(express.static('public'))
-
 // Core pages
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/index.html'))
@@ -558,8 +555,11 @@ app.post('/api/stock_levels/:number/:level', (req, res) => {
 })
 
 // ---------------------------------------------------------------------------
-// Routes - errors
+// Routes - others
 // ---------------------------------------------------------------------------
+// Public files
+app.use(express.static('public'))
+
 // Handle 404
 app.use(function (req, res) {
   res.sendFile(path.join(__dirname, 'views/misc/404.html'), 404)
@@ -597,6 +597,9 @@ io.on('connection', (socket) => {
     // If there is no header information, it's likely originated from a bot
     pathname = 'bot'
   }
+
+  if (pathname === '') pathname = 'index'
+  if (pathname.slice(-1) === '/') pathname = pathname.slice(0, -1)
 
   // When a new client connects, update them with the current state of things
   console.log(`Client ${socket.id} connected (${pathname})`)
