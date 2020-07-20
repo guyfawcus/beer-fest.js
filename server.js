@@ -21,6 +21,7 @@ const session = require('express-session')
 // Other packages
 const bcrypt = require('bcryptjs')
 const csvToJson = require('csvtojson')
+const csvStringify = require('csv-stringify/lib/sync')
 const socketIo = require('socket.io')
 const redis = require('redis')
 
@@ -646,29 +647,27 @@ io.on('connection', (socket) => {
           // Initialise the beers array
           beers = []
 
-          // Start off the CSV string with the header
-          let csvStr = '"beer_number","beer_name","brewer","abv","beer_style","vegan","gluten_free","description"\n'
-
-          // For every beer
+          // For every beer, parse the entry then add it to the beers list
           for (const beerNumber in reply) {
-            const beer = JSON.parse(reply[beerNumber])
-
-            // add it to the beers array
-            beers.push(beer)
-
-            // then parse out each entry as a CSV line
-            let csvEntry = ''
-            for (const value of Object.values(beer)) {
-              // Use quote marks if the value is not empty
-              const quote = value === '' ? '' : '"'
-              csvEntry += `${quote}${value}${quote},`
-            }
-            // Strip the last comma off the end then add a newline
-            csvStr += `${csvEntry.slice(0, -1)}\n`
+            beers.push(JSON.parse(reply[beerNumber]))
           }
 
           console.log('Sending beers from Redis')
           io.to(socket.id).emit('beers', beers)
+
+          // Generate CSV from the beers list
+          const columns = [
+            'beer_number',
+            'beer_name',
+            'brewer',
+            'abv',
+            'beer_style',
+            'vegan',
+            'gluten_free',
+            'description'
+          ]
+
+          const csvStr = csvStringify(beers, { header: true, columns: columns, quoted: true })
 
           console.log('Saving CSV from Redis')
           fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
