@@ -20,7 +20,7 @@ const session = require('express-session')
 
 // Other packages
 const bcrypt = require('bcryptjs')
-const csvToJson = require('csvtojson')
+const csvParse = require('csv-parse/lib/sync')
 const csvStringify = require('csv-stringify/lib/sync')
 const socketIo = require('socket.io')
 const redis = require('redis')
@@ -634,15 +634,12 @@ io.on('connection', (socket) => {
             }
           }
           console.log('Reading in current beers file')
-          csvToJson()
-            .fromFile(CURRENT_BEERS_FILE)
-            .then((jsonObj) => {
-              beers = jsonObj
-              console.log(`Sending newly created beers list to ${socket.id}`)
-              io.to(socket.id).emit('beers', beers)
+          beers = csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true })
 
-              saveBeers(beers)
-            })
+          console.log(`Sending newly created beers list to ${socket.id}`)
+          io.to(socket.id).emit('beers', beers)
+
+          saveBeers(beers)
         } else {
           // Initialise the beers array
           beers = []
@@ -769,22 +766,19 @@ io.on('connection', (socket) => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
-        csvToJson()
-          .fromString(beersFileText)
-          .then((jsonObj) => {
-            beers = jsonObj
-            console.log('Sending updated beer information')
-            io.sockets.emit('beers', beers)
+        beers = csvParse(beersFileText, { columns: true })
 
-            fs.writeFile('public/downloads/current-beers.csv', beersFileText, (err) => {
-              if (err) {
-                return console.log(err)
-              }
-              console.log('New beer information file saved')
-            })
+        console.log('Sending updated beer information')
+        io.sockets.emit('beers', beers)
 
-            saveBeers(beers)
-          })
+        fs.writeFile('public/downloads/current-beers.csv', beersFileText, (err) => {
+          if (err) {
+            return console.log(err)
+          }
+          console.log('New beer information file saved')
+        })
+
+        saveBeers(beers)
       } else {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
