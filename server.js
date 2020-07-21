@@ -59,7 +59,7 @@ let last_config = {}
 /** @type{stockLevelsObj} */
 let last_table = {}
 
-/** @type{beersObj} */
+/** @type{beersObjArray} */
 let beers = null
 
 /** The total number of availability buttons */
@@ -76,7 +76,7 @@ const NUM_OF_BUTTONS = 80
  */
 
 /** @typedef {import('public/js/core.js').stockLevelsObj} stockLevelsObj */
-/** @typedef {import('public/js/core.js').beersObj} beersObj */
+/** @typedef {import('public/js/core.js').beersObjArray} beersObjArray */
 /** @typedef {import('public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
@@ -341,7 +341,7 @@ function saveState(stock_levels) {
 
 /**
  * Save the beers list to redis
- * @param {beersObj} beers The list containing all of the beer objects
+ * @param {beersObjArray} beers The list containing all of the beer objects
  */
 function saveBeers(beers) {
   redisClient.del('beers', (err, reply) => {

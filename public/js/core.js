@@ -19,8 +19,8 @@ export let TO_CONFIRM = true
 export let LOW_ENABLE = false
 
 /**
- * A list of [beer objects]{@link beersObj} containing information for each beer
- * @type{beersObj[]}
+ * A list of [beer objects]{@link beersObjArray} containing information for each beer
+ * @type{beersObjArray}
  */
 let BEERS = []
 
@@ -48,22 +48,20 @@ export const socket = globalThis.io.connect(`${location.host}?referrer=${locatio
  */
 
 /**
- * Object structure that represents each beer. Used in {@link BEERS}
- * @typedef {object} beersObj
- * @property {string} beer_number The number of the beer
- * @property {string} beer_name The name of the beer
- * @property {string} brewer The brewer of the beer
- * @property {string} abv The alcohol by volume of the beer
- * @property {string} beer_style The style of the beer
- * @property {string} vegan 'y' if the beer is vegan
- * @property {string} gluten_free 'y' if the beer is gluten free
- * @property {string} description A description of the beer
+ * Array that stores objects that represent each beer. Used in {@link BEERS}
+ * @typedef {Array.<Object>} beersObjArray
+ * @property {string} beersObjArray[].beer_number The number of the beer
+ * @property {string} beersObjArray[].beer_name The name of the beer
+ * @property {string} beersObjArray[].brewer The brewer of the beer
+ * @property {string} beersObjArray[].abv The alcohol by volume of the beer
+ * @property {string} beersObjArray[].beer_style The style of the beer
+ * @property {string} beersObjArray[].vegan 'y' if the beer is vegan
+ * @property {string} beersObjArray[].gluten_free 'y' if the beer is gluten free
+ * @property {string} beersObjArray[].description A description of the beer
  */
 
-/** Object to store the stock level for a particular beer. Used in {@link STOCK_LEVELS}
- * @typedef {object} stockLevelsObj
- * @property {number} number The number of the beer
- * @property {levelValues} level The level that the beer is set to
+/** Object to store the stock levels for a range of beers. Used in {@link STOCK_LEVELS}
+ * @typedef {Object.<number, levelValues>} stockLevelsObj
  */
 
 /** Object to store the stock level and other info for an update. Used in {@link updateHistory}
