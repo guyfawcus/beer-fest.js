@@ -6,7 +6,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 5,Not Euro Fizz,Aylesbury Brewhouse Co.,4.5%,Pilsner,,,"Ale brewed in the pilsner style, with layer malks and noble hops."
 6,Channel Surfing,Aylesbury Brewhouse Co.,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
 7,Cobblestone,The Chiltern Brewery,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
-8,Beechwood Bitter,The Chiltern Brewery,4.3%,Premium Bitter,,,"The brewery flagship - a hearty and well-rounded beer."" Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty."
+8,Beechwood Bitter,The Chiltern Brewery,4.3%,Premium Bitter,,,"The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty."
 9,London Porter,Red Squirrel,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
 10,Redwood American IPA,Red Squirrel,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
 11,RSX,Red Squirrel,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."
@@ -19,4 +19,4 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 18,XT9 Black Velvet,XT Brewing Co.,5.5%,Dark,,,"Nine Malts (including Belgian Aromatic, and Smoked), Nine hops (Apollo, Bravo, Columbus, Delta, EK Goldings, First Gold, Galena, Hellertauer, Junga) and two strains of yeast - this is a very special beer made for the drinker who wants something different. This is NOT a stout, it's something else entirely. Big malt aroma on a bitter, balanced hop finish."
 19,Jubilee Special,XT Brewing Co.,,,,,
 20,TBA,Buckingham Brewery,4.0%,Mild,,,
-21,Buckingham Bitter Brewery,Buckingham Brewery,4.0%,Bitter,,," A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."
+21,Buckingham Bitter Brewery,Buckingham Brewery,4.0%,Bitter,,,"A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."
