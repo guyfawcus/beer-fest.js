@@ -667,7 +667,7 @@ io.on('connection', (socket) => {
             'description'
           ]
 
-          const csvStr = csvStringify(beers, { header: true, columns: columns, quoted: true })
+          const csvStr = csvStringify(beers, { header: true, columns: columns })
 
           console.log('Saving CSV from Redis')
           fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
