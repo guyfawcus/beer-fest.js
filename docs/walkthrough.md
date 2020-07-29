@@ -46,8 +46,8 @@ The settings page is only accessible to logged in users. The four main functions
 
 <img src="/docs/images/downloads.png" width="384">
 
-This page contains the beer information spreadsheet as well as the `.csv` files for each year that are exported from it.
-The `.csv` file can be uploaded (`Settings` -> `Beer Information` -> `Upload`) and is used to display information about each beer on the 'Availability' and 'History' pages and 'hide' any non Ve/GF beers (if set).
+This page contains the beer information `.csv` files for each year, as well as the one that is currently in use (this is not necessarily the same as the current year's info as changes may have been made).
+The `.csv` file can be uploaded (`Settings` -> `Beer Information` -> `Upload`) for distribution to current and future clients. It is used to display information about each beer on the 'Availability' and 'History' pages and to 'hide' any non Ve/GF beers (if set).
 
 ## Availability
 

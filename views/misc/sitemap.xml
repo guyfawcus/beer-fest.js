@@ -36,11 +36,6 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/acbf-beers.ods</loc>
-        <changefreq>daily</changefreq>
-        <priority>0.5</priority>
-    </url>
-    <url>
         <loc>https://acbf-2020.herokuapp.com/downloads/2019-beers.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
