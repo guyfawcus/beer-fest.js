@@ -451,6 +451,9 @@ app.get('/css/reveal.css', (req, res) => {
 app.get('/css/theme/black.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/theme/black.css'))
 })
+app.get('/css/theme/reveal-custom.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public/reveal-custom.css'))
+})
 app.get('/js/reveal.esm.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/reveal.esm.js'))
 })

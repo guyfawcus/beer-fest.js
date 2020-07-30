@@ -1,0 +1,4 @@
+/* Hide the border of the iframe */
+iframe {
+  border: none;
+}
