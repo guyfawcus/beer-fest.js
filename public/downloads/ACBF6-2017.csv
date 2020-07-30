@@ -1,5 +1,5 @@
 beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
-1,A Bigger Boat,Vale,3.8%,Red Ale,,,
+1,A Bigger Boat,Vale Brewery,3.8%,Red Ale,,,
 2,Apricot Jungle,Grafton,4.8%,Golden/Blonde Ale,,,
 3,Beechwood,The Chiltern Brewery,4.3%,Bitter,,,
 4,Bibble,Wild Beer,4.2%,Session IPA,,,
@@ -29,7 +29,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 28,Four,XT Brewing Co.,3.8%,Golden/Blonde Ale,,,
 29,Gold,The Chiltern Brewery,3.8%,Golden/Blonde Ale,,,
 30,Gorge Best,Cheddar,4.0%,Bitter,,,
-31,Gravitas,Vale,4.8%,Golden/Blonde Ale,,,
+31,Gravitas,Vale Brewery,4.8%,Golden/Blonde Ale,,,
 32,Independence,Bristol Beer Factory,4.6%,APA,,,
 33,Inferno,Oakham,4.1%,Golden/Blonde Ale,,,
 34,lti,Hawkshead,3.5%,Pale Ale,,,
