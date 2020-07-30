@@ -1,6 +1,6 @@
 beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 1,Endless Summer,Oakham,3.4%,Golden/Blonde Ale,,,"Aroma rich with kiwi fruit, a powerful taste of lime zest and citrus flavours yield to a hop resin background before you pay homage to a long bitter dry finish."
-2,Unexpected Pleasures,Nene Valley,3.6%,Pale Ale,,,Light clean and refreshing beer with a pleasing citrus hop aroma and flavour. Special edition brewed with Nelson Sauvign hops.
+2,Unexpected Pleasures,Nene Valley Brewery,3.6%,Pale Ale,,,Light clean and refreshing beer with a pleasing citrus hop aroma and flavour. Special edition brewed with Nelson Sauvign hops.
 3,Sarratt Summer Extra Pale,Paradigm,3.7%,Pale Ale,,,"An easy-drinking very pale ale perfect for a lazy summer afternoon or an evening session. Made with extra-pale malt to give a distinctive light appearance. Triple fermented. Late hopped using hops all the way from Australia, and dry-hopped using Summit and Mosaic hops."
 4,Gold,The Chiltern Brewery,3.8%,Golden/Blonde Ale,,,"New style English Light Ale, bright golden in colour. Soft and smooth on the palate with a delicate fruity, citrussy aroma."
 5,Golden Ale,Watling Street,3.8%,Golden/Blonde Ale,,,"Golden orange coloured. Aroma is rich caramel, biscuit and nutty. Flavour is composed of caramel malts, toast, honey malts, earthy berry. Lingering earthy honey. Palate is semi sweet, moderate carbonation."
@@ -18,7 +18,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 17,Windsor Knot,Windsor & Eton,4.0%,Bitter,,,"This is a Pale Ale brewed with two specially selected hops, Sovereign and Nelson Sauvin from New Zealand.  The combination of these hops produces an intense and distinctive tropical fruit aroma including Mango, Lychees and Passion Fruit to deliver an easy drinking and refreshing beer."
 18,Twisted Melon,Empire Brewing,4.1%,Golden/Blonde Ale,,,"Very pale ale. Generously hopped with Sorachi Ace, giving this beer a mouth watering lemon and coconut flavour. A real tongue twister."
 19,Feckless,Red Willow,4.1%,Bitter,,,"A classic British bitter, rich toffee and malt balanced with the subtle flavours of Challenger, First Gold and Target hops."
-20,Nene Valley Bitter,Nene Valley,4.1%,Bitter,,,"A smooth, full-bodied, pale chestnut traditional bitter for everyday drinking"
+20,Nene Valley Bitter,Nene Valley Brewery,4.1%,Bitter,,,"A smooth, full-bodied, pale chestnut traditional bitter for everyday drinking"
 21,Broom Star,Aylesbury Brewhouse Co.,4.2%,Bitter,,,Copper Bitter light & Citrussy using comet hops 
 22,Premium Ale,Watling Street,4.2%,Premium Bitter/ESB,,,"Pours a clear golden with a thin white head. Nose is malty and sweet. Aromas are sweet malt, grain, herbal hops. Flat, medium nose. Medium finish bitter. "
 23,Samba City,Adnams,4.2%,Wheat Beer,,,"Vibrant citrus aromas and a touch of banana on the pallate, with creamy spicy notes from the wheat on the finish."
