@@ -590,13 +590,13 @@ export function beersUpload() {
     reader.onload = () => {
       // File type validation
       if (file.type !== 'text/csv') {
-        alert("Error: this file is not of the right type,\nplease upload a valid 'beers.csv' file")
+        alert("Error: this file is not the correct filetype,\nplease upload a valid '.csv' beer information file")
         return
       }
 
       // File size validation
       if (file.size > 100000) {
-        alert("Error: this file is too large,\nplease upload a valid 'beers.csv' file")
+        alert("Error: this file is too large,\nplease upload a valid '.csv' beer information file")
         return
       }
 

@@ -36,12 +36,42 @@
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/2019-beers.csv</loc>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF8-2019.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/2018-beers.csv</loc>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF7-2018.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF6-2017.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF5-2016.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF4-2015.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF3-2014.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF2-2013.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
+        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF1-2012.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
