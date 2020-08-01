@@ -1,5 +1,5 @@
 beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
-1,Angel Fish,Animal,4.6%,IPA,,,"Pilsner Malts from Germany, triple hopped with American varieties - giving an ale twist on a lager recipe. Crisp dry and refreshing."
+1,Angel Fish,Animal Brewing Co,4.6%,IPA,,,"Pilsner Malts from Germany, triple hopped with American varieties - giving an ale twist on a lager recipe. Crisp dry and refreshing."
 2,Arapawa,Hornes Brewery,4.5%,Pale Ale,,y,A juicy pale ale hopped solely with New Zealand Rakau.
 3,Ashford,Thornbridge,4.2%,Brown Ale,,,A New World Brown Ale but with the emphasis more on the complex nutty malt than the herbal hops.
 4,Bat Oat of Hell,Weird Beard,4.0%,Pale Ale,y,,"Full on flavour and body. Pours a deep orange with slight haze, as you would expect from the oats and wheat. The aroma and flavour are citrus and tropical fruits."
@@ -29,7 +29,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 28,Galatia,Wylam,3.9%,Blonde / Golden,,,"Session pale with a heavy dose of New World Hops. Fresh orange shred, stone fruit and a clean dry fresh pine kick."
 29,Grateful Red,New Bristol,4.6%,Red Ale,y,,"Perfectly balances the hop-forward flavours and aromas of a traditional IPA with the delicious caramel, malty body of an Amber Ale."
 30,Gravitas,Vale Brewery,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish. A pronounced hop aroma throughout."
-31,Hop Kitty,Animal,3.9%,Session IPA,,,"Bursting with tropical and citrus flavours, big Mango and Lychee from generous Citra dry hopping. Lightly toasted malts give a hint of sweetness."
+31,Hop Kitty,Animal Brewing Co,3.9%,Session IPA,,,"Bursting with tropical and citrus flavours, big Mango and Lychee from generous Citra dry hopping. Lightly toasted malts give a hint of sweetness."
 32,Illuminate,Mad Squirrel,4.5%,Red Ale,,,"A timeless red ale, smooth and fruity, hearty and sustaining. There is complexity in its creation but simplicity in its enjoyment."
 33,Jakehead,Wylam,6.3%,IPA,,,Rich/bright & amber/bronze with lots of American hop aroma. Distinctly bittersweet on the palate with a massive hop complexity.
 34,Jam Dunk,Downlands,4.8%,Stout,,,"Chocolate undercurrents swirl beneath the strong jammy texture derived from adding many, many donuts."
