@@ -2,7 +2,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 1,Angel Fish,Animal Brewing Co,4.6%,IPA,,,"Pilsner Malts from Germany, triple hopped with American varieties - giving an ale twist on a lager recipe. Crisp dry and refreshing."
 2,Arapawa,Hornes Brewery,4.5%,Pale Ale,,y,A juicy pale ale hopped solely with New Zealand Rakau.
 3,Ashford,Thornbridge,4.2%,Brown Ale,,,A New World Brown Ale but with the emphasis more on the complex nutty malt than the herbal hops.
-4,Bat Oat of Hell,Weird Beard,4.0%,Pale Ale,y,,"Full on flavour and body. Pours a deep orange with slight haze, as you would expect from the oats and wheat. The aroma and flavour are citrus and tropical fruits."
+4,Bat Oat of Hell,Weird Beard Brew Co.,4.0%,Pale Ale,y,,"Full on flavour and body. Pours a deep orange with slight haze, as you would expect from the oats and wheat. The aroma and flavour are citrus and tropical fruits."
 5,Beechwood,The Chiltern Brewery,4.3%,Bitter,,,"Premium quality pale ale malt with an extra proportion of crystal malt, and increased hops, gives this beer its renowned nutty flavour and punch."
 6,Best,Vale Brewery,3.7%,Bitter,,,"Light copper, all english hopped session ale."
 7,Big Bang Theory,Nene Valley Brewery,5.3%,APA,,y,Wonderfully balanced pale ale with a huge hop aroma giving way to malty sweetness and a gentle bitter finish.
@@ -43,7 +43,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 42,Lush,Tiny Rebel,4.0%,Session IPA,y,,"A golden and hazy pour and big aromas of tropical fruit with a fruity sweetness, light malts and a citrusy hopped character."
 43,Maelstrom,Oakham,5.2%,IPA,,,A whirlpool of citrus and tropical fruit from the finest New Zealand hops in this rich and full bodied IPA.
 44,Manchester Bitter,Marble,4.2%,Bitter,y,,"A traditional pint Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma."
-45,Mariana Trench,Weird Beard,5.3%,Pale Ale,y,,New Zealand Pacific Gem and American Citra hops give a tropical fruit nose and flavours.
+45,Mariana Trench,Weird Beard Brew Co.,5.3%,Pale Ale,y,,New Zealand Pacific Gem and American Citra hops give a tropical fruit nose and flavours.
 46,Monts Vert,Aylesbury Brewhouse Co.,4.4%,IPA,,,"Monts Vert follows the new trend for juicy IPAs, this is brewed exclusively with New Zealand Hops."
 47,Moor Top,Buxton,3.6%,Pale Ale,y,,Hopped with American Chinook hops. It has a sweetness balanced with a bitter finish backed up with a late grapefruit hint.
 48,Nighthawk,Hillfire Brewing Company,5.0%,Stout,,,American-style Stout which offers crisp hoppiness and sweet caramel flavours.
