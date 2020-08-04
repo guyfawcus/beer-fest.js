@@ -18,5 +18,5 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 17,XT6 Rich Ruby,XT Brewing Co.,4.5%,Ruby,,,"Beautiful ruby red beer, malty and smooth with a cascade hop finish. Supplied in a traditional Oak cask."
 18,XT9 Black Velvet,XT Brewing Co.,5.5%,Dark,,,"Nine Malts (including Belgian Aromatic, and Smoked), Nine hops (Apollo, Bravo, Columbus, Delta, EK Goldings, First Gold, Galena, Hellertauer, Junga) and two strains of yeast - this is a very special beer made for the drinker who wants something different. This is NOT a stout, it's something else entirely. Big malt aroma on a bitter, balanced hop finish."
 19,Jubilee Special,XT Brewing Co.,,,,,
-20,TBA,Buckingham Brewery,4.0%,Mild,,,
-21,Buckingham Bitter Brewery,Buckingham Brewery,4.0%,Bitter,,,"A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."
+20,Mild,Buckingham Brewery,4.0%,Mild,,,TBA
+21,Bitter,Buckingham Brewery,4.0%,Bitter,,,"A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."
