@@ -1,0 +1,63 @@
+{
+  "fields": [
+    {
+      "name": "beer_number",
+      "title": "Beer number",
+      "description": "The number of the beer",
+      "type": "integer",
+      "constraints": {
+        "required": true,
+        "unique": true
+      }
+    },
+    {
+      "name": "beer_name",
+      "title": "Beer name",
+      "description": "The name of the beer",
+      "type": "string"
+    },
+    {
+      "name": "brewer",
+      "title": "Brewer",
+      "description": "The brewer of the beer",
+      "type": "string"
+    },
+    {
+      "name": "abv",
+      "title": "ABV",
+      "description": "The alcohol by volume of the beer",
+      "type": "string",
+      "constraints": {
+        "pattern": "\\d{1,2}.\\d%"
+      }
+    },
+    {
+      "name": "beer_style",
+      "title": "Beer style",
+      "description": "The style of the beer",
+      "type": "string"
+    },
+    {
+      "name": "vegan",
+      "title": "Vegan",
+      "description": "'y' if the beer is vegan",
+      "type": "boolean",
+      "trueValues": ["y"],
+      "falseValues": [""]
+    },
+    {
+      "name": "gluten_free",
+      "title": "Gluten free",
+      "description": "'y' if the beer is gluten free",
+      "type": "boolean",
+      "trueValues": ["y"],
+      "falseValues": [""]
+    },
+    {
+      "name": "description",
+      "title": "Description",
+      "description": "A description of the beer",
+      "type": "string"
+    }
+  ]
+}
