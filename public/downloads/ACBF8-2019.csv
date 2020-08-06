@@ -13,7 +13,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 12,Blonde,Saltaire,4.0%,Blonde / Golden,,,A well balanced Pale ale combining soft malt flavours with subtle spice from Bohemian Saaz hops.
 13,Blonde,The 3 Brewers of St.Albans,4.2%,Golden Ale,,,Golden in colour with a wonderful hoppy aroma and a refreshing smack of fruity citrusy flavours.
 14,Blue Sky Thinking,paradigm brewery,4.0%,Summer Ale,,,"A light and fruity summer ale, refreshing on the palette."
-15,15 Breakfast Stout,Kent,4.2%,Oatmeal Stout,,,A sweet smooth and malty stout.
+15,15 Breakfast Stout,Kent Brewery,4.2%,Oatmeal Stout,,,A sweet smooth and malty stout.
 16,Broken Dream,Siren Craft Brew,6.5%,Breakfast Stout,,,"Champion Beer of Britain 2018. Breakfast stout with a gentle touch of smoke, coffee and chocolate."
 17,Brut N Free,Arbor,6.0%,Brut IPA,y,y,"Brut IPA brewed with Amarillo, Simcoe and Mosaic hops."
 18,Chinook & Loral,Brew By Numbers / Hobsons Collab,4.5%,IPA,y,,"A hazy, fruity IPA with the gutsy flavours of Chinook and Loral hops in equal measure. A floral aroma, with notes of grapefruit and pine."
@@ -35,7 +35,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 34,Jam Dunk,Downlands,4.8%,Stout,,,"Chocolate undercurrents swirl beneath the strong jammy texture derived from adding many, many donuts."
 35,Jimbob,Tring Brewery Co.,3.4%,Pale Ale,,,The use of Dextrin malt provides body and the platform to balance out potent Australian Galaxy hops.
 36,Kaleidoscope,Wiper and True,4.2%,Pale Ale,y,,Our Kaleidoscope series combines three different hops to create a seasonally evolving flavour profile.
-37,KGB,Kent,4.1%,Bitter,,,"A full-on dose of Golding and Fuggles hops, with a rich variety of malts, to highlight Kent's heritage."
+37,KGB,Kent Brewery,4.1%,Bitter,,,"A full-on dose of Golding and Fuggles hops, with a rich variety of malts, to highlight Kent's heritage."
 38,Khyber Pass,Oakham,5.5%,IPA,,,"Aroma of citrusy marmalade, taste of oranges and soft crystal malt notes, with a long hoppy dry finish."
 39,King Street Dusk,Popes Yard,4.2%,Dark Lager,,,"Cober-coloured lager with subtle notes of toffee, biscuit and dark fruit balanced with a herbal bitterness and aroma from noble hobs."
 40,London ESB,Anspach & Hobday,5.5%,ESB,y,,"A classic ESB based on the recipe from A&H's 2018 ESB collaboration with Fuller's. Malty, sweet and bitter."
