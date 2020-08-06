@@ -1,0 +1,24 @@
+files:
+  - source: public/downloads/ACBF1-2012.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF2-2013.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF3-2014.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF4-2015.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF5-2016.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF6-2017.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF7-2018.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF8-2019.csv
+    schema: public/downloads/tableschema.json
