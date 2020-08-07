@@ -42,7 +42,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 41,London Porter,Mad Squirrel,5.0%,Porter,,,"A dark ale, London Porter has lurking notes of coffee, chocolate and smoke."
 42,Lush,Tiny Rebel,4.0%,Session IPA,y,,"A golden and hazy pour and big aromas of tropical fruit with a fruity sweetness, light malts and a citrusy hopped character."
 43,Maelstrom,Oakham,5.2%,IPA,,,A whirlpool of citrus and tropical fruit from the finest New Zealand hops in this rich and full bodied IPA.
-44,Manchester Bitter,Marble,4.2%,Bitter,y,,"A traditional pint Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma."
+44,Manchester Bitter,Marble Brewery,4.2%,Bitter,y,,"A traditional pint Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma."
 45,Mariana Trench,Weird Beard Brew Co.,5.3%,Pale Ale,y,,New Zealand Pacific Gem and American Citra hops give a tropical fruit nose and flavours.
 46,Monts Vert,Aylesbury Brewhouse Co.,4.4%,IPA,,,"Monts Vert follows the new trend for juicy IPAs, this is brewed exclusively with New Zealand Hops."
 47,Moor Top,Buxton Brewery,3.6%,Pale Ale,y,,Hopped with American Chinook hops. It has a sweetness balanced with a bitter finish backed up with a late grapefruit hint.
@@ -52,7 +52,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 51,Pale,The Chiltern Brewery,3.7%,Pale Ale,,,"Relatively light in colour, with a creamy smoothness, it has a good definition on the palate and a refreshing cleansing finish."
 52,Pale XX,Howling Hops,5.1%,APA,y,,American style pale ale. Fruity flavour with an assertive bitterness.
 53,Petrichor,Aylesbury Brewhouse Co.,4.3%,Brown Tawny Ale,,,Petrichor offers soft malt flavours and fresh hop aromas to combine as something which isn't quite a Bitter but most definitely not an IPA.
-54,Pint,Marble,3.9%,Session Ale,y,,"An all pale malt bill and hopped with a blend of New Zealand and US hops. Zesty aromas, grapefruit flavours and a lemongrass finish."
+54,Pint,Marble Brewery,3.9%,Session Ale,y,,"An all pale malt bill and hopped with a blend of New Zealand and US hops. Zesty aromas, grapefruit flavours and a lemongrass finish."
 55,Pulping on your Stereo,Nene Valley Brewery,4.5%,Session IPA,y,y,Packed full of Mandarina & Citra hops plus loads of fresh oranges.
 56,Quartermaster,Popes Yard,4.4%,Best Bitter,,,"Brewed with a touch of amber and crystal malt, British Bramling Cross and Australian Galaxy hops."
 57,Red Kite,Vale Brewery,4.3%,Red Ale,,,"Deep red in colour, reminiscent of its namesake, with big malt flavours and a strong hop finish - this beer soars with character."
@@ -68,6 +68,6 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 67,Titus,Saltaire,3.9%,Best Bitter,,,"Traditional bitterness meets a twist of citrus in this clean, contemporary take on a classic Best Yorkshire Bitter."
 68,Train Robber,Leighton Buzzard Brewing Co.,5.0%,IPA,,,"Maris Otter malt and plenty of hops - Ahtanum, Amarillo Cascade US Green Bullet and Nelson Sauvin."
 69,Tropical Deluxe,Howling Hops,3.8%,Pale Ale,y,,A fruity and hop forward beer fermented with a New England yeast strain. Aromas of stonefruit and pine and a clean dry finish.
-70,Uppe Hela Natten,Marble,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
+70,Uppe Hela Natten,Marble Brewery,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
 71,Whose Lime is it Anyway,Arbor / New Bristol Collab,6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
 72,Zesty,Thornbridge,5.0%,Wheat Beer,,,Zesty lives up to its name with tangerine providing a fresh vibrancy to this soft and well-rounded Summer Wheat Beer.

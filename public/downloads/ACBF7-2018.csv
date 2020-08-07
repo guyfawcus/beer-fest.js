@@ -19,7 +19,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 18,Day Tripper,Downlands Brewery,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
 19,Death or Glory,Tring Brewery Co.,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 20,Don't Believe the Hype,Tiny Rebel,5.0%,IPA,,,"Hazy golden colour, floral & caramel aroma, taste is sweet & juicy citrus."
-21,Earl Grey IPA,Marble,6.8%,IPA,,,"Crisp and golden. Caramel, tea and malt aromas. Sweet with some bitterness and spiciness."
+21,Earl Grey IPA,Marble Brewery,6.8%,IPA,,,"Crisp and golden. Caramel, tea and malt aromas. Sweet with some bitterness and spiciness."
 22,Ekuanot Extra Pale,Beatnikz Republic,4.4%,Pale Ale,,,Singly hopped with Ekuanot for a juicy tropical flavour and aroma.
 23,Fanny Ebbs,Tring Brewery Co.,3.9%,Golden / Blonde,,,Crisp with very low bitterness and a late citrus hop aroma from a combination of Saaz and Cascade varieties.
 24,Four,XT Brewing Co.,3.8%,Amber Ale,,,A modern session amber ale - English and Belgian malts plus American and English hops.
@@ -73,7 +73,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 72,Triple Goat Pale Ale,Hornes Brewery,3.9%,Pale Ale,,,"A refreshingly natural pale ale brewed with malted pale barley , whole flower hops, brewers yeast and pure water."
 73,Triple Goat Porter,Hornes Brewery,4.6%,Porter,,,"Earthy, robust porter with a balanced sweetness from a delicious blend of roasted malts, UK and american hops."
 74,Tropical IPA,Beatnikz Republic,5.6%,IPA,y,,"A full flavoured hoppy IPA with Motueka, Ekuanot & Mosaic hops."
-75,Tuckerlovsky,Marble,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
+75,Tuckerlovsky,Marble Brewery,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
 76,Union Hop,Moor,4.7%,Golden / Blonde,,,Traditional British floor malted barley and modern British hops.
 77,Vital Spark,Fyne,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
 78,VPA,Vale Brewery,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
