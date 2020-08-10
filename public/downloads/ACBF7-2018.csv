@@ -12,7 +12,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 11,Cherry Bomb,Tiny Rebel,5.0%,Fruit Beer,,,"A modern take on the classic Belgian sour cherry beer, Kriek."
 12,Chilli Porter,Leighton Buzzard Brewing Co.,5.8%,Porter,,,"A wonderful, complex, robust porter with glorious hints of coffee and chocolate and a little chilli heat."
 13,Chopper,Great Heck,3.8%,Golden / Blonde,,,Pale Yorkshire session beer using English & Slovenian hops. Dry hopped with Chinook for aroma.
-14,Citra Pale,Bad Co.,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
+14,Citra Pale,BAD Co.,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
 15,Confidence,Moor,4.6%,Amber Ale,,,"Crystal and wheat malts, spicy US hops, rich & malty."
 16,Dark Arts,Magic Rock Brewing,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
 17,Dark Fox,Hornes Brewery,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
@@ -78,4 +78,4 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 77,Vital Spark,Fyne,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
 78,VPA,Vale Brewery,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
 79,Wolf,Aylesbury Brewhouse Co.,3.8%,Pale Ale,,,"Straw coloured pale ale with Slovenian hop, Styrian Wolf. Flavours of citrus and berries and a smooth bitterness."
-80,Yorkshire Bitter,Bad Co.,3.8%,Bitter,,,"Green fruits, Malty sweetness, refreshing after taste."
+80,Yorkshire Bitter,BAD Co.,3.8%,Bitter,,,"Green fruits, Malty sweetness, refreshing after taste."
