@@ -16,7 +16,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 15,15 Breakfast Stout,Kent Brewery,4.2%,Oatmeal Stout,,,A sweet smooth and malty stout.
 16,Broken Dream,Siren Craft Brew,6.5%,Breakfast Stout,,,"Champion Beer of Britain 2018. Breakfast stout with a gentle touch of smoke, coffee and chocolate."
 17,Brut N Free,Arbor,6.0%,Brut IPA,y,y,"Brut IPA brewed with Amarillo, Simcoe and Mosaic hops."
-18,Chinook & Loral,Brew By Numbers / Hobsons Brewery Co. Collab,4.5%,IPA,y,,"A hazy, fruity IPA with the gutsy flavours of Chinook and Loral hops in equal measure. A floral aroma, with notes of grapefruit and pine."
+18,Chinook Loral,Hobsons Brewery Co. / Brew By Numbers (collaboration),4.5%,IPA,y,,"A hazy, fruity IPA with the gutsy flavours of Chinook and Loral hops in equal measure. A floral aroma, with notes of grapefruit and pine."
 19,Citra & Rye,Wiper and True,4.8%,Amber Ale,y,,"A full-bodied and sweet Amber Ale finished with spicy, peppery rye malts. Citra hop, abundant in intense citrus and tropical flavours."
 20,Classic,The 3 Brewers of St.Albans,4.0%,Best Bitter,,,"A light hoppy aromo, rich and rounded malty taste balanced by subtle hoppiness, to give a clean, smooth and refreshing ale."
 21,COB,Hop Kettle,3.8%,Session Bitter,,,"A classic session bitter. Golden amber in colour, a perfect balance between malt and English hoppiness creates an easy-drinking sessionable bitter."
@@ -48,7 +48,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 47,Moor Top,Buxton Brewery,3.6%,Pale Ale,y,,Hopped with American Chinook hops. It has a sweetness balanced with a bitter finish backed up with a late grapefruit hint.
 48,Nighthawk,Hillfire Brewing Company,5.0%,Stout,,,American-style Stout which offers crisp hoppiness and sweet caramel flavours.
 49,Ninja Shark,Totally Brewed,3.8%,APA,,,"Session pale hopped with Amarillo, Eldorado and Cascade."
-50,North Sea Sessions,Northern Monk/Humble Sea Collab,4.5%,Session IPA,y,,Citra and Mosaic hops paired with the classic New Zealand variety Nelson Sauvin.
+50,18.02 North Sea Sessions 02,Northern Monk / Humble Sea (collaboration),4.5%,Session IPA,y,,Citra and Mosaic hops paired with the classic New Zealand variety Nelson Sauvin.
 51,Pale,The Chiltern Brewery,3.7%,Pale Ale,,,"Relatively light in colour, with a creamy smoothness, it has a good definition on the palate and a refreshing cleansing finish."
 52,Pale XX,Howling Hops,5.1%,APA,y,,American style pale ale. Fruity flavour with an assertive bitterness.
 53,Petrichor,Aylesbury Brewhouse Co.,4.3%,Brown Tawny Ale,,,Petrichor offers soft malt flavours and fresh hop aromas to combine as something which isn't quite a Bitter but most definitely not an IPA.
@@ -63,11 +63,11 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 62,Stand & Vanilla,New Bristol Brewery,5.0%,IPA,,,"Molted Oats for a big mouthfeel. Dry-hopped with Melba, Equinox and Citra and finished with a touch of Madagascan Vanilla."
 63,Stay Puft,Tiny Rebel,5.2%,Porter,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness."
 64,Summer Breeze,Tiny Rebel,4.0%,Fruit IPA,,,"Packed with Cascade, Belma and Citrus hops."
-65,Tangled Dimensions,BAD Co. / Turning Point Brew Co. Collab,6.5%,NEIPA,y,,A big juicy IPA hopped with lashings of Citra and Mosiac Hops. The aroma and flavour is of tropical fruits.
+65,Tangled Dimensions,BAD Co. / Turning Point Brew Co. (collaboration),6.5%,NEIPA,y,,A big juicy IPA hopped with lashings of Citra and Mosiac Hops. The aroma and flavour is of tropical fruits.
 66,Three,XT Brewing Co.,4.2%,Golden Ale,,,"An American style IPA-packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
 67,Titus,Saltaire,3.9%,Best Bitter,,,"Traditional bitterness meets a twist of citrus in this clean, contemporary take on a classic Best Yorkshire Bitter."
 68,Train Robber,Leighton Buzzard Brewing Co.,5.0%,IPA,,,"Maris Otter malt and plenty of hops - Ahtanum, Amarillo Cascade US Green Bullet and Nelson Sauvin."
 69,Tropical Deluxe,Howling Hops,3.8%,Pale Ale,y,,A fruity and hop forward beer fermented with a New England yeast strain. Aromas of stonefruit and pine and a clean dry finish.
 70,Uppe Hela Natten,Marble Brewery,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
-71,Whose Lime is it Anyway,Arbor / New Bristol Brewery Collab,6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
+71,Whose Lime is it Anyway,Arbor / New Bristol Brewery (collaboration),6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
 72,Zesty,Thornbridge,5.0%,Wheat Beer,,,Zesty lives up to its name with tangerine providing a fresh vibrancy to this soft and well-rounded Summer Wheat Beer.

@@ -43,7 +43,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 42,Lucky Pen,Long Arm,4.0%,Golden/Blonde Ale,,,
 43,Mild,The 3 Brewers of St.Albans,3.6%,Mild,,,
 44,Milk Stout,Bristol Beer Factory,4.5%,Milk Stout,,,
-45,Mystery of the Secret Squirrel,Mad Squirrel/Wild Weather,5.0%,IPA,,,
+45,Mystery of the Secret Squirrel,Wild Weather \ Mad Squirrel (collaboration),5.0%,IPA,,,
 46,Nor' Hop,Moor,4.1%,Golden/Blonde Ale,,,
 47,Odin's Raven,Aylesbury Brewhouse Co.,4.0%,Stout,,,
 48,Old Jamaica Stout,Kent Brewery,5.1%,Stout,,,
@@ -52,7 +52,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 51,Pale,Watling Street,4.3%,Pale Ale,,,
 52,Pasha Pasha,Grafton,4.0%,Pale Ale,,,
 53,Platform C,Fallen,6.3%,IPA,,,
-54,Raven (Red),Animal Brewing Co / WEBrew Collab,4.6%,Red Ale,,,
+54,Raven,Animal Brewing Co / Uprising (collaboration),4.6%,Red Ale,,,Red
 55,Red Ale,Watling Street,4.6%,Amber Ale,,,
 56,Release the Chimps,Nene Valley Brewery,4.4%,APA,,,
 57,Restoration Ale,Leighton Buzzard Brewing Co.,4.6%,Premium Bitter/ESB,,,
