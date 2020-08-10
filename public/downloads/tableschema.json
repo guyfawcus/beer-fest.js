@@ -23,6 +23,15 @@
       "type": "string"
     },
     {
+      "name": "brewery_wikidata_id",
+      "title": "Brewery Wikidata ID",
+      "description": "The Wikidata QID of the brewery",
+      "type": "string",
+      "constraints": {
+        "pattern": "Q[1-9]\\d*"
+      }
+    },
+    {
       "name": "abv",
       "title": "ABV",
       "description": "The alcohol by volume of the beer",

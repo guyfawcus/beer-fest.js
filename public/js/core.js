@@ -53,6 +53,7 @@ export const socket = globalThis.io.connect(`${location.host}?referrer=${locatio
  * @property {string} beersObjArray[].beer_number The number of the beer
  * @property {string} beersObjArray[].beer_name The name of the beer
  * @property {string} beersObjArray[].brewer The brewer of the beer
+ * @property {string} beersObjArray[].brewery_wikidata_id The Wikidata QID of the brewery
  * @property {string} beersObjArray[].abv The alcohol by volume of the beer
  * @property {string} beersObjArray[].beer_style The style of the beer
  * @property {string} beersObjArray[].vegan 'y' if the beer is vegan

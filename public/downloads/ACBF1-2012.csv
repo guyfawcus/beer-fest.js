@@ -1,22 +1,22 @@
-beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
-1,Black Beauty,Vale Brewery,4.3%,Porter,,,"Harking back to the 1880's with a Traditional Thames Valley brown Porter. Roasted malt and coffee on the nose, smooth malt with liquorice and chocolate on the palate."
-2,Gravitas,Vale Brewery,4.8%,Premium bitter,,,"A strong, pale ale packed with hop and Citrus flavours, rounded off by a dry malty biscuit finish. A pronounced hop aroma throughout."
-3,Diamond Reign,Vale Brewery,4.4%,Sparkling golden ale,,,Sparkling golden ale brewed with English hops to celebrate the Queen's Diamond Jubilee.
-4,Two Halves,Vale Brewery,4.0%,Straw coloured pale ale,,,Straw coloured pale ale for the European Football Championships.
-5,Not Euro Fizz,Aylesbury Brewhouse Co.,4.5%,Pilsner,,,"Ale brewed in the pilsner style, with layer malks and noble hops."
-6,Channel Surfing,Aylesbury Brewhouse Co.,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
-7,Cobblestone,The Chiltern Brewery,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
-8,Beechwood Bitter,The Chiltern Brewery,4.3%,Premium Bitter,,,The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty.
-9,London Porter,Red Squirrel,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
-10,Redwood American IPA,Red Squirrel,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
-11,RSX,Red Squirrel,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."
-12,Royal Rumble,Red Squirrel,3.7%,Bitter,,,"A ruby red ale for toasting the Queen. Dark ruby red in colour, full flavoured with a smooth texture on the palate with a hoppy fruit finish. Royal quality at its best."
-13,Side Pocket,Tring Brewery Co.,3.6%,Pale Ale,,,Unmistakable citrus notes from only the best Cascade hops balanced with a floral aroma and crisp dry finish make this straw coloured ale a fantastic session beer.
-14,Colleys Dog,Tring Brewery Co.,5.3%,Porter,,,"Dark ruby in colour but not over rich. Strong yet very drinkable, this premium ale has a long dry finish with overtones of malt and walnuts. Available in 500ml bottles."
-15,Card Sharp,Tring Brewery Co.,4.5%,Premium Bitter,,,First Gold is a very popular English hop which yields an extremely moreish spicy and orangy hop aroma. This pale brown bitter is brewed using some golden naked oats which add fullness to the palate.
-16,XT3 Indian Pale,XT Brewing Co.,4.2%,IPA,,,"An IPA style beer made with lots of Celeia, Columbus and Cluster Hops, on a base of CaraRed Malts."
-17,XT6 Rich Ruby,XT Brewing Co.,4.5%,Ruby,,,"Beautiful ruby red beer, malty and smooth with a cascade hop finish. Supplied in a traditional Oak cask."
-18,XT9 Black Velvet,XT Brewing Co.,5.5%,Dark,,,"Nine Malts (including Belgian Aromatic, and Smoked), Nine hops (Apollo, Bravo, Columbus, Delta, EK Goldings, First Gold, Galena, Hellertauer, Junga) and two strains of yeast - this is a very special beer made for the drinker who wants something different. This is NOT a stout, it's something else entirely. Big malt aroma on a bitter, balanced hop finish."
-19,Jubilee Special,XT Brewing Co.,,,,,
-20,Mild,Buckingham Brewery,4.0%,Mild,,,TBA
-21,Bitter,Buckingham Brewery,4.0%,Bitter,,,"A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."
+beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
+1,Black Beauty,Vale Brewery,,4.3%,Porter,,,"Harking back to the 1880's with a Traditional Thames Valley brown Porter. Roasted malt and coffee on the nose, smooth malt with liquorice and chocolate on the palate."
+2,Gravitas,Vale Brewery,,4.8%,Premium bitter,,,"A strong, pale ale packed with hop and Citrus flavours, rounded off by a dry malty biscuit finish. A pronounced hop aroma throughout."
+3,Diamond Reign,Vale Brewery,,4.4%,Sparkling golden ale,,,Sparkling golden ale brewed with English hops to celebrate the Queen's Diamond Jubilee.
+4,Two Halves,Vale Brewery,,4.0%,Straw coloured pale ale,,,Straw coloured pale ale for the European Football Championships.
+5,Not Euro Fizz,Aylesbury Brewhouse Co.,,4.5%,Pilsner,,,"Ale brewed in the pilsner style, with layer malks and noble hops."
+6,Channel Surfing,Aylesbury Brewhouse Co.,,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
+7,Cobblestone,The Chiltern Brewery,,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
+8,Beechwood Bitter,The Chiltern Brewery,,4.3%,Premium Bitter,,,The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty.
+9,London Porter,Red Squirrel,,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
+10,Redwood American IPA,Red Squirrel,,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
+11,RSX,Red Squirrel,,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."
+12,Royal Rumble,Red Squirrel,,3.7%,Bitter,,,"A ruby red ale for toasting the Queen. Dark ruby red in colour, full flavoured with a smooth texture on the palate with a hoppy fruit finish. Royal quality at its best."
+13,Side Pocket,Tring Brewery Co.,,3.6%,Pale Ale,,,Unmistakable citrus notes from only the best Cascade hops balanced with a floral aroma and crisp dry finish make this straw coloured ale a fantastic session beer.
+14,Colleys Dog,Tring Brewery Co.,,5.3%,Porter,,,"Dark ruby in colour but not over rich. Strong yet very drinkable, this premium ale has a long dry finish with overtones of malt and walnuts. Available in 500ml bottles."
+15,Card Sharp,Tring Brewery Co.,,4.5%,Premium Bitter,,,First Gold is a very popular English hop which yields an extremely moreish spicy and orangy hop aroma. This pale brown bitter is brewed using some golden naked oats which add fullness to the palate.
+16,XT3 Indian Pale,XT Brewing Co.,,4.2%,IPA,,,"An IPA style beer made with lots of Celeia, Columbus and Cluster Hops, on a base of CaraRed Malts."
+17,XT6 Rich Ruby,XT Brewing Co.,,4.5%,Ruby,,,"Beautiful ruby red beer, malty and smooth with a cascade hop finish. Supplied in a traditional Oak cask."
+18,XT9 Black Velvet,XT Brewing Co.,,5.5%,Dark,,,"Nine Malts (including Belgian Aromatic, and Smoked), Nine hops (Apollo, Bravo, Columbus, Delta, EK Goldings, First Gold, Galena, Hellertauer, Junga) and two strains of yeast - this is a very special beer made for the drinker who wants something different. This is NOT a stout, it's something else entirely. Big malt aroma on a bitter, balanced hop finish."
+19,Jubilee Special,XT Brewing Co.,,,,,,
+20,Mild,Buckingham Brewery,,4.0%,Mild,,,TBA
+21,Bitter,Buckingham Brewery,,4.0%,Bitter,,,"A lovely hoppy session ale. Just on the sweet side, this amber bitter has pleasant notes of toffee throughout, offset by light citrus fruit. Tangy hops take over in the dry, bitter finish."

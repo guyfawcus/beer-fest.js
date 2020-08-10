@@ -1,73 +1,73 @@
-beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
-1,Angel Fish,Animal Brewing Co,4.6%,IPA,,,"Pilsner Malts from Germany, triple hopped with American varieties - giving an ale twist on a lager recipe. Crisp dry and refreshing."
-2,Arapawa,Hornes Brewery,4.5%,Pale Ale,,y,A juicy pale ale hopped solely with New Zealand Rakau.
-3,Ashford,Thornbridge,4.2%,Brown Ale,,,A New World Brown Ale but with the emphasis more on the complex nutty malt than the herbal hops.
-4,Bat Oat of Hell,Weird Beard Brew Co.,4.0%,Pale Ale,y,,"Full on flavour and body. Pours a deep orange with slight haze, as you would expect from the oats and wheat. The aroma and flavour are citrus and tropical fruits."
-5,Beechwood,The Chiltern Brewery,4.3%,Bitter,,,"Premium quality pale ale malt with an extra proportion of crystal malt, and increased hops, gives this beer its renowned nutty flavour and punch."
-6,Best,Vale Brewery,3.7%,Bitter,,,"Light copper, all english hopped session ale."
-7,Big Bang Theory,Nene Valley Brewery,5.3%,APA,,y,Wonderfully balanced pale ale with a huge hop aroma giving way to malty sweetness and a gentle bitter finish.
-8,Big Sea,Mad Squirrel,5.5%,IPA,,,"West Coast IPA Style. Citrus, pine and big bitterness come in waves throughout this brew, courtesy of some BIG C Hops."
-9,Black,The Chiltern Brewery,3.9%,Porter,,,A hint of sweetness and caramel. Challenger hops for bitterness & late hopped with Styrian Goldings.
-10,Black Buzzard,Leighton Buzzard Brewing Co.,5.8%,Porter,,,"Dark, treacle tones, hints of roasted barley and beautifully now chocolate aroma. Flavoursome yet light on strength."
-11,Black Friday,paradigm brewery,6.0%,Mild,,,"A crazy marriage of six different malts delivers a wonderful, complex, robust porter with hints of coffee and chocolate."
-12,Blonde,Saltaire,4.0%,Blonde / Golden,,,A well balanced Pale ale combining soft malt flavours with subtle spice from Bohemian Saaz hops.
-13,Blonde,The 3 Brewers of St.Albans,4.2%,Golden Ale,,,Golden in colour with a wonderful hoppy aroma and a refreshing smack of fruity citrusy flavours.
-14,Blue Sky Thinking,paradigm brewery,4.0%,Summer Ale,,,"A light and fruity summer ale, refreshing on the palette."
-15,15 Breakfast Stout,Kent Brewery,4.2%,Oatmeal Stout,,,A sweet smooth and malty stout.
-16,Broken Dream,Siren Craft Brew,6.5%,Breakfast Stout,,,"Champion Beer of Britain 2018. Breakfast stout with a gentle touch of smoke, coffee and chocolate."
-17,Brut N Free,Arbor,6.0%,Brut IPA,y,y,"Brut IPA brewed with Amarillo, Simcoe and Mosaic hops."
-18,Chinook Loral,Hobsons Brewery Co. / Brew By Numbers (collaboration),4.5%,IPA,y,,"A hazy, fruity IPA with the gutsy flavours of Chinook and Loral hops in equal measure. A floral aroma, with notes of grapefruit and pine."
-19,Citra & Rye,Wiper and True,4.8%,Amber Ale,y,,"A full-bodied and sweet Amber Ale finished with spicy, peppery rye malts. Citra hop, abundant in intense citrus and tropical flavours."
-20,Classic,The 3 Brewers of St.Albans,4.0%,Best Bitter,,,"A light hoppy aromo, rich and rounded malty taste balanced by subtle hoppiness, to give a clean, smooth and refreshing ale."
-21,COB,Hop Kettle,3.8%,Session Bitter,,,"A classic session bitter. Golden amber in colour, a perfect balance between malt and English hoppiness creates an easy-drinking sessionable bitter."
-22,Copper Leaf,Wimbledon Brewery,4.0%,Red Ale,,,"A burst of citrus, floral and tropical flavours overlay the complex malt characters of rye, caramel and spice. A refreshingly dry finish."
-23,Dark Fox,Hornes Brewery,3.8%,Bitter,,y,A blend of 4 molts delivering a rich malty brown brew with burnt notes and a lasting dry bitter finish.
-24,Death or Glory,Tring Brewery Co.,7.2%,Strong Ale,,,"Don't be fooled by the strength, this is one easy drinking beer. A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile. Brewed by appointment to the Queen's Royal Lancers."
-25,Ekuanot Pale,Almasty Brewing Co.,4.0%,Pale Ale,y,,"Double Dry Hopped and full of body, this super drinkable session pale offers the aroma, mouthfeel and flavour of a bigger beer."
-26,Encore,Lacons Brewery,3.8%,Blonde / Golden,,,Encore packs a smooth citrus punch whilst balancing a dry pine and zesty flavour throughout. The finish is robust with a long bitternes.
-27,Fanny Ebbs,Tring Brewery Co.,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
-28,Galatia,Wylam,3.9%,Blonde / Golden,,,"Session pale with a heavy dose of New World Hops. Fresh orange shred, stone fruit and a clean dry fresh pine kick."
-29,Grateful Red,New Bristol Brewery,4.6%,Red Ale,y,,"Perfectly balances the hop-forward flavours and aromas of a traditional IPA with the delicious caramel, malty body of an Amber Ale."
-30,Gravitas,Vale Brewery,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish. A pronounced hop aroma throughout."
-31,Hop Kitty,Animal Brewing Co,3.9%,Session IPA,,,"Bursting with tropical and citrus flavours, big Mango and Lychee from generous Citra dry hopping. Lightly toasted malts give a hint of sweetness."
-32,Illuminate,Mad Squirrel,4.5%,Red Ale,,,"A timeless red ale, smooth and fruity, hearty and sustaining. There is complexity in its creation but simplicity in its enjoyment."
-33,Jakehead,Wylam,6.3%,IPA,,,Rich/bright & amber/bronze with lots of American hop aroma. Distinctly bittersweet on the palate with a massive hop complexity.
-34,Jam Dunk,Downlands Brewery,4.8%,Stout,,,"Chocolate undercurrents swirl beneath the strong jammy texture derived from adding many, many donuts."
-35,Jimbob,Tring Brewery Co.,3.4%,Pale Ale,,,The use of Dextrin malt provides body and the platform to balance out potent Australian Galaxy hops.
-36,Kaleidoscope,Wiper and True,4.2%,Pale Ale,y,,Our Kaleidoscope series combines three different hops to create a seasonally evolving flavour profile.
-37,KGB,Kent Brewery,4.1%,Bitter,,,"A full-on dose of Golding and Fuggles hops, with a rich variety of malts, to highlight Kent's heritage."
-38,Khyber Pass,Oakham,5.5%,IPA,,,"Aroma of citrusy marmalade, taste of oranges and soft crystal malt notes, with a long hoppy dry finish."
-39,King Street Dusk,Pope's Yard,4.2%,Dark Lager,,,"Cober-coloured lager with subtle notes of toffee, biscuit and dark fruit balanced with a herbal bitterness and aroma from noble hobs."
-40,London ESB,Anspach & Hobday,5.5%,ESB,y,,"A classic ESB based on the recipe from A&H's 2018 ESB collaboration with Fuller's. Malty, sweet and bitter."
-41,London Porter,Mad Squirrel,5.0%,Porter,,,"A dark ale, London Porter has lurking notes of coffee, chocolate and smoke."
-42,Lush,Tiny Rebel,4.0%,Session IPA,y,,"A golden and hazy pour and big aromas of tropical fruit with a fruity sweetness, light malts and a citrusy hopped character."
-43,Maelstrom,Oakham,5.2%,IPA,,,A whirlpool of citrus and tropical fruit from the finest New Zealand hops in this rich and full bodied IPA.
-44,Manchester Bitter,Marble Brewery,4.2%,Bitter,y,,"A traditional pint Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma."
-45,Mariana Trench,Weird Beard Brew Co.,5.3%,Pale Ale,y,,New Zealand Pacific Gem and American Citra hops give a tropical fruit nose and flavours.
-46,Monts Vert,Aylesbury Brewhouse Co.,4.4%,IPA,,,"Monts Vert follows the new trend for juicy IPAs, this is brewed exclusively with New Zealand Hops."
-47,Moor Top,Buxton Brewery,3.6%,Pale Ale,y,,Hopped with American Chinook hops. It has a sweetness balanced with a bitter finish backed up with a late grapefruit hint.
-48,Nighthawk,Hillfire Brewing Co.,5.0%,Stout,,,American-style Stout which offers crisp hoppiness and sweet caramel flavours.
-49,Ninja Shark,Totally Brewed Beer Co.,3.8%,APA,,,"Session pale hopped with Amarillo, Eldorado and Cascade."
-50,18.02 North Sea Sessions 02,Northern Monk / Humble Sea (collaboration),4.5%,Session IPA,y,,Citra and Mosaic hops paired with the classic New Zealand variety Nelson Sauvin.
-51,Pale,The Chiltern Brewery,3.7%,Pale Ale,,,"Relatively light in colour, with a creamy smoothness, it has a good definition on the palate and a refreshing cleansing finish."
-52,Pale XX,Howling Hops,5.1%,APA,y,,American style pale ale. Fruity flavour with an assertive bitterness.
-53,Petrichor,Aylesbury Brewhouse Co.,4.3%,Brown Tawny Ale,,,Petrichor offers soft malt flavours and fresh hop aromas to combine as something which isn't quite a Bitter but most definitely not an IPA.
-54,Pint,Marble Brewery,3.9%,Session Ale,y,,"An all pale malt bill and hopped with a blend of New Zealand and US hops. Zesty aromas, grapefruit flavours and a lemongrass finish."
-55,Pulping on your Stereo,Nene Valley Brewery,4.5%,Session IPA,y,y,Packed full of Mandarina & Citra hops plus loads of fresh oranges.
-56,Quartermaster,Pope's Yard,4.4%,Best Bitter,,,"Brewed with a touch of amber and crystal malt, British Bramling Cross and Australian Galaxy hops."
-57,Red Kite,Vale Brewery,4.3%,Red Ale,,,"Deep red in colour, reminiscent of its namesake, with big malt flavours and a strong hop finish - this beer soars with character."
-58,Resolution,Mad Squirrel,4.2%,Golden Ale,,,"Resolution is late hopped with three American hop varieties for maximum flavour. Light, refreshing and immensely drinkable."
-59,Ryestone,Hornes Brewery,4.0%,Red Ale,,y,"A ruby red ale brewed with 6 malts and crushed rye, blended with Chinook, Mosaic and Citra hops - spice and fruity hoppiness."
-60,Salted Caramel Lucaria,Thornbridge,4.5%,APA,,,Decadent dark and luxurious Ice Cream Porter with added Salted Caramel - perfect if you have a sweet tooth!
-61,Slap in the Face,Totally Brewed Beer Co.,4.0%,Pale Ale,,,Hoppy blonde ale. Generously hopped with summit and chinook. Refreshing grapefruit and tangerine flavours.
-62,Stand & Vanilla,New Bristol Brewery,5.0%,IPA,,,"Molted Oats for a big mouthfeel. Dry-hopped with Melba, Equinox and Citra and finished with a touch of Madagascan Vanilla."
-63,Stay Puft,Tiny Rebel,5.2%,Porter,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness."
-64,Summer Breeze,Tiny Rebel,4.0%,Fruit IPA,,,"Packed with Cascade, Belma and Citrus hops."
-65,Tangled Dimensions,BAD Co. / Turning Point Brew Co. (collaboration),6.5%,NEIPA,y,,A big juicy IPA hopped with lashings of Citra and Mosiac Hops. The aroma and flavour is of tropical fruits.
-66,Three,XT Brewing Co.,4.2%,Golden Ale,,,"An American style IPA-packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
-67,Titus,Saltaire,3.9%,Best Bitter,,,"Traditional bitterness meets a twist of citrus in this clean, contemporary take on a classic Best Yorkshire Bitter."
-68,Train Robber,Leighton Buzzard Brewing Co.,5.0%,IPA,,,"Maris Otter malt and plenty of hops - Ahtanum, Amarillo Cascade US Green Bullet and Nelson Sauvin."
-69,Tropical Deluxe,Howling Hops,3.8%,Pale Ale,y,,A fruity and hop forward beer fermented with a New England yeast strain. Aromas of stonefruit and pine and a clean dry finish.
-70,Uppe Hela Natten,Marble Brewery,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
-71,Whose Lime is it Anyway,Arbor / New Bristol Brewery (collaboration),6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
-72,Zesty,Thornbridge,5.0%,Wheat Beer,,,Zesty lives up to its name with tangerine providing a fresh vibrancy to this soft and well-rounded Summer Wheat Beer.
+beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
+1,Angel Fish,Animal Brewing Co,,4.6%,IPA,,,"Pilsner Malts from Germany, triple hopped with American varieties - giving an ale twist on a lager recipe. Crisp dry and refreshing."
+2,Arapawa,Hornes Brewery,,4.5%,Pale Ale,,y,A juicy pale ale hopped solely with New Zealand Rakau.
+3,Ashford,Thornbridge,,4.2%,Brown Ale,,,A New World Brown Ale but with the emphasis more on the complex nutty malt than the herbal hops.
+4,Bat Oat of Hell,Weird Beard Brew Co.,,4.0%,Pale Ale,y,,"Full on flavour and body. Pours a deep orange with slight haze, as you would expect from the oats and wheat. The aroma and flavour are citrus and tropical fruits."
+5,Beechwood,The Chiltern Brewery,,4.3%,Bitter,,,"Premium quality pale ale malt with an extra proportion of crystal malt, and increased hops, gives this beer its renowned nutty flavour and punch."
+6,Best,Vale Brewery,,3.7%,Bitter,,,"Light copper, all english hopped session ale."
+7,Big Bang Theory,Nene Valley Brewery,,5.3%,APA,,y,Wonderfully balanced pale ale with a huge hop aroma giving way to malty sweetness and a gentle bitter finish.
+8,Big Sea,Mad Squirrel,,5.5%,IPA,,,"West Coast IPA Style. Citrus, pine and big bitterness come in waves throughout this brew, courtesy of some BIG C Hops."
+9,Black,The Chiltern Brewery,,3.9%,Porter,,,A hint of sweetness and caramel. Challenger hops for bitterness & late hopped with Styrian Goldings.
+10,Black Buzzard,Leighton Buzzard Brewing Co.,,5.8%,Porter,,,"Dark, treacle tones, hints of roasted barley and beautifully now chocolate aroma. Flavoursome yet light on strength."
+11,Black Friday,paradigm brewery,,6.0%,Mild,,,"A crazy marriage of six different malts delivers a wonderful, complex, robust porter with hints of coffee and chocolate."
+12,Blonde,Saltaire,,4.0%,Blonde / Golden,,,A well balanced Pale ale combining soft malt flavours with subtle spice from Bohemian Saaz hops.
+13,Blonde,The 3 Brewers of St.Albans,,4.2%,Golden Ale,,,Golden in colour with a wonderful hoppy aroma and a refreshing smack of fruity citrusy flavours.
+14,Blue Sky Thinking,paradigm brewery,,4.0%,Summer Ale,,,"A light and fruity summer ale, refreshing on the palette."
+15,15 Breakfast Stout,Kent Brewery,,4.2%,Oatmeal Stout,,,A sweet smooth and malty stout.
+16,Broken Dream,Siren Craft Brew,,6.5%,Breakfast Stout,,,"Champion Beer of Britain 2018. Breakfast stout with a gentle touch of smoke, coffee and chocolate."
+17,Brut N Free,Arbor,,6.0%,Brut IPA,y,y,"Brut IPA brewed with Amarillo, Simcoe and Mosaic hops."
+18,Chinook Loral,Hobsons Brewery Co. / Brew By Numbers (collaboration),,4.5%,IPA,y,,"A hazy, fruity IPA with the gutsy flavours of Chinook and Loral hops in equal measure. A floral aroma, with notes of grapefruit and pine."
+19,Citra & Rye,Wiper and True,,4.8%,Amber Ale,y,,"A full-bodied and sweet Amber Ale finished with spicy, peppery rye malts. Citra hop, abundant in intense citrus and tropical flavours."
+20,Classic,The 3 Brewers of St.Albans,,4.0%,Best Bitter,,,"A light hoppy aromo, rich and rounded malty taste balanced by subtle hoppiness, to give a clean, smooth and refreshing ale."
+21,COB,Hop Kettle,,3.8%,Session Bitter,,,"A classic session bitter. Golden amber in colour, a perfect balance between malt and English hoppiness creates an easy-drinking sessionable bitter."
+22,Copper Leaf,Wimbledon Brewery,,4.0%,Red Ale,,,"A burst of citrus, floral and tropical flavours overlay the complex malt characters of rye, caramel and spice. A refreshingly dry finish."
+23,Dark Fox,Hornes Brewery,,3.8%,Bitter,,y,A blend of 4 molts delivering a rich malty brown brew with burnt notes and a lasting dry bitter finish.
+24,Death or Glory,Tring Brewery Co.,,7.2%,Strong Ale,,,"Don't be fooled by the strength, this is one easy drinking beer. A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile. Brewed by appointment to the Queen's Royal Lancers."
+25,Ekuanot Pale,Almasty Brewing Co.,,4.0%,Pale Ale,y,,"Double Dry Hopped and full of body, this super drinkable session pale offers the aroma, mouthfeel and flavour of a bigger beer."
+26,Encore,Lacons Brewery,,3.8%,Blonde / Golden,,,Encore packs a smooth citrus punch whilst balancing a dry pine and zesty flavour throughout. The finish is robust with a long bitternes.
+27,Fanny Ebbs,Tring Brewery Co.,,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
+28,Galatia,Wylam,,3.9%,Blonde / Golden,,,"Session pale with a heavy dose of New World Hops. Fresh orange shred, stone fruit and a clean dry fresh pine kick."
+29,Grateful Red,New Bristol Brewery,,4.6%,Red Ale,y,,"Perfectly balances the hop-forward flavours and aromas of a traditional IPA with the delicious caramel, malty body of an Amber Ale."
+30,Gravitas,Vale Brewery,,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish. A pronounced hop aroma throughout."
+31,Hop Kitty,Animal Brewing Co,,3.9%,Session IPA,,,"Bursting with tropical and citrus flavours, big Mango and Lychee from generous Citra dry hopping. Lightly toasted malts give a hint of sweetness."
+32,Illuminate,Mad Squirrel,,4.5%,Red Ale,,,"A timeless red ale, smooth and fruity, hearty and sustaining. There is complexity in its creation but simplicity in its enjoyment."
+33,Jakehead,Wylam,,6.3%,IPA,,,Rich/bright & amber/bronze with lots of American hop aroma. Distinctly bittersweet on the palate with a massive hop complexity.
+34,Jam Dunk,Downlands Brewery,,4.8%,Stout,,,"Chocolate undercurrents swirl beneath the strong jammy texture derived from adding many, many donuts."
+35,Jimbob,Tring Brewery Co.,,3.4%,Pale Ale,,,The use of Dextrin malt provides body and the platform to balance out potent Australian Galaxy hops.
+36,Kaleidoscope,Wiper and True,,4.2%,Pale Ale,y,,Our Kaleidoscope series combines three different hops to create a seasonally evolving flavour profile.
+37,KGB,Kent Brewery,,4.1%,Bitter,,,"A full-on dose of Golding and Fuggles hops, with a rich variety of malts, to highlight Kent's heritage."
+38,Khyber Pass,Oakham,,5.5%,IPA,,,"Aroma of citrusy marmalade, taste of oranges and soft crystal malt notes, with a long hoppy dry finish."
+39,King Street Dusk,Pope's Yard,,4.2%,Dark Lager,,,"Cober-coloured lager with subtle notes of toffee, biscuit and dark fruit balanced with a herbal bitterness and aroma from noble hobs."
+40,London ESB,Anspach & Hobday,,5.5%,ESB,y,,"A classic ESB based on the recipe from A&H's 2018 ESB collaboration with Fuller's. Malty, sweet and bitter."
+41,London Porter,Mad Squirrel,,5.0%,Porter,,,"A dark ale, London Porter has lurking notes of coffee, chocolate and smoke."
+42,Lush,Tiny Rebel,,4.0%,Session IPA,y,,"A golden and hazy pour and big aromas of tropical fruit with a fruity sweetness, light malts and a citrusy hopped character."
+43,Maelstrom,Oakham,,5.2%,IPA,,,A whirlpool of citrus and tropical fruit from the finest New Zealand hops in this rich and full bodied IPA.
+44,Manchester Bitter,Marble Brewery,,4.2%,Bitter,y,,"A traditional pint Speciality malt gives the deep golden colour and robust base, balanced by crisp bitterness and a floral, lemony aroma."
+45,Mariana Trench,Weird Beard Brew Co.,,5.3%,Pale Ale,y,,New Zealand Pacific Gem and American Citra hops give a tropical fruit nose and flavours.
+46,Monts Vert,Aylesbury Brewhouse Co.,,4.4%,IPA,,,"Monts Vert follows the new trend for juicy IPAs, this is brewed exclusively with New Zealand Hops."
+47,Moor Top,Buxton Brewery,,3.6%,Pale Ale,y,,Hopped with American Chinook hops. It has a sweetness balanced with a bitter finish backed up with a late grapefruit hint.
+48,Nighthawk,Hillfire Brewing Co.,,5.0%,Stout,,,American-style Stout which offers crisp hoppiness and sweet caramel flavours.
+49,Ninja Shark,Totally Brewed Beer Co.,,3.8%,APA,,,"Session pale hopped with Amarillo, Eldorado and Cascade."
+50,18.02 North Sea Sessions 02,Northern Monk / Humble Sea (collaboration),,4.5%,Session IPA,y,,Citra and Mosaic hops paired with the classic New Zealand variety Nelson Sauvin.
+51,Pale,The Chiltern Brewery,,3.7%,Pale Ale,,,"Relatively light in colour, with a creamy smoothness, it has a good definition on the palate and a refreshing cleansing finish."
+52,Pale XX,Howling Hops,,5.1%,APA,y,,American style pale ale. Fruity flavour with an assertive bitterness.
+53,Petrichor,Aylesbury Brewhouse Co.,,4.3%,Brown Tawny Ale,,,Petrichor offers soft malt flavours and fresh hop aromas to combine as something which isn't quite a Bitter but most definitely not an IPA.
+54,Pint,Marble Brewery,,3.9%,Session Ale,y,,"An all pale malt bill and hopped with a blend of New Zealand and US hops. Zesty aromas, grapefruit flavours and a lemongrass finish."
+55,Pulping on your Stereo,Nene Valley Brewery,,4.5%,Session IPA,y,y,Packed full of Mandarina & Citra hops plus loads of fresh oranges.
+56,Quartermaster,Pope's Yard,,4.4%,Best Bitter,,,"Brewed with a touch of amber and crystal malt, British Bramling Cross and Australian Galaxy hops."
+57,Red Kite,Vale Brewery,,4.3%,Red Ale,,,"Deep red in colour, reminiscent of its namesake, with big malt flavours and a strong hop finish - this beer soars with character."
+58,Resolution,Mad Squirrel,,4.2%,Golden Ale,,,"Resolution is late hopped with three American hop varieties for maximum flavour. Light, refreshing and immensely drinkable."
+59,Ryestone,Hornes Brewery,,4.0%,Red Ale,,y,"A ruby red ale brewed with 6 malts and crushed rye, blended with Chinook, Mosaic and Citra hops - spice and fruity hoppiness."
+60,Salted Caramel Lucaria,Thornbridge,,4.5%,APA,,,Decadent dark and luxurious Ice Cream Porter with added Salted Caramel - perfect if you have a sweet tooth!
+61,Slap in the Face,Totally Brewed Beer Co.,,4.0%,Pale Ale,,,Hoppy blonde ale. Generously hopped with summit and chinook. Refreshing grapefruit and tangerine flavours.
+62,Stand & Vanilla,New Bristol Brewery,,5.0%,IPA,,,"Molted Oats for a big mouthfeel. Dry-hopped with Melba, Equinox and Citra and finished with a touch of Madagascan Vanilla."
+63,Stay Puft,Tiny Rebel,,5.2%,Porter,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness."
+64,Summer Breeze,Tiny Rebel,,4.0%,Fruit IPA,,,"Packed with Cascade, Belma and Citrus hops."
+65,Tangled Dimensions,BAD Co. / Turning Point Brew Co. (collaboration),,6.5%,NEIPA,y,,A big juicy IPA hopped with lashings of Citra and Mosiac Hops. The aroma and flavour is of tropical fruits.
+66,Three,XT Brewing Co.,,4.2%,Golden Ale,,,"An American style IPA-packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
+67,Titus,Saltaire,,3.9%,Best Bitter,,,"Traditional bitterness meets a twist of citrus in this clean, contemporary take on a classic Best Yorkshire Bitter."
+68,Train Robber,Leighton Buzzard Brewing Co.,,5.0%,IPA,,,"Maris Otter malt and plenty of hops - Ahtanum, Amarillo Cascade US Green Bullet and Nelson Sauvin."
+69,Tropical Deluxe,Howling Hops,,3.8%,Pale Ale,y,,A fruity and hop forward beer fermented with a New England yeast strain. Aromas of stonefruit and pine and a clean dry finish.
+70,Uppe Hela Natten,Marble Brewery,,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
+71,Whose Lime is it Anyway,Arbor / New Bristol Brewery (collaboration),,6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
+72,Zesty,Thornbridge,,5.0%,Wheat Beer,,,Zesty lives up to its name with tangerine providing a fresh vibrancy to this soft and well-rounded Summer Wheat Beer.
