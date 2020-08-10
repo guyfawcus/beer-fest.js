@@ -27,7 +27,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 26,Encore,Lacons Brewery,3.8%,Blonde / Golden,,,Encore packs a smooth citrus punch whilst balancing a dry pine and zesty flavour throughout. The finish is robust with a long bitternes.
 27,Fanny Ebbs,Tring Brewery Co.,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
 28,Galatia,Wylam,3.9%,Blonde / Golden,,,"Session pale with a heavy dose of New World Hops. Fresh orange shred, stone fruit and a clean dry fresh pine kick."
-29,Grateful Red,New Bristol,4.6%,Red Ale,y,,"Perfectly balances the hop-forward flavours and aromas of a traditional IPA with the delicious caramel, malty body of an Amber Ale."
+29,Grateful Red,New Bristol Brewery,4.6%,Red Ale,y,,"Perfectly balances the hop-forward flavours and aromas of a traditional IPA with the delicious caramel, malty body of an Amber Ale."
 30,Gravitas,Vale Brewery,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish. A pronounced hop aroma throughout."
 31,Hop Kitty,Animal Brewing Co,3.9%,Session IPA,,,"Bursting with tropical and citrus flavours, big Mango and Lychee from generous Citra dry hopping. Lightly toasted malts give a hint of sweetness."
 32,Illuminate,Mad Squirrel,4.5%,Red Ale,,,"A timeless red ale, smooth and fruity, hearty and sustaining. There is complexity in its creation but simplicity in its enjoyment."
@@ -60,7 +60,7 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 59,Ryestone,Hornes Brewery,4.0%,Red Ale,,y,"A ruby red ale brewed with 6 malts and crushed rye, blended with Chinook, Mosaic and Citra hops - spice and fruity hoppiness."
 60,Salted Caramel Lucaria,Thornbridge,4.5%,APA,,,Decadent dark and luxurious Ice Cream Porter with added Salted Caramel - perfect if you have a sweet tooth!
 61,Slap in the Face,Totally Brewed,4.0%,Pale Ale,,,Hoppy blonde ale. Generously hopped with summit and chinook. Refreshing grapefruit and tangerine flavours.
-62,Stand & Vanilla,New Bristol,5.0%,IPA,,,"Molted Oats for a big mouthfeel. Dry-hopped with Melba, Equinox and Citra and finished with a touch of Madagascan Vanilla."
+62,Stand & Vanilla,New Bristol Brewery,5.0%,IPA,,,"Molted Oats for a big mouthfeel. Dry-hopped with Melba, Equinox and Citra and finished with a touch of Madagascan Vanilla."
 63,Stay Puft,Tiny Rebel,5.2%,Porter,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness."
 64,Summer Breeze,Tiny Rebel,4.0%,Fruit IPA,,,"Packed with Cascade, Belma and Citrus hops."
 65,Tangled Dimensions,Bad Co / Turning Point Collab,6.5%,NEIPA,y,,A big juicy IPA hopped with lashings of Citra and Mosiac Hops. The aroma and flavour is of tropical fruits.
@@ -69,5 +69,5 @@ beer_number,beer_name,brewer,abv,beer_style,vegan,gluten_free,description
 68,Train Robber,Leighton Buzzard Brewing Co.,5.0%,IPA,,,"Maris Otter malt and plenty of hops - Ahtanum, Amarillo Cascade US Green Bullet and Nelson Sauvin."
 69,Tropical Deluxe,Howling Hops,3.8%,Pale Ale,y,,A fruity and hop forward beer fermented with a New England yeast strain. Aromas of stonefruit and pine and a clean dry finish.
 70,Uppe Hela Natten,Marble Brewery,5.1%,Coffee Porter,,,"Brewed with espresso blend coffee. Deep roasted malt character is balanced by lactose, giving this beery pick-me-up a touch of sweetness."
-71,Whose Lime is it Anyway,Arbor / New Bristol Collab,6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
+71,Whose Lime is it Anyway,Arbor / New Bristol Brewery Collab,6.0%,Pale Ale,,,"Key Lime Pie-PA with Motueka, Sabro, Mosaic & Wataku, lime zest and lactose, candied fruit flavours and a slight biscuit finish."
 72,Zesty,Thornbridge,5.0%,Wheat Beer,,,Zesty lives up to its name with tangerine providing a fresh vibrancy to this soft and well-rounded Summer Wheat Beer.
