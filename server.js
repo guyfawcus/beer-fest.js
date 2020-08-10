@@ -663,6 +663,7 @@ io.on('connection', (socket) => {
             'beer_number',
             'beer_name',
             'brewer',
+            'brewery_wikidata_id',
             'abv',
             'beer_style',
             'vegan',
