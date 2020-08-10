@@ -10,7 +10,7 @@ const client = redis.createClient(process.argv[2])
  * The format will be:
  *
  * | Time of last connection | How long before the session will be removed (TTL) |            The session ID             |
- * |        Sat 18:00        |                   (23:00) left                    | sess:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
+ * |        Sat 18:00        |                   (23:00 left)                    | sess:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx |
  *
  */
 
