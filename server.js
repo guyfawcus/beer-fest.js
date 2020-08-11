@@ -22,8 +22,10 @@ const session = require('express-session')
 const bcrypt = require('bcryptjs')
 const csvParse = require('csv-parse/lib/sync')
 const csvStringify = require('csv-stringify/lib/sync')
+const fetch = require('node-fetch')
 const socketIo = require('socket.io')
 const redis = require('redis')
+const WBK = require('wikibase-sdk')
 
 // ---------------------------------------------------------------------------
 // Variable definitions
@@ -85,6 +87,11 @@ const NUM_OF_BUTTONS = 80
 const app = express()
 const redisClient = redis.createClient({ url: REDIS_URL })
 const RedisStore = connectRedis(session)
+
+const wdk = WBK({
+  instance: 'https://www.wikidata.org',
+  sparqlEndpoint: 'https://query.wikidata.org/sparql'
+})
 
 // ---------------------------------------------------------------------------
 // Security
@@ -340,6 +347,38 @@ function saveState(stock_levels) {
 }
 
 /**
+ * Save the beers list to a CSV file
+ * @param {beersObjArray} beers The list containing all of the beer objects
+ */
+function saveCSV(beers) {
+  // Generate CSV from the beers list
+  const columns = [
+    'beer_number',
+    'beer_name',
+    'brewer',
+    'brewery_wikidata_id',
+    'abv',
+    'beer_style',
+    'vegan',
+    'gluten_free',
+    'description',
+    'brewery_website',
+    'brewery_beer_advocate',
+    'brewery_rate_beer',
+    'brewery_untappd',
+    'brewery_facebook',
+    'brewery_instagram',
+    'brewery_twitter'
+  ]
+
+  const csvStr = csvStringify(beers, { header: true, columns: columns })
+
+  fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
+    if (err) throw err
+  })
+}
+
+/**
  * Save the beers list to redis
  * @param {beersObjArray} beers The list containing all of the beer objects
  */
@@ -350,6 +389,131 @@ function saveBeers(beers) {
     beers.forEach((beer) => {
       redisClient.hset('beers', beer.beer_number, JSON.stringify(beer))
     })
+  })
+}
+
+/**
+ * Get a list of all of the Wikidata QIDs for the breweries in {@link beers}
+ * @param {beersObjArray} beers The list containing all of the beer objects
+ * @returns {Array} A list of all of the unique brewery QIDs found in 'beers`
+ */
+function getBreweryIds(beers) {
+  const brewery_wikidata_ids = []
+
+  // For each beer in `beers`, get the Wikidata QID
+  for (const beer in Object.keys(beers)) {
+    const brewery_wikidata_id = beers[beer].brewery_wikidata_id
+
+    // Only add it to the list if it's not empty and it's unique
+    if (brewery_wikidata_id !== '' && !brewery_wikidata_ids.includes(brewery_wikidata_id)) {
+      brewery_wikidata_ids.push(brewery_wikidata_id)
+    }
+  }
+  return brewery_wikidata_ids
+}
+
+/**
+ * Gets information about the breweries from Wikidata
+ * @param {Array} brewery_wikidata_ids A list of QIDs that point to breweries on Wikidata
+ * @returns {Promise} Returns a list of objects with info about the breweries
+ */
+function getBreweryInfo(brewery_wikidata_ids) {
+  return new Promise((resolve, reject) => {
+    if (brewery_wikidata_ids.length <= 0) return reject('No IDs to get Wikidata claims for')
+    console.log(`Retrieving Wikidata claims for ${brewery_wikidata_ids.length} breweries: ${brewery_wikidata_ids}`)
+
+    // Get the URLs for the queries that we're after
+    const urls = wdk.getManyEntities({
+      ids: brewery_wikidata_ids,
+      languages: ['en'],
+      props: ['claims']
+    })
+
+    // Keep track of the URLs that have been worked on
+    const done_urls = []
+
+    // Store all of the claims here
+    const wikidata_claims = {}
+
+    urls.forEach((url) => {
+      fetch(url)
+        .then((response) => response.json())
+        .then(wdk.parse.wd.entities)
+        .then((entities) => {
+          // Pick out the data we want and add it to `wikidata_claims`
+          Object.keys(entities).forEach((entity) => {
+            const qid = entities[entity].id
+            const website = entities[entity].claims?.P856?.[0] || ''
+
+            const beerAdvocateId = entities[entity].claims?.P2904?.[0]
+            const rateBeerId = entities[entity].claims?.P2905?.[0]
+            const untappdId = entities[entity].claims?.P3002?.[0]
+            const facebookId = entities[entity].claims?.P2013?.[0]
+            const instagramId = entities[entity].claims?.P2003?.[0]
+            const twitterId = entities[entity].claims?.P2002?.[0]
+
+            const beerAdvocate = beerAdvocateId ? `https://www.beeradvocate.com/beer/profile/${beerAdvocateId}/` : ''
+            const rateBeer = rateBeerId ? `https://www.ratebeer.com/brewers/${rateBeerId}/` : ''
+            const untappd = untappdId ? `https://untappd.com/brewery/${untappdId}/` : ''
+            const facebook = facebookId ? `https://www.facebook.com/${facebookId}/` : ''
+            const instagram = instagramId ? `https://www.instagram.com/${instagramId}/` : ''
+            const twitter = twitterId ? `https://twitter.com/${twitterId}/` : ''
+
+            wikidata_claims[qid] = {
+              brewery_website: website,
+              brewery_beer_advocate: beerAdvocate,
+              brewery_rate_beer: rateBeer,
+              brewery_untappd: untappd,
+              brewery_facebook: facebook,
+              brewery_instagram: instagram,
+              brewery_twitter: twitter
+            }
+          })
+        })
+        .then(() => {
+          done_urls.push(url)
+
+          // After all of the URLs have been taken care of...
+          if (urls.length === done_urls.length) {
+            resolve(wikidata_claims)
+          }
+        })
+        .catch((error) => {
+          if (error.name === 'FetchError') {
+            reject(new Error("Couldn't connect to Wikidata"))
+          } else {
+            reject(error)
+          }
+        })
+    })
+  })
+}
+
+/**
+ * Downloads info from Wikidata and adds the information to the list of beers
+ * @param {beersObjArray} beers The list containing all of the beer objects
+ * @returns {Promise} The list containing all of the beer objects (`beers`), but with added info from Wikidata
+ */
+function updateBeersFromWikidata(beers) {
+  return new Promise((resolve, reject) => {
+    const brewery_wikidata_ids = getBreweryIds(beers)
+    getBreweryInfo(brewery_wikidata_ids)
+      .then((brewery_wikidata_claims) => {
+        const wikidata_beers = []
+
+        beers.forEach((beer) => {
+          if (Object.keys(brewery_wikidata_claims).includes(beer.brewery_wikidata_id)) {
+            // Merge beer object with Wikidata claims object
+            wikidata_beers.push({ ...beer, ...brewery_wikidata_claims[beer.brewery_wikidata_id] })
+          } else {
+            wikidata_beers.push(beer)
+          }
+        })
+        resolve(wikidata_beers)
+      })
+      .catch((error) => {
+        reject(error)
+      })
   })
 }
 
@@ -645,6 +809,7 @@ io.on('connection', (socket) => {
           console.log(`Sending newly created beers list to ${socket.id}`)
           io.to(socket.id).emit('beers', beers)
 
+          console.log('Saving beer information to Redis')
           saveBeers(beers)
         } else {
           // Initialise the beers array
@@ -657,26 +822,8 @@ io.on('connection', (socket) => {
 
           console.log('Sending beers from Redis')
           io.to(socket.id).emit('beers', beers)
-
-          // Generate CSV from the beers list
-          const columns = [
-            'beer_number',
-            'beer_name',
-            'brewer',
-            'brewery_wikidata_id',
-            'abv',
-            'beer_style',
-            'vegan',
-            'gluten_free',
-            'description'
-          ]
-
-          const csvStr = csvStringify(beers, { header: true, columns: columns })
-
           console.log('Saving CSV from Redis')
-          fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
-            if (err) throw err
-          })
+          saveCSV(beers)
         }
       })
     } else {
@@ -770,22 +917,31 @@ io.on('connection', (socket) => {
   })
 
   socket.on('beers-file', (beersFileText) => {
+    console.log('New beers file received from', socket.handshake.session.id)
+
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         beers = csvParse(beersFileText, { columns: true })
 
-        console.log('Sending updated beer information')
-        io.sockets.emit('beers', beers)
+        updateBeersFromWikidata(beers)
+          .then((wikidata_beers) => {
+            console.log('Storing Wikidata claims')
+            beers = wikidata_beers
+          })
+          .catch((error) => {
+            console.log(error)
+          })
+          .finally(() => {
+            console.log('Sending updated beer information')
+            io.sockets.emit('beers', beers)
 
-        fs.writeFile('public/downloads/current-beers.csv', beersFileText, (err) => {
-          if (err) {
-            return console.log(err)
-          }
-          console.log('New beer information file saved')
-        })
+            console.log('Saving new beer information CSV')
+            saveCSV(beers)
 
-        saveBeers(beers)
+            console.log('Saving beer information to Redis')
+            saveBeers(beers)
+          })
       } else {
         console.log(
           `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
