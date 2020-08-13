@@ -217,5 +217,7 @@ socket.on('update-single', (stock_level) => {
 })
 
 socket.on('beers', (beerList) => {
+  console.debug('%cUpdating info from:', 'font-weight:bold;')
+  console.debug(beerList)
   refreshButtons()
 })
