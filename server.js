@@ -23,8 +23,8 @@ const bcrypt = require('bcryptjs')
 const csvParse = require('csv-parse/lib/sync')
 const csvStringify = require('csv-stringify/lib/sync')
 const fetch = require('node-fetch')
-const socketIo = require('socket.io')
 const redis = require('redis')
+const socketIo = require('socket.io')
 const WBK = require('wikibase-sdk')
 
 // ---------------------------------------------------------------------------
