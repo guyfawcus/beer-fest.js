@@ -92,9 +92,11 @@ function setTooltip(number, element) {
     if (thisBeer.gluten_free === 'y') {
       glutenFree = ' (GF)'
     }
+    const breweryWebsite = thisBeer.brewery_website ? `\n\n${thisBeer.brewery_website}` : ''
+
     const header = `${thisBeer.beer_number} - ${thisBeer.beer_name}${vegan}${glutenFree}`
     const divider = '-'.repeat(header.length + 10)
-    element.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}`
+    element.title = `${header}\n${divider}\n${thisBeer.brewer}\n${thisBeer.abv}\n${thisBeer.beer_style}\n${thisBeer.description}${breweryWebsite}`
   } else {
     element.title = ''
   }
