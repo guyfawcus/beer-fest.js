@@ -84,14 +84,8 @@ export const socket = globalThis.io.connect(`${location.host}?referrer=${locatio
 function setTooltip(number, element) {
   const thisBeer = BEERS[number - 1]
   if (thisBeer !== undefined) {
-    let vegan = ''
-    if (thisBeer.vegan === 'y') {
-      vegan = ' (Ve)'
-    }
-    let glutenFree = ''
-    if (thisBeer.gluten_free === 'y') {
-      glutenFree = ' (GF)'
-    }
+    const vegan = thisBeer.vegan === 'y' ? ' (Ve)' : ''
+    const glutenFree = thisBeer.gluten_free === 'y' ? ' (GF)' : ''
     const breweryWebsite = thisBeer.brewery_website ? `\n\n${thisBeer.brewery_website}` : ''
 
     const header = `${thisBeer.beer_number} - ${thisBeer.beer_name}${vegan}${glutenFree}`
