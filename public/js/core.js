@@ -35,7 +35,7 @@ let STOCK_LEVELS = {}
 const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 80
 
 /** The socket.io socket object */
-export const socket = globalThis.io.connect(`${location.host}?referrer=${location.pathname}`, {
+export const socket = globalThis.io.connect(`${location.host}?source=${location.pathname}`, {
   transports: ['websocket']
 })
 
