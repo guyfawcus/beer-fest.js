@@ -548,6 +548,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/availability', (req, res) => {
+  // Remove the X-Frame-Options header so that this page can be embedded (iframe)
+  res.removeHeader('X-Frame-Options')
   res.sendFile(path.join(__dirname, 'views/buttons.html'))
 })
 
