@@ -758,6 +758,9 @@ io.on('connection', (socket) => {
   // Find out which path the socket originated from
   let pathname = ''
   const referrer = socket.handshake.query.referrer
+
+  console.debug(`Client ${socket.handshake.session.id} referrer = "${referrer}" (${typeof referrer})`)
+
   if (referrer) {
     pathname = referrer.slice(1)
   } else {
