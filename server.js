@@ -673,6 +673,10 @@ app.get('/logout', (req, res) => {
 // ---------------------------------------------------------------------------
 // Routes - API
 // ---------------------------------------------------------------------------
+app.get('/api/beers', (req, res) => {
+  res.send(beers)
+})
+
 app.get('/api/stock_levels', (req, res) => {
   res.send(last_table)
 })
