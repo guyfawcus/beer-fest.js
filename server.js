@@ -517,6 +517,69 @@ function updateBeersFromWikidata(beers) {
   })
 }
 
+/**
+ * Initialises the {@link beers} array and manages the saving of the `CURRENT_BEERS_FILE`
+ * The order that this will check the existence of, and then use is:
+ * Redis -> CURRENT_BEERS_FILE -> BEERS_FILE -> generated empty file
+ * After reading the beers in, they will be saved in Redis and `CURRENT_BEERS_FILE`
+ * @returns {Promise} When the beers array has been initialised
+ */
+function initialiseBeers() {
+  return new Promise((resolve, reject) => {
+    // Check if the beers file has already been read in
+    if (beers === null) {
+      console.log('Beer information does not exist yet')
+
+      redisClient.hgetall('beers', (err, reply) => {
+        if (err) {
+          reject()
+          handleError("Couldn't beers list from Redis", err)
+        }
+
+        if (reply === null) {
+          // Check that the current beers file exists
+          try {
+            fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
+          } catch (err) {
+            try {
+              console.error(`No current beers file found, trying default (${BEERS_FILE})`)
+              fs.accessSync(BEERS_FILE, fs.F_OK)
+              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+            } catch (err) {
+              console.error('No current or default beers files found, making a blank one to use instead')
+              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
+            }
+          }
+          console.log('Reading in current beers file')
+          beers = csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true })
+
+          console.log('Saving beer information to Redis')
+          saveBeers(beers)
+
+          console.log('Resolving newly created beers list')
+          resolve()
+        } else {
+          // Initialise the beers array
+          beers = []
+
+          // For every beer, parse the entry then add it to the beers list
+          for (const beerNumber in reply) {
+            beers.push(JSON.parse(reply[beerNumber]))
+          }
+
+          console.log('Saving CSV from Redis')
+          saveCSV(beers)
+
+          console.log('Resolving beers from Redis')
+          resolve()
+        }
+      })
+    } else {
+      resolve()
+    }
+  })
+}
+
 /** Used to stop unauthenticated clients getting to pages */
 function checkAuthenticated(req, res, next) {
   redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
@@ -570,7 +633,10 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/downloads', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/downloads.html'))
+  // Initialise the beer information so that `CURRENT_BEERS_FILE` is available
+  initialiseBeers().then(() => {
+    res.sendFile(path.join(__dirname, 'views/downloads.html'))
+  })
 })
 
 app.get('/bridge', (req, res) => {
@@ -674,7 +740,9 @@ app.get('/logout', (req, res) => {
 // Routes - API
 // ---------------------------------------------------------------------------
 app.get('/api/beers', (req, res) => {
-  res.send(beers)
+  initialiseBeers().then(() => {
+    res.send(beers)
+  })
 })
 
 app.get('/api/stock_levels', (req, res) => {
@@ -783,62 +851,11 @@ io.on('connection', (socket) => {
     io.to(socket.id).emit('config', last_config)
   }
 
+  // Send the beer information
   if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
-    // ---------------------------------------------------------------------------
-    // This section deals with reading in and/or sending the beer information.
-    // All paths end in CURRENT_BEERS_FILE. The priority order is:
-    // Redis -> CURRENT_BEERS_FILE -> BEERS_FILE -> generated empty file
-    // ---------------------------------------------------------------------------
-    // Check if the beers file has already been read in
-    if (beers === null) {
-      console.log('Beer information does not exist yet')
-
-      redisClient.hgetall('beers', (err, reply) => {
-        if (err) handleError("Couldn't beers list from Redis", err)
-
-        if (reply === null) {
-          // Check that the current beers file exists
-          try {
-            fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
-          } catch (err) {
-            try {
-              console.error(`No current beers file found, trying default (${BEERS_FILE})`)
-              fs.accessSync(BEERS_FILE, fs.F_OK)
-              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
-            } catch (err) {
-              console.error('No current or default beers files found, making a blank one to use instead')
-              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
-            }
-          }
-          console.log('Reading in current beers file')
-          beers = csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true })
-
-          console.log(`Sending newly created beers list to ${socket.id}`)
-          io.to(socket.id).emit('beers', beers)
-
-          console.log('Saving beer information to Redis')
-          saveBeers(beers)
-        } else {
-          // Initialise the beers array
-          beers = []
-
-          // For every beer, parse the entry then add it to the beers list
-          for (const beerNumber in reply) {
-            beers.push(JSON.parse(reply[beerNumber]))
-          }
-
-          console.log('Sending beers from Redis')
-          io.to(socket.id).emit('beers', beers)
-          console.log('Saving CSV from Redis')
-          saveCSV(beers)
-        }
-      })
-    } else {
-      // Send a previously generated beers list
+    initialiseBeers().then(() => {
       io.to(socket.id).emit('beers', beers)
-    }
-    // ---------------------------------------------------------------------------
-    // ---------------------------------------------------------------------------
+    })
   }
 
   // Send the current state of all of the beers
