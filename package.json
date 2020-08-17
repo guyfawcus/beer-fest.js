@@ -1,6 +1,6 @@
 {
   "name": "beer-fest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Web app to display ale availability at the ACBF",
   "main": "server.js",
   "scripts": {
