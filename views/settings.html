@@ -19,9 +19,9 @@
 
   <body>
     <div class="warning_icon" title="Server disconnected!">X</div>
-    <div class="settings_container">
-      <div class="settings_header"><h1>ACBF Settings</h1></div>
-      <div class="settings_beers">
+    <h1>ACBF Settings</h1>
+    <div class="menu_container">
+      <div class="menu_section">
         <h2 class="container_header">Beer Information</h2>
         <div class="button" id="beersUploadButton" title="Upload new beer information">Upload</div>
         <a
@@ -32,12 +32,12 @@
           >Download</a
         >
       </div>
-      <div class="settings_utils">
+      <div class="menu_section">
         <h2 class="container_header">State</h2>
         <div class="button" id="stateUploadButton" title="Upload a previous state">Upload</div>
         <a class="button" href="/api/stock_levels" title="Download the current state" download="state.json">Download</a>
       </div>
-      <div class="settings_options">
+      <div class="menu_section">
         <h2 class="container_header">Set all as</h2>
         <div class="button" id="fullButton" title="Mark everything as full">Full</div>
         <div class="button" id="lowButton" title="Mark everything as low">Low</div>

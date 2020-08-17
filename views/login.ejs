@@ -19,37 +19,35 @@
 
   <body>
     <div class="warning_icon" title="Server disconnected!">X</div>
-    <div class="settings_container">
-      <div class="settings_header"><h1>ACBF Login</h1></div>
-      <div class="settings_utils">
-        <div>
-          <% if (messages.error) { %> <%= messages.error %> <% } %>
-          <form action="/users" method="post">
-            <div class="login_fields">
-              <div>
-                <label for="name" class="label">Name:</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  placeholder="Your name (whatever you want)"
-                  pattern=".{1,12}"
-                  required
-                  title="12 characters maximum"
-                  required
-                />
-              </div>
-              <div>
-                <label for="code" class="label">Code:</label>
-                <input type="password" id="code" name="code" placeholder="Given to you by Chesney" required />
-              </div>
-              <div class="submit_button">
-                <button type="submit">Login</button>
-                <a href="/"><button type="button">Home</button></a>
-              </div>
+    <h1>ACBF Login</h1>
+    <div class="menu_container">
+      <div class="menu_section">
+        <% if (messages.error) { %> <%= messages.error %> <% } %>
+        <form action="/users" method="post">
+          <div class="login_fields">
+            <div>
+              <label for="name" class="label">Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Your name (whatever you want)"
+                pattern=".{1,12}"
+                required
+                title="12 characters maximum"
+                required
+              />
             </div>
-          </form>
-        </div>
+            <div>
+              <label for="code" class="label">Code:</label>
+              <input type="password" id="code" name="code" placeholder="Given to you by Chesney" required />
+            </div>
+            <div class="submit_button">
+              <button type="submit">Login</button>
+              <a href="/"><button type="button">Home</button></a>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   </body>
