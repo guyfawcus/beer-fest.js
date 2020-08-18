@@ -394,7 +394,7 @@ body.keyboardControl .button:focus {
 /* ------------ */
 /*  Menu        */
 /* ------------ */
-.buttons_header {
+#buttons_header {
   cursor: context-menu;
 }
 .popup-background {
