@@ -27,6 +27,8 @@
   --default-selection-colour: #b4d5ff;
 
   --transition-time: 150ms;
+
+  --footer-height: 5rem;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -102,7 +104,8 @@ footer {
   bottom: 0px;
   width: 100%;
   text-align: center;
-  height: 2.5rem;
+  height: var(--footer-height);
+  line-height: var(--footer-height);
 }
 
 footer::selection,
@@ -211,7 +214,7 @@ input[type='checkbox']:hover {
   justify-content: space-between;
   gap: 20px;
   padding-top: 20px;
-  padding-bottom: 5rem;
+  padding-bottom: var(--footer-height);
 }
 
 .menu_section {
