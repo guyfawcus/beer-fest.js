@@ -8,6 +8,7 @@
     "prettier": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.css' '**/*.md'",
     "pretest": "npm run prettier && npm run eslint",
     "test": "",
+    "load-test": "artillery run utils/websocket-load-test.yaml",
     "docs": "jsdoc -c jsdoc.json",
     "type-check": "tsc",
     "update": "ncu -u"
@@ -55,6 +56,7 @@
     "@types/node": "^14.6.0",
     "@types/redis": "^2.8.25",
     "@types/socket.io": "^2.1.11",
+    "artillery": "^1.6.1",
     "eslint": "^7.7.0",
     "eslint-plugin-import": "^2.22.0",
     "husky": "^4.2.5",

@@ -1,0 +1,22 @@
+# Artillery load test
+# Run with "npm run load-test"
+
+config:
+  target: 'http://127.0.0.1:8000/'
+
+  socketio:
+    transports: ['websocket']
+    query: 'source=/availability'
+
+  phases:
+    # Initiate 1000 connections over 1 minute and 40 seconds
+    - duration: 100
+      arrivalRate: 10
+
+scenarios:
+  - name: '10 minutes watching availability'
+    engine: 'socketio'
+    flow:
+      - get:
+          url: '/availability'
+      - think: 600
