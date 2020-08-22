@@ -36,6 +36,7 @@
 /* ------------------------------------------------------------------------ */
 @font-face {
   font-family: 'HackerFiveTwo';
+  font-display: swap;
   src: url('HackerFiveTwoOpti-UltraBld.otf');
 }
 
