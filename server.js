@@ -118,13 +118,13 @@ app.use(
   featurePolicy({
     features: {
       accelerometer: ["'none'"],
-      ambientLightSensor: ["'none'"],
+      // ambientLightSensor: ["'none'"], // Chrome doesn't like this at the moment
       camera: ["'none'"],
       geolocation: ["'none'"],
       gyroscope: ["'none'"],
       magnetometer: ["'none'"],
       microphone: ["'none'"],
-      serial: ["'none'"],
+      // serial: ["'none'"], // Chrome doesn't like this at the moment
       usb: ["'none'"]
     }
   })
