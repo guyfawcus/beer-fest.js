@@ -803,12 +803,12 @@ app.use(express.static('public'))
 
 // Handle 404
 app.use(function (req, res) {
-  res.sendFile(path.join(__dirname, 'views/misc/404.html'), 404)
+  res.status(404).sendFile(path.join(__dirname, 'views/misc/404.html'))
 })
 
 // Handle 500
 app.use(function (error, req, res, next) {
-  res.sendFile(path.join(__dirname, 'views/misc/500.html'), 500)
+  res.status(500).sendFile(path.join(__dirname, 'views/misc/500.html'))
   console.log('Server error:', error)
 })
 
