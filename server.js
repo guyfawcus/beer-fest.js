@@ -132,9 +132,12 @@ app.use(
 app.use(
   helmet.contentSecurityPolicy({
     directives: {
+      baseUri: ["'none'"],
       defaultSrc: ["'none'"],
       connectSrc: ["'self'", 'ws:'],
       fontSrc: ["'self'"],
+      formAction: ["'self'"],
+      // frameAncestors: ["'self'"], // Comment out to allow embedding as an iframe elsewhere
       frameSrc: ["'self'"],
       imgSrc: ["'self'"],
       manifestSrc: ["'self'"],
