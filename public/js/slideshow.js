@@ -4,12 +4,6 @@
 
 import Reveal from './reveal.esm.js'
 
-// NOTE: Because most of the slides use the data-background attribute,
-//       a lot of these settings won't actually change anything.
-//
-//       For example, changing the transition to 'zoom'
-//       will only affect the actual content, not the background.
-
 Reveal.initialize({
   preloadIframes: true,
   autoSlideStoppable: false,
@@ -18,6 +12,7 @@ Reveal.initialize({
   loop: true,
   keyboard: false,
   transition: 'fade',
+  backgroundTransition: 'fade',
   transitionSpeed: 'default'
 })
 
