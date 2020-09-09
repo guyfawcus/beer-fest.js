@@ -10,6 +10,7 @@ const path = require('path')
 // Express related packages
 const compression = require('compression')
 const connectRedis = require('connect-redis')
+const cors = require('cors')
 const express = require('express')
 const expressEnforcesSsl = require('express-enforces-ssl')
 const expressFlash = require('express-flash')
@@ -761,21 +762,21 @@ app.get('/logout', (req, res) => {
 // ---------------------------------------------------------------------------
 // Routes - API
 // ---------------------------------------------------------------------------
-app.get('/api/beers', (req, res) => {
+app.get('/api/beers', cors(), (req, res) => {
   initialiseBeers().then(() => {
     res.send(beers)
   })
 })
 
-app.get('/api/stock_levels', (req, res) => {
+app.get('/api/stock_levels', cors(), (req, res) => {
   res.send(last_table)
 })
 
-app.get('/api/stock_levels/:number', (req, res) => {
+app.get('/api/stock_levels/:number', cors(), (req, res) => {
   res.send(last_table[req.params.number])
 })
 
-app.post('/api/stock_levels', (req, res) => {
+app.post('/api/stock_levels', cors(), (req, res) => {
   const name = req.session.name || 'API'
   if (ENABLE_API === 'true') {
     if (Object.keys(req.body).length > NUM_OF_BUTTONS) {
@@ -798,7 +799,7 @@ app.post('/api/stock_levels', (req, res) => {
   }
 })
 
-app.post('/api/stock_levels/:number/:level', (req, res) => {
+app.post('/api/stock_levels/:number/:level', cors(), (req, res) => {
   const name = req.session.name || 'API'
   const number = Number(req.params.number)
   const level = req.params.level
