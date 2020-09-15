@@ -19,10 +19,11 @@ export let TO_CONFIRM = true
 export let LOW_ENABLE = false
 
 /**
- * A list of [beer objects]{@link beersObjArray} containing information for each beer
- * @type{beersObjArray}
+ * Simple key value store that conforms to  {@link beersObj},
+ * where a number is the key and a [beer object]{@link beerObj} is the value`
+ * @type{beersObj}
  */
-let BEERS = []
+let BEERS = {}
 
 /**
  * Simple key value store that conforms to {@link stockLevelsObj},
@@ -48,17 +49,22 @@ export const socket = globalThis.io.connect(`${location.host}?source=${location.
  */
 
 /**
- * Array that stores objects that represent each beer. Used in {@link BEERS}
- * @typedef {Array.<Object>} beersObjArray
- * @property {string} beersObjArray[].beer_number The number of the beer
- * @property {string} beersObjArray[].beer_name The name of the beer
- * @property {string} beersObjArray[].brewer The brewer of the beer
- * @property {string} beersObjArray[].brewery_wikidata_id The Wikidata QID of the brewery
- * @property {string} beersObjArray[].abv The alcohol by volume of the beer
- * @property {string} beersObjArray[].beer_style The style of the beer
- * @property {string} beersObjArray[].vegan 'y' if the beer is vegan
- * @property {string} beersObjArray[].gluten_free 'y' if the beer is gluten free
- * @property {string} beersObjArray[].description A description of the beer
+ * Object that stores information about each beer
+ * @typedef {Object} beerObj
+ * @property {string} beerObj.beer_number The number of the beer
+ * @property {string} beerObj.beer_name The name of the beer
+ * @property {string} beerObj.brewer The brewer of the beer
+ * @property {string} beerObj.brewery_wikidata_id The Wikidata QID of the brewery
+ * @property {string} beerObj.abv The alcohol by volume of the beer
+ * @property {string} beerObj.beer_style The style of the beer
+ * @property {string} beerObj.vegan 'y' if the beer is vegan
+ * @property {string} beerObj.gluten_free 'y' if the beer is gluten free
+ * @property {string} beerObj.description A description of the beer
+ */
+
+/**
+ * Object to store the beer information for a range of beers. Used in {@link BEERS}
+ * @typedef {Object.<number, beerObj>} beersObj
  */
 
 /** Object to store the stock levels for a range of beers. Used in {@link STOCK_LEVELS}
@@ -82,7 +88,7 @@ export const socket = globalThis.io.connect(`${location.host}?source=${location.
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
 function setTooltip(number, element) {
-  const thisBeer = BEERS[number - 1]
+  const thisBeer = BEERS[number]
   if (thisBeer !== undefined) {
     const vegan = thisBeer.vegan === 'y' ? ' (Ve)' : ''
     const glutenFree = thisBeer.gluten_free === 'y' ? ' (GF)' : ''
@@ -108,7 +114,7 @@ function setColour(number, level, element) {
   if (!element) return
 
   // Get the information for this beer to see if it's vegan or gluten-free
-  const thisBeer = BEERS[number - 1]
+  const thisBeer = BEERS[number]
 
   // Use the previous state if a new level is not defined
   if (!level) level = STOCK_LEVELS[number]
@@ -423,7 +429,7 @@ export function updateNumber(number) {
    */
   const confirmUpdate = (level) => {
     if (TO_CONFIRM) {
-      const thisBeer = BEERS[number - 1]
+      const thisBeer = BEERS[number]
       let message = ''
       if (thisBeer !== undefined) {
         message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`

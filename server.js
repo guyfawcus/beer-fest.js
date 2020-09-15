@@ -62,7 +62,7 @@ let last_config = {}
 /** @type{stockLevelsObj} */
 let last_table = {}
 
-/** @type{beersObjArray} */
+/** @type{beersObj} */
 let beers = null
 
 /** The total number of availability buttons */
@@ -79,7 +79,7 @@ const NUM_OF_BUTTONS = 80
  */
 
 /** @typedef {import('public/js/core.js').stockLevelsObj} stockLevelsObj */
-/** @typedef {import('public/js/core.js').beersObjArray} beersObjArray */
+/** @typedef {import('public/js/core.js').beersObj} beersObj */
 /** @typedef {import('public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
@@ -371,7 +371,7 @@ function saveState(stock_levels) {
 
 /**
  * Save the beers list to a CSV file
- * @param {beersObjArray} beers The list containing all of the beer objects
+ * @param {beersObj} beers The object containing information on each beer
  */
 function saveCSV(beers) {
   // Generate CSV from the beers list
@@ -394,7 +394,7 @@ function saveCSV(beers) {
     'brewery_twitter'
   ]
 
-  const csvStr = csvStringify(beers, { header: true, columns: columns })
+  const csvStr = csvStringify(Object.values(beers), { header: true, columns: columns })
 
   fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
     if (err) throw err
@@ -403,35 +403,35 @@ function saveCSV(beers) {
 
 /**
  * Save the beers list to redis
- * @param {beersObjArray} beers The list containing all of the beer objects
+ * @param {beersObj} beers The object containing information on each beer
  */
 function saveBeers(beers) {
   redisClient.del('beers', (err, reply) => {
     if (err) handleError("Couldn't delete beers list from Redis", err)
 
-    beers.forEach((beer) => {
-      redisClient.hset('beers', beer.beer_number, JSON.stringify(beer))
+    Object.entries(beers).forEach(([beerId, beer]) => {
+      redisClient.hset('beers', beerId, JSON.stringify(beer))
     })
   })
 }
 
 /**
  * Get a list of all of the Wikidata QIDs for the breweries in {@link beers}
- * @param {beersObjArray} beers The list containing all of the beer objects
+ * @param {beersObj} beers The object containing information on each beer
  * @returns {Array} A list of all of the unique brewery QIDs found in 'beers`
  */
 function getBreweryIds(beers) {
   const brewery_wikidata_ids = []
 
   // For each beer in `beers`, get the Wikidata QID
-  for (const beer in Object.keys(beers)) {
-    const brewery_wikidata_id = beers[beer].brewery_wikidata_id
+  Object.values(beers).forEach((beer) => {
+    const brewery_wikidata_id = beer.brewery_wikidata_id
 
-    // Only add it to the list if it's not empty and it's unique
-    if (brewery_wikidata_id !== '' && !brewery_wikidata_ids.includes(brewery_wikidata_id)) {
+    // Only add it to the list if it exists and is unique
+    if (brewery_wikidata_id && !brewery_wikidata_ids.includes(brewery_wikidata_id)) {
       brewery_wikidata_ids.push(brewery_wikidata_id)
     }
-  }
+  })
   return brewery_wikidata_ids
 }
 
@@ -514,7 +514,7 @@ function getBreweryInfo(brewery_wikidata_ids) {
 
 /**
  * Downloads info from Wikidata and adds the information to the list of beers
- * @param {beersObjArray} beers The list containing all of the beer objects
+ * @param {beersObj} beers The object containing information on each beer
  * @returns {Promise} The list containing all of the beer objects (`beers`), but with added info from Wikidata
  */
 function updateBeersFromWikidata(beers) {
@@ -522,14 +522,14 @@ function updateBeersFromWikidata(beers) {
     const brewery_wikidata_ids = getBreweryIds(beers)
     getBreweryInfo(brewery_wikidata_ids)
       .then((brewery_wikidata_claims) => {
-        const wikidata_beers = []
+        const wikidata_beers = {}
 
-        beers.forEach((beer) => {
+        Object.entries(beers).forEach(([beerId, beer]) => {
           if (Object.keys(brewery_wikidata_claims).includes(beer.brewery_wikidata_id)) {
             // Merge beer object with Wikidata claims object
-            wikidata_beers.push({ ...beer, ...brewery_wikidata_claims[beer.brewery_wikidata_id] })
+            wikidata_beers[beerId] = { ...beer, ...brewery_wikidata_claims[beer.brewery_wikidata_id] }
           } else {
-            wikidata_beers.push(beer)
+            wikidata_beers[beerId] = beer
           }
         })
         resolve(wikidata_beers)
@@ -574,7 +574,10 @@ function initialiseBeers() {
             }
           }
           console.log('Reading in current beers file')
-          beers = csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true })
+          beers = {}
+          csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
+            beers[beer.beer_number] = beer
+          })
 
           console.log('Saving beer information to Redis')
           saveBeers(beers)
@@ -582,12 +585,11 @@ function initialiseBeers() {
           console.log('Resolving newly created beers list')
           resolve()
         } else {
-          // Initialise the beers array
-          beers = []
-
-          // For every beer, parse the entry then add it to the beers list
-          for (const beerNumber in reply) {
-            beers.push(JSON.parse(reply[beerNumber]))
+          // For every beer, parse the entry then add it to the beers object
+          beers = {}
+          for (const beerStr in reply) {
+            const beer = JSON.parse(reply[beerStr])
+            beers[beer.beer_number] = beer
           }
 
           console.log('Saving CSV from Redis')
@@ -969,7 +971,10 @@ io.on('connection', (socket) => {
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
-        beers = csvParse(beersFileText, { columns: true })
+        beers = {}
+        csvParse(beersFileText, { columns: true }).forEach((beer) => {
+          beers[beer.beer_number] = beer
+        })
 
         updateBeersFromWikidata(beers)
           .then((wikidata_beers) => {
