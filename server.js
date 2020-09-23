@@ -57,7 +57,7 @@ const BEERS_FILE = process.env.BEERS_FILE || ''
 const CURRENT_BEERS_FILE = './public/downloads/current-beers.csv'
 
 /** @type {configObj} */
-let last_config = {}
+const last_config = { confirm: true, low_enable: false }
 
 /** @type{stockLevelsObj} */
 let last_table = {}
@@ -233,13 +233,11 @@ redisClient.hgetall('config', (err, reply) => {
 
   if (reply != null) {
     console.log(`Reading in: ${JSON.stringify(reply)}`)
-    // Convert the true/false strings to bools
-    const confirm = reply.confirm === 'true'
-    const low_enable = reply.low_enable === 'true'
-    last_config = { confirm: confirm, low_enable: low_enable }
+    // Convert the true/false strings to bools, then store them
+    last_config.confirm = reply.confirm === 'true'
+    last_config.low_enable = reply.low_enable === 'true'
   } else {
-    console.log('Initialising config')
-    last_config = { confirm: true, low_enable: false }
+    console.log('No configuration settings defined in Redis, using defaults')
   }
   redisClient.hset('config', 'confirm', last_config.confirm.toString())
   redisClient.hset('config', 'low_enable', last_config.low_enable.toString())
@@ -953,7 +951,8 @@ io.on('connection', (socket) => {
         console.log('Distributing configuration:')
         console.log(configuration)
         io.sockets.emit('config', configuration)
-        last_config = configuration
+        last_config.confirm = configuration.confirm
+        last_config.low_enable = configuration.low_enable
         redisClient.hset('config', 'confirm', configuration.confirm)
         redisClient.hset('config', 'low_enable', configuration.low_enable)
       } else {
