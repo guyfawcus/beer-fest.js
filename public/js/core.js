@@ -49,7 +49,8 @@ export const socket = globalThis.io.connect(`${location.host}?source=${location.
  */
 
 /**
- * Object that stores information about each beer
+ * Object that stores information about each beer.
+ * All of the optional properties are obtained from Wikidata.
  * @typedef {Object} beerObj
  * @property {string} beerObj.beer_number The number of the beer
  * @property {string} beerObj.beer_name The name of the beer
@@ -60,6 +61,13 @@ export const socket = globalThis.io.connect(`${location.host}?source=${location.
  * @property {string} beerObj.vegan 'y' if the beer is vegan
  * @property {string} beerObj.gluten_free 'y' if the beer is gluten free
  * @property {string} beerObj.description A description of the beer
+ * @property {string} [beerObj.brewery_website] The brewery's website
+ * @property {string} [beerObj.brewery_beer_advocate] The brewery's BeerAdvocate ID
+ * @property {string} [beerObj.brewery_rate_beer] The brewery's RateBeer ID
+ * @property {string} [beerObj.brewery_untappd] The brewery's Untappd ID
+ * @property {string} [beerObj.brewery_facebook] The brewery's Facebook ID
+ * @property {string} [beerObj.brewery_instagram] The brewery's Instagram username
+ * @property {string} [beerObj.brewery_twitter] The brewery's Twitter username
  */
 
 /**
