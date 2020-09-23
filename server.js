@@ -155,9 +155,16 @@ const cspParser = express.json({
 
 app.post('/report-violation', cspParser, (req, res) => {
   const srcFile = (req.body['csp-report'] && req.body['csp-report']['source-file']) || ''
+  const blockedUri = (req.body['csp-report'] && req.body['csp-report']['blocked-uri']) || ''
 
   // Ignore violations because of onloadwff.js, it's a LastPass thing that can be ignored
   if (srcFile.includes('onloadwff.js')) {
+    res.status(204).end()
+    return
+  }
+
+  // Ignore violations because of this request, it's a NoScript thing that can be ignored?
+  if (blockedUri === 'data') {
     res.status(204).end()
     return
   }
