@@ -62,6 +62,8 @@ export const socket = globalThis.io.connect(`${location.host}?source=${location.
  * @property {string} beerObj.gluten_free 'y' if the beer is gluten free
  * @property {string} beerObj.description A description of the beer
  * @property {string} [beerObj.brewery_website] The brewery's website
+ * @property {string} [beerObj.brewery_latitude] The brewery's latitude
+ * @property {string} [beerObj.brewery_longitude] The brewery's longitude
  * @property {string} [beerObj.brewery_beer_advocate] The brewery's BeerAdvocate ID
  * @property {string} [beerObj.brewery_rate_beer] The brewery's RateBeer ID
  * @property {string} [beerObj.brewery_untappd] The brewery's Untappd ID

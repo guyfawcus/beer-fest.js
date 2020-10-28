@@ -395,6 +395,8 @@ function saveCSV(beers) {
     'gluten_free',
     'description',
     'brewery_website',
+    'brewery_latitude',
+    'brewery_longitude',
     'brewery_beer_advocate',
     'brewery_rate_beer',
     'brewery_untappd',
@@ -476,6 +478,7 @@ function getBreweryInfo(brewery_wikidata_ids) {
           Object.keys(entities).forEach((entity) => {
             const qid = entities[entity].id
             const website = entities[entity].claims?.P856?.[0] || ''
+            const location = entities[entity].claims?.P625?.[0] || ['', '']
 
             const beerAdvocateId = entities[entity].claims?.P2904?.[0]
             const rateBeerId = entities[entity].claims?.P2905?.[0]
@@ -493,6 +496,8 @@ function getBreweryInfo(brewery_wikidata_ids) {
 
             wikidata_claims[qid] = {
               brewery_website: website,
+              brewery_latitude: location[0],
+              brewery_longitude: location[1],
               brewery_beer_advocate: beerAdvocate,
               brewery_rate_beer: rateBeer,
               brewery_untappd: untappd,
