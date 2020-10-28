@@ -8,7 +8,7 @@ Try it out at [acbf-2020.herokuapp.com](https://acbf-2020.herokuapp.com/) and ta
 
 <img src="/docs/images/availability-empty.png" width="384">
 
-> **Note:** This web app is under development. It's first outing was likely to be the _Aston Clinton Beer Festival 2020_ (hence the titles/URL), however that has now [been cancelled](https://www.facebook.com/341405185896402/posts/2925670634136498).
+> **Note:** This web app is under development. Its first outing was likely to be the _Aston Clinton Beer Festival 2020_ (hence the titles/URL), however that has now [been cancelled](https://www.facebook.com/341405185896402/posts/2925670634136498).
 > Fingers crossed for some normality to return next year and that everyone makes it though these crazy times!
 >
 > The beer information (used for the tooltips, Ve/GF hiding) is from the 2019 beer fest and is being used as a placeholder to assist development.
@@ -53,7 +53,7 @@ you could keep using _the old way_ while testing out this system without much bo
 
 ## Tech information
 
-There are a few different ways to implement this system and each has it's positives and negatives:
+There are a few different ways to implement this system and each has its positives and negatives:
 
 ### The most basic way
 
