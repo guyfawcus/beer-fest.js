@@ -68,6 +68,10 @@ let beers = null
 /** The total number of availability buttons */
 const NUM_OF_BUTTONS = 80
 
+/** This url contains a Wikidata query for information about the breweries with QIDs
+ * It is updated on start and when a new beers file is uploaded. */
+let brewery_query_url = 'https://query.wikidata.org/'
+
 // ---------------------------------------------------------------------------
 // Type definitions
 // ---------------------------------------------------------------------------
@@ -199,7 +203,7 @@ app.use((req, res, next) => {
   //   * They are requested via a GET
   //   * The URL is not in the `disableForURLs` list
   //   * It is not a request for an API endpoint
-  const disableForURLs = ['/login', '/logout', '/settings']
+  const disableForURLs = ['/login', '/logout', '/settings', '/brewery-wikidata-query']
   const apiURL = '/api/'
 
   if (req.method === 'GET' && !disableForURLs.includes(req.url) && !req.url.includes(apiURL)) {
@@ -546,6 +550,63 @@ function updateBeersFromWikidata(beers) {
 }
 
 /**
+ * Updates {@link brewery_query_url} with a URL that contains a Wikidata query,
+ * this query is only for information about the breweries that have Wikidata QIDs.
+ * @param {beersObj} beers The object containing information on each beer
+ * @returns {string} The URL containing the query for brewery information
+ */
+function generateBreweryQuery(beers) {
+  // Append 'wd:' to each QID then join the list with spaces for use in the query
+  const formatted_ids = getBreweryIds(beers)
+    .map((qid) => `wd:${qid}`)
+    .join(' ')
+
+  const sparql = `# Brewery information
+SELECT ?brewery ?breweryLabel ?website ?location ?beerAdvocateUrl ?rateBeerUrl ?untappdUrl ?facebookUrl ?instagramUrl ?twitterUrl
+
+WHERE
+  {
+    VALUES ?brewery {
+      ${formatted_ids}
+    }
+
+    OPTIONAL {?brewery wdt:P856 ?website .}
+    OPTIONAL {?brewery wdt:P625 ?location .}
+
+    OPTIONAL {?brewery wdt:P2904 ?beerAdvocateId .}
+    OPTIONAL {?brewery wdt:P2905 ?rateBeerId .}
+    OPTIONAL {?brewery wdt:P3002 ?untappdId .}
+    OPTIONAL {?brewery wdt:P2013 ?facebookId .}
+    OPTIONAL {?brewery wdt:P2003 ?instagramId .}
+    OPTIONAL {?brewery wdt:P2002 ?twitterId .}
+
+    wd:P2904 wdt:P1630 ?beerAdvocateFormatter .
+    wd:P2905 wdt:P1630 ?rateBeerFormatter .
+    wd:P3002 wdt:P1630 ?untappdFormatter .
+    wd:P2013 wdt:P1630 ?facebookFormatter .
+    wd:P2003 wdt:P1630 ?instagramFormatter .
+    wd:P2002 wdt:P1630 ?twitterFormatter .
+
+    BIND(IRI(REPLACE(?beerAdvocateId, '^(.+)$', ?beerAdvocateFormatter)) AS ?beerAdvocateUrl) .
+    BIND(IRI(REPLACE(?rateBeerId, '^(.+)$', ?rateBeerFormatter)) AS ?rateBeerUrl) .
+    BIND(IRI(REPLACE(?untappdId, '^(.+)$', ?untappdFormatter)) AS ?untappdUrl) .
+    BIND(IRI(REPLACE(?facebookId, '^(.+)$', ?facebookFormatter)) AS ?facebookUrl) .
+    BIND(IRI(REPLACE(?instagramId, '^(.+)$', ?instagramFormatter)) AS ?instagramUrl) .
+    BIND(IRI(REPLACE(?twitterId, '^(.+)$', ?twitterFormatter)) AS ?twitterUrl) .
+
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "[AUTO_LANGUAGE],en" }
+}
+
+ORDER BY (fn:lower-case(str(?breweryLabel)))
+`
+
+  // Return the query URL minus the format param so that the link takes you to the query service
+  const url = wdk.sparqlQuery(sparql).replace('sparql?format=json&query=', '#')
+
+  return url
+}
+
+/**
  * Initialises the {@link beers} array and manages the saving of the `CURRENT_BEERS_FILE`
  * The order that this will check the existence of, and then use is:
  * Redis -> CURRENT_BEERS_FILE -> BEERS_FILE -> generated empty file
@@ -587,6 +648,9 @@ function initialiseBeers() {
           console.log('Saving beer information to Redis')
           saveBeers(beers)
 
+          console.log('Updating brewery query URL')
+          brewery_query_url = generateBreweryQuery(beers)
+
           console.log('Resolving newly created beers list')
           resolve()
         } else {
@@ -599,6 +663,9 @@ function initialiseBeers() {
 
           console.log('Saving CSV from Redis')
           saveCSV(beers)
+
+          console.log('Updating brewery query URL')
+          brewery_query_url = generateBreweryQuery(beers)
 
           console.log('Resolving beers from Redis')
           resolve()
@@ -666,6 +733,13 @@ app.get('/downloads', (req, res) => {
   // Initialise the beer information so that `CURRENT_BEERS_FILE` is available
   initialiseBeers().then(() => {
     res.sendFile(path.join(__dirname, 'views/downloads.html'))
+  })
+})
+
+app.get('/brewery-wikidata-query', (req, res) => {
+  // Initialise the beer information so that `brewery_query_url` is up-to-date
+  initialiseBeers().then(() => {
+    res.redirect(brewery_query_url)
   })
 })
 
@@ -1002,6 +1076,9 @@ io.on('connection', (socket) => {
 
             console.log('Saving new beer information CSV')
             saveCSV(beers)
+
+            console.log('Updating brewery query URL')
+            brewery_query_url = generateBreweryQuery(beers)
 
             console.log('Saving beer information to Redis')
             saveBeers(beers)
