@@ -775,6 +775,12 @@ app.get('/api/beers', cors(), (req, res) => {
   })
 })
 
+app.get('/api/beers/:number', cors(), (req, res) => {
+  initialiseBeers().then(() => {
+    res.send(beers[req.params.number])
+  })
+})
+
 app.get('/api/stock_levels', cors(), (req, res) => {
   res.send(last_table)
 })
