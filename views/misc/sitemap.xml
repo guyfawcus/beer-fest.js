@@ -21,6 +21,11 @@
         <priority>0.7</priority>
     </url>
     <url>
+        <loc>https://acbf-2020.herokuapp.com/map</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://acbf-2020.herokuapp.com/downloads</loc>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>

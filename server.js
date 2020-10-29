@@ -149,7 +149,7 @@ app.use(
       formAction: ["'self'"],
       // frameAncestors: ["'self'"], // Comment out to allow embedding as an iframe elsewhere
       frameSrc: ["'self'"],
-      imgSrc: ["'self'"],
+      imgSrc: ["'self'", '*.tile.openstreetmap.org', 'data:'],
       manifestSrc: ["'self'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'"],
@@ -801,6 +801,10 @@ app.get('/downloads', (req, res) => {
   })
 })
 
+app.get('/map', (req, res) => {
+  res.sendFile(path.join(__dirname, 'views/map.html'))
+})
+
 app.get('/brewery-wikidata-query', (req, res) => {
   // Initialise the beer information so that `brewery_query_url` is up-to-date
   initialiseBeers().then(() => {
@@ -867,6 +871,23 @@ app.get('/js/reveal.esm.js', (req, res) => {
 })
 app.get('/js/reveal.esm.js.map', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/reveal.js/dist/reveal.esm.js.map'))
+})
+
+// Routes for Leaflet (the mapping package)
+app.get('/js/leaflet.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.js'))
+})
+app.get('/js/leaflet.js.map', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.js.map'))
+})
+app.get('/css/leaflet.css', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.css'))
+})
+app.get('/css/images/marker-icon.png', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/images/marker-icon.png'))
+})
+app.get('/css/images/marker-shadow.png', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/images/marker-shadow.png'))
 })
 
 // ---------------------------------------------------------------------------
