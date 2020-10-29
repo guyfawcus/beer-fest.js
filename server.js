@@ -24,6 +24,7 @@ const bcrypt = require('bcryptjs')
 const csvParse = require('csv-parse/lib/sync')
 const csvStringify = require('csv-stringify/lib/sync')
 const fetch = require('node-fetch')
+const GeoJSON = require('geojson')
 const redis = require('redis')
 const socketIo = require('socket.io')
 const WBK = require('wikibase-sdk')
@@ -71,6 +72,10 @@ const NUM_OF_BUTTONS = 80
 /** This url contains a Wikidata query for information about the breweries with QIDs
  * It is updated on start and when a new beers file is uploaded. */
 let brewery_query_url = 'https://query.wikidata.org/'
+
+/** This will contain the GeoJSON that describes all of the breweries
+ * It is updated on start and when a new beers file is uploaded. */
+let brewery_geojson = ''
 
 // ---------------------------------------------------------------------------
 // Type definitions
@@ -612,6 +617,59 @@ ORDER BY (fn:lower-case(str(?breweryLabel)))
 }
 
 /**
+ * Updates {@link brewery_geojson}
+ * this will only return points for breweries that have Wikidata QIDs and locations in Wikidata.
+ * @param {beersObj} beers The object containing information on each beer
+ * @returns {string} The URL containing the query for brewery information
+ */
+function generateBreweryGeojson(beers) {
+  const data = {}
+
+  Object.values(beers).forEach((beer) => {
+    const qid = beer.brewery_wikidata_id
+
+    const vegan = beer.vegan === 'y' ? ' (Ve)' : ''
+    const glutenFree = beer.gluten_free === 'y' ? ' (GF)' : ''
+    const beer_str = `${beer.beer_number} - ${beer.beer_name}${vegan}${glutenFree}`
+
+    // Only process the entry if it has a Wikidata QID
+    if (qid) {
+      // Only process the entry if it has location data to avoid putting it on Null Island
+      if (beer.brewery_latitude !== '' && beer.brewery_longitude !== '') {
+        // If this is the first time coming across this brewery...
+        if (!data[qid]) {
+          data[qid] = {}
+          data[qid].name = beer.brewer
+          data[qid].latitude = beer.brewery_latitude
+          data[qid].longitude = beer.brewery_longitude
+
+          data[qid].wikidata_qid = qid
+          data[qid].wikidata_url = `http://www.wikidata.org/entity/${qid}`
+
+          data[qid].website = beer.brewery_website
+          data[qid].beer_advocate = beer.brewery_beer_advocate
+          data[qid].rate_beer = beer.brewery_rate_beer
+          data[qid].untappd = beer.brewery_untappd
+          data[qid].facebook = beer.brewery_facebook
+          data[qid].instagram = beer.brewery_instagram
+          data[qid].twitter = beer.brewery_twitter
+
+          data[qid].num_of_beers = 1
+          data[qid].beers = [beer_str]
+        } else {
+          // If this brewery is already in `data`...
+          data[qid].num_of_beers++
+          data[qid].beers.push(beer_str)
+        }
+      }
+    }
+  })
+
+  const geojson = GeoJSON.parse(Object.values(data), { Point: ['latitude', 'longitude'] })
+  return geojson
+}
+
+/**
  * Initialises the {@link beers} array and manages the saving of the `CURRENT_BEERS_FILE`
  * The order that this will check the existence of, and then use is:
  * Redis -> CURRENT_BEERS_FILE -> BEERS_FILE -> generated empty file
@@ -653,8 +711,9 @@ function initialiseBeers() {
           console.log('Saving beer information to Redis')
           saveBeers(beers)
 
-          console.log('Updating brewery query URL')
+          console.log('Updating brewery query URL and GeoJSON')
           brewery_query_url = generateBreweryQuery(beers)
+          brewery_geojson = generateBreweryGeojson(beers)
 
           console.log('Resolving newly created beers list')
           resolve()
@@ -669,8 +728,9 @@ function initialiseBeers() {
           console.log('Saving CSV from Redis')
           saveCSV(beers)
 
-          console.log('Updating brewery query URL')
+          console.log('Updating brewery query URL and GeoJSON')
           brewery_query_url = generateBreweryQuery(beers)
+          brewery_geojson = generateBreweryGeojson(beers)
 
           console.log('Resolving beers from Redis')
           resolve()
@@ -745,6 +805,13 @@ app.get('/brewery-wikidata-query', (req, res) => {
   // Initialise the beer information so that `brewery_query_url` is up-to-date
   initialiseBeers().then(() => {
     res.redirect(brewery_query_url)
+  })
+})
+
+app.get('/downloads/breweries.geojson', (req, res) => {
+  // Initialise the beer information so that `brewery_geojson` is up-to-date
+  initialiseBeers().then(() => {
+    res.send(brewery_geojson)
   })
 })
 
@@ -1082,8 +1149,9 @@ io.on('connection', (socket) => {
             console.log('Saving new beer information CSV')
             saveCSV(beers)
 
-            console.log('Updating brewery query URL')
+            console.log('Updating brewery query URL and GeoJSON')
             brewery_query_url = generateBreweryQuery(beers)
+            brewery_geojson = generateBreweryGeojson(beers)
 
             console.log('Saving beer information to Redis')
             saveBeers(beers)
