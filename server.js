@@ -628,10 +628,6 @@ function generateBreweryGeojson(beers) {
   Object.values(beers).forEach((beer) => {
     const qid = beer.brewery_wikidata_id
 
-    const vegan = beer.vegan === 'y' ? ' (Ve)' : ''
-    const glutenFree = beer.gluten_free === 'y' ? ' (GF)' : ''
-    const beer_str = `${beer.beer_number} - ${beer.beer_name}${vegan}${glutenFree}`
-
     // Only process the entry if it has a Wikidata QID
     if (qid) {
       // Only process the entry if it has location data to avoid putting it on Null Island
@@ -655,11 +651,29 @@ function generateBreweryGeojson(beers) {
           data[qid].twitter = beer.brewery_twitter
 
           data[qid].num_of_beers = 1
-          data[qid].beers = [beer_str]
+          data[qid].beers = [
+            {
+              number: beer.beer_number,
+              name: beer.beer_name,
+              abv: beer.abv,
+              style: beer.beer_style,
+              vegan: beer.vegan,
+              gluten_free: beer.gluten_free,
+              description: beer.description
+            }
+          ]
         } else {
           // If this brewery is already in `data`...
           data[qid].num_of_beers++
-          data[qid].beers.push(beer_str)
+          data[qid].beers.push({
+            number: beer.beer_number,
+            name: beer.beer_name,
+            abv: beer.abv,
+            style: beer.beer_style,
+            vegan: beer.vegan,
+            gluten_free: beer.gluten_free,
+            description: beer.description
+          })
         }
       }
     }

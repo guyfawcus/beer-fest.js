@@ -24,8 +24,7 @@ const breweryIcon = L.icon({
  * @returns {string} Formatted string with brewery information
  */
 function generateBreweryLabel(layer) {
-  const props = layer.feature.properties
-
+  const brewery = layer.feature.properties
   // The available properties are:
   //   name
   //   wikidata_qid
@@ -40,11 +39,26 @@ function generateBreweryLabel(layer) {
   //   twitter
   //   ----------------------
   //   num_of_beers  (number)
-  //   beers         (array)
+  //   beers         (array of objects with the following properties):
+  //     number
+  //     name
+  //     abv
+  //     style
+  //     vegan
+  //     gluten_free
+  //     description
 
-  return `<b>${props.name}</b><br>
-          <a href="${props.website}">${props.website}</a><br><br>
-          ${props.beers.join('<br>')}`
+  // Format the the list of beer objects into a list of strings
+  const beer_strings = brewery.beers.map((beer) => {
+    const vegan = beer.vegan === 'y' ? ' (Ve)' : ''
+    const glutenFree = beer.gluten_free === 'y' ? ' (GF)' : ''
+    return `${beer.number} - ${beer.name}${vegan}${glutenFree}`
+  })
+
+  // Return the formatted string for use in the popup
+  return `<b>${brewery.name}</b><br>
+          <a href="${brewery.website}">${brewery.website}</a><br><br>
+          ${beer_strings.join('<br>')}<br>`
 }
 
 // ---------------------------------------------------------------------------
