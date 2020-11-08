@@ -651,6 +651,8 @@ function generateBreweryGeojson(beers) {
           data[qid].twitter = beer.brewery_twitter
 
           data[qid].num_of_beers = 1
+          data[qid].has_vegan_beers = beer.vegan === 'y'
+          data[qid].has_gluten_free_beers = beer.gluten_free === 'y'
           data[qid].beers = [
             {
               number: beer.beer_number,
@@ -665,6 +667,8 @@ function generateBreweryGeojson(beers) {
         } else {
           // If this brewery is already in `data`...
           data[qid].num_of_beers++
+          data[qid].has_vegan_beers = data[qid].has_vegan_beers || beer.vegan === 'y'
+          data[qid].has_gluten_free_beers = data[qid].has_gluten_free_beers || beer.gluten_free === 'y'
           data[qid].beers.push({
             number: beer.beer_number,
             name: beer.beer_name,

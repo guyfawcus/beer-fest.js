@@ -42,8 +42,10 @@ function generateBreweryLabel(layer) {
   //   instagram
   //   twitter
   //   ----------------------
-  //   num_of_beers  (number)
-  //   beers         (array of objects with the following properties):
+  //   num_of_beers           (number)
+  //   has_vegan_beers        (bool)
+  //   has_gluten_free_beers  (bool)
+  //   beers                  (array of objects with the following properties):
   //     number
   //     name
   //     abv
