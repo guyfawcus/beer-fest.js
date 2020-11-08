@@ -35,6 +35,9 @@ let STOCK_LEVELS = {}
 /** The total number of availability buttons */
 const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 80
 
+/** There is a warning icon on most pages that appears if the connection is lost */
+const warningIcon = document.getElementById('warning_icon')
+
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(`${location.host}?source=${location.pathname}`, {
   transports: ['websocket']
@@ -649,7 +652,7 @@ document.addEventListener('visibilitychange', () => {
 socket.on('connect', () => {
   // Hide warning icon
   console.log('Server connected')
-  document.getElementsByClassName('warning_icon')[0].style.display = 'none'
+  if (warningIcon) warningIcon.style.display = 'none'
 })
 
 socket.on('disconnect', () => {
@@ -657,7 +660,7 @@ socket.on('disconnect', () => {
   setTimeout(() => {
     if (socket.connected !== true) {
       console.log('%cServer disconnected!', 'color:red;')
-      document.getElementsByClassName('warning_icon')[0].style.display = 'grid'
+      if (warningIcon) warningIcon.style.display = 'grid'
     }
   }, 2000)
 })
