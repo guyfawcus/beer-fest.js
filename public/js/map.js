@@ -1,4 +1,8 @@
+/* eslint-env browser */
 /* global fetch, L */
+'use strict'
+
+import { socket } from './core.js'
 
 // ---------------------------------------------------------------------------
 // Definitions
@@ -84,21 +88,27 @@ venue.setZIndexOffset(1000)
 venue.addTo(map)
 venue.openPopup()
 
-// Add the breweries with their labels
-fetch('/downloads/breweries.geojson')
-  .then((response) => response.json())
-  .then((data) => {
-    const breweries = L.geoJSON(data, {
-      pointToLayer: (feature, latlng) => {
-        return L.marker(latlng, {
-          icon: breweryIcon,
-          title: feature.properties.name,
-          alt: feature.properties.name,
-          riseOnHover: true
-        })
-      }
+// Update if there is a message sent to the 'beers' topic.
+// This is so that a new file is uploaded, it will be automatically refreshed.
+socket.on('beers', (beerList) => {
+  console.debug('Updating brewery information')
+
+  // Add the breweries with their labels
+  fetch('/downloads/breweries.geojson')
+    .then((response) => response.json())
+    .then((data) => {
+      const breweries = L.geoJSON(data, {
+        pointToLayer: (feature, latlng) => {
+          return L.marker(latlng, {
+            icon: breweryIcon,
+            title: feature.properties.name,
+            alt: feature.properties.name,
+            riseOnHover: true
+          })
+        }
+      })
+      breweries.bindPopup((layer) => generateBreweryLabel(layer), { maxWidth: 500 })
+      // map.fitBounds(breweries.getBounds(), { padding: [10, 10] })
+      breweries.addTo(map)
     })
-    breweries.bindPopup((layer) => generateBreweryLabel(layer), { maxWidth: 500 })
-    // map.fitBounds(breweries.getBounds(), { padding: [10, 10] })
-    breweries.addTo(map)
-  })
+})

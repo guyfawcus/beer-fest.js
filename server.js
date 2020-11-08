@@ -1069,7 +1069,7 @@ io.on('connection', (socket) => {
   }
 
   // Send the beer information
-  if (pathname === 'history' || pathname === 'availability' || pathname === 'bot') {
+  if (pathname === 'history' || pathname === 'availability' || pathname === 'map' || pathname === 'bot') {
     initialiseBeers().then(() => {
       io.to(socket.id).emit('beers', beers)
     })
