@@ -19,6 +19,9 @@ const breweryIcon = L.icon({
   popupAnchor: [0, -17.5]
 })
 
+// This will contain all of the brewery points
+let breweries = L.geoJSON()
+
 // ---------------------------------------------------------------------------
 // Functions
 // ---------------------------------------------------------------------------
@@ -95,11 +98,14 @@ venue.openPopup()
 socket.on('beers', (beerList) => {
   console.debug('Updating brewery information')
 
+  // Remove the last set of breweries to start from a clean slate
+  map.removeLayer(breweries)
+
   // Add the breweries with their labels
   fetch('/downloads/breweries.geojson')
     .then((response) => response.json())
     .then((data) => {
-      const breweries = L.geoJSON(data, {
+      breweries = L.geoJSON(data, {
         pointToLayer: (feature, latlng) => {
           return L.marker(latlng, {
             icon: breweryIcon,
