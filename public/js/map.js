@@ -19,6 +19,12 @@ const breweryIcon = L.icon({
   popupAnchor: [0, -17.5]
 })
 
+const hiddenBreweryIcon = L.icon({
+  iconUrl: 'icons/hidden-placeholder.svg',
+  iconSize: [35, 35],
+  popupAnchor: [0, -17.5]
+})
+
 // This will contain all of the brewery points
 let breweries = L.geoJSON()
 
@@ -70,6 +76,27 @@ function generateBreweryLabel(layer) {
           ${beer_strings.join('<br>')}<br>`
 }
 
+/**
+ * This function will refresh all of the brewery icons, 'hiding' them with a greyed-out icon if necessary.
+ */
+function refreshIcons() {
+  const hide_not_vegan = localStorage.getItem('HIDE_NOT_VEGAN')
+  const hide_not_gluten_free = localStorage.getItem('HIDE_NOT_GLUTEN_FREE')
+  const showIcon = (brewery) => brewery.setIcon(breweryIcon).setZIndexOffset(0)
+  const hideIcon = (brewery) => brewery.setIcon(hiddenBreweryIcon).setZIndexOffset(-1000)
+
+  breweries.eachLayer((brewery) => {
+    const has_vegan_beers = brewery.feature.properties.has_vegan_beers
+    const has_gluten_free_beers = brewery.feature.properties.has_gluten_free_beers
+
+    if ((hide_not_vegan && !has_vegan_beers) || (hide_not_gluten_free && !has_gluten_free_beers)) {
+      hideIcon(brewery)
+    } else {
+      showIcon(brewery)
+    }
+  })
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
@@ -115,8 +142,14 @@ socket.on('beers', (beerList) => {
           })
         }
       })
+      refreshIcons()
       breweries.bindPopup((layer) => generateBreweryLabel(layer), { maxWidth: 500 })
       // map.fitBounds(breweries.getBounds(), { padding: [10, 10] })
       breweries.addTo(map)
     })
 })
+
+// Refresh the icons if the 'hiding' options are changed
+window.onstorage = (event) => {
+  if (event.key === 'HIDE_NOT_VEGAN' || event.key === 'HIDE_NOT_GLUTEN_FREE') refreshIcons()
+}
