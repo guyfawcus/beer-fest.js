@@ -868,10 +868,10 @@ app.get('/humans.txt', (req, res) => {
 
 // Routes for slimmed down socket.io (without JSON3, a JSON polyfill for IE6/IE7, and debug)
 app.get('/js/socket.io.slim.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.slim.js'))
+  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.min.js'))
 })
 app.get('/js/socket.io.slim.js.map', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.slim.js.map'))
+  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.min.js.map'))
 })
 
 // Routes for reveal (the slideshow package)
