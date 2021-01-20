@@ -403,7 +403,8 @@ body.keyboardControl .button:focus {
 #buttons_header {
   cursor: context-menu;
 }
-.popup-background {
+
+#popup-background {
   display: none;
   background-color: var(--noscript-background);
   width: 100%;
@@ -412,7 +413,7 @@ body.keyboardControl .button:focus {
   z-index: 900;
 }
 
-.popup-menu {
+#popup-menu {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -431,17 +432,17 @@ body.keyboardControl .button:focus {
 }
 
 @media (orientation: portrait) {
-  .popup-menu {
+  #popup-menu {
     /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
     transform: translate(-50%, 20%) scale(1.4);
   }
 }
 
-.popup-background.show {
+#popup-background.show {
   display: unset;
 }
 
-.popup-menu.show {
+#popup-menu.show {
   display: flex;
 }
 

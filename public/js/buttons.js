@@ -21,16 +21,15 @@ function clickButton(number) {
   updateNumber(number)
 }
 
-function openMenu() {
+function openMenuPopup() {
   // Update check share URL
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
   document.getElementById('popup-background').classList.add('show')
   document.getElementById('popup-menu').classList.add('show')
 }
 
-function closeMenu() {
-  document.getElementById('popup-background').classList.remove('show')
-  document.getElementById('popup-menu').classList.remove('show')
+function closeAllPopups() {
+  for (const popup of document.getElementsByClassName('popup')) popup.classList.remove('show')
 }
 
 // ---------------------------------------------------------------------------
@@ -65,7 +64,7 @@ document.onkeydown = (eventObj) => {
   if (eventObj.ctrlKey && eventObj.key === 'z') checkHistory.undo()
   if (eventObj.ctrlKey && eventObj.key === 'y') checkHistory.redo()
   if (eventObj.key === 'Escape') {
-    closeMenu()
+    closeAllPopups()
     document.body.classList.remove('keyboardControl')
   }
 
@@ -82,12 +81,12 @@ document.onmousemove = (eventObj) => {
 
 // Show menu if the header is clicked on
 document.getElementById('buttons_header').addEventListener('click', () => {
-  openMenu()
+  openMenuPopup()
 })
 
 // Hide menu if anywhere other than the popup is clicked on
 document.addEventListener('click', (event) => {
-  if (event.target.closest('.popup-background')) closeMenu()
+  if (event.target.closest('#popup-background')) closeAllPopups()
 })
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
