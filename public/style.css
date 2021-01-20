@@ -459,10 +459,10 @@ body.keyboardControl .button:focus {
   font-weight: bold;
 }
 
-#check-share-url:link {
+.popup a:link {
   color: var(--default-link-colour);
 }
-#check-share-url:visited {
+.popup a:visited {
   color: var(--default-visited-colour);
 }
 
