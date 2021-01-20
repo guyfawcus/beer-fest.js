@@ -86,10 +86,8 @@ document.getElementById('buttons_header').addEventListener('click', () => {
 })
 
 // Hide menu if anywhere other than the popup is clicked on
-document.addEventListener('click', () => {
-  if (!event.target.closest('#popup-menu') && !event.target.closest('#buttons_header')) {
-    closeMenu()
-  }
+document.addEventListener('click', (event) => {
+  if (event.target.closest('.popup-background')) closeMenu()
 })
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
