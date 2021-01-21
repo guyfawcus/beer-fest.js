@@ -149,6 +149,22 @@ function setColour(number, level, element) {
 }
 
 // ---------------------------------------------------------------------------
+// Index page formatting
+// ---------------------------------------------------------------------------
+if (location.pathname === '/') {
+  const auth_button = document.getElementById('login')
+
+  // Initialise the text on the login button.
+  // This is also set when a socket event on the 'auth' channel is received,
+  // that however takes some time whereas this is instantaneous and prevents flashing.
+  if (localStorage.getItem('authenticated') === 'true') {
+    auth_button.textContent = 'Log out'
+  } else {
+    auth_button.textContent = 'Log in'
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Button / Availability functions
 // ---------------------------------------------------------------------------
 /**
@@ -671,6 +687,7 @@ socket.on('auth', (status) => {
 
   if (status) {
     AUTHORISED = true
+    localStorage.setItem('authenticated', 'true')
     console.log('Authenticated with server')
     if (loginElement) {
       loginElement.innerHTML = 'Log out'
@@ -678,6 +695,7 @@ socket.on('auth', (status) => {
     }
   } else {
     AUTHORISED = false
+    localStorage.removeItem('authenticated')
     console.debug('Not authenticated')
     if (loginElement) {
       loginElement.innerHTML = 'Log in'
