@@ -172,32 +172,31 @@ if (location.pathname === '/') {
  * @param {number} number The button number to add the cross to
  */
 export function buildCross(number) {
-  const element = document.getElementById(`button_${number}`)
+  const button = document.getElementById(`button_${number}`)
 
   const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
   const forward_slash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
 
-  cross.setAttribute('class', 'cross')
-  cross.setAttribute('id', `cross_${number}`)
+  cross.classList.add('cross')
+  cross.id = `cross_${number}`
   // Layer the cross underneath the number
-  // cross.setAttribute('style', 'z-index:-1')
+  // cross.style.zIndex = '-1'
 
-  backslash.setAttribute('class', 'backslash')
+  backslash.classList.add('backslash')
   backslash.setAttribute('x1', '10')
   backslash.setAttribute('y1', '10')
   backslash.setAttribute('x2', '90')
   backslash.setAttribute('y2', '90')
 
-  forward_slash.setAttribute('class', 'forward_slash')
+  forward_slash.classList.add('forward_slash')
   forward_slash.setAttribute('x1', '10')
   forward_slash.setAttribute('y1', '90')
   forward_slash.setAttribute('x2', '90')
   forward_slash.setAttribute('y2', '10')
 
-  cross.appendChild(backslash)
-  cross.appendChild(forward_slash)
-  element.appendChild(cross)
+  cross.append(backslash, forward_slash)
+  button.append(cross)
 }
 
 /**
