@@ -201,6 +201,79 @@ export function buildCross(number) {
 }
 
 /**
+ * This function generates a modal that displays information about the beer.
+ * @param {number} number The button number to add the info modal to
+ */
+export function buildInfoModal(number) {
+  // Create the modal
+  const modal = document.createElement('div')
+  modal.classList.add('popup', 'popup-info-modal')
+  modal.id = `info_modal_${number}`
+
+  // Create an element for the text content and initialise it
+  const text = document.createElement('div')
+  text.classList.add('info_modal_text')
+  text.append(`No information for number ${number}`)
+
+  // Create the button element
+  const button = document.createElement('div')
+  button.classList.add('button', 'info_modal_button')
+
+  // Set the button text depending on auth status
+  button.textContent = localStorage.getItem('authenticated') === 'true' ? 'Toggle stock level' : 'Toggle check mark'
+
+  // Add the elements and event listener
+  modal.append(text, button)
+  button.addEventListener('click', (event) => updateNumber(number))
+
+  document.body.append(modal)
+}
+
+/**
+ * Update the modal on the selected number.
+ * @param {number} number The number of modal to update the info for
+ */
+function setInfoModal(number) {
+  const info_elem = document.getElementById(`info_modal_${number}`).querySelector('.info_modal_text')
+  const thisBeer = BEERS[number]
+
+  // Clear the modal of  any previous content
+  info_elem.innerHTML = ''
+
+  if (thisBeer !== undefined) {
+    // Define the content for the header text field
+    const vegan = thisBeer.vegan === 'y' ? ' (Ve)' : ''
+    const glutenFree = thisBeer.gluten_free === 'y' ? ' (GF)' : ''
+    const header = `${thisBeer.beer_number} - ${thisBeer.beer_name}${vegan}${glutenFree}`
+
+    // Create and add the text elements
+    const header_elem = document.createElement('div')
+    const brewer_elem = document.createElement('div')
+    const abv_elem = document.createElement('div')
+    const beer_style_elem = document.createElement('div')
+    const description_elem = document.createElement('div')
+    const brewery_website_elem = document.createElement('div')
+
+    header_elem.classList.add('header')
+    brewer_elem.classList.add('brewer')
+    abv_elem.classList.add('abv')
+    beer_style_elem.classList.add('beer_style')
+    description_elem.classList.add('description')
+    brewery_website_elem.classList.add('brewery_website')
+
+    header_elem.innerHTML = `<h2>${header}</h2><hr>`
+    brewer_elem.textContent = thisBeer.brewer
+    abv_elem.textContent = thisBeer.abv
+    beer_style_elem.textContent = thisBeer.beer_style
+    description_elem.textContent = thisBeer.description
+    brewery_website_elem.innerHTML = `<a href="${thisBeer.brewery_website}">${thisBeer.brewery_website}</a>`
+
+    info_elem.append(header_elem, brewer_elem, abv_elem, beer_style_elem, description_elem, brewery_website_elem)
+  } else {
+    info_elem.append(`No information for number ${number}`)
+  }
+}
+/**
  * Add or remove the cross on the selected number.
  * @param {number} number The number to set or remove the cross on
  * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
@@ -347,6 +420,7 @@ export function refreshButtons() {
     // Deactivate transitions because transitioning everything causes jank on mobile
     button.style.transition = 'none'
     setTooltip(number, button)
+    setInfoModal(number)
     setColour(number, undefined, button)
     // Restore transitions - setTimeout of 0 is needed to make sure the call stack is clear
     setTimeout(() => (button.style.transition = 'all var(--transition-time)'), 0)
@@ -682,8 +756,9 @@ socket.on('disconnect', () => {
 })
 
 socket.on('auth', (status) => {
-  // Change the text of the login button depending of the state of AUTHORISED
+  // Change the text of the login or info modal buttons depending of the state of AUTHORISED
   const loginElement = document.getElementById('login')
+  const info_modal_buttons = document.getElementsByClassName('info_modal_button')
 
   if (status) {
     AUTHORISED = true
@@ -693,6 +768,9 @@ socket.on('auth', (status) => {
       loginElement.innerHTML = 'Log out'
       loginElement.href = '/logout'
     }
+    for (const button of info_modal_buttons) {
+      button.textContent = 'Toggle stock level'
+    }
   } else {
     AUTHORISED = false
     localStorage.removeItem('authenticated')
@@ -700,6 +778,9 @@ socket.on('auth', (status) => {
     if (loginElement) {
       loginElement.innerHTML = 'Log in'
       loginElement.href = '/login'
+    }
+    for (const button of info_modal_buttons) {
+      button.textContent = 'Toggle check mark'
     }
   }
 })

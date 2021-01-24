@@ -159,6 +159,16 @@ input[type='checkbox']:hover {
   cursor: pointer;
 }
 
+hr {
+  border: none;
+  border-top: 3px double #333;
+  color: var(--main-colour);
+  overflow: visible;
+  text-align: center;
+  height: 5px;
+  width: 100%;
+}
+
 /* ------------------------------------------------------------------------ */
 /*  noscript                                                                */
 /* ------------------------------------------------------------------------ */
@@ -413,7 +423,8 @@ body.keyboardControl .button:focus {
   z-index: 900;
 }
 
-#popup-menu {
+#popup-menu,
+.popup-info-modal {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -431,8 +442,15 @@ body.keyboardControl .button:focus {
   z-index: 901;
 }
 
+.popup-info-modal {
+  position: fixed;
+  width: 400px;
+  top: 33%;
+}
+
 @media (orientation: portrait) {
-  #popup-menu {
+  #popup-menu,
+  .popup-info-modal {
     /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
     transform: translate(-50%, 20%) scale(1.4);
   }
@@ -442,7 +460,8 @@ body.keyboardControl .button:focus {
   display: unset;
 }
 
-#popup-menu.show {
+#popup-menu.show,
+.popup-info-modal.show {
   display: flex;
 }
 
@@ -469,6 +488,13 @@ body.keyboardControl .button:focus {
 #clear-checks {
   font-size: 1.2rem;
   font-weight: bold;
+}
+
+/* ------------ */
+/* Info modal */
+/* ------------ */
+.info_modal_text {
+  padding-bottom: 1em;
 }
 
 /* -------------------------------- */

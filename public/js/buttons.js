@@ -6,6 +6,7 @@ import {
   buildCross,
   checkHistory,
   generateCheckedHexURL,
+  buildInfoModal,
   parseCheckedHexData,
   refreshButtons,
   socket,
@@ -18,7 +19,12 @@ import {
 // ---------------------------------------------------------------------------
 function clickButton(number) {
   checkHistory.clearFuture()
-  updateNumber(number)
+  if (new URL(location.href).searchParams.get('info') !== 'true') {
+    updateNumber(number)
+  } else {
+    document.getElementById('popup-background').classList.add('show')
+    document.getElementById(`info_modal_${number}`).classList.add('show')
+  }
 }
 
 function openMenuPopup() {
@@ -42,6 +48,9 @@ for (const button of buttons) {
 
   // Build a cross on the button
   buildCross(number)
+
+  // Build the information modal on the button
+  buildInfoModal(number)
 
   // Allow tabbing through the buttons
   button.setAttribute('tabindex', '0')
