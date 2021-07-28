@@ -39,9 +39,9 @@ const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').le
 const warningIcon = document.getElementById('warning_icon')
 
 /** The socket.io socket object */
-export const socket = globalThis.io.connect(`${location.host}?source=${location.pathname}`, {
-  transports: ['websocket', 'polling']
-})
+export const socket = globalThis.io.connect(`${location.host}?source=${location.pathname}`)
+// BUG? Disabled {transports: ['websocket', 'polling']} due to iOS connection problems,
+// let Socket.io decide by initiating a connection using polling
 
 // ---------------------------------------------------------------------------
 // Type definitions
