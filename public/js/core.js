@@ -40,7 +40,7 @@ const warningIcon = document.getElementById('warning_icon')
 
 /** The socket.io socket object */
 export const socket = globalThis.io.connect(`${location.host}?source=${location.pathname}`, {
-  transports: ['websocket']
+  transports: ['websocket', 'polling']
 })
 
 // ---------------------------------------------------------------------------
