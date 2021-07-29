@@ -928,7 +928,7 @@ app.post('/users', (req, res) => {
   bcrypt.compare(code, ADMIN_CODE, (err, resp) => {
     if (err) handleError("Couldn't compare codes with bcrypt", err)
     if (resp) {
-      console.log(`Client - ${thisSession} - has entered the correct code`)
+      console.log(`Client - ${thisSession} (${name}) - has entered the correct code`)
       req.session.name = name
       redisClient.sadd('authed_ids', thisSession)
       redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
@@ -939,7 +939,7 @@ app.post('/users', (req, res) => {
       })
       res.redirect('/')
     } else {
-      console.log(`Client - ${thisSession} - has entered the wrong code (${code})`)
+      console.log(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
       req.flash('error', 'Wrong code, please try again')
       res.redirect('login')
     }
