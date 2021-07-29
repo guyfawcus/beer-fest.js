@@ -178,6 +178,13 @@ app.post('/report-violation', cspParser, (req, res) => {
     return
   }
 
+  // Temporarily ignore violations caused by a websocket transport issue that needs resolving
+  if (blockedUri.substr(0,4) === 'wss:') {
+    console.log('Websocket transport issue: wss')
+    res.status(204).end()
+    return
+  }
+
   if (req.body) {
     console.log('CSP Violation: ', req.body)
   } else {
