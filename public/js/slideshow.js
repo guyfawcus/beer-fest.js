@@ -17,5 +17,5 @@ Reveal.initialize({
 })
 
 Reveal.configure({
-  autoSlide: 2000
+  autoSlide: 5000
 })
