@@ -111,6 +111,17 @@ const newUrl = new URL(location.href)
 newUrl.searchParams.delete('checked')
 history.replaceState(null, '', newUrl.toString())
 
+// Set the default state for options
+if (!localStorage.getItem('HIDE_NO_INFORMATION')) {
+  localStorage.setItem('HIDE_NO_INFORMATION', 'true')
+}
+if (!localStorage.getItem('HIDE_NOT_VEGAN')) {
+  localStorage.setItem('HIDE_NOT_VEGAN', 'false')
+}
+if (!localStorage.getItem('HIDE_NOT_GLUTEN_FREE')) {
+  localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'false')
+}
+
 // Update this page if changes are made to another one on the same device
 window.onstorage = (event) => {
   const changeEvent = new Event('change')
@@ -182,7 +193,7 @@ info_checkbox.addEventListener('change', (event) => {
     localStorage.setItem('HIDE_NO_INFORMATION', 'true')
     refreshButtons()
   } else {
-    localStorage.removeItem('HIDE_NO_INFORMATION')
+    localStorage.setItem('HIDE_NO_INFORMATION', 'false')
     refreshButtons()
   }
 })
@@ -191,7 +202,7 @@ vegan_checkbox.addEventListener('change', (event) => {
     localStorage.setItem('HIDE_NOT_VEGAN', 'true')
     refreshButtons()
   } else {
-    localStorage.removeItem('HIDE_NOT_VEGAN')
+    localStorage.setItem('HIDE_NOT_VEGAN', 'false')
     refreshButtons()
   }
 })
@@ -200,7 +211,7 @@ gluten_free_checkbox.addEventListener('change', (event) => {
     localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'true')
     refreshButtons()
   } else {
-    localStorage.removeItem('HIDE_NOT_GLUTEN_FREE')
+    localStorage.setItem('HIDE_NOT_GLUTEN_FREE', 'false')
     refreshButtons()
   }
 })
