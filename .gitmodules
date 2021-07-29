@@ -1,0 +1,3 @@
+[submodule "public/images/sponsors"]
+	path = public/images/sponsors
+	url = https://github.com/guyfawcus/ACBF9-2021-sponsors.git
