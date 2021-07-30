@@ -6,6 +6,7 @@ import Reveal from './reveal.esm.js'
 
 Reveal.initialize({
   preloadIframes: true,
+  viewDistance: 10,
   autoSlideStoppable: false,
   progress: false,
   controls: false,
