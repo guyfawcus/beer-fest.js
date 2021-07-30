@@ -80,8 +80,8 @@ function generateBreweryLabel(layer) {
  * This function will refresh all of the brewery icons, 'hiding' them with a greyed-out icon if necessary.
  */
 function refreshIcons() {
-  const hide_not_vegan = localStorage.getItem('HIDE_NOT_VEGAN')
-  const hide_not_gluten_free = localStorage.getItem('HIDE_NOT_GLUTEN_FREE')
+  const hide_not_vegan = localStorage.getItem('HIDE_NOT_VEGAN') === 'true'
+  const hide_not_gluten_free = localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true'
   const showIcon = (brewery) => brewery.setIcon(breweryIcon).setZIndexOffset(0)
   const hideIcon = (brewery) => brewery.setIcon(hiddenBreweryIcon).setZIndexOffset(-1000)
 
