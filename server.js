@@ -95,7 +95,10 @@ let brewery_geojson = ''
 // Initial setup
 // ---------------------------------------------------------------------------
 const app = express()
-const redisClient = redis.createClient({ url: REDIS_URL })
+const redisClient = redis.createClient({
+  url: REDIS_URL,
+  tls: { rejectUnauthorized: false, requestCert: true, agent: false }
+})
 const RedisStore = connectRedis(session)
 
 const wdk = WBK({
