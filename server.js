@@ -96,7 +96,8 @@ let brewery_geojson = ''
 // ---------------------------------------------------------------------------
 const app = express()
 
-const tls_config = NODE_ENV === 'production' ? { rejectUnauthorized: false, requestCert: true, agent: false } : undefined
+const tls_config =
+  NODE_ENV === 'production' ? { rejectUnauthorized: false, requestCert: true, agent: false } : undefined
 const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
 const RedisStore = connectRedis(session)
 
@@ -212,24 +213,24 @@ app.use(express.urlencoded({ extended: false }))
 app.use(expressFlash())
 app.use(redisSession)
 
-//app.use((req, res, next) => {
-//  // Only cache resources if:
-//  //   * They are requested via a GET
-//  //   * The URL is not in the `disableForURLs` list
-//  //   * It is not a request for an API endpoint
-//  const disableForURLs = ['/login', '/logout', '/settings', '/brewery-wikidata-query']
-//  const apiURL = '/api/'
+/* app.use((req, res, next) => {
+  // Only cache resources if:
+  //   * They are requested via a GET
+  //   * The URL is not in the `disableForURLs` list
+  //   * It is not a request for an API endpoint
+  const disableForURLs = ['/login', '/logout', '/settings', '/brewery-wikidata-query']
+  const apiURL = '/api/'
 
-//  if (req.method === 'GET' && !disableForURLs.includes(req.url) && !req.url.includes(apiURL)) {
-//    // console.log('+++++++++++++++++++++++++++ setting cache for', req.url)
-//    res.set('Cache-control', 'public, must-revalidate')
-//  } else {
-//    // console.log('--------------------------- disable cache for', req.url)
-//    res.set('Cache-control', 'no-store')
-//  }
+  if (req.method === 'GET' && !disableForURLs.includes(req.url) && !req.url.includes(apiURL)) {
+    // console.log('+++++++++++++++++++++++++++ setting cache for', req.url)
+    res.set('Cache-control', 'public, must-revalidate')
+  } else {
+    // console.log('--------------------------- disable cache for', req.url)
+    res.set('Cache-control', 'no-store')
+  }
 
-//  next()
-//})
+  next()
+}) */
 
 // Start the server
 server.listen(process.env.PORT || 8000, () => {
