@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://acbf-2020.herokuapp.com/</loc>
+        <loc>https://acbf-2022.herokuapp.com/</loc>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/availability</loc>
+        <loc>https://acbf-2022.herokuapp.com/availability</loc>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/slideshow</loc>
+        <loc>https://acbf-2022.herokuapp.com/slideshow</loc>
         <changefreq>daily</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/history</loc>
+        <loc>https://acbf-2022.herokuapp.com/history</loc>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/map</loc>
+        <loc>https://acbf-2022.herokuapp.com/map</loc>
         <changefreq>daily</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads</loc>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/settings</loc>
+        <loc>https://acbf-2022.herokuapp.com/settings</loc>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/bridge</loc>
+        <loc>https://acbf-2022.herokuapp.com/bridge</loc>
         <changefreq>daily</changefreq>
         <priority>0.6</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF8-2019.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF8-2019.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF7-2018.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF7-2018.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF6-2017.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF6-2017.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF5-2016.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF5-2016.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF4-2015.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF4-2015.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF3-2014.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF3-2014.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF2-2013.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF2-2013.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
     <url>
-        <loc>https://acbf-2020.herokuapp.com/downloads/ACBF1-2012.csv</loc>
+        <loc>https://acbf-2022.herokuapp.com/downloads/ACBF1-2012.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>
     </url>
