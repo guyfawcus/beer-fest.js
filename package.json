@@ -11,7 +11,7 @@
     "load-test": "artillery run utils/websocket-load-test.yaml",
     "docs": "jsdoc -c jsdoc.json",
     "type-check": "tsc",
-    "update": "ncu -u"
+    "update": "ncu -u --target minor"
   },
   "author": "guyfawcus",
   "license": "MIT",
