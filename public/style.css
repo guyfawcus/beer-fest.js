@@ -372,6 +372,15 @@ body.keyboardControl .button:focus {
   }
 }
 
+#qr {
+  width: 14vh;
+  height: 14vh;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: var(--footer-height);
+}
+
 /* -------------------------------- */
 /* Availability                     */
 /* -------------------------------- */
