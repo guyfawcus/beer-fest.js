@@ -735,6 +735,10 @@ document.addEventListener('visibilitychange', () => {
   }
 })
 
+// Navigate if a back button exists and is clicked on
+const back_button = document.getElementById('back_button')
+if(back_button) back_button.addEventListener('click', () => history.back())
+
 // ---------------------------------------------------------------------------
 // Socket events
 // ---------------------------------------------------------------------------

@@ -89,7 +89,7 @@ document.onmousemove = (eventObj) => {
 }
 
 // Show menu if the header is clicked on
-document.getElementById('buttons_header').addEventListener('click', () => {
+document.getElementById('burger_menu').addEventListener('click', () => {
   openMenuPopup()
 })
 
