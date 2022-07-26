@@ -1,0 +1,73 @@
+beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
+1,A Little Faith,Northern Monk,Q98214662,4.0%,Hazy Pale Ale,,,"All the juice, citrus and tropical flavour of Faith, but even more sessionable at a lower ABV of 4%"
+2,Amity,Vale,Q98072911,3.9%,Bitter,,,A blend of malts to give it a so-fish-ticated dry finish and American Columbus hops that gives it a real bite.
+3,Ashford,Thornbridge,Q7796317,4.2%,Brown Ale,,,"Floral and berry hop with gentle coffee and roast hazelnut aromas. Smooth in the mouth with a nice dry, toasty note."
+4,Beechwood,Chiltern,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
+5,Best,Five Points,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
+6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
+7,Bitter,Almasty,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
+8,Black Friday,Paradigm,Q98075011,6.0%,Dark Mild,,,"Smooth, sweet and smoky. Contains five dark malts to give depth. Very drinkable & very dangerous!"
+9,Black Swan,Vale,Q98072911,3.9%,Dark Mild,,,Dark and smooth with hints of chocolate and coffee on the nose and a soft rounded malt finish
+10,Blonde,Saltaire,Q98073411,4.0%,Blonde,,,A soft rounded malt finish.
+11,Blonde,The 3 Brewers,Q97619412,4.2%,Blonde Ale,,,Light golden in colour and brewed with Mosaic hops. Hoppy aroma and a refreshing smack of fruity citrussy flavours.
+12,Brill Gold,Vale,Q98072911,3.5%,Golden Ale,,,A refreshing golden ale with hints of orange zest and a deep caramel finish.
+13,Broken Dream,Siren,,6.5%,Milk Stout,,,"Indulgent, smooth, unctuous and moreish. Brewed with milk sugar and coffee beans for balance and mouthfeel."
+14,Centennial,Salt,,4.0%,Pale Ale,,,"A smooth session ale with orange, marmalade, tropical fruit aromas complemented by a piney bitter finish."
+15,Chiltern Black,Chiltern,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
+16,Chop & Change Mosaic,Vocation,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
+17,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"Light gold in colour, bursting with citrus and tropical hop flavours and sensationally refreshing. The original UK Citra."
+18,Club Hammer,Popes Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes"
+19,Cornish Bitter,Harbour,,4.0%,Bitter,,,An elaborate grain bill and a cocktail of US and EU hops make for a sweet floral aroma and soft fruit flavours.
+20,Death or Glory,Tring,,7.2%,Strong Ale,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile. "
+21,Double Stout,Hook Norton,Q794591,4.8%,Stout,,,"A rich aroma of sweet chocolate, espresso coffee, herbal hops and cracker-like double dark malt. Enjoy! See: Dark Ebony Smell: Roasted Coffee Taste: Dry Burnt Oak"
+22,Encore,Bristol Beer Factory,Q107716330,4.7%,Saison,,,"Warm fermentation amplifies the classic Saison zing; clove, pepper and banana with a dry, crisp finish."
+23,Eternal,Northern Monk,Q98214662,4.1%,Session IPA,,,Simcoe and Centennial hops dominate this light blonde beer. Tangerine aroma and a quenching citrus pith aftertaste.
+24,Extra Special Marble,Marble,,5.5%,ESB,,,"Deep amber, aromas of toffee, caramel, biscuit and toast;  flavours of tangerine and marmalade with lasting bitterness."
+25,Fanny Ebbs,Tring,,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
+26,Featherstone,Hornes,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
+27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
+28,Fourteen,XT,,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
+29,Golden,The 3 Brewers,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
+30,Golden Ale,Chiltern,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
+31,Golden Ale,Almasty,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
+32,Hop Kitty,XT,,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness. Triple hopped.
+33,I Don't Tip,Anarchy,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
+34,I Remember Having One,Verdant,,3.8%,Pale Ale,,,"Verdant yeast, soft Cornish water and selected Citra hops make this a smooth, big bodied and zesty little beer."
+35,Jaipur DDH,Thornbridge,Q7796317,5.9%,IPA,,,The 15th Anniversary of Jaipur. DDH Jaipur  is double dry hopped creating an even punchier tropical fruit character.
+36,Karate Kiwi,Vocation x Overtone,,5.5%,Pale Ale,,,"NZ hops - Motueka, Rakau & Wai-iti. Citrus, punchy ripe stonefruit. Refreshing, hoppy with a soft bitter finish."
+37,Lazarus,Odyssey,,5.0%,Pale Ale,,,"Extra pale, Golden Promise and Oats. Ekuanot, Azacca and Cryo Azacca. Full-bodied mango sherbet and citrus."
+38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
+39,Made North,Thornbridge,Q7796317,3.8%,Bitter,,,"Bright golden colour. Bracingly bitter and dry, light malt aromas and flavours of earthy, floral English hops."
+40,Manchester Bitter,Marble,,4.2%,Bitter,,,"Speciality malt gives the deep golden coloured robust base, balanced by crisp bitterness and a floral, lemony aroma."
+41,Maris the Otter,Brew York,,3.9%,Bitter,,,3 varieties of new world hops and a malt backbone of 5 different malts. A complex modern take on English Bitter.
+42,Melba,Thornbridge,Q7796317,5.2%,Peach IPA,,,Melba pours a light gold in colour and it’s peachy character is complemented by the use of highly aromatic US hops.
+43,Milk Stout,Bristol Beer Factory,Q107716330,4.5%,Milk Stout,,,Multi award-winning; Smooth chocolatey sweetness and balancing bitterness with hints of dark fruits.
+44,Mosaic,Arbor,Q97665078,4.0%,GF Pale Ale,,,Heavily hopped Mosaic Pale Ale with bold floral and tropical fruit flavours and aromas – Naturally Gluten Free.
+45,Mr Squirrel,Mad Squirrel,Q98074829,4.0%,Premium Bitter,,,"An old school bitter for the 21st century,  with vintage notes of toffee, vanilla, and nuts."
+46,Northern Monkey,Tring X ACBF,,5.1%,Best Bitter,,,Brewed with oats for mouthfeel and three types of malt for flavour and colour. Hopped with Boadicea and a gentle dry hop with Challenger.
+47,OPA,Oakham,Q7073885,4.0%,Pale Ale,,,"Light gold in colour, with bold fruity hop notes balanced perfectly with a refreshing dry finish. Exclusive to Dayla."
+48,Other Worlds,Burnt Mill,,4.4%,Bitter,,,"Golden Promise, Crystal, Amber and buckwheat with puffed brown rice to achieve a nutty maltiness. El Dorado and Cascade give a rounded stone fruit and orange aroma to compliment the malt backbone."
+49,Pale,Left Handed Giant,,4.0%,Pale Ale,,,"Golden Promise malt and lightly hopped with Amarillo, Celeia, Citra and Mosaic for a rounded fruity finish."
+50,Pride and Joy,Vocation,Q107717907,5.3%,American Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
+51,Quiet Time,Track,,5.2%,Pale Ale,,,"Mosaic heavy dry hop with Simcoe and Columbus. Fresh OJ and pineapple, pithy pink grapefruit and lemon verbena. "
+52,Railway Porter,Five Points,Q98071243,4.8%,Porter,,,"A classic London style porter. Smooth and full-bodied, bursting with aromas of dark chocolate, and roasted coffee."
+53,Raven King,Tring,,5.5%,IPA,,,"Tropical fruits from Citra and Mosaic, dry-hopped for extra aroma. Brewed using wheat for a full-bodied, hazy finish."
+54,Red Lady,Redcastle,,4.0%,Ruby Ale,,,"Aroma has notes of toffee and fruits . Light & sweet caramel and dried fruit flavours. Smooth, light, sweet finish."
+55,Resurface,Bristol Beer Factory,Q107716330,5.0%,IPA,,,"White grape and gooseberry, lemon and stone fruits. Aussie hop Ella adds a tropical finish."
+56,Sabro,Salt,,4.5%,Hazy IPA,,,"Leading with Sabro hops, this Vermont style ale is a full-tilt fruit hit of tangerine, coconut, tropical fruit, and stone fruit."
+57,Sapling,Mad Squirrel,Q98074829,4.8%,Session IPA,,,With bold flavours of pine and citrus with a bitter finish. A session-able brew designed for cask and brewed for cask.
+58,Sky Wave,Popes Yard,Q98222617,4.0%,American Pale Ale,,,"Refreshing, lightly hopped Pale Ale with aromas and flavours of peach, passionfruit and pear. Hints of caramel combine with a biscuity sweetness from the Maris Otter malt and a good bitter finish. Dry-hopped with Galaxy and El Dorado"
+59,Sonoma,Track,,3.8%,Pale Ale,,,"Heavily late hooped with Centennial, Citra and Mosaic hops. A taste of sunshine with late citrus fruit aroma and finish."
+60,Stronghold,Arundel,,4.7%,Best Bitter,,,"Smooth, full-flavoured premium bitter. Balanced malt, fruit and hops come through in this rich, chestnut-coloured beer."
+61,Sun Spot,Popes Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
+62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
+63,Talus in Wonderland,Arbor,,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
+64,Three,XT,,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
+65,Tonkoko,Brew York,,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
+66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
+67,Unlocked,Hornes,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
+68,US Pale,Left Handed Giant,,4.2%,Pale Ale,,,"With enticing, clean, bright aromas of pine, grapefruit and orange peel, from a blend of Cascade, Chinook, Centennial and Idaho 7 hops. Layered on a simple malt base with balanced bitterness for a refreshing finish."
+69,Vale Best,Vale,Q98072911,3.7%,Bitter,,,A light copper ale that packs far more flavour than its ABV would suggest. A three hop blend with dry Planet malt.
+70,Waimea,Hornes,Q97666414,4.1%,Pale Ale,,,Pale Ale brewed using only New Zealand hops.
+71,Win-Win,Paradigm,Q98075011,4.2%,Best Bitter,,,"Well-balanced best bitter with depth of character. English hops provide subtle bitterness and US hops, the aroma."
+72,Yulu,Siren,,3.6%,Pale Ale,,,"Brewed with Earl Grey tea and lemon zest. Distinct peach and apricot aromas,  zesty bergamot flavours."
