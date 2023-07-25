@@ -8,7 +8,7 @@ Generates and prints out some XML to be inserted into a [QLC+ save file](../publ
 The XML lays out a grid of fixtures for use in the 2D View of the [Fixture monitor](https://www.qlcplus.org/docs/html_en_EN/fixturemonitor.html).
 You only need to re-run this you want to change the number of fixtures or layout of the view.
 
-Visit the [/bridge](https://acbf-2022.herokuapp.com/bridge) page for more information.
+Visit the [/bridge](https://acbf.app/bridge) page for more information.
 
 ```
   <Monitor DisplayMode="1" ShowLabels="0">
