@@ -24,7 +24,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 22,Escape Goat,Deya,,4.0%,Pale Ale,,,"Aroma of tropical fruit and lime, with orange, lychee and sweet cereal on the mid palate. Clean firm bitterness."
 23,Fake News,Paradigm Brewery,,3.8%,Pale Ale,,,"Session pale ale for the post truth ""citrus"" generation."
 24,Fanny Ebbs,Tring,,3.9%,Summer Ale,,,Blonde coloured summer ale with citrus hop aroma.
-25,Featherstone,Hornes Brewery,,3.6%,Amber,,,Crystal and Cascade hops in the boil and dry hopped with even more Cascade give this beer a fruity punch. Gluten free.
+25,Featherstone,Hornes Brewery,,3.6%,Amber,,y,Crystal and Cascade hops in the boil and dry hopped with even more Cascade give this beer a fruity punch.
 26,Fortitude,Bristol Beer Factory,,4.0%,Amber Ale,,,"Perfectly balanced, loving crafted English Bitter."
 27,Four,XT,,3.8%,Amber,,,Special Belgian malt and a fruity mix of American and European hops.
 28,Freeman Street,Thornbridge,,6.0%,IPA,,,"Hop forward with citrus and pine, bitterness is balanced with caramel sweetness."
@@ -74,9 +74,9 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 73,Special,3 Brewers,,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
 74,Symposium,Ossett,,5.0%,Pale Ale,,,"NZ-grown Nectaron hops and US Citra to give intense aromas of citrus, peach, pineapple and passion fruit."
-75,Triple Goat,Hornes Brewery,,3.9%,Pale Ale,,,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops. Gluten Free."
+75,Triple Goat,Hornes Brewery,,3.9%,Pale Ale,,y,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops."
 76,Tropic Ale,Kent,,4.9%,IPA,,,A mouth-watering taste of the tropics in a hotbed of fruity and citrusy hops.
-77,Unlocked,Hornes Brewery,,5.0%,IPA,,,"Crisp IPA with citrus characteristics. Balanced malts, American Cascade and Summit hops. Gluten Free."
+77,Unlocked,Hornes Brewery,,5.0%,IPA,,y,"Crisp IPA with citrus characteristics. Balanced malts, American Cascade and Summit hops."
 78,Vale Best,Vale Brewery,,3.7%,IPA,,,An English IPA that packs more flavour with a three hop blend to create a real session thirst-quencher.
 79,Weightless,Red Willow,,4.2%,Session IPA,,,Pale Ale loaded with Citra and Amarillo hops providing massive amounts of tropical fruit with a clean finish.
 80,White Rat,Ossett,,4.0%,Pale Ale,,,"Cascade, Columbus & Amarillo hops produce an intensely aromatic and resinous finish."
