@@ -67,7 +67,7 @@ let last_table = {}
 let beers = null
 
 /** The total number of availability buttons */
-const NUM_OF_BUTTONS = 80
+const NUM_OF_BUTTONS = 88
 
 /** This url contains a Wikidata query for information about the breweries with QIDs
  * It is updated on start and when a new beers file is uploaded. */

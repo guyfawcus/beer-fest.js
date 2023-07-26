@@ -33,7 +33,7 @@ let BEERS = {}
 let STOCK_LEVELS = {}
 
 /** The total number of availability buttons */
-const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 80
+const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 88
 
 /** There is a warning icon on most pages that appears if the connection is lost */
 const warningIcon = document.getElementById('warning_icon')

@@ -19,7 +19,7 @@ Try it out at [acbf.app](https://acbf.app/) and take a look at the [walkthrough 
 
 This project was designed for use at [The Aston Clinton Beer Festival](http://www.astonclintonbeerfestival.co.uk/).
 Above the bar, there are usually four screens that display a slideshow with sponsor slides
-and the availability of the 80 ales on offer so that people don't queue for something that has run out.
+and the availability of the 80+ ales on offer so that people don't queue for something that has run out.
 
 ### The old way
 
