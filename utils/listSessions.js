@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 
 const redis = require('redis')
-const client = redis.createClient(process.argv[2])
+
+// const client = redis.createClient(process.argv[2])
+const client = redis.createClient({
+  url: process.argv[2],
+  socket: {
+    tls: true,
+    rejectUnauthorized: false
+  }
+})
 
 /**
  * Running this script will print out information about current sessions.
