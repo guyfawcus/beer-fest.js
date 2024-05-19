@@ -1,22 +1,28 @@
-// More info about configuration & plugins:
-// - https://revealjs.com/config/
-// - https://revealjs.com/plugins/]
+const slides = document.getElementById('slideshow').children
 
-import Reveal from './reveal.esm.js'
+let slideIndex = 0
+carousel()
 
-Reveal.initialize({
-  preloadIframes: true,
-  viewDistance: 10,
-  autoSlideStoppable: false,
-  progress: false,
-  controls: false,
-  loop: true,
-  keyboard: false,
-  transition: 'fade',
-  backgroundTransition: 'fade',
-  transitionSpeed: 'default'
-})
+function carousel() {
+  // Hide all slides
+  for (let i = 0; i < slides.length; i++) {
+    slides[i].style.display = 'none'
+  }
 
-Reveal.configure({
-  autoSlide: 5000
-})
+  // Increase the slide index on this run
+  slideIndex++
+
+  // Start again if we're at the end
+  if (slideIndex > slides.length) slideIndex = 1
+
+  // Display this slide
+  const current_slide = slides[slideIndex - 1]
+  current_slide.style.display = 'block'
+
+  // Run this function (change the slide) every 5 seconds if it's an image
+  if (current_slide.nodeName === 'IMG') {
+    setTimeout(carousel, 5000)
+  } else {
+    setTimeout(carousel, 10000)
+  }
+}

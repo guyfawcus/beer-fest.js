@@ -3,14 +3,11 @@
 <html lang="en-GB">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=1920px, height=1080px" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="ACBF beer availability slideshow" />
     <title>ACBF Slideshow</title>
 
-    <link rel="stylesheet" href="css/reveal.css" />
-    <link rel="stylesheet" href="css/theme/black.css" />
-    <link rel="stylesheet" href="css/theme/reveal-custom.css" />
-
+    <link href="/style.css" type="text/css" rel="stylesheet" />
     <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
     <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
@@ -19,61 +16,59 @@
     <script type="module" src="/js/slideshow.js"></script>
   </head>
   <body>
-    <div class="reveal">
-      <div class="slides" id="reveal_slideshow">
-        <section data-background-image="images/sponsors/Slide1.JPG"></section>
-        <section data-background-image="images/sponsors/Slide2.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide2.JPG"></section>
-        <section data-background-image="images/sponsors/Slide4.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide5.JPG"></section>
-        <section data-background-image="images/sponsors/Slide6.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide7.JPG"></section>
-        <section data-background-image="images/sponsors/Slide8.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide9.JPG"></section>
-        <section data-background-image="images/sponsors/Slide10.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide11.JPG"></section>
-        <section data-background-image="images/sponsors/Slide12.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide13.JPG"></section>
-        <section data-background-image="images/sponsors/Slide14.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide15.JPG"></section>
-        <section data-background-image="images/sponsors/Slide16.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide17.JPG"></section>
-        <section data-background-image="images/sponsors/Slide18.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide19.JPG"></section>
-        <section data-background-image="images/sponsors/Slide20.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide21.JPG"></section>
-        <section data-background-image="images/sponsors/Slide22.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide23.JPG"></section>
-        <section data-background-image="images/sponsors/Slide24.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide25.JPG"></section>
-        <section data-background-image="images/sponsors/Slide26.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide27.JPG"></section>
-        <section data-background-image="images/sponsors/Slide28.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide29.JPG"></section>
-        <section data-background-image="images/sponsors/Slide30.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide31.JPG"></section>
-        <section data-background-image="images/sponsors/Slide32.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <section data-background-image="images/sponsors/Slide33.JPG"></section>
-        <section data-background-image="images/sponsors/Slide34.JPG"></section>
-        <section data-background-iframe="/availability" data-autoslide="10000"></section>
-        <!--<section data-autoslide="3000">Drink up for charity!<br />🍻</section>-->
-      </div>
+    <iframe id="slideshow_iframe" src="/availability"></iframe>
+    <div id="slideshow">
+      <img src="images/sponsors/Slide1.JPG" />
+      <img src="images/sponsors/Slide2.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide3.JPG" />
+      <img src="images/sponsors/Slide4.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide5.JPG" />
+      <img src="images/sponsors/Slide6.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide7.JPG" />
+      <img src="images/sponsors/Slide8.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide9.JPG" />
+      <img src="images/sponsors/Slide10.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide11.JPG" />
+      <img src="images/sponsors/Slide12.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide13.JPG" />
+      <img src="images/sponsors/Slide14.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide15.JPG" />
+      <img src="images/sponsors/Slide16.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide17.JPG" />
+      <img src="images/sponsors/Slide18.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide19.JPG" />
+      <img src="images/sponsors/Slide20.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide21.JPG" />
+      <img src="images/sponsors/Slide22.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide23.JPG" />
+      <img src="images/sponsors/Slide24.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide25.JPG" />
+      <img src="images/sponsors/Slide26.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide27.JPG" />
+      <img src="images/sponsors/Slide28.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide29.JPG" />
+      <img src="images/sponsors/Slide30.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide31.JPG" />
+      <img src="images/sponsors/Slide32.JPG" />
+      <div></div>
+      <img src="images/sponsors/Slide33.JPG" />
+      <img src="images/sponsors/Slide34.JPG" />
+      <div></div>
     </div>
   </body>
 </html>

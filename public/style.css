@@ -512,6 +512,32 @@ body.keyboardControl .button:focus {
 }
 
 /* -------------------------------- */
+/* Slideshow                        */
+/* -------------------------------- */
+#slideshow_iframe {
+  position: absolute;
+  border: 0px;
+  width: 100%;
+  height: 100%;
+}
+
+#slideshow {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  height: 100dvh;
+}
+
+#slideshow > img {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #00000099;
+}
+
+/* -------------------------------- */
 /* Login                            */
 /* -------------------------------- */
 .login_fields {
