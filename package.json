@@ -41,8 +41,8 @@
     "leaflet": "^1.9.4",
     "node-fetch": "^2.6.12",
     "redis": "^3.1.2",
-    "socket.io": "^4.7.1",
-    "socket.io-client": "^4.7.1",
+    "socket.io": "^4.7.5",
+    "socket.io-client": "^4.7.5",
     "wikibase-sdk": "^7.15.0"
   },
   "devDependencies": {
