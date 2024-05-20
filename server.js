@@ -488,7 +488,7 @@ function getBreweryInfo(brewery_wikidata_ids) {
     urls.forEach((url) => {
       fetch(url)
         .then((response) => response.json())
-        .then(wdk.parse.wd.entities)
+        .then(wdk.parse.entities)
         .then((entities) => {
           // Pick out the data we want and add it to `wikidata_claims`
           Object.keys(entities).forEach((entity) => {
