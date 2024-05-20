@@ -13,12 +13,9 @@ config:
     - duration: 100
       arrivalRate: 10
 
-  engines:
-    socketio-v3: {}
-
 scenarios:
   - name: '10 minutes watching availability'
-    engine: 'socketio-v3'
+    engine: 'socketio'
     flow:
       - get:
           url: '/availability'
