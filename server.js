@@ -22,8 +22,8 @@ import session from 'express-session'
 
 // Other packages
 import bcrypt from 'bcryptjs'
-import csvParse from 'csv-parse/lib/sync.js'
-import csvStringify from 'csv-stringify/lib/sync.js'
+import { parse as csvParse } from 'csv-parse/sync'
+import { stringify as csvStringify } from 'csv-stringify/sync'
 import fetch from 'node-fetch'
 import GeoJSON from 'geojson'
 import redis from 'redis'
