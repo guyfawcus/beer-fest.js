@@ -64,7 +64,7 @@
     "eslint-plugin-import": "^2.27.5",
     "husky": "^8.0.3",
     "jsdoc": "^3.6.11",
-    "nodemon": "^2.0.22",
+    "nodemon": "^3.1.0",
     "npm-check-updates": "^16.10.17",
     "prettier": "^2.8.8",
     "standard": "^17.1.0"
