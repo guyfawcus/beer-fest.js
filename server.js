@@ -2,32 +2,33 @@
 'use strict'
 
 // Built in packages
-const crypto = require('crypto')
-const fs = require('fs')
-const http = require('http')
-const path = require('path')
+import crypto from 'node:crypto'
+import fs from 'node:fs'
+import http from 'node:http'
+import path from 'node:path'
+import url from 'url'
 
 // Express related packages
-const compression = require('compression')
-const connectRedis = require('connect-redis')
-const cors = require('cors')
-const express = require('express')
-const expressEnforcesSsl = require('express-enforces-ssl')
-const expressFlash = require('express-flash')
-const expressSocketIoSession = require('express-socket.io-session')
-const featurePolicy = require('feature-policy')
-const helmet = require('helmet')
-const session = require('express-session')
+import compression from 'compression'
+import connectRedis from 'connect-redis'
+import cors from 'cors'
+import express from 'express'
+import expressEnforcesSsl from 'express-enforces-ssl'
+import expressFlash from 'express-flash'
+import expressSocketIoSession from 'express-socket.io-session'
+import featurePolicy from 'feature-policy'
+import helmet from 'helmet'
+import session from 'express-session'
 
 // Other packages
-const bcrypt = require('bcryptjs')
-const csvParse = require('csv-parse/lib/sync')
-const csvStringify = require('csv-stringify/lib/sync')
-const fetch = require('node-fetch')
-const GeoJSON = require('geojson')
-const redis = require('redis')
-const socketIo = require('socket.io')
-const WBK = require('wikibase-sdk')
+import bcrypt from 'bcryptjs'
+import csvParse from 'csv-parse/lib/sync.js'
+import csvStringify from 'csv-stringify/lib/sync.js'
+import fetch from 'node-fetch'
+import GeoJSON from 'geojson'
+import redis from 'redis'
+import { Server as SocketIo } from 'socket.io'
+import WBK from 'wikibase-sdk'
 
 // ---------------------------------------------------------------------------
 // Variable definitions
@@ -87,9 +88,9 @@ let brewery_geojson = ''
  * @property {boolean} low_enable
  */
 
-/** @typedef {import('public/js/core.js').stockLevelsObj} stockLevelsObj */
-/** @typedef {import('public/js/core.js').beersObj} beersObj */
-/** @typedef {import('public/js/core.js').levelValues} levelValues */
+/** @typedef {import('./public/js/core.js').stockLevelsObj} stockLevelsObj */
+/** @typedef {import('./public/js/core.js').beersObj} beersObj */
+/** @typedef {import('./public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
 // Initial setup
@@ -201,7 +202,7 @@ app.post('/report-violation', cspParser, (req, res) => {
 // ---------------------------------------------------------------------------
 // Set up server
 const server = new http.Server(app)
-const io = socketIo(server, { cookie: false, serveClient: false })
+const io = new SocketIo(server, { cookie: false, serveClient: false })
 const redisSession = session(sessionOptions)
 
 io.use(expressSocketIoSession(redisSession))
@@ -719,11 +720,11 @@ function initialiseBeers() {
         if (reply === null) {
           // Check that the current beers file exists
           try {
-            fs.accessSync(CURRENT_BEERS_FILE, fs.F_OK)
+            fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
           } catch (err) {
             try {
               console.error(`No current beers file found, trying default (${BEERS_FILE})`)
-              fs.accessSync(BEERS_FILE, fs.F_OK)
+              fs.accessSync(BEERS_FILE, fs.constants.F_OK)
               fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
             } catch (err) {
               console.error('No current or default beers files found, making a blank one to use instead')
@@ -795,6 +796,8 @@ function checkNotAuthenticated(req, res, next) {
 // ---------------------------------------------------------------------------
 // Routes - main
 // ---------------------------------------------------------------------------
+const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
+
 // Core pages
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'views/index.html'))

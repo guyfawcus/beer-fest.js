@@ -2,7 +2,8 @@
   "name": "beer-fest",
   "version": "1.1.0",
   "description": "Web app to display ale availability at the ACBF",
-  "main": "server.js",
+  "exports": "./server.js",
+  "type": "module",
   "scripts": {
     "eslint": "eslint --ignore-path .gitignore .",
     "prettier": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.css' '**/*.md'",
