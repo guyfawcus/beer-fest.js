@@ -156,7 +156,8 @@ app.use(
       manifestSrc: ["'self'"],
       scriptSrc: ["'self'"],
       styleSrc: ["'self'"],
-      reportUri: '/report-violation'
+      reportUri: '/report-violation',
+      upgradeInsecureRequests: null
     }
   })
 )
