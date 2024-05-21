@@ -82,6 +82,7 @@
     },
     "rules": {
       "camelcase": "off",
+      "object-shorthand": "off",
       "prefer-promise-reject-errors": "off",
       "space-before-function-paren": "off",
       "import/no-unused-modules": [
