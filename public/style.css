@@ -130,7 +130,9 @@ input[type='checkbox'] {
   outline: none;
   border-radius: 20px;
   transition: var(--transition-time);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
 }
 
 input:checked[type='checkbox'] {
@@ -147,7 +149,9 @@ input[type='checkbox']:before {
   left: 0;
   background: var(--button-bg-colour);
   transform: scale(1.1);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
   transition: var(--transition-time);
 }
 
@@ -189,7 +193,9 @@ hr {
   transform: translate(-50%);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 2rem;
   text-align: center;
 }
@@ -333,7 +339,9 @@ h1,
   height: 120px;
   font-size: 3rem;
   font-weight: bold;
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -351,7 +359,9 @@ body.keyboardControl .button:focus {
   transform: translateY(-3px) scale(1.05);
   border-radius: 50px;
   box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 1rem 0px var(--shadow-shade-colour),
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 1rem 0px var(--shadow-shade-colour),
     0px 0px 1.5rem 0px var(--shadow-colour);
   border-radius: 8px;
   cursor: pointer;
@@ -451,7 +461,9 @@ body.keyboardControl .button:focus {
   transform: translate(-50%);
   background-color: var(--main-shade-colour);
   border: 2px solid var(--shadow-colour);
-  box-shadow: inset 0px 0px 1rem 0px var(--shadow-shade-colour), 0px 0px 0.5rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 20px;
   z-index: 901;
 }
@@ -555,7 +567,9 @@ body.keyboardControl .button:focus {
   justify-content: space-evenly;
   text-align: center;
   padding: 5px;
-  box-shadow: inset 0px 0px 0.2rem 0px var(--shadow-shade-colour), 0px 0px 0.1rem 0px var(--shadow-colour);
+  box-shadow:
+    inset 0px 0px 0.2rem 0px var(--shadow-shade-colour),
+    0px 0px 0.1rem 0px var(--shadow-colour);
   border-radius: 4px;
 }
 
