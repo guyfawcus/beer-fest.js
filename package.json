@@ -12,7 +12,8 @@
     "load-test": "artillery run utils/websocket-load-test.yaml",
     "docs": "jsdoc -c jsdoc.json",
     "type-check": "tsc",
-    "update": "ncu -u --target minor"
+    "update": "ncu -u --target minor",
+    "prepare": "husky"
   },
   "author": "guyfawcus",
   "license": "MIT",
@@ -61,18 +62,12 @@
     "artillery": "^2.0.12",
     "eslint": "^8.45.0",
     "eslint-plugin-import": "^2.27.5",
-    "husky": "^8.0.3",
+    "husky": "^9.0.11",
     "jsdoc": "^4.0.3",
     "nodemon": "^3.1.0",
     "npm-check-updates": "^16.14.20",
     "prettier": "^3.2.5",
     "standard": "^17.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run test",
-      "pre-push": "npm run test"
-    }
   },
   "prettier": {
     "printWidth": 120,
