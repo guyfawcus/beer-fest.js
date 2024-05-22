@@ -1,7 +1,8 @@
 /* eslint-env browser */
-/* global globalThis */
 
-const bfjsSocket = globalThis.io.connect(location.host)
+import { io } from './socket.io.esm.min.js'
+
+const bfjsSocket = io.connect(location.host)
 const qlcSocket = new WebSocket('ws://127.0.0.1:9999/qlcplusWS')
 
 let qlcConnected
