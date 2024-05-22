@@ -1,5 +1,4 @@
 /* eslint-env browser */
-'use strict'
 
 import { socket, updateHistory } from './core.js'
 

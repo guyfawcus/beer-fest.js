@@ -1,6 +1,5 @@
 /* eslint-env browser */
 /* global fetch, L */
-'use strict'
 
 import { socket } from './core.js'
 

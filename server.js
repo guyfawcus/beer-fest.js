@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-'use strict'
 
 // Built in packages
 import crypto from 'node:crypto'

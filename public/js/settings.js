@@ -1,5 +1,4 @@
 /* eslint-env browser */
-'use strict'
 
 import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket, tableUpload, beersUpload, updateAllAs } from './core.js'
 

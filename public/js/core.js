@@ -7,7 +7,6 @@
 
 /* eslint-env browser */
 /* global globalThis */
-'use strict'
 
 /** `true` is a user is logged in */
 export let AUTHORISED = false
