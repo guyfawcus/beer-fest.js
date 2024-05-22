@@ -887,11 +887,11 @@ app.get('/js/socket.io.esm.min.js.map', (req, res) => {
 })
 
 // Routes for Leaflet (the mapping package)
-app.get('/js/leaflet.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.js'))
+app.get('/js/leaflet-src.esm.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet-src.esm.js'))
 })
-app.get('/js/leaflet.js.map', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.js.map'))
+app.get('/js/leaflet-src.esm.js.map', (req, res) => {
+  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet-src.esm.js.map'))
 })
 app.get('/css/leaflet.css', (req, res) => {
   res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.css'))

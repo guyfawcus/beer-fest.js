@@ -1,6 +1,6 @@
 /* eslint-env browser */
-/* global fetch, L */
 
+import * as L from './leaflet-src.esm.js'
 import { socket } from './core.js'
 
 // ---------------------------------------------------------------------------
