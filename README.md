@@ -8,16 +8,13 @@ Try it out at [acbf.app](https://acbf.app/) and take a look at the [walkthrough 
 
 <img src="/docs/images/availability-empty.png" width="384">
 
-> **Note:** This web app is under development. Its first outing was likely to be the _Aston Clinton Beer Festival 2020_ (hence the titles/URL), however that has now [been cancelled](https://www.facebook.com/341405185896402/posts/2925670634136498).
-> Fingers crossed for some normality to return next year and that everyone makes it though these crazy times!
->
-> The beer information (used for the tooltips, Ve/GF hiding) is from the 2019 beer fest and is being used as a placeholder to assist development.
+> **Note:** This web app is still under development. It's been used for three years straight now but there are always things to do!
 
 ---
 
 ## Use case
 
-This project was designed for use at [The Aston Clinton Beer Festival](http://www.astonclintonbeerfestival.co.uk/).
+This project was designed for use at [The Aston Clinton Beer Festival](http://www.astonclintonbeerfestival.com).
 Above the bar, there are usually four screens that display a slideshow with sponsor slides
 and the availability of the 80+ ales on offer so that people don't queue for something that has run out.
 
