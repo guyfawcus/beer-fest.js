@@ -26,11 +26,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 25,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
 26,Featherstone,Hornes,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
-28,Fourteen,XT,,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
+28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
 29,Golden,The 3 Brewers,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
 30,Golden Ale,Chiltern,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
 31,Golden Ale,Almasty,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
-32,Hop Kitty,XT,,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness. Triple hopped.
+32,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness. Triple hopped.
 33,I Don't Tip,Anarchy,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
 34,I Remember Having One,Verdant,,3.8%,Pale Ale,,,"Verdant yeast, soft Cornish water and selected Citra hops make this a smooth, big bodied and zesty little beer."
 35,Jaipur DDH,Thornbridge,Q7796317,5.9%,IPA,,,The 15th Anniversary of Jaipur. DDH Jaipur  is double dry hopped creating an even punchier tropical fruit character.
@@ -62,7 +62,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 61,Sun Spot,Popes Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
 62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
 63,Talus in Wonderland,Arbor,,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
-64,Three,XT,,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
+64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
 65,Tonkoko,Brew York,,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
 66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
 67,Unlocked,Hornes,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
