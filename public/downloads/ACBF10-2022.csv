@@ -18,12 +18,12 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 17,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"Light gold in colour, bursting with citrus and tropical hop flavours and sensationally refreshing. The original UK Citra."
 18,Club Hammer,Popes Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes"
 19,Cornish Bitter,Harbour,,4.0%,Bitter,,,An elaborate grain bill and a cocktail of US and EU hops make for a sweet floral aroma and soft fruit flavours.
-20,Death or Glory,Tring,,7.2%,Strong Ale,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile. "
+20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile. "
 21,Double Stout,Hook Norton,Q794591,4.8%,Stout,,,"A rich aroma of sweet chocolate, espresso coffee, herbal hops and cracker-like double dark malt. Enjoy! See: Dark Ebony Smell: Roasted Coffee Taste: Dry Burnt Oak"
 22,Encore,Bristol Beer Factory,Q107716330,4.7%,Saison,,,"Warm fermentation amplifies the classic Saison zing; clove, pepper and banana with a dry, crisp finish."
 23,Eternal,Northern Monk,Q98214662,4.1%,Session IPA,,,Simcoe and Centennial hops dominate this light blonde beer. Tangerine aroma and a quenching citrus pith aftertaste.
 24,Extra Special Marble,Marble,,5.5%,ESB,,,"Deep amber, aromas of toffee, caramel, biscuit and toast;  flavours of tangerine and marmalade with lasting bitterness."
-25,Fanny Ebbs,Tring,,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
+25,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
 26,Featherstone,Hornes,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
 28,Fourteen,XT,,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
@@ -51,7 +51,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 50,Pride and Joy,Vocation,Q107717907,5.3%,American Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
 51,Quiet Time,Track,,5.2%,Pale Ale,,,"Mosaic heavy dry hop with Simcoe and Columbus. Fresh OJ and pineapple, pithy pink grapefruit and lemon verbena. "
 52,Railway Porter,Five Points,Q98071243,4.8%,Porter,,,"A classic London style porter. Smooth and full-bodied, bursting with aromas of dark chocolate, and roasted coffee."
-53,Raven King,Tring,,5.5%,IPA,,,"Tropical fruits from Citra and Mosaic, dry-hopped for extra aroma. Brewed using wheat for a full-bodied, hazy finish."
+53,Raven King,Tring Brewery Co.,Q7842351,5.5%,IPA,,,"Tropical fruits from Citra and Mosaic, dry-hopped for extra aroma. Brewed using wheat for a full-bodied, hazy finish."
 54,Red Lady,Redcastle,,4.0%,Ruby Ale,,,"Aroma has notes of toffee and fruits . Light & sweet caramel and dried fruit flavours. Smooth, light, sweet finish."
 55,Resurface,Bristol Beer Factory,Q107716330,5.0%,IPA,,,"White grape and gooseberry, lemon and stone fruits. Aussie hop Ella adds a tropical finish."
 56,Sabro,Salt,,4.5%,Hazy IPA,,,"Leading with Sabro hops, this Vermont style ale is a full-tilt fruit hit of tangerine, coconut, tropical fruit, and stone fruit."

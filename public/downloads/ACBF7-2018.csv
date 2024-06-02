@@ -7,7 +7,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 6,Blood Moon,Aylesbury Brewhouse Co.,,4.5%,Amber Ale,,,"Caramel malt, toffee, biscuit, dried fruit, resinous hops."
 7,Blue Skies IPA,Oakham,,6.0%,IPA,,,"Tropical fruit, citrus, peach, medium bitterness."
 8,Bluebird,Lenton Lane,,3.8%,Golden / Blonde,,,"Pale, refreshing & hoppy."
-9,Brock,Tring Brewery Co.,,3.7%,Bitter,,,A hint of sweetness and caramel. Challenger hops for bitterness & late hopped with Styrian Goldings.
+9,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel. Challenger hops for bitterness & late hopped with Styrian Goldings.
 10,C-Bomb,Brew Foundation,,4.2%,Session IPA,,,"Fruity pale ale, singly hopped with Citra. Lemon and citrus, low bitterness."
 11,Cherry Bomb,Tiny Rebel,,5.0%,Fruit Beer,,,"A modern take on the classic Belgian sour cherry beer, Kriek."
 12,Chilli Porter,Leighton Buzzard Brewing Co.,,5.8%,Porter,,,"A wonderful, complex, robust porter with glorious hints of coffee and chocolate and a little chilli heat."
@@ -17,11 +17,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 16,Dark Arts,Magic Rock Brewing,,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
 17,Dark Fox,Hornes Brewery,,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
 18,Day Tripper,Downlands Brewery,,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
-19,Death or Glory,Tring Brewery Co.,,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
+19,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 20,Don't Believe the Hype,Tiny Rebel,,5.0%,IPA,,,"Hazy golden colour, floral & caramel aroma, taste is sweet & juicy citrus."
 21,Earl Grey IPA,Marble Brewery,,6.8%,IPA,,,"Crisp and golden. Caramel, tea and malt aromas. Sweet with some bitterness and spiciness."
 22,Ekuanot Extra Pale,Beatnikz Republic,,4.4%,Pale Ale,,,Singly hopped with Ekuanot for a juicy tropical flavour and aroma.
-23,Fanny Ebbs,Tring Brewery Co.,,3.9%,Golden / Blonde,,,Crisp with very low bitterness and a late citrus hop aroma from a combination of Saaz and Cascade varieties.
+23,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Golden / Blonde,,,Crisp with very low bitterness and a late citrus hop aroma from a combination of Saaz and Cascade varieties.
 24,Four,XT Brewing Co.,,3.8%,Amber Ale,,,A modern session amber ale - English and Belgian malts plus American and English hops.
 25,Full of Beans,Wild Weather,,5.0%,Stout,,,"Flavours of Irish Whiskey, cream and coffee. Chocolate malts and aged on fresh Arabica beans."
 26,Gold,The Chiltern Brewery,,3.9%,Golden / Blonde,,,Biscuity malt notes and hopped with the rare UK grown Cascade producing a beautiful citrus & grapefruit aroma.

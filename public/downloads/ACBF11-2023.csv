@@ -9,7 +9,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 8,Blonde,3 Brewers,Q97619412,4.2%,Blonde Ale,,,"Golden in colour,  Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
 9,Blue Sky Drinking,Arbor,Q97665078,4.4%,Bitter,y,,Well balanced tawny bitter with full bodied malt and citrus hop notes.
 10,Bread & Butter,Vocation,Q107717907,3.9%,Pale Ale,y,,"Flavours and aromas of pine, peach, lychee and citrus, with a well balanced bitterness."
-11,Brock,Tring,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel while Challenger and Styrian Goldings hops impart aroma and bitterness.
+11,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel while Challenger and Styrian Goldings hops impart aroma and bitterness.
 12,Chiltern Black,Chiltern Brewery,Q97661391,3.9%,Porter,y,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 13,Chiltern Pale,Chiltern Brewery,Q97661391,3.7%,Pale Ale,,,"Light in colour with a creamy smoothness, it is a good example of a Pale Ale with a refreshing clean finish."
 14,Classic,3 Brewers,Q97619412,4%,Bitter,,,"Deep amber colour, a light hoppy aroma and a rich and rounded malty taste to give a smooth and refreshing ale."
@@ -18,11 +18,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 17,Cwtch Gold,Tiny Rebel x Theakstons,Q27136461,4.6%,Golden Ale,y,,"Collab with Theakston. Easy drinking, malty with Citra and Cascade hops for a citrus finish."
 18,Daily Bread,Abbeydale,Q98067081,3.8%,Bitter,,,"A classic English bitter, copper coloured, well balanced, malty flavours and a smooth bitter finish."
 19,Dark Mild,Timothy Taylors,,3.5%,Dark Mild,,,"A dark ruby beer with roasted notes and a smooth, creamy taste. A favourite of lovers of a good old fashioned mild."
-20,Death or Glory,Tring,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with an incredibly complex flavour profile. Brewed by appointment to the Kings Royal Lancers."
+20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with an incredibly complex flavour profile. Brewed by appointment to the Kings Royal Lancers."
 21,Eight,XT,Q39053843,4.5%,Porter,,,Rich dark beer brewed with four malts and a cocktail of hops. Deep malty base with dark chocolate flavours.
 22,Escape Goat,Deya,,4%,Pale Ale,y,,"Aroma of tropical fruit and lime, with orange, lychee and sweet cereal on the mid palate. Clean firm bitterness."
 23,Fake News,Paradigm Brewery,Q98075011,3.8%,Pale Ale,,,"Session pale ale for the post truth ""citrus"" generation."
-24,Fanny Ebbs,Tring,Q7842351,3.9%,Summer Ale,,,Blonde coloured summer ale with citrus hop aroma.
+24,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,Blonde coloured summer ale with citrus hop aroma.
 25,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,y,y,Crystal and Cascade hops in the boil and dry hopped with even more Cascade give this beer a fruity punch.
 26,Fortitude,Bristol Beer Factory,Q107716330,4%,Amber Ale,y,y,"Perfectly balanced, loving crafted English Bitter."
 27,Four,XT,Q39053843,3.8%,Amber,,,Special Belgian malt and a fruity mix of American and European hops.
@@ -49,7 +49,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 48,Long Ferry,Iron Pier,Q115766002,3.9%,Golden Ale,,,"Perfectly balanced, toffee malt and fresh hop character."
 49,Macaroni Ted,Ossett/Elusive Collab,,5.2%,WCIPA,,,"West Coast-style IPA, showcasing modern American hop varieties including Columbus, Citra, Simcoe and Talus."
 50,Maharaja,Renegade,,5.1%,IPA,,,"Full bodied, New World hopped IPA, tropical fruit flavours full on bitterness, earthy finish."
-51,Mansion Mild,Tring,Q7842351,3.7%,Mild,,,"Classic ruby dark mild, smooth like velvet, sweet and creamy."
+51,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Classic ruby dark mild, smooth like velvet, sweet and creamy."
 52,Memento,Siren,Q97726156,3.8%,Best Bitter,,,"Grassy and herbal notes from English hops, boosted by Cascade in the dry hop."
 53,Mister Chubbs,Renegade,,3.7%,Bitter,,,"Citrus hop aroma and smooth palate, balance finish using Target and Celeia hops."
 54,Mister Squirrel,Mad Squirrel,Q98074829,4%,Bitter,,,"Balanced and respectable brew with notes of toffee, vanilla and nuts."
@@ -68,7 +68,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 67,Right to Roam,Buxton,Q98118486,3.8%,Bitter,,,A highly sessionable bitter brewed using English grown hops.
 68,Sea of Dreams,Neptune,,4.2%,Pale Ale,,,"A heady mix of mango juiciness, with a marmalade bite, and soft finish."
 69,Shine,Oakham,Q7073885,3.7%,Pale Ale,,,"Zesty summer citrus and soft fruit flavours and a gentle, moreish bitterness."
-70,Side Pocket for a Toad,Tring,Q7842351,3.6%,Golden Ale,,,Citrus and floral notes from the best Cascade hops with a crisp dry finish make this Golden Ale a fantastic session beer.
+70,Side Pocket for a Toad,Tring Brewery Co.,Q7842351,3.6%,Golden Ale,,,Citrus and floral notes from the best Cascade hops with a crisp dry finish make this Golden Ale a fantastic session beer.
 71,Single Origin,Kelchner Brewery,,4.1%,Porter,,,"A classic dark and rich Porter, generously infused with single origin coffee beans."
 72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 73,Special,3 Brewers,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
