@@ -66,7 +66,10 @@
       "name": "description",
       "title": "Description",
       "description": "A description of the beer",
-      "type": "string"
+      "type": "string",
+      "constraints": {
+        "pattern": "^(?:[A-Z0-9].*[.!…]|TBA)$"
+      }
     }
   ]
 }
