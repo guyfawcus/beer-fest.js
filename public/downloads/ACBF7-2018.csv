@@ -38,7 +38,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 37,Long Summer Days,Bristol Beer Factory,,5.6%,IPA,,,"Big citrus flavour with botanical, sweet richness and a classic bitter US IPA finish."
 38,Manta Ray,Animal Brewing Co,,4.6%,Golden / Blonde,,,Pilsner Malts & triple hopped with American greens. Crisp dry and refreshing.
 39,MEGS Bomb,Arbor,,4.7%,Golden / Blonde,,,"Easy drinking Pale Ale with tropical fruits, citrus and a slight herbal finish."
-40,Melba,Thornbridge,,5.2%,IPA,,,Light gold in colour; its peachy character is created by the use of aromatic US hops.
+40,Melba,Thornbridge,Q7796317,5.2%,IPA,,,Light gold in colour; its peachy character is created by the use of aromatic US hops.
 41,Miss Shelley,Watling Street,,4.3%,Golden / Blonde,,,"This golden beer has hoppy, citrus notes and a refreshing crisp finish."
 42,Moho,Mantle,,4.3%,Golden / Blonde,,,"Aromatic Welsh Pale Ale, hopped with two different American varieties. A light coloured Ale, bursting with flavour."
 43,Mokko,Summer Wine Brewery,,6.0%,Sweet Stout,,,"Aroma is roasted malt, chocolate, Flavour is chocolate, roasted malt, vanilla, hop, coffee."
@@ -64,7 +64,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 63,South Island Pale,Saltaire,,3.5%,Golden / Blonde,,,"A clean, pale beer, with cool crisp fruitiness from New Zealand hops."
 64,Special English Ale,The 3 Brewers of St.Albans,,4.8%,Premium Bitter,,,A robust and full bodied Premium Ale. Chocolate malt gives a deep copper colour and English hops give the ale a hint of berries.
 65,Starry Nights,Malt,,4.0%,Amber Ale,,,An easy drinking amber coloured ale. Southern Hemisphere hops make this a well-balanced and fruity beer.
-66,Strawberry Lucaria,Thornbridge,,4.5%,Porter,,,"Strawberry, caramel, liquorice & chocolate aromas with flavours of sweet, creamy, strawberry with roasted malt."
+66,Strawberry Lucaria,Thornbridge,Q7796317,4.5%,Porter,,,"Strawberry, caramel, liquorice & chocolate aromas with flavours of sweet, creamy, strawberry with roasted malt."
 67,Summer Daze,Malt,,4.0%,Pale Ale,,,"A light and fruity summer ale, refreshing on the palette."
 68,Suspended in Secrets,Siren Craft Brew,,4.0%,APA,,,"Pale amber; aroma of citrus and tropical fruit ,dry but fruity; long citrus finish. Gloriously refreshing."
 69,The Mechanic,Errant,,3.7%,Wheat,,,A wheaty refreshing white beer brewed with a boatload of awesome Waimea hop flavours.

@@ -14,7 +14,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 13,Drop Bar,Tring Brewery Co.,Q7842351,4.0%,Golden/Blonde Ale,,,"A slower, low temperature fermentation and dry hopping with Mosaic yields crisp flavours, subtle bitterness and a gentle floral, tropical fruit aroma."
 14,Juxtaposition,paradigm brewery,,4.0%,Bitter,,,"Amber ale, which is bittered using American Summit hops and late and dry-hopped using American Mosaic hops, giving a blueberry aroma."
 15,Summer Daze,Malt,,4.0%,Golden/Blonde Ale,,,"A light yet flavoursome ale, Malt Summer Daze is made with a New Zealand hop that gives it a tropical fruitiness and distinctive aroma."
-16,Lord Marples,Thornbridge,,4.0%,Bitter,,,Lord Marples pours a dark amber. Aromas of light toffee and caramel. Flavours are a mix of soft floral and spicy hop and a smooth bitter finish.
+16,Lord Marples,Thornbridge,Q7796317,4.0%,Bitter,,,Lord Marples pours a dark amber. Aromas of light toffee and caramel. Flavours are a mix of soft floral and spicy hop and a smooth bitter finish.
 17,Windsor Knot,Windsor & Eton,,4.0%,Bitter,,,"This is a Pale Ale brewed with two specially selected hops, Sovereign and Nelson Sauvin from New Zealand. The combination of these hops produces an intense and distinctive tropical fruit aroma including Mango, Lychees and Passion Fruit to deliver an easy drinking and refreshing beer."
 18,Twisted Melon,Empire Brewing,,4.1%,Golden/Blonde Ale,,,"Very pale ale. Generously hopped with Sorachi Ace, giving this beer a mouth watering lemon and coconut flavour. A real tongue twister."
 19,Feckless,Red Willow,,4.1%,Bitter,,,"A classic British bitter, rich toffee and malt balanced with the subtle flavours of Challenger, First Gold and Target hops."
@@ -52,7 +52,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 51,Lambeth Walk,By The Horns,,5.1%,Porter,,,"Velvety, rich and chock full of flavour with notes of coffee bean, cocoa, toasted hazelnuts and hint of dark berries."
 52,European IPA Fined,Red Squirrel,,5.2%,Session IPA,,,"Deep amber in colour this IPA is exclusively made with European hops which create a diverse aroma of maple syrup, marmalade and grapes. The flavour profile is a marriage of hedgerow fruits and marmalade."
 53,European IPA Unfined,Red Squirrel,,5.2%,Session IPA,y,,Exactly the same beer as the fined version but with no Isinglass finings added to the cask. Expect subtle flavour differences to the fined version and a naturally hazy pint.
-54,Kipling,Thombridge,,5.2%,American Pale Ale,,,"Kipling is a golden beer made exclusively with the fabulous Nelson Sauvin hop that imparts exquisite passion fruit, gooseberry and mango aromas. An initial sweetness and medium body are balanced by a lasting grapefruit-like bitter finish."
+54,Kipling,Thornbridge,Q7796317,5.2%,American Pale Ale,,,"Kipling is a golden beer made exclusively with the fabulous Nelson Sauvin hop that imparts exquisite passion fruit, gooseberry and mango aromas. An initial sweetness and medium body are balanced by a lasting grapefruit-like bitter finish."
 55,Stay Puft,Tiny Rebel,Q27136461,5.2%,Stout,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness, both combining for a delightful, S’mores-like ale. A sweet treat for the cold winter nights."
 56,Dixie,Leighton Buzzard Brewing Co.,,5.5%,IPA,,,
 57,The Devil Made Me Brew It,Arbor,,5.5%,Stout,,,"A full bodied very drinkable stout, dry hopped with citra, mosaic, bravo and simcoe."
