@@ -21,7 +21,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with an incredibly complex flavour profile. Brewed by appointment to the Kings Royal Lancers."
 21,Eight,XT,Q39053843,4.5%,Porter,,,Rich dark beer brewed with four malts and a cocktail of hops. Deep malty base with dark chocolate flavours.
 22,Escape Goat,Deya,,4.0%,Pale Ale,y,,"Aroma of tropical fruit and lime, with orange, lychee and sweet cereal on the mid palate. Clean firm bitterness."
-23,Fake News,Paradigm Brewery,Q98075011,3.8%,Pale Ale,,,"Session pale ale for the post truth ""citrus"" generation."
+23,Fake News,paradigm brewery,Q98075011,3.8%,Pale Ale,,,"Session pale ale for the post truth ""citrus"" generation."
 24,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,Blonde coloured summer ale with citrus hop aroma.
 25,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,y,y,Crystal and Cascade hops in the boil and dry hopped with even more Cascade give this beer a fruity punch.
 26,Fortitude,Bristol Beer Factory,Q107716330,4.0%,Amber Ale,y,y,"Perfectly balanced, loving crafted English Bitter."
@@ -79,6 +79,6 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 78,Vale Best,Vale Brewery,Q98072911,3.7%,IPA,,,An English IPA that packs more flavour with a three hop blend to create a real session thirst-quencher.
 79,Weightless,Red Willow,,4.2%,Session IPA,,,Pale Ale loaded with Citra and Amarillo hops providing massive amounts of tropical fruit with a clean finish.
 80,White Rat,Ossett,,4.0%,Pale Ale,,,"Cascade, Columbus & Amarillo hops produce an intensely aromatic and resinous finish."
-81,Win-Win,Paradigm Brewery,Q98075011,4.2%,Bitter,,,"Balanced best bitter with depth of character. English hops for a subtle bitterness and American hops, the aroma."
+81,Win-Win,paradigm brewery,Q98075011,4.2%,Bitter,,,"Balanced best bitter with depth of character. English hops for a subtle bitterness and American hops, the aroma."
 82,Wreckless,Red Willow,,4.8%,Pale Ale,,,Pale Ale loaded with Citra and Amarillo hops providing massive amounts of tropical fruit with a clean finish.
 83,Yorkshire Blonde,Ossett,,3.9%,Blonde Ale,,,"Full bodied, well-rounded and slightly sweet. Late hopped with Mount Hood."

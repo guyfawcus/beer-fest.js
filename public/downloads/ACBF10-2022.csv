@@ -6,7 +6,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 5,Best,Five Points,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
 6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
 7,Bitter,Almasty,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
-8,Black Friday,Paradigm,Q98075011,6.0%,Dark Mild,,,"Smooth, sweet and smoky. Contains five dark malts to give depth. Very drinkable & very dangerous!"
+8,Black Friday,paradigm brewery,Q98075011,6.0%,Dark Mild,,,"Smooth, sweet and smoky. Contains five dark malts to give depth. Very drinkable & very dangerous!"
 9,Black Swan,Vale Brewery,Q98072911,3.9%,Dark Mild,,,Dark and smooth with hints of chocolate and coffee on the nose and a soft rounded malt finish.
 10,Blonde,Saltaire,Q98073411,4.0%,Blonde,,,A soft rounded malt finish.
 11,Blonde,The 3 Brewers,Q97619412,4.2%,Blonde Ale,,,Light golden in colour and brewed with Mosaic hops. Hoppy aroma and a refreshing smack of fruity citrussy flavours.
@@ -69,5 +69,5 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 68,US Pale,Left Handed Giant,,4.2%,Pale Ale,,,"With enticing, clean, bright aromas of pine, grapefruit and orange peel, from a blend of Cascade, Chinook, Centennial and Idaho 7 hops. Layered on a simple malt base with balanced bitterness for a refreshing finish."
 69,Vale Best,Vale Brewery,Q98072911,3.7%,Bitter,,,A light copper ale that packs far more flavour than its ABV would suggest. A three hop blend with dry Planet malt.
 70,Waimea,Hornes,Q97666414,4.1%,Pale Ale,,,Pale Ale brewed using only New Zealand hops.
-71,Win-Win,Paradigm,Q98075011,4.2%,Best Bitter,,,"Well-balanced best bitter with depth of character. English hops provide subtle bitterness and US hops, the aroma."
+71,Win-Win,paradigm brewery,Q98075011,4.2%,Best Bitter,,,"Well-balanced best bitter with depth of character. English hops provide subtle bitterness and US hops, the aroma."
 72,Yulu,Siren,,3.6%,Pale Ale,,,"Brewed with Earl Grey tea and lemon zest. Distinct peach and apricot aromas,  zesty bergamot flavours."
