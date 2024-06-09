@@ -1,6 +1,6 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
 1,A Little Faith,Northern Monk,Q98214662,4.0%,Pale Ale,y,,"All the juice, citrus and tropical flavour of Faith, but even more sessionable at a lower ABV of 4%."
-2,Absolution,Abbeydale,Q98067081,5.3%,Golden Ale,,,"American hops give fruity, floral flavours, plus Australian Galaxy for a tropical boost."
+2,Absolution,Abbeydale Brewery,Q98067081,5.3%,Golden Ale,,,"American hops give fruity, floral flavours, plus Australian Galaxy for a tropical boost."
 3,Ampthill,Kelchner Brewery,,4.1%,Golden Ale,,,"Brewed using yeast, the finest hops and a specially selected amber malt that gives it a rich golden tone."
 4,Azalea,Glasshouse,,4.6%,Pale Ale,,,"Easy drinking pale ale with notes of pear, creamy orange and a soft bitterness."
 5,Bermondsey Pale,Anspach & Hobday,Q98222607,4.0%,Pale Ale,y,,Refreshingly crisp pale ale with citrus/lemon notes.
@@ -16,7 +16,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 15,Coltrane,Thornbridge,Q7796317,5.0%,Brown Ale,,,American hops provide a huge fresh burst of citrus flavours creating a very well balanced beer.
 16,Crab,Animal,Q97975500,4.6%,Pale Ale,,,"A punchy single hopped pale ale, packed with cascade."
 17,Cwtch Gold,Tiny Rebel / Theakstons (collab),Q27136461,4.6%,Golden Ale,y,,"Collab with Theakston. Easy drinking, malty with Citra and Cascade hops for a citrus finish."
-18,Daily Bread,Abbeydale,Q98067081,3.8%,Bitter,,,"A classic English bitter, copper coloured, well balanced, malty flavours and a smooth bitter finish."
+18,Daily Bread,Abbeydale Brewery,Q98067081,3.8%,Bitter,,,"A classic English bitter, copper coloured, well balanced, malty flavours and a smooth bitter finish."
 19,Dark Mild,Timothy Taylors,,3.5%,Dark Mild,,,"A dark ruby beer with roasted notes and a smooth, creamy taste. A favourite of lovers of a good old fashioned mild."
 20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with an incredibly complex flavour profile. Brewed by appointment to the Kings Royal Lancers."
 21,Eight,XT,Q39053843,4.5%,Porter,,,Rich dark beer brewed with four malts and a cocktail of hops. Deep malty base with dark chocolate flavours.
