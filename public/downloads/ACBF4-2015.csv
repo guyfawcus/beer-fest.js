@@ -40,4 +40,4 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 39,American Pale Ale,Dark Star Brewing Co.,,4.7%,American Pale Ale,,,"The yeast strain used for the brewing of this American style pale ale is specially imported from the USA, along with Cascade, Centennial and Chinook hops. The low colour Maris Otter malt provides a perfect light colour and dryness to complement the crisp taste and full aroma of the hops. SERIOUSLY FULL OF HOPS!"
 40,Bourbon Milk Stout,Sonnet 43,,4.3%,Sweet Stout,,,"Bourbon, cocoa and oats give this dark beer a rich, full-bodied, chocolatey bitterness."
 41,India Pale Ale,Harbour,,5.0%,Golden Ale/Blond Ale,,,A modern interpretation of the British classic with pronounced American hop aromas. This golden ale has citrus characters and robust yet balanced bitterness.
-42,Cwtch,Tiny Rebel,,4.6%,Amber Ale,,,Welsh Red Ale. The complex malt base compliments its big hop flavours.
+42,Cwtch,Tiny Rebel,Q27136461,4.6%,Amber Ale,,,Welsh Red Ale. The complex malt base compliments its big hop flavours.
