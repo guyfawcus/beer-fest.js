@@ -26,7 +26,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 25,Full of Beans,Wild Weather,,5.0%,Stout,,,"Flavours of Irish Whiskey, cream and coffee. Chocolate malts and aged on fresh Arabica beans."
 26,Gold,The Chiltern Brewery,,3.9%,Golden / Blonde,,,Biscuity malt notes and hopped with the rare UK grown Cascade producing a beautiful citrus & grapefruit aroma.
 27,Grapevine,Fallen,,5.4%,APA,,,"Floral, citrus, tropical, fruity, bitter with NZ hops."
-28,Gravitas,Vale Brewery,,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish."
+28,Gravitas,Vale Brewery,Q98072911,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish."
 29,Honey IPA,Hiver,,5.4%,Session IPA,,,A biscuit malt character with good body gives way to a pleasant hop bitterness and delicate honey aftertaste.
 30,Hop Contract,Downlands Brewery,,4.5%,Pale Ale,,,"Hopped with Ernest, Idaho 7, Galaxy, Simcoe."
 31,Hop Kitty,Animal Brewing Co,,3.9%,Pale Ale,,,"Intense tropical and citrus flavours. A hint of malt sweetness before more hops, big Mango and Lychee zest."
@@ -51,7 +51,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 50,Pale Blue Dot,Bristol Beer Factory,,4.4%,APA,,,Quaffable Pale Ale. Clean & crisp - citrussy and fruity.
 51,Plum Porter,Titanic,,4.9%,Porter,,,Dark strong and well rounded; the richness is balanced by the late addition of Goldings hops and natural plum flavouring.
 52,Railway Porter,Five Points,,4.8%,Porter,,,"Aromas of chocolate and coffee with hints of caramel, brewed with British East Kent Goldings hops."
-53,Red Kite,Vale Brewery,,4.3%,Bitter,,,Deep red in colour with big malt flavours and a strong hop finish.
+53,Red Kite,Vale Brewery,Q98072911,4.3%,Bitter,,,Deep red in colour with big malt flavours and a strong hop finish.
 54,Resolution,Mad Squirrel,,4.2%,Bitter,,,"Late hopped with three American hop varieties for maximum flavour. Light, refreshing and immensely drinkable."
 55,Restoration Ale,Leighton Buzzard Brewing Co.,,4.6%,Bitter,,,A traditional best bitter enhanced by the generous use of Cascade and Perle hops to deliver a refreshingly fruity beer.
 56,Roadie,Signature Brew,,4.3%,Session IPA,,,"Super crisp, light and refreshing. Plenty of Columbus & Cascade hops."
@@ -76,6 +76,6 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 75,Tuckerlovsky,Marble Brewery,,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
 76,Union Hop,Moor,,4.7%,Golden / Blonde,,,Traditional British floor malted barley and modern British hops.
 77,Vital Spark,Fyne,,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
-78,VPA,Vale Brewery,,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
+78,VPA,Vale Brewery,Q98072911,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
 79,Wolf,Aylesbury Brewhouse Co.,,3.8%,Pale Ale,,,"Straw coloured pale ale with Slovenian hop, Styrian Wolf. Flavours of citrus and berries and a smooth bitterness."
 80,Yorkshire Bitter,BAD Co.,,3.8%,Bitter,,,"Green fruits, Malty sweetness, refreshing after taste."

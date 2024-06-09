@@ -1,8 +1,8 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
-1,Black Beauty,Vale Brewery,,4.3%,Porter,,,"Harking back to the 1880's with a Traditional Thames Valley brown Porter. Roasted malt and coffee on the nose, smooth malt with liquorice and chocolate on the palate."
-2,Gravitas,Vale Brewery,,4.8%,Premium bitter,,,"A strong, pale ale packed with hop and Citrus flavours, rounded off by a dry malty biscuit finish. A pronounced hop aroma throughout."
-3,Diamond Reign,Vale Brewery,,4.4%,Sparkling golden ale,,,Sparkling golden ale brewed with English hops to celebrate the Queen's Diamond Jubilee.
-4,Two Halves,Vale Brewery,,4.0%,Straw coloured pale ale,,,Straw coloured pale ale for the European Football Championships.
+1,Black Beauty,Vale Brewery,Q98072911,4.3%,Porter,,,"Harking back to the 1880's with a Traditional Thames Valley brown Porter. Roasted malt and coffee on the nose, smooth malt with liquorice and chocolate on the palate."
+2,Gravitas,Vale Brewery,Q98072911,4.8%,Premium bitter,,,"A strong, pale ale packed with hop and Citrus flavours, rounded off by a dry malty biscuit finish. A pronounced hop aroma throughout."
+3,Diamond Reign,Vale Brewery,Q98072911,4.4%,Sparkling golden ale,,,Sparkling golden ale brewed with English hops to celebrate the Queen's Diamond Jubilee.
+4,Two Halves,Vale Brewery,Q98072911,4.0%,Straw coloured pale ale,,,Straw coloured pale ale for the European Football Championships.
 5,Not Euro Fizz,Aylesbury Brewhouse Co.,,4.5%,Pilsner,,,"Ale brewed in the pilsner style, with layer malks and noble hops."
 6,Channel Surfing,Aylesbury Brewhouse Co.,,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
 7,Cobblestone,The Chiltern Brewery,,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
