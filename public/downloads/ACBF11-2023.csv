@@ -6,13 +6,13 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 5,Bermondsey Pale,Anspach & Hobday,Q98222607,4.0%,Pale Ale,y,,Refreshingly crisp pale ale with citrus/lemon notes.
 6,Bitter Seas,Northdown,,4.2%,Best Bitter,y,,"Local Kent hops form the earthy, herbal base then dry-hopped with an aromatic dose of NZ hops."
 7,Blonde,Buxton,Q98118486,4.6%,Blonde Ale,y,,"Golden Ale, brewed with English Olicana hops. Aromas of sweet malted barley and subtle fresh hops."
-8,Blonde,3 Brewers,Q97619412,4.2%,Blonde Ale,,,"Golden in colour,  Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
+8,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,"Golden in colour,  Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
 9,Blue Sky Drinking,Arbor,Q97665078,4.4%,Bitter,y,,Well balanced tawny bitter with full bodied malt and citrus hop notes.
 10,Bread & Butter,Vocation,Q107717907,3.9%,Pale Ale,y,,"Flavours and aromas of pine, peach, lychee and citrus, with a well balanced bitterness."
 11,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel while Challenger and Styrian Goldings hops impart aroma and bitterness.
 12,Chiltern Black,Chiltern Brewery,Q97661391,3.9%,Porter,y,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 13,Chiltern Pale,Chiltern Brewery,Q97661391,3.7%,Pale Ale,,,"Light in colour with a creamy smoothness, it is a good example of a Pale Ale with a refreshing clean finish."
-14,Classic,3 Brewers,Q97619412,4.0%,Bitter,,,"Deep amber colour, a light hoppy aroma and a rich and rounded malty taste to give a smooth and refreshing ale."
+14,Classic,The 3 Brewers of St.Albans,Q97619412,4.0%,Bitter,,,"Deep amber colour, a light hoppy aroma and a rich and rounded malty taste to give a smooth and refreshing ale."
 15,Coltrane,Thornbridge,Q7796317,5.0%,Brown Ale,,,American hops provide a huge fresh burst of citrus flavours creating a very well balanced beer.
 16,Crab,Animal,Q97975500,4.6%,Pale Ale,,,"A punchy single hopped pale ale, packed with cascade."
 17,Cwtch Gold,Tiny Rebel / Theakstons (collab),Q27136461,4.6%,Golden Ale,y,,"Collab with Theakston. Easy drinking, malty with Citra and Cascade hops for a citrus finish."
@@ -71,7 +71,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 70,Side Pocket for a Toad,Tring Brewery Co.,Q7842351,3.6%,Golden Ale,,,Citrus and floral notes from the best Cascade hops with a crisp dry finish make this Golden Ale a fantastic session beer.
 71,Single Origin,Kelchner Brewery,,4.1%,Porter,,,"A classic dark and rich Porter, generously infused with single origin coffee beans."
 72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
-73,Special,3 Brewers,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
+73,Special,The 3 Brewers of St.Albans,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
 74,Symposium,Ossett,,5.0%,Pale Ale,,,"NZ-grown Nectaron hops and US Citra to give intense aromas of citrus, peach, pineapple and passion fruit."
 75,Triple Goat,Hornes Brewery,Q97666414,3.9%,Pale Ale,,y,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops."
 76,Tropic Ale,Kent,Q98103562,4.9%,IPA,,,A mouth-watering taste of the tropics in a hotbed of fruity and citrusy hops.
