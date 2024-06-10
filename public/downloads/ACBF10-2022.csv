@@ -16,7 +16,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 15,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 16,Chop & Change Mosaic,Vocation,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
 17,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"Light gold in colour, bursting with citrus and tropical hop flavours and sensationally refreshing. The original UK Citra."
-18,Club Hammer,Popes Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes."
+18,Club Hammer,Pope's Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes."
 19,Cornish Bitter,Harbour,,4.0%,Bitter,,,An elaborate grain bill and a cocktail of US and EU hops make for a sweet floral aroma and soft fruit flavours.
 20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 21,Double Stout,Hook Norton,Q794591,4.8%,Stout,,,"A rich aroma of sweet chocolate, espresso coffee, herbal hops and cracker-like double dark malt. Enjoy! See: Dark Ebony Smell: Roasted Coffee Taste: Dry Burnt Oak."
@@ -56,10 +56,10 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 55,Resurface,Bristol Beer Factory,Q107716330,5.0%,IPA,,,"White grape and gooseberry, lemon and stone fruits. Aussie hop Ella adds a tropical finish."
 56,Sabro,Salt,,4.5%,Hazy IPA,,,"Leading with Sabro hops, this Vermont style ale is a full-tilt fruit hit of tangerine, coconut, tropical fruit, and stone fruit."
 57,Sapling,Mad Squirrel,Q98074829,4.8%,Session IPA,,,With bold flavours of pine and citrus with a bitter finish. A session-able brew designed for cask and brewed for cask.
-58,Sky Wave,Popes Yard,Q98222617,4.0%,American Pale Ale,,,"Refreshing, lightly hopped Pale Ale with aromas and flavours of peach, passionfruit and pear. Hints of caramel combine with a biscuity sweetness from the Maris Otter malt and a good bitter finish. Dry-hopped with Galaxy and El Dorado."
+58,Sky Wave,Pope's Yard,Q98222617,4.0%,American Pale Ale,,,"Refreshing, lightly hopped Pale Ale with aromas and flavours of peach, passionfruit and pear. Hints of caramel combine with a biscuity sweetness from the Maris Otter malt and a good bitter finish. Dry-hopped with Galaxy and El Dorado."
 59,Sonoma,Track,,3.8%,Pale Ale,,,"Heavily late hooped with Centennial, Citra and Mosaic hops. A taste of sunshine with late citrus fruit aroma and finish."
 60,Stronghold,Arundel,,4.7%,Best Bitter,,,"Smooth, full-flavoured premium bitter. Balanced malt, fruit and hops come through in this rich, chestnut-coloured beer."
-61,Sun Spot,Popes Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
+61,Sun Spot,Pope's Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
 62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
 63,Talus in Wonderland,Arbor,,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
 64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
