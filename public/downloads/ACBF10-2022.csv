@@ -11,7 +11,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 10,Blonde,Saltaire,Q98073411,4.0%,Blonde,,,A soft rounded malt finish.
 11,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,Light golden in colour and brewed with Mosaic hops. Hoppy aroma and a refreshing smack of fruity citrussy flavours.
 12,Brill Gold,Vale Brewery,Q98072911,3.5%,Golden Ale,,,A refreshing golden ale with hints of orange zest and a deep caramel finish.
-13,Broken Dream,Siren,,6.5%,Milk Stout,,,"Indulgent, smooth, unctuous and moreish. Brewed with milk sugar and coffee beans for balance and mouthfeel."
+13,Broken Dream,Siren Craft Brew,Q97726156,6.5%,Milk Stout,,,"Indulgent, smooth, unctuous and moreish. Brewed with milk sugar and coffee beans for balance and mouthfeel."
 14,Centennial,Salt,,4.0%,Pale Ale,,,"A smooth session ale with orange, marmalade, tropical fruit aromas complemented by a piney bitter finish."
 15,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 16,Chop & Change Mosaic,Vocation Brewery,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
@@ -70,4 +70,4 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 69,Vale Best,Vale Brewery,Q98072911,3.7%,Bitter,,,A light copper ale that packs far more flavour than its ABV would suggest. A three hop blend with dry Planet malt.
 70,Waimea,Hornes Brewery,Q97666414,4.1%,Pale Ale,,,Pale Ale brewed using only New Zealand hops.
 71,Win-Win,paradigm brewery,Q98075011,4.2%,Best Bitter,,,"Well-balanced best bitter with depth of character. English hops provide subtle bitterness and US hops, the aroma."
-72,Yulu,Siren,,3.6%,Pale Ale,,,"Brewed with Earl Grey tea and lemon zest. Distinct peach and apricot aromas, zesty bergamot flavours."
+72,Yulu,Siren Craft Brew,Q97726156,3.6%,Pale Ale,,,"Brewed with Earl Grey tea and lemon zest. Distinct peach and apricot aromas, zesty bergamot flavours."
