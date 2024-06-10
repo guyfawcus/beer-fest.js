@@ -14,7 +14,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 13,Broken Dream,Siren,,6.5%,Milk Stout,,,"Indulgent, smooth, unctuous and moreish. Brewed with milk sugar and coffee beans for balance and mouthfeel."
 14,Centennial,Salt,,4.0%,Pale Ale,,,"A smooth session ale with orange, marmalade, tropical fruit aromas complemented by a piney bitter finish."
 15,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
-16,Chop & Change Mosaic,Vocation,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
+16,Chop & Change Mosaic,Vocation Brewery,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
 17,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"Light gold in colour, bursting with citrus and tropical hop flavours and sensationally refreshing. The original UK Citra."
 18,Club Hammer,Pope's Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes."
 19,Cornish Bitter,Harbour,,4.0%,Bitter,,,An elaborate grain bill and a cocktail of US and EU hops make for a sweet floral aroma and soft fruit flavours.
@@ -48,7 +48,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 47,OPA,Oakham,Q7073885,4.0%,Pale Ale,,,"Light gold in colour, with bold fruity hop notes balanced perfectly with a refreshing dry finish. Exclusive to Dayla."
 48,Other Worlds,Burnt Mill,,4.4%,Bitter,,,"Golden Promise, Crystal, Amber and buckwheat with puffed brown rice to achieve a nutty maltiness. El Dorado and Cascade give a rounded stone fruit and orange aroma to compliment the malt backbone."
 49,Pale,Left Handed Giant,,4.0%,Pale Ale,,,"Golden Promise malt and lightly hopped with Amarillo, Celeia, Citra and Mosaic for a rounded fruity finish."
-50,Pride and Joy,Vocation,Q107717907,5.3%,American Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
+50,Pride and Joy,Vocation Brewery,Q107717907,5.3%,American Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
 51,Quiet Time,Track,,5.2%,Pale Ale,,,"Mosaic heavy dry hop with Simcoe and Columbus. Fresh OJ and pineapple, pithy pink grapefruit and lemon verbena."
 52,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"A classic London style porter. Smooth and full-bodied, bursting with aromas of dark chocolate, and roasted coffee."
 53,Raven King,Tring Brewery Co.,Q7842351,5.5%,IPA,,,"Tropical fruits from Citra and Mosaic, dry-hopped for extra aroma. Brewed using wheat for a full-bodied, hazy finish."

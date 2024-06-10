@@ -36,7 +36,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 35,Jamboree,East London,,4.8%,Golden/Blonde Ale,,,
 36,Jester,Farr Brew,,3.6%,Bitter,,,
 37,Juicy,Tiny Rebel,Q27136461,4.8%,APA,,,
-38,Life & Death,Vocation,,6.5%,IPA,,,
+38,Life & Death,Vocation Brewery,Q107717907,6.5%,IPA,,,
 39,Lion,Animal Brewing Co,Q97975500,4.6%,Porter,,,
 40,Liquid Mistress,Siren Craft Brew,,5.8%,Rye IPA,,,
 41,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,
