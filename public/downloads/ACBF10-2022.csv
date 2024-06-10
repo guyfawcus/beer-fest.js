@@ -24,7 +24,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 23,Eternal,Northern Monk,Q98214662,4.1%,Session IPA,,,Simcoe and Centennial hops dominate this light blonde beer. Tangerine aroma and a quenching citrus pith aftertaste.
 24,Extra Special Marble,Marble,,5.5%,ESB,,,"Deep amber, aromas of toffee, caramel, biscuit and toast; flavours of tangerine and marmalade with lasting bitterness."
 25,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
-26,Featherstone,Hornes,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
+26,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
 28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
 29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
@@ -65,9 +65,9 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
 65,Tonkoko,Brew York,,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
 66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
-67,Unlocked,Hornes,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
+67,Unlocked,Hornes Brewery,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
 68,US Pale,Left Handed Giant,,4.2%,Pale Ale,,,"With enticing, clean, bright aromas of pine, grapefruit and orange peel, from a blend of Cascade, Chinook, Centennial and Idaho 7 hops. Layered on a simple malt base with balanced bitterness for a refreshing finish."
 69,Vale Best,Vale Brewery,Q98072911,3.7%,Bitter,,,A light copper ale that packs far more flavour than its ABV would suggest. A three hop blend with dry Planet malt.
-70,Waimea,Hornes,Q97666414,4.1%,Pale Ale,,,Pale Ale brewed using only New Zealand hops.
+70,Waimea,Hornes Brewery,Q97666414,4.1%,Pale Ale,,,Pale Ale brewed using only New Zealand hops.
 71,Win-Win,paradigm brewery,Q98075011,4.2%,Best Bitter,,,"Well-balanced best bitter with depth of character. English hops provide subtle bitterness and US hops, the aroma."
 72,Yulu,Siren,,3.6%,Pale Ale,,,"Brewed with Earl Grey tea and lemon zest. Distinct peach and apricot aromas, zesty bergamot flavours."

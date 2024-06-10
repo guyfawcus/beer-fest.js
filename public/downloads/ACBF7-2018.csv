@@ -15,7 +15,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 14,Citra Pale,BAD Co.,,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
 15,Confidence,Moor,,4.6%,Amber Ale,,,"Crystal and wheat malts, spicy US hops, rich & malty."
 16,Dark Arts,Magic Rock Brewing,,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
-17,Dark Fox,Hornes Brewery,,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
+17,Dark Fox,Hornes Brewery,Q97666414,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
 18,Day Tripper,Downlands Brewery,,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
 19,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 20,Don't Believe the Hype,Tiny Rebel,Q27136461,5.0%,IPA,,,"Hazy golden colour, floral & caramel aroma, taste is sweet & juicy citrus."
@@ -70,8 +70,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 69,The Mechanic,Errant,,3.7%,Wheat,,,A wheaty refreshing white beer brewed with a boatload of awesome Waimea hop flavours.
 70,Three,XT Brewing Co.,Q39053843,4.2%,Pale Ale,,,"An American style IPA - packed with Chinook, Columbus and Cascade hops."
 71,Trafalgar,Great Heck,,4.0%,Golden / Blonde,,,"Extra pale ale with moderate bitterness but packed with tons of exotic, fruity flavours and aromas."
-72,Triple Goat Pale Ale,Hornes Brewery,,3.9%,Pale Ale,,,"A refreshingly natural pale ale brewed with malted pale barley , whole flower hops, brewers yeast and pure water."
-73,Triple Goat Porter,Hornes Brewery,,4.6%,Porter,,,"Earthy, robust porter with a balanced sweetness from a delicious blend of roasted malts, UK and american hops."
+72,Triple Goat Pale Ale,Hornes Brewery,Q97666414,3.9%,Pale Ale,,,"A refreshingly natural pale ale brewed with malted pale barley , whole flower hops, brewers yeast and pure water."
+73,Triple Goat Porter,Hornes Brewery,Q97666414,4.6%,Porter,,,"Earthy, robust porter with a balanced sweetness from a delicious blend of roasted malts, UK and american hops."
 74,Tropical IPA,Beatnikz Republic,Q107717860,5.6%,IPA,y,,"A full flavoured hoppy IPA with Motueka, Ekuanot & Mosaic hops."
 75,Tuckerlovsky,Marble Brewery,,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
 76,Union Hop,Moor,,4.7%,Golden / Blonde,,,Traditional British floor malted barley and modern British hops.
