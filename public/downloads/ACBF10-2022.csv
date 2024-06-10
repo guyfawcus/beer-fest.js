@@ -5,7 +5,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
 5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
 6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
-7,Bitter,Almasty,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
+7,Bitter,Almasty Brewing Co,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
 8,Black Friday,paradigm brewery,Q98075011,6.0%,Dark Mild,,,"Smooth, sweet and smoky. Contains five dark malts to give depth. Very drinkable & very dangerous!"
 9,Black Swan,Vale Brewery,Q98072911,3.9%,Dark Mild,,,Dark and smooth with hints of chocolate and coffee on the nose and a soft rounded malt finish.
 10,Blonde,Saltaire,Q98073411,4.0%,Blonde,,,A soft rounded malt finish.
@@ -29,7 +29,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
 29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
 30,Golden Ale,The Chiltern Brewery,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
-31,Golden Ale,Almasty,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
+31,Golden Ale,Almasty Brewing Co,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
 32,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness. Triple hopped.
 33,I Don't Tip,Anarchy,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
 34,I Remember Having One,Verdant,,3.8%,Pale Ale,,,"Verdant yeast, soft Cornish water and selected Citra hops make this a smooth, big bodied and zesty little beer."
