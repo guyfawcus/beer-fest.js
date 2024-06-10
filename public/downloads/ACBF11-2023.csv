@@ -6,7 +6,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 5,Bermondsey Pale,Anspach & Hobday,Q98222607,4.0%,Pale Ale,y,,Refreshingly crisp pale ale with citrus/lemon notes.
 6,Bitter Seas,Northdown,,4.2%,Best Bitter,y,,"Local Kent hops form the earthy, herbal base then dry-hopped with an aromatic dose of NZ hops."
 7,Blonde,Buxton,Q98118486,4.6%,Blonde Ale,y,,"Golden Ale, brewed with English Olicana hops. Aromas of sweet malted barley and subtle fresh hops."
-8,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,"Golden in colour,  Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
+8,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,"Golden in colour, Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
 9,Blue Sky Drinking,Arbor,Q97665078,4.4%,Bitter,y,,Well balanced tawny bitter with full bodied malt and citrus hop notes.
 10,Bread & Butter,Vocation,Q107717907,3.9%,Pale Ale,y,,"Flavours and aromas of pine, peach, lychee and citrus, with a well balanced bitterness."
 11,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel while Challenger and Styrian Goldings hops impart aroma and bitterness.
@@ -45,7 +45,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 44,Juicy,Tiny Rebel,Q27136461,4.8%,Golden Ale,,,"Brewed with hop varieties to give a juicy, tropical flavour and aroma."
 45,Kaleidoscope,Wiper & True,Q27067400,4.2%,Pale Ale,y,,"Citra, Simcoe and Mosaic create a kaleidoscope of bright citrus and fruit flavours, with a gentle, clean bitterness."
 46,Lord Summerale,Verdant,,3.8%,Pale Ale,,,
-47,Kodiak,Mad Squirrel,Q98074829,4.7%,American Brown,,,Full-bodied brown ale with a  twist - tropical fruit flavours from American hops.
+47,Kodiak,Mad Squirrel,Q98074829,4.7%,American Brown,,,Full-bodied brown ale with a twist - tropical fruit flavours from American hops.
 48,Long Ferry,Iron Pier,Q115766002,3.9%,Golden Ale,,,"Perfectly balanced, toffee malt and fresh hop character."
 49,Macaroni Ted,Ossett / Elusive (collab),,5.2%,WCIPA,,,"West Coast-style IPA, showcasing modern American hop varieties including Columbus, Citra, Simcoe and Talus."
 50,Maharaja,Renegade,,5.1%,IPA,,,"Full bodied, New World hopped IPA, tropical fruit flavours full on bitterness, earthy finish."
@@ -70,7 +70,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 69,Shine,Oakham,Q7073885,3.7%,Pale Ale,,,"Zesty summer citrus and soft fruit flavours and a gentle, moreish bitterness."
 70,Side Pocket for a Toad,Tring Brewery Co.,Q7842351,3.6%,Golden Ale,,,Citrus and floral notes from the best Cascade hops with a crisp dry finish make this Golden Ale a fantastic session beer.
 71,Single Origin,Kelchner Brewery,,4.1%,Porter,,,"A classic dark and rich Porter, generously infused with single origin coffee beans."
-72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
+72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 73,Special,The 3 Brewers of St.Albans,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
 74,Symposium,Ossett,,5.0%,Pale Ale,,,"NZ-grown Nectaron hops and US Citra to give intense aromas of citrus, peach, pineapple and passion fruit."
 75,Triple Goat,Hornes Brewery,Q97666414,3.9%,Pale Ale,,y,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops."
