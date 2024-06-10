@@ -1,7 +1,7 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
 1,A Bigger Boat,Vale Brewery,Q98072911,3.8%,Red Ale,,,
 2,Apricot Jungle,Grafton,,4.8%,Golden/Blonde Ale,,,
-3,Beechwood,The Chiltern Brewery,,4.3%,Bitter,,,
+3,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,,
 4,Bibble,The Wild Beer Co,,4.2%,Session IPA,,,
 5,Big Bang Theory,Nene Valley Brewery,,5.3%,APA,,,
 6,Birdie Flipper,Long Arm,,4.5%,Amber,,,
@@ -27,7 +27,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 26,Fake News,paradigm brewery,Q98075011,3.8%,Golden/Blonde Ale,,,
 27,Foundation,East London,,4.2%,Bitter,,,
 28,Four,XT Brewing Co.,Q39053843,3.8%,Golden/Blonde Ale,,,
-29,Gold,The Chiltern Brewery,,3.8%,Golden/Blonde Ale,,,
+29,Gold,The Chiltern Brewery,Q97661391,3.8%,Golden/Blonde Ale,,,
 30,Gorge Best,Cheddar Ales,,4.0%,Bitter,,,
 31,Gravitas,Vale Brewery,Q98072911,4.8%,Golden/Blonde Ale,,,
 32,Independence,Bristol Beer Factory,,4.6%,APA,,,

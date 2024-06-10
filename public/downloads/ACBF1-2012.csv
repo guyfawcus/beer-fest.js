@@ -5,8 +5,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 4,Two Halves,Vale Brewery,Q98072911,4.0%,Straw coloured pale ale,,,Straw coloured pale ale for the European Football Championships.
 5,Not Euro Fizz,Aylesbury Brewhouse Co.,,4.5%,Pilsner,,,"Ale brewed in the pilsner style, with layer malks and noble hops."
 6,Channel Surfing,Aylesbury Brewhouse Co.,,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
-7,Cobblestone,The Chiltern Brewery,,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
-8,Beechwood Bitter,The Chiltern Brewery,,4.3%,Premium Bitter,,,The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty.
+7,Cobblestone,The Chiltern Brewery,Q97661391,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
+8,Beechwood Bitter,The Chiltern Brewery,Q97661391,4.3%,Premium Bitter,,,The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty.
 9,London Porter,Red Squirrel,,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
 10,Redwood American IPA,Red Squirrel,,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
 11,RSX,Red Squirrel,,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."

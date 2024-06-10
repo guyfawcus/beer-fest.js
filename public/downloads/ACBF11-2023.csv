@@ -10,8 +10,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 9,Blue Sky Drinking,Arbor,Q97665078,4.4%,Bitter,y,,Well balanced tawny bitter with full bodied malt and citrus hop notes.
 10,Bread & Butter,Vocation,Q107717907,3.9%,Pale Ale,y,,"Flavours and aromas of pine, peach, lychee and citrus, with a well balanced bitterness."
 11,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel while Challenger and Styrian Goldings hops impart aroma and bitterness.
-12,Chiltern Black,Chiltern Brewery,Q97661391,3.9%,Porter,y,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
-13,Chiltern Pale,Chiltern Brewery,Q97661391,3.7%,Pale Ale,,,"Light in colour with a creamy smoothness, it is a good example of a Pale Ale with a refreshing clean finish."
+12,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,y,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
+13,Chiltern Pale,The Chiltern Brewery,Q97661391,3.7%,Pale Ale,,,"Light in colour with a creamy smoothness, it is a good example of a Pale Ale with a refreshing clean finish."
 14,Classic,The 3 Brewers of St.Albans,Q97619412,4.0%,Bitter,,,"Deep amber colour, a light hoppy aroma and a rich and rounded malty taste to give a smooth and refreshing ale."
 15,Coltrane,Thornbridge,Q7796317,5.0%,Brown Ale,,,American hops provide a huge fresh burst of citrus flavours creating a very well balanced beer.
 16,Crab,Animal,Q97975500,4.6%,Pale Ale,,,"A punchy single hopped pale ale, packed with cascade."
@@ -41,7 +41,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 40,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness.
 41,India Pale Ale,Allsops,,5.0%,IPA,,,A faithfull recreation of Samuel Allsop’s 200 yr old Burton IPA.
 42,Jaipur DDH,Thornbridge,Q7796317,5.9%,IPA,,,"Same recipe as the classic Jaipur , but double dry hopped for a more punchy tropical fruit character."
-43,John Hampden,Chiltern Brewery,Q97661391,4.8%,Harvest Ale,,,"Quality malt, with the aromatic fruitiness of a single English hop for balance."
+43,John Hampden,The Chiltern Brewery,Q97661391,4.8%,Harvest Ale,,,"Quality malt, with the aromatic fruitiness of a single English hop for balance."
 44,Juicy,Tiny Rebel,Q27136461,4.8%,Golden Ale,,,"Brewed with hop varieties to give a juicy, tropical flavour and aroma."
 45,Kaleidoscope,Wiper & True,Q27067400,4.2%,Pale Ale,y,,"Citra, Simcoe and Mosaic create a kaleidoscope of bright citrus and fruit flavours, with a gentle, clean bitterness."
 46,Lord Summerale,Verdant,,3.8%,Pale Ale,,,

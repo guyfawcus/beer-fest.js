@@ -2,7 +2,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 1,A Little Faith,Northern Monk,Q98214662,4.0%,Hazy Pale Ale,,,"All the juice, citrus and tropical flavour of Faith, but even more sessionable at a lower ABV of 4%."
 2,Amity,Vale Brewery,Q98072911,3.9%,Bitter,,,A blend of malts to give it a so-fish-ticated dry finish and American Columbus hops that gives it a real bite.
 3,Ashford,Thornbridge,Q7796317,4.2%,Brown Ale,,,"Floral and berry hop with gentle coffee and roast hazelnut aromas. Smooth in the mouth with a nice dry, toasty note."
-4,Beechwood,Chiltern,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
+4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
 5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
 6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
 7,Bitter,Almasty,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
@@ -13,7 +13,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 12,Brill Gold,Vale Brewery,Q98072911,3.5%,Golden Ale,,,A refreshing golden ale with hints of orange zest and a deep caramel finish.
 13,Broken Dream,Siren,,6.5%,Milk Stout,,,"Indulgent, smooth, unctuous and moreish. Brewed with milk sugar and coffee beans for balance and mouthfeel."
 14,Centennial,Salt,,4.0%,Pale Ale,,,"A smooth session ale with orange, marmalade, tropical fruit aromas complemented by a piney bitter finish."
-15,Chiltern Black,Chiltern,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
+15,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 16,Chop & Change Mosaic,Vocation,Q107717907,4.0%,Hazy Pale Ale,,,"A simple pale malt grain bill and Mosaic hops. Clean, with berry and earthy notes, typical of Mosaic."
 17,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"Light gold in colour, bursting with citrus and tropical hop flavours and sensationally refreshing. The original UK Citra."
 18,Club Hammer,Popes Yard,Q98222617,5.5%,Stout,,,"Rich aroma, roasted malts, cocoa, caramel; medium sweet and bitter, roasty, dark chocolate, toffee, spicy and earthy notes."
@@ -28,7 +28,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
 28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
 29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
-30,Golden Ale,Chiltern,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
+30,Golden Ale,The Chiltern Brewery,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
 31,Golden Ale,Almasty,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
 32,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness. Triple hopped.
 33,I Don't Tip,Anarchy,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
