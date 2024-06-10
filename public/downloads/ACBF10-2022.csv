@@ -22,7 +22,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 21,Double Stout,Hook Norton,Q794591,4.8%,Stout,,,"A rich aroma of sweet chocolate, espresso coffee, herbal hops and cracker-like double dark malt. Enjoy! See: Dark Ebony Smell: Roasted Coffee Taste: Dry Burnt Oak."
 22,Encore,Bristol Beer Factory,Q107716330,4.7%,Saison,,,"Warm fermentation amplifies the classic Saison zing; clove, pepper and banana with a dry, crisp finish."
 23,Eternal,Northern Monk,Q98214662,4.1%,Session IPA,,,Simcoe and Centennial hops dominate this light blonde beer. Tangerine aroma and a quenching citrus pith aftertaste.
-24,Extra Special Marble,Marble,,5.5%,ESB,,,"Deep amber, aromas of toffee, caramel, biscuit and toast; flavours of tangerine and marmalade with lasting bitterness."
+24,Extra Special Marble,Marble Brewery,Q19655039,5.5%,ESB,,,"Deep amber, aromas of toffee, caramel, biscuit and toast; flavours of tangerine and marmalade with lasting bitterness."
 25,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
 26,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
@@ -38,7 +38,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 37,Lazarus,Odyssey,,5.0%,Pale Ale,,,"Extra pale, Golden Promise and Oats. Ekuanot, Azacca and Cryo Azacca. Full-bodied mango sherbet and citrus."
 38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
 39,Made North,Thornbridge,Q7796317,3.8%,Bitter,,,"Bright golden colour. Bracingly bitter and dry, light malt aromas and flavours of earthy, floral English hops."
-40,Manchester Bitter,Marble,,4.2%,Bitter,,,"Speciality malt gives the deep golden coloured robust base, balanced by crisp bitterness and a floral, lemony aroma."
+40,Manchester Bitter,Marble Brewery,Q19655039,4.2%,Bitter,,,"Speciality malt gives the deep golden coloured robust base, balanced by crisp bitterness and a floral, lemony aroma."
 41,Maris the Otter,Brew York,,3.9%,Bitter,,,3 varieties of new world hops and a malt backbone of 5 different malts. A complex modern take on English Bitter.
 42,Melba,Thornbridge,Q7796317,5.2%,Peach IPA,,,Melba pours a light gold in colour and it’s peachy character is complemented by the use of highly aromatic US hops.
 43,Milk Stout,Bristol Beer Factory,Q107716330,4.5%,Milk Stout,,,Multi award-winning; Smooth chocolatey sweetness and balancing bitterness with hints of dark fruits.
