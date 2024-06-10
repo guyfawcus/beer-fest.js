@@ -34,7 +34,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 33,I Don't Tip,Anarchy Brew Co.,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
 34,I Remember Having One,Verdant,,3.8%,Pale Ale,,,"Verdant yeast, soft Cornish water and selected Citra hops make this a smooth, big bodied and zesty little beer."
 35,Jaipur DDH,Thornbridge,Q7796317,5.9%,IPA,,,The 15th Anniversary of Jaipur. DDH Jaipur is double dry hopped creating an even punchier tropical fruit character.
-36,Karate Kiwi,Vocation / Overtone (collab),,5.5%,Pale Ale,,,"NZ hops - Motueka, Rakau & Wai-iti. Citrus, punchy ripe stonefruit. Refreshing, hoppy with a soft bitter finish."
+36,Karate Kiwi,Vocation / Overtone (collab),Q107717907,5.5%,Pale Ale,,,"NZ hops - Motueka, Rakau & Wai-iti. Citrus, punchy ripe stonefruit. Refreshing, hoppy with a soft bitter finish."
 37,Lazarus,Odyssey,,5.0%,Pale Ale,,,"Extra pale, Golden Promise and Oats. Ekuanot, Azacca and Cryo Azacca. Full-bodied mango sherbet and citrus."
 38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
 39,Made North,Thornbridge,Q7796317,3.8%,Bitter,,,"Bright golden colour. Bracingly bitter and dry, light malt aromas and flavours of earthy, floral English hops."
@@ -44,7 +44,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 43,Milk Stout,Bristol Beer Factory,Q107716330,4.5%,Milk Stout,,,Multi award-winning; Smooth chocolatey sweetness and balancing bitterness with hints of dark fruits.
 44,Mosaic,Arbor,Q97665078,4.0%,GF Pale Ale,,,Heavily hopped Mosaic Pale Ale with bold floral and tropical fruit flavours and aromas – Naturally Gluten Free.
 45,Mr Squirrel,Mad Squirrel,Q98074829,4.0%,Premium Bitter,,,"An old school bitter for the 21st century, with vintage notes of toffee, vanilla, and nuts."
-46,Northern Monkey,Tring / ACBF (collab),,5.1%,Best Bitter,,,Brewed with oats for mouthfeel and three types of malt for flavour and colour. Hopped with Boadicea and a gentle dry hop with Challenger.
+46,Northern Monkey,Tring / ACBF (collab),Q7842351,5.1%,Best Bitter,,,Brewed with oats for mouthfeel and three types of malt for flavour and colour. Hopped with Boadicea and a gentle dry hop with Challenger.
 47,OPA,Oakham,Q7073885,4.0%,Pale Ale,,,"Light gold in colour, with bold fruity hop notes balanced perfectly with a refreshing dry finish. Exclusive to Dayla."
 48,Other Worlds,Burnt Mill,,4.4%,Bitter,,,"Golden Promise, Crystal, Amber and buckwheat with puffed brown rice to achieve a nutty maltiness. El Dorado and Cascade give a rounded stone fruit and orange aroma to compliment the malt backbone."
 49,Pale,Left Handed Giant,,4.0%,Pale Ale,,,"Golden Promise malt and lightly hopped with Amarillo, Celeia, Citra and Mosaic for a rounded fruity finish."
