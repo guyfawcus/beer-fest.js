@@ -1,7 +1,7 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
-1,Centennial IPA,Leighton Buzzard Brewing Co.,,6.8%,IPA,,,A big hoppy IPA brewed solely with the American Centennial hop.
-2,Restoration Ale,Leighton Buzzard Brewing Co.,,4.6%,Bitter,,,A mid brown beer with similarities in colour and strength to a traditional best bitter but enhanced by the generous use of American Cascade and Perle hops to deliver a fruity refreshing beer.
-3,Black Buzzard,Leighton Buzzard Brewing Co.,,5.8%,Porter,,,"A crazy marriage of six different malts delivers a wonderful, complex, robust porter."
+1,Centennial IPA,Leighton Buzzard Brewing Co.,Q97676194,6.8%,IPA,,,A big hoppy IPA brewed solely with the American Centennial hop.
+2,Restoration Ale,Leighton Buzzard Brewing Co.,Q97676194,4.6%,Bitter,,,A mid brown beer with similarities in colour and strength to a traditional best bitter but enhanced by the generous use of American Cascade and Perle hops to deliver a fruity refreshing beer.
+3,Black Buzzard,Leighton Buzzard Brewing Co.,Q97676194,5.8%,Porter,,,"A crazy marriage of six different malts delivers a wonderful, complex, robust porter."
 4,Prestwoods Best,Malt,,4.4%,Bitter,,,A moreish classic bitter that’s light chestnut in colour and has hints of caramel.
 5,Summer Daze,Malt,,4.0%,,,,"A light yet flavoursome ale, Malt Summer Daze is made with a New Zealand hop that gives it a tropical fruitiness and distinctive aroma."
 6,All Rounder,Haresfoot,,3.7%,Pale Ale,,,"All-rounder is a light, smooth, straw-coloured, quaffable pale ale (an all-rounder) generously hoped with a rich mix of English (first gold) and Australian (summer) hops."
