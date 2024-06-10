@@ -21,8 +21,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 20,Dachshund,Animal Brewing Co,Q97975500,4.6%,Amber Ale,,,"Dachshund is an all Admiral hopped beer, on Crystal Rye malts resulting in a light amber easy drinking 4.6% beer."
 21,Gravitas,Vale Brewery,Q98072911,4.8%,Golden/Blonde,,,"A strong pale ale packed with citrus hop flavours, perfectly balance by a dry biscuity, malty finish."
 22,Bullit,Vale Brewery,Q98072911,4.4%,Red American IPA,,,"A hard hitting, ultra hoppy, Red American IPA, packed with Citra, Mosaic and Chinook hops for a punchy, all American thriller."
-23,Punk is Dead,Aylesbury Brewhouse Co.,,4.8%,Red IPA,,,"Red IPA red crystal malts, simcoe chinook citra mosaic, v f***ing hoppy!"
-24,Gates of Valhalla,Aylesbury Brewhouse Co.,,5.0%,Golden Ale,,,"Valhalla is the norse drinking hall of the God, odin, where the souls of slain warriors gather to fight Odin's final battle at Ragnarok. Powerful hops and fine malts make a golden, highly aromatic Norse Pale Ale!"
+23,Punk is Dead,Aylesbury Brewhouse Co.,Q97621074,4.8%,Red IPA,,,"Red IPA red crystal malts, simcoe chinook citra mosaic, v f***ing hoppy!"
+24,Gates of Valhalla,Aylesbury Brewhouse Co.,Q97621074,5.0%,Golden Ale,,,"Valhalla is the norse drinking hall of the God, odin, where the souls of slain warriors gather to fight Odin's final battle at Ragnarok. Powerful hops and fine malts make a golden, highly aromatic Norse Pale Ale!"
 25,La Tene,Celt Experience,,3.5%,Bitter,,,Great balance of spice with dry-hopped pineapple aromas Grounds where belief and spirit were born. An Iron Age culture named after the archaeological site of La Tène on the north side of Lake Neuchâtel in Switzerland.
 26,Joshua Jane,Ilkley,,3.7%,Bitter,,,"Rich nut-brown Yorkshire ale. Everything that is great about traditional Yorkshire bitter, fused with Ilkley Brewery’s unique hop character. Named after Mary Jane’s suitor, ont’ Ilkla Moor baht’at…"
 27,Citrus Maximus,Dorset Brewing Company,,4.0%,English Pale Ale,,,Lemon and Curacao orange peel with elderflower infusions combine with a dry hop blast of citra. Fresh and Zippy.

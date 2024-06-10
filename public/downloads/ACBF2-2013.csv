@@ -1,8 +1,8 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
 1,Gravitas,Vale Brewery,Q98072911,4.8%,Premium Bitter,,,
 2,Helios,Vale Brewery,Q98072911,4.2%,Bronze,,,
-3,Jekyll & Hyde,Aylesbury Brewhouse Co.,,5.2%,Bitter,,,
-4,Renton & Overton Oatmeal Stout,Aylesbury Brewhouse Co.,,4.9%,Stout,,,
+3,Jekyll & Hyde,Aylesbury Brewhouse Co.,Q97621074,5.2%,Bitter,,,
+4,Renton & Overton Oatmeal Stout,Aylesbury Brewhouse Co.,Q97621074,4.9%,Stout,,,
 5,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Premium Bitter,,,
 6,Chiltern Gold,The Chiltern Brewery,Q97661391,3.9%,Golden Ale,,,
 7,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,
