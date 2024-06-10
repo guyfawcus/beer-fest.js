@@ -39,7 +39,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 38,Life & Death,Vocation,,6.5%,IPA,,,
 39,Lion,Animal Brewing Co,,4.6%,Porter,,,
 40,Liquid Mistress,Siren Craft Brew,,5.8%,Rye IPA,,,
-41,London Porter,Mad Squirrel,,5.0%,Porter,,,
+41,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,
 42,Lucky Pen,Long Arm,,4.0%,Golden/Blonde Ale,,,
 43,Mild,The 3 Brewers of St.Albans,Q97619412,3.6%,Mild,,,
 44,Milk Stout,Bristol Beer Factory,,4.5%,Milk Stout,,,

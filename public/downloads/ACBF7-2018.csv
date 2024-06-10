@@ -34,7 +34,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 33,Inhaler,Magic Rock Brewing,,4.5%,Session IPA,,,"Super fruity, super ripe, super juicy and super drinkable."
 34,Liquid Mistress,Siren Craft Brew,,5.8%,Amber Ale,,,Bright red ale with aromas and flavours of raisins and crackers balanced by citrus.
 35,Little Bitter That,Brew Foundation,,3.8%,Bitter,,,"Traditional British hops and malt for a fruity taste and aroma, balanced against a strong malty body."
-36,London Porter,Mad Squirrel,,5.0%,Porter,,,"Notes of Coffee, Chocolate & Smoke."
+36,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of Coffee, Chocolate & Smoke."
 37,Long Summer Days,Bristol Beer Factory,,5.6%,IPA,,,"Big citrus flavour with botanical, sweet richness and a classic bitter US IPA finish."
 38,Manta Ray,Animal Brewing Co,,4.6%,Golden / Blonde,,,Pilsner Malts & triple hopped with American greens. Crisp dry and refreshing.
 39,MEGS Bomb,Arbor,,4.7%,Golden / Blonde,,,"Easy drinking Pale Ale with tropical fruits, citrus and a slight herbal finish."
@@ -52,10 +52,10 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 51,Plum Porter,Titanic,,4.9%,Porter,,,Dark strong and well rounded; the richness is balanced by the late addition of Goldings hops and natural plum flavouring.
 52,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Aromas of chocolate and coffee with hints of caramel, brewed with British East Kent Goldings hops."
 53,Red Kite,Vale Brewery,Q98072911,4.3%,Bitter,,,Deep red in colour with big malt flavours and a strong hop finish.
-54,Resolution,Mad Squirrel,,4.2%,Bitter,,,"Late hopped with three American hop varieties for maximum flavour. Light, refreshing and immensely drinkable."
+54,Resolution,Mad Squirrel,Q98074829,4.2%,Bitter,,,"Late hopped with three American hop varieties for maximum flavour. Light, refreshing and immensely drinkable."
 55,Restoration Ale,Leighton Buzzard Brewing Co.,,4.6%,Bitter,,,A traditional best bitter enhanced by the generous use of Cascade and Perle hops to deliver a refreshingly fruity beer.
 56,Roadie,Signature Brew,,4.3%,Session IPA,,,"Super crisp, light and refreshing. Plenty of Columbus & Cascade hops."
-57,RoadKill,Mad Squirrel,,6.5%,IPA,,,"Hazy gold. Aroma and taste are rich tropical fruits, citrus, flowers, hops, malt; nice long fruity finish."
+57,RoadKill,Mad Squirrel,Q98074829,6.5%,IPA,,,"Hazy gold. Aroma and taste are rich tropical fruits, citrus, flowers, hops, malt; nice long fruity finish."
 58,Rock Steady,Mantle,,3.8%,Golden / Blonde,,,"Very drinkable Golden Session Ale, with a good dose of British hops for a crisp and refreshing finish."
 59,Sean of the Red,Arbor,,5.1%,Amber Ale,,,"Red/Amber, red berry notes with sweet malt and a dry hop finish."
 60,Serendipity,Wild Weather,,3.5%,APA,,,An explosively fruity American Pale Ale. Big American hops deliver a huge nose over a subtle malt bill.

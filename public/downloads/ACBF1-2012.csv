@@ -7,10 +7,10 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 6,Channel Surfing,Aylesbury Brewhouse Co.,,5.0%,Stout,,,"A high definition stout, using a blend of six malts and four hops."
 7,Cobblestone,The Chiltern Brewery,Q97661391,3.5%,Bitter,,,"A golden, light, refreshing and fruity beer with a hint of bitterness."
 8,Beechwood Bitter,The Chiltern Brewery,Q97661391,4.3%,Premium Bitter,,,The brewery flagship - a hearty and well-rounded beer. Mid amber colour with a rich butter-toffee aroma. Fruity and slightly nutty.
-9,London Porter,Red Squirrel,,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
-10,Redwood American IPA,Red Squirrel,,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
-11,RSX,Red Squirrel,,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."
-12,Royal Rumble,Red Squirrel,,3.7%,Bitter,,,"A ruby red ale for toasting the Queen. Dark ruby red in colour, full flavoured with a smooth texture on the palate with a hoppy fruit finish. Royal quality at its best."
+9,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Dark brown, roasted barley, rich chocolate, with a lovely creaminess."
+10,Redwood American IPA,Mad Squirrel,Q98074829,5.4%,IPA,,,"Golden orange, complex hoppy aromas, floral notes, long finish."
+11,RSX,Mad Squirrel,Q98074829,3.8%,Bitter,,,"A chestnut brown coloured ale, showing succulent dried fruit with hoppy aromas."
+12,Royal Rumble,Mad Squirrel,Q98074829,3.7%,Bitter,,,"A ruby red ale for toasting the Queen. Dark ruby red in colour, full flavoured with a smooth texture on the palate with a hoppy fruit finish. Royal quality at its best."
 13,Side Pocket,Tring Brewery Co.,Q7842351,3.6%,Pale Ale,,,Unmistakable citrus notes from only the best Cascade hops balanced with a floral aroma and crisp dry finish make this straw coloured ale a fantastic session beer.
 14,Colleys Dog,Tring Brewery Co.,Q7842351,5.3%,Porter,,,"Dark ruby in colour but not over rich. Strong yet very drinkable, this premium ale has a long dry finish with overtones of malt and walnuts. Available in 500ml bottles."
 15,Card Sharp,Tring Brewery Co.,Q7842351,4.5%,Premium Bitter,,,First Gold is a very popular English hop which yields an extremely moreish spicy and orangy hop aroma. This pale brown bitter is brewed using some golden naked oats which add fullness to the palate.
