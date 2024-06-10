@@ -78,4 +78,4 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 77,Voyager,Malt,,5.0%,IPA,,,
 78,Weightless,Red Willow,,4.2%,Session IPA,,,
 79,Windermere Pale,Hawkshead,,3.5%,Pale Ale,,,
-80,XPA,Five Points,,4.0%,Pale Ale,,,
+80,XPA,The Five Points Brewing Company,Q98071243,4.0%,Pale Ale,,,

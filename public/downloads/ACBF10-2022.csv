@@ -3,7 +3,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 2,Amity,Vale Brewery,Q98072911,3.9%,Bitter,,,A blend of malts to give it a so-fish-ticated dry finish and American Columbus hops that gives it a real bite.
 3,Ashford,Thornbridge,Q7796317,4.2%,Brown Ale,,,"Floral and berry hop with gentle coffee and roast hazelnut aromas. Smooth in the mouth with a nice dry, toasty note."
 4,Beechwood,Chiltern,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
-5,Best,Five Points,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
+5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
 6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
 7,Bitter,Almasty,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
 8,Black Friday,paradigm brewery,Q98075011,6.0%,Dark Mild,,,"Smooth, sweet and smoky. Contains five dark malts to give depth. Very drinkable & very dangerous!"
@@ -50,7 +50,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 49,Pale,Left Handed Giant,,4.0%,Pale Ale,,,"Golden Promise malt and lightly hopped with Amarillo, Celeia, Citra and Mosaic for a rounded fruity finish."
 50,Pride and Joy,Vocation,Q107717907,5.3%,American Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
 51,Quiet Time,Track,,5.2%,Pale Ale,,,"Mosaic heavy dry hop with Simcoe and Columbus. Fresh OJ and pineapple, pithy pink grapefruit and lemon verbena."
-52,Railway Porter,Five Points,Q98071243,4.8%,Porter,,,"A classic London style porter. Smooth and full-bodied, bursting with aromas of dark chocolate, and roasted coffee."
+52,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"A classic London style porter. Smooth and full-bodied, bursting with aromas of dark chocolate, and roasted coffee."
 53,Raven King,Tring Brewery Co.,Q7842351,5.5%,IPA,,,"Tropical fruits from Citra and Mosaic, dry-hopped for extra aroma. Brewed using wheat for a full-bodied, hazy finish."
 54,Red Lady,Redcastle,,4.0%,Ruby Ale,,,"Aroma has notes of toffee and fruits . Light & sweet caramel and dried fruit flavours. Smooth, light, sweet finish."
 55,Resurface,Bristol Beer Factory,Q107716330,5.0%,IPA,,,"White grape and gooseberry, lemon and stone fruits. Aussie hop Ella adds a tropical finish."
