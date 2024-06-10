@@ -55,7 +55,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 54,Mister Squirrel,Mad Squirrel,Q98074829,4.0%,Bitter,,,"Balanced and respectable brew with notes of toffee, vanilla and nuts."
 55,Mosaic,Neptune,,4.5%,Pale Ale,,,"Single hopped pale with Mosaic. Juicy flavours of tropical fruits, blueberries and papaya."
 56,Mosaic,Arbor,Q97665078,4.0%,Pale Ale,,y,
-57,Old Skool,Kent,Q98103562,4.1%,Best Bitter,,,"A traditional style English bitter, as hoppy as it used to be."
+57,Old Skool,Kent Brewery,Q98103562,4.1%,Best Bitter,,,"A traditional style English bitter, as hoppy as it used to be."
 58,Once Forgotten,Track,,4.4%,Amber,,,"Malt character of caramel and lightly toasted biscuits shine through a light body, with gentle notes of pine and light citrus fruits."
 59,Ordinary,Anspach & Hobday,Q98222607,3.7%,Bitter,,,"Pine, spice and dark fruit aromas, with smooth caramel, biscuit on the palate."
 60,Pacific Pale,Left Handed Giant,,4.5%,Pale Ale,,,"Complex hop bill including Idaho-7 and Galaxy, summer berries and tropical."
@@ -74,7 +74,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 73,Special,The 3 Brewers of St.Albans,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
 74,Symposium,Ossett,,5.0%,Pale Ale,,,"NZ-grown Nectaron hops and US Citra to give intense aromas of citrus, peach, pineapple and passion fruit."
 75,Triple Goat,Hornes Brewery,Q97666414,3.9%,Pale Ale,,y,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops."
-76,Tropic Ale,Kent,Q98103562,4.9%,IPA,,,A mouth-watering taste of the tropics in a hotbed of fruity and citrusy hops.
+76,Tropic Ale,Kent Brewery,Q98103562,4.9%,IPA,,,A mouth-watering taste of the tropics in a hotbed of fruity and citrusy hops.
 77,Unlocked,Hornes Brewery,Q97666414,5.0%,IPA,,y,"Crisp IPA with citrus characteristics. Balanced malts, American Cascade and Summit hops."
 78,Vale Best,Vale Brewery,Q98072911,3.7%,IPA,,,An English IPA that packs more flavour with a three hop blend to create a real session thirst-quencher.
 79,Weightless,Red Willow,,4.2%,Session IPA,,,Pale Ale loaded with Citra and Amarillo hops providing massive amounts of tropical fruit with a clean finish.
