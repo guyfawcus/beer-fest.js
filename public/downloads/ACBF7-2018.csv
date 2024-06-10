@@ -20,7 +20,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 19,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 20,Don't Believe the Hype,Tiny Rebel,Q27136461,5.0%,IPA,,,"Hazy golden colour, floral & caramel aroma, taste is sweet & juicy citrus."
 21,Earl Grey IPA,Marble Brewery,,6.8%,IPA,,,"Crisp and golden. Caramel, tea and malt aromas. Sweet with some bitterness and spiciness."
-22,Ekuanot Extra Pale,Beatnikz Republic,,4.4%,Pale Ale,,,Singly hopped with Ekuanot for a juicy tropical flavour and aroma.
+22,Ekuanot Extra Pale,Beatnikz Republic,Q107717860,4.4%,Pale Ale,,,Singly hopped with Ekuanot for a juicy tropical flavour and aroma.
 23,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Golden / Blonde,,,Crisp with very low bitterness and a late citrus hop aroma from a combination of Saaz and Cascade varieties.
 24,Four,XT Brewing Co.,Q39053843,3.8%,Amber Ale,,,A modern session amber ale - English and Belgian malts plus American and English hops.
 25,Full of Beans,Wild Weather,,5.0%,Stout,,,"Flavours of Irish Whiskey, cream and coffee. Chocolate malts and aged on fresh Arabica beans."
@@ -72,7 +72,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 71,Trafalgar,Great Heck,,4.0%,Golden / Blonde,,,"Extra pale ale with moderate bitterness but packed with tons of exotic, fruity flavours and aromas."
 72,Triple Goat Pale Ale,Hornes Brewery,,3.9%,Pale Ale,,,"A refreshingly natural pale ale brewed with malted pale barley , whole flower hops, brewers yeast and pure water."
 73,Triple Goat Porter,Hornes Brewery,,4.6%,Porter,,,"Earthy, robust porter with a balanced sweetness from a delicious blend of roasted malts, UK and american hops."
-74,Tropical IPA,Beatnikz Republic,,5.6%,IPA,y,,"A full flavoured hoppy IPA with Motueka, Ekuanot & Mosaic hops."
+74,Tropical IPA,Beatnikz Republic,Q107717860,5.6%,IPA,y,,"A full flavoured hoppy IPA with Motueka, Ekuanot & Mosaic hops."
 75,Tuckerlovsky,Marble Brewery,,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
 76,Union Hop,Moor,,4.7%,Golden / Blonde,,,Traditional British floor malted barley and modern British hops.
 77,Vital Spark,Fyne,,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
