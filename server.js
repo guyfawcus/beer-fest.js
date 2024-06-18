@@ -26,7 +26,7 @@ import { stringify as csvStringify } from 'csv-stringify/sync'
 import GeoJSON from 'geojson'
 import redis from 'redis'
 import { Server as SocketIo } from 'socket.io'
-import WBK from 'wikibase-sdk'
+import { WBK, simplifySparqlResults } from 'wikibase-sdk'
 
 // ---------------------------------------------------------------------------
 // Variable definitions
@@ -463,82 +463,37 @@ function getBreweryIds(beers) {
 
 /**
  * Gets information about the breweries from Wikidata
- * @param {Array} brewery_wikidata_ids A list of QIDs that point to breweries on Wikidata
+ * @param {String} brewery_query_url Wikidata query URL that gets information about the breweries
  * @returns {Promise} Returns a list of objects with info about the breweries
  */
-function getBreweryInfo(brewery_wikidata_ids) {
-  return new Promise((resolve, reject) => {
-    if (brewery_wikidata_ids.length <= 0) return reject('No IDs to get Wikidata claims for')
-    console.log(`Retrieving Wikidata claims for ${brewery_wikidata_ids.length} breweries: ${brewery_wikidata_ids}`)
-
-    // Get the URLs for the queries that we're after
-    const urls = wdk.getManyEntities({
-      ids: brewery_wikidata_ids,
-      languages: ['en'],
-      props: ['claims']
-    })
-
-    // Keep track of the URLs that have been worked on
-    const done_urls = []
-
-    // Store all of the claims here
-    const wikidata_claims = {}
-
-    urls.forEach((url) => {
-      fetch(url)
-        .then((response) => response.json())
-        .then(wdk.parse.entities)
-        .then((entities) => {
-          // Pick out the data we want and add it to `wikidata_claims`
-          Object.keys(entities).forEach((entity) => {
-            const qid = entities[entity].id
-            const website = entities[entity].claims?.P856?.[0] || ''
-            const location = entities[entity].claims?.P625?.[0] || ['', '']
-
-            const beerAdvocateId = entities[entity].claims?.P2904?.[0]
-            const rateBeerId = entities[entity].claims?.P2905?.[0]
-            const untappdId = entities[entity].claims?.P3002?.[0]
-            const facebookId = entities[entity].claims?.P2013?.[0]
-            const instagramId = entities[entity].claims?.P2003?.[0]
-            const twitterId = entities[entity].claims?.P2002?.[0]
-
-            const beerAdvocate = beerAdvocateId ? `https://www.beeradvocate.com/beer/profile/${beerAdvocateId}/` : ''
-            const rateBeer = rateBeerId ? `https://www.ratebeer.com/brewers/${rateBeerId}/` : ''
-            const untappd = untappdId ? `https://untappd.com/brewery/${untappdId}/` : ''
-            const facebook = facebookId ? `https://www.facebook.com/${facebookId}/` : ''
-            const instagram = instagramId ? `https://www.instagram.com/${instagramId}/` : ''
-            const twitter = twitterId ? `https://twitter.com/${twitterId}/` : ''
-
-            wikidata_claims[qid] = {
-              brewery_website: website,
-              brewery_latitude: location[0],
-              brewery_longitude: location[1],
-              brewery_beer_advocate: beerAdvocate,
-              brewery_rate_beer: rateBeer,
-              brewery_untappd: untappd,
-              brewery_facebook: facebook,
-              brewery_instagram: instagram,
-              brewery_twitter: twitter
-            }
-          })
-        })
-        .then(() => {
-          done_urls.push(url)
-
-          // After all of the URLs have been taken care of...
-          if (urls.length === done_urls.length) {
-            resolve(wikidata_claims)
-          }
-        })
-        .catch((error) => {
-          if (error.name === 'FetchError') {
-            reject(new Error("Couldn't connect to Wikidata"))
-          } else {
-            reject(error)
-          }
-        })
-    })
+async function getBreweryInfo(brewery_query_url) {
+  const brewery_query = await fetch(brewery_query_url).catch((error) => {
+    throw new Error("Couldn't connect to Wikidata", error)
   })
+
+  const verbose_brewery_query_data = await brewery_query.json()
+  const brewery_query_data = simplifySparqlResults(verbose_brewery_query_data)
+
+  const wikidata_claims = {}
+
+  brewery_query_data.forEach((entity) => {
+    const qid = entity.brewery.value
+    const location = entity.location.match(/(-*\d+\.\d+) (-*\d+\.\d+)/)
+
+    wikidata_claims[qid] = {
+      brewery_website: entity.website,
+      brewery_latitude: location ? location[2] : '',
+      brewery_longitude: location ? location[1] : '',
+      brewery_beer_advocate: entity.beerAdvocateUrl,
+      brewery_rate_beer: entity.rateBeerUrl,
+      brewery_untappd: entity.untappdUrl,
+      brewery_facebook: entity.facebookUrl,
+      brewery_instagram: entity.instagramUrl,
+      brewery_twitter: entity.twitterUrl
+    }
+  })
+
+  return wikidata_claims
 }
 
 /**
@@ -548,8 +503,13 @@ function getBreweryInfo(brewery_wikidata_ids) {
  */
 function updateBeersFromWikidata(beers) {
   return new Promise((resolve, reject) => {
+    const brewery_query_url = generateBreweryQuery(beers)
+
     const brewery_wikidata_ids = getBreweryIds(beers)
-    getBreweryInfo(brewery_wikidata_ids)
+    if (brewery_wikidata_ids.length <= 0) return reject('No IDs to get Wikidata claims for')
+    console.log(`Retrieving Wikidata claims for ${brewery_wikidata_ids.length} breweries: ${brewery_wikidata_ids}`)
+
+    getBreweryInfo(brewery_query_url)
       .then((brewery_wikidata_claims) => {
         const wikidata_beers = {}
 
@@ -620,10 +580,7 @@ WHERE
 ORDER BY (fn:lower-case(str(?breweryLabel)))
 `
 
-  // Return the query URL minus the format param so that the link takes you to the query service
-  const url = wdk.sparqlQuery(sparql).replace('sparql?format=json&query=', '#')
-
-  return url
+  return wdk.sparqlQuery(sparql)
 }
 
 /**
@@ -838,7 +795,8 @@ app.get('/map', (req, res) => {
 app.get('/brewery-wikidata-query', (req, res) => {
   // Initialise the beer information so that `brewery_query_url` is up-to-date
   initialiseBeers().then(() => {
-    res.redirect(brewery_query_url)
+    // Return the query URL minus the format param so that the link takes you to the query service
+    res.redirect(brewery_query_url.replace('sparql?format=json&query=', '#'))
   })
 })
 
