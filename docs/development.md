@@ -24,7 +24,6 @@ After you have installed the app with `npm install` you can get coding!
 Installation will give you the following to help in working with this software:
 
 - [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme) - For type checking and usage notes in your IDE
-- [nodemon](https://nodemon.io/) - Restarts the server when you make a change to the code
 - [Husky](https://github.com/typicode/husky#readme) - For running tests before committing and pushing with Git
 - [Prettier](https://prettier.io/) - Code formatter to keep the style consistent
 - [Standard JS](https://standardjs.com/) - Rules for linting the code with...
@@ -58,7 +57,7 @@ then add the following lines to your [settings.json](https://code.visualstudio.c
 ### Dev workflow
 
 1. Swap to a new branch with `git checkout -b`
-2. Run `nodemon server.js`
+2. Run `node --watch server.js`
 3. Make some changes
 4. Run `npm run test`
 5. Ensure your changes have had the desired effect
