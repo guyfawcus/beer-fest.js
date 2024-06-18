@@ -719,7 +719,6 @@ function initialiseBeers() {
           brewery_query_url = generateBreweryQuery(beers)
           brewery_geojson = generateBreweryGeojson(beers)
 
-          console.log('Resolving beers from Redis')
           resolve()
         }
       })
