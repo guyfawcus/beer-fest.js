@@ -551,7 +551,11 @@ WHERE
     }
 
     OPTIONAL {?brewery wdt:P856 ?website .}
-    OPTIONAL {?brewery wdt:P625 ?location .}
+
+    # Use the headquarters location by default but use the coordinate location as a fallback
+    OPTIONAL {?brewery p:P159/pq:P625 ?hq_location .}
+    OPTIONAL {?brewery wdt:P625 ?coord_location .}
+    BIND(IF(BOUND(?hq_location), ?hq_location, ?coord_location) AS ?location) .
 
     OPTIONAL {?brewery wdt:P2904 ?beerAdvocateId .}
     OPTIONAL {?brewery wdt:P2905 ?rateBeerId .}
