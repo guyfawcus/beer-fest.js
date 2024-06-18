@@ -41,6 +41,8 @@
     "geojson": "^0.5.0",
     "helmet": "^7.1.0",
     "leaflet": "^1.9.4",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
     "redis": "^3.1.2",
     "socket.io": "^4.7.5",
     "socket.io-client": "^4.7.5",

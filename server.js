@@ -22,9 +22,22 @@ import bcrypt from 'bcryptjs'
 import { parse as csvParse } from 'csv-parse/sync'
 import { stringify as csvStringify } from 'csv-stringify/sync'
 import GeoJSON from 'geojson'
+import pino from 'pino'
 import redis from 'redis'
 import { Server as SocketIo } from 'socket.io'
 import { WBK, simplifySparqlResults } from 'wikibase-sdk'
+
+// ---------------------------------------------------------------------------
+// Logging
+// ---------------------------------------------------------------------------
+const logger = pino({
+  transport: {
+    target: 'pino-pretty',
+    options: {
+      ignore: 'pid,hostname'
+    }
+  }
+})
 
 // ---------------------------------------------------------------------------
 // Variable definitions
@@ -34,7 +47,7 @@ const ADMIN_CODE = process.env.ADMIN_CODE || bcrypt.hashSync(TEMP_UNHASHED, 10)
 const COOKIE_SECRET = process.env.COOKIE_SECRET || crypto.randomBytes(64).toString('hex')
 
 if (!process.env.ADMIN_CODE) {
-  console.log(
+  logger.info(
     '\x1b[33m%s\x1b[0m',
     `To be able to log in easily, please generate a secure $ADMIN_CODE environment variable using utils/codegen.js
 For the moment though, you can log in with "${TEMP_UNHASHED}"\n`
@@ -42,7 +55,7 @@ For the moment though, you can log in with "${TEMP_UNHASHED}"\n`
 }
 
 if (!process.env.COOKIE_SECRET) {
-  console.log(
+  logger.info(
     '\x1b[33m%s\x1b[0m',
     'To have logins persist, please generate a secure $COOKIE_SECRET environment variable using utils/codegen.js\n'
   )
@@ -181,15 +194,15 @@ app.post('/report-violation', cspParser, (req, res) => {
 
   // Temporarily ignore violations caused by a websocket transport issue that needs resolving
   if (blockedUri.substr(0, 4) === 'wss:') {
-    console.log('Websocket transport issue: wss')
+    logger.info('Websocket transport issue: wss')
     res.status(204).end()
     return
   }
 
   if (req.body) {
-    // console.log('CSP Violation: ', req.body)
+    logger.info(`CSP Violation: ${JSON.stringify(req.body)}`)
   } else {
-    console.log('CSP Violation: No data received!')
+    logger.info('CSP Violation: No data received!')
   }
   res.status(204).end()
 })
@@ -220,10 +233,10 @@ app.use(redisSession)
   const apiURL = '/api/'
 
   if (req.method === 'GET' && !disableForURLs.includes(req.url) && !req.url.includes(apiURL)) {
-    // console.log('+++++++++++++++++++++++++++ setting cache for', req.url)
+    // logger.info(`+++++++++++++++++++++++++++ setting cache for ${req.url}`)
     res.set('Cache-control', 'public, must-revalidate')
   } else {
-    // console.log('--------------------------- disable cache for', req.url)
+    // logger.info(`--------------------------- disable cache for ${req.url}`)
     res.set('Cache-control', 'no-store')
   }
 
@@ -232,7 +245,7 @@ app.use(redisSession)
 
 // Start the server
 server.listen(process.env.PORT || 8000, () => {
-  console.log(`Listening on port ${server.address().port}`)
+  logger.info(`Listening on port ${server.address().port}`)
 })
 
 // Read in previous state if it exists, initialise all as full if not
@@ -240,10 +253,10 @@ redisClient.hgetall('stock_levels', (err, reply) => {
   if (err) handleError("Couldn't get stock levels from Redis", err)
 
   if (reply != null) {
-    console.log(`Reading in: ${JSON.stringify(reply)}`)
+    logger.info(`Reading in: ${JSON.stringify(reply)}`)
     last_table = reply
   } else {
-    console.log('Starting off state matrix')
+    logger.info('Starting off state matrix')
     for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
       last_table[number] = 'full'
     }
@@ -256,12 +269,12 @@ redisClient.hgetall('config', (err, reply) => {
   if (err) handleError("Couldn't get config from Redis", err)
 
   if (reply != null) {
-    console.log(`Reading in: ${JSON.stringify(reply)}`)
+    logger.info(`Reading in: ${JSON.stringify(reply)}`)
     // Convert the true/false strings to bools, then store them
     last_config.confirm = reply.confirm === 'true'
     last_config.low_enable = reply.low_enable === 'true'
   } else {
-    console.log('No configuration settings defined in Redis, using defaults')
+    logger.info('No configuration settings defined in Redis, using defaults')
   }
   redisClient.hset('config', 'confirm', last_config.confirm.toString())
   redisClient.hset('config', 'low_enable', last_config.low_enable.toString())
@@ -272,15 +285,15 @@ redisClient.hgetall('config', (err, reply) => {
 // ---------------------------------------------------------------------------
 redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
-    console.error("Can't connect to Redis")
+    logger.error("Can't connect to Redis")
   } else {
-    console.error(error.message)
+    logger.error(error.message)
   }
   process.exit(1)
 })
 
 const handleError = (message, error) => {
-  console.error(`${message} - ${error.message})`)
+  logger.error(`${message} - ${error.message})`)
   process.exit(1)
 }
 
@@ -290,7 +303,7 @@ process.once('SIGTERM', () => gracefulShutdown())
 process.once('SIGUSR2', () => gracefulShutdown())
 
 const gracefulShutdown = () => {
-  console.log('Shutting down server')
+  logger.info('Shutting down server')
 
   // Clean up old session-socket mapping(s), new mappings will be created on restart
   redisClient.keys('sock:*', (err, reply) => {
@@ -299,7 +312,7 @@ const gracefulShutdown = () => {
 
     redisClient.del(reply, (err, reply) => {
       if (err) handleError("Couldn't delete socket mappings from Redis", err)
-      console.log(`Removed ${reply} session-socket mapping(s)`)
+      logger.info(`Removed ${reply} session-socket mapping(s)`)
 
       process.exit()
     })
@@ -325,7 +338,7 @@ function updateSingle(name, number, level) {
     level: level
   }
   redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
-  console.log(`Distributing updates from ${name} (number ${number} = ${level})`)
+  logger.info(`Distributing updates from ${name} (number ${number} = ${level})`)
   if (last_table[number] !== level) {
     last_table[number] = level
     io.sockets.emit('update-single', singleUpdateObj)
@@ -355,7 +368,7 @@ function updateRequired(name, stock_levels) {
  */
 function replaceAll(name, stock_levels) {
   // Save the whole table at once
-  console.log(`Distributing whole table from "${name}", backing up and wiping log`)
+  logger.info(`Distributing whole table from "${name}", backing up and wiping log`)
 
   // Before replacing all, perform backups and set them to expire in a week
   const epochTime = Date.now()
@@ -505,7 +518,7 @@ function updateBeersFromWikidata(beers) {
 
     const brewery_wikidata_ids = getBreweryIds(beers)
     if (brewery_wikidata_ids.length <= 0) return reject('No IDs to get Wikidata claims for')
-    console.log(`Retrieving Wikidata claims for ${brewery_wikidata_ids.length} breweries: ${brewery_wikidata_ids}`)
+    logger.info(`Retrieving Wikidata claims for ${brewery_wikidata_ids.length} breweries: ${brewery_wikidata_ids}`)
 
     getBreweryInfo(brewery_query_url)
       .then((brewery_wikidata_claims) => {
@@ -667,7 +680,7 @@ function initialiseBeers() {
   return new Promise((resolve, reject) => {
     // Check if the beers file has already been read in
     if (beers === null) {
-      console.log('Beer information does not exist yet')
+      logger.info('Beer information does not exist yet')
 
       redisClient.hgetall('beers', (err, reply) => {
         if (err) {
@@ -681,28 +694,28 @@ function initialiseBeers() {
             fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
           } catch (err) {
             try {
-              console.error(`No current beers file found, trying default (${BEERS_FILE})`)
+              logger.error(`No current beers file found, trying default (${BEERS_FILE})`)
               fs.accessSync(BEERS_FILE, fs.constants.F_OK)
               fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
             } catch (err) {
-              console.error('No current or default beers files found, making a blank one to use instead')
+              logger.error('No current or default beers files found, making a blank one to use instead')
               fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
             }
           }
-          console.log('Reading in current beers file')
+          logger.info('Reading in current beers file')
           beers = {}
           csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
             beers[beer.beer_number] = beer
           })
 
-          console.log('Saving beer information to Redis')
+          logger.info('Saving beer information to Redis')
           saveBeers(beers)
 
-          console.log('Updating brewery query URL and GeoJSON')
+          logger.info('Updating brewery query URL and GeoJSON')
           brewery_query_url = generateBreweryQuery(beers)
           brewery_geojson = generateBreweryGeojson(beers)
 
-          console.log('Resolving newly created beers list')
+          logger.info('Resolving newly created beers list')
           resolve()
         } else {
           // For every beer, parse the entry then add it to the beers object
@@ -712,10 +725,10 @@ function initialiseBeers() {
             beers[beer.beer_number] = beer
           }
 
-          console.log('Saving CSV from Redis')
+          logger.info('Saving CSV from Redis')
           saveCSV(beers)
 
-          console.log('Updating brewery query URL and GeoJSON')
+          logger.info('Updating brewery query URL and GeoJSON')
           brewery_query_url = generateBreweryQuery(beers)
           brewery_geojson = generateBreweryGeojson(beers)
 
@@ -873,7 +886,7 @@ app.post('/users', (req, res) => {
   bcrypt.compare(code, ADMIN_CODE, (err, resp) => {
     if (err) handleError("Couldn't compare codes with bcrypt", err)
     if (resp) {
-      console.log(`Client - ${thisSession} (${name}) - has entered the correct code`)
+      logger.info(`Client - ${thisSession} (${name}) - has entered the correct code`)
       req.session.name = name
       redisClient.sadd('authed_ids', thisSession)
       redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
@@ -884,7 +897,7 @@ app.post('/users', (req, res) => {
       })
       res.redirect('/')
     } else {
-      console.log(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
+      logger.info(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
       req.flash('error', 'Wrong code, please try again')
       res.redirect('login')
     }
@@ -930,7 +943,7 @@ app.post('/api/stock_levels', cors(), (req, res) => {
   const name = req.session.name || 'API'
   if (ENABLE_API === 'true') {
     if (Object.keys(req.body).length > NUM_OF_BUTTONS) {
-      console.log('Too many items in JSON')
+      logger.info('Too many items in JSON')
       res.status(400).send('Too many items in JSON')
       return
     } else if (Object.keys(req.body).length === NUM_OF_BUTTONS) {
@@ -944,7 +957,7 @@ app.post('/api/stock_levels', cors(), (req, res) => {
     }
     res.send(last_table)
   } else {
-    console.log('API use is not enabled')
+    logger.info('API use is not enabled')
     res.status(403).send('API use is not enabled')
   }
 })
@@ -959,11 +972,11 @@ app.post('/api/stock_levels/:number/:level', cors(), (req, res) => {
       updateSingle(name, number, level)
       res.send(last_table)
     } else {
-      console.log('Number too high')
+      logger.info('Number too high')
       res.status(400).send('Number too high')
     }
   } else {
-    console.log('API use is not enabled')
+    logger.info('API use is not enabled')
     res.status(403).send('API use is not enabled')
   }
 })
@@ -982,7 +995,7 @@ app.use(function (req, res) {
 // Handle 500
 app.use(function (error, req, res, next) {
   res.status(500).sendFile('views/misc/500.html', { root: import.meta.dirname })
-  console.log('Server error:', error)
+  logger.info(`Server error: ${error}`)
 })
 
 // ---------------------------------------------------------------------------
@@ -1017,7 +1030,7 @@ io.on('connection', (socket) => {
   if (pathname.slice(-1) === '/') pathname = pathname.slice(0, -1)
 
   // When a new client connects, update them with the current state of things
-  console.log(`Client ${socket.id} connected (${pathname})`)
+  logger.info(`Client ${socket.id} connected (${pathname})`)
 
   // Send the configuration settings
   if (pathname === 'settings' || pathname === 'availability' || pathname === 'bot') {
@@ -1058,7 +1071,7 @@ io.on('connection', (socket) => {
       if (reply) {
         updateRequired(name, table)
       } else {
-        console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        logger.info(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1071,7 +1084,7 @@ io.on('connection', (socket) => {
       if (reply) {
         replaceAll(name, table)
       } else {
-        console.log(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        logger.info(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1087,7 +1100,7 @@ io.on('connection', (socket) => {
       if (reply) {
         updateSingle(name, number, level)
       } else {
-        console.log(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
+        logger.info(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1098,15 +1111,15 @@ io.on('connection', (socket) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
       if (reply) {
         // Distribute and save the configuration
-        console.log('Distributing configuration:')
-        console.log(configuration)
+        logger.info('Distributing configuration:')
+        logger.info(configuration)
         io.sockets.emit('config', configuration)
         last_config.confirm = configuration.confirm
         last_config.low_enable = configuration.low_enable
         redisClient.hset('config', 'confirm', configuration.confirm)
         redisClient.hset('config', 'low_enable', configuration.low_enable)
       } else {
-        console.log(
+        logger.info(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
         )
         io.to(socket.id).emit('config', last_config)
@@ -1115,7 +1128,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('beers-file', (beersFileText) => {
-    console.log('New beers file received from', socket.handshake.session.id)
+    logger.info(`New beers file received from ${socket.handshake.session.id}`)
 
     redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
       if (err) handleError("Couldn't check authed_ids from Redis", err)
@@ -1127,28 +1140,28 @@ io.on('connection', (socket) => {
 
         updateBeersFromWikidata(beers)
           .then((wikidata_beers) => {
-            console.log('Storing Wikidata claims')
+            logger.info('Storing Wikidata claims')
             beers = wikidata_beers
           })
           .catch((error) => {
-            console.log(error)
+            logger.info(error)
           })
           .finally(() => {
-            console.log('Sending updated beer information')
+            logger.info('Sending updated beer information')
             io.sockets.emit('beers', beers)
 
-            console.log('Saving new beer information CSV')
+            logger.info('Saving new beer information CSV')
             saveCSV(beers)
 
-            console.log('Updating brewery query URL and GeoJSON')
+            logger.info('Updating brewery query URL and GeoJSON')
             brewery_query_url = generateBreweryQuery(beers)
             brewery_geojson = generateBreweryGeojson(beers)
 
-            console.log('Saving beer information to Redis')
+            logger.info('Saving beer information to Redis')
             saveBeers(beers)
           })
       } else {
-        console.log(
+        logger.info(
           `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
         )
         io.to(socket.id).emit('config', last_config)
@@ -1157,7 +1170,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    console.log(`Client ${socket.id} disconnected`)
+    logger.info(`Client ${socket.id} disconnected`)
     redisClient.srem(`sock:${socket.handshake.session.id}`, socket.id)
   })
 })
