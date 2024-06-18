@@ -2,10 +2,10 @@
 
 'use strict'
 
-const bcrypt = require('bcryptjs')
-const readline = require('readline')
-const { exec } = require('child_process')
-const crypto = require('crypto')
+import bcrypt from 'bcryptjs'
+import readline from 'readline'
+import { exec } from 'child_process'
+import crypto from 'node:crypto'
 
 /**
  * Running this script will generate a new ADMIN_CODE and COOKIE_SECRET
