@@ -4,8 +4,6 @@
 import crypto from 'node:crypto'
 import fs from 'node:fs'
 import http from 'node:http'
-import path from 'node:path'
-import url from 'url'
 
 // Express related packages
 import compression from 'compression'
@@ -756,29 +754,27 @@ function checkNotAuthenticated(req, res, next) {
 // ---------------------------------------------------------------------------
 // Routes - main
 // ---------------------------------------------------------------------------
-const __dirname = url.fileURLToPath(new URL('.', import.meta.url))
-
 // Core pages
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/index.html'))
+  res.sendFile('views/index.html', { root: import.meta.dirname })
 })
 
 app.get('/availability', (req, res) => {
   // Remove the X-Frame-Options header so that this page can be embedded (iframe)
   res.removeHeader('X-Frame-Options')
-  res.sendFile(path.join(__dirname, 'views/buttons.html'))
+  res.sendFile('views/buttons.html', { root: import.meta.dirname })
 })
 
 app.get('/history', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/history.html'))
+  res.sendFile('views/history.html', { root: import.meta.dirname })
 })
 
 app.get('/slideshow', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/slideshow.html'))
+  res.sendFile('views/slideshow.html', { root: import.meta.dirname })
 })
 
 app.get('/settings', checkAuthenticated, (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/settings.html'))
+  res.sendFile('views/settings.html', { root: import.meta.dirname })
 })
 
 app.get('/login', checkNotAuthenticated, (req, res) => {
@@ -788,12 +784,12 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 app.get('/downloads', (req, res) => {
   // Initialise the beer information so that `CURRENT_BEERS_FILE` is available
   initialiseBeers().then(() => {
-    res.sendFile(path.join(__dirname, 'views/downloads.html'))
+    res.sendFile('views/downloads.html', { root: import.meta.dirname })
   })
 })
 
 app.get('/map', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/map.html'))
+  res.sendFile('views/map.html', { root: import.meta.dirname })
 })
 
 app.get('/brewery-wikidata-query', (req, res) => {
@@ -812,57 +808,57 @@ app.get('/downloads/breweries.geojson', (req, res) => {
 })
 
 app.get('/bridge', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/bridge.html'))
+  res.sendFile('views/bridge.html', { root: import.meta.dirname })
 })
 
 // Other routes
 app.get('/robots.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/robots.txt'))
+  res.sendFile('views/misc/robots.txt', { root: import.meta.dirname })
 })
 
 app.get('/manifest.json', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/manifest.json'))
+  res.sendFile('views/misc/manifest.json', { root: import.meta.dirname })
 })
 
 app.get('/sitemap.xml', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/sitemap.xml'))
+  res.sendFile('views/misc/sitemap.xml', { root: import.meta.dirname })
 })
 
 app.get('/.well-known/security.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/security.txt'))
+  res.sendFile('views/misc/security.txt', { root: import.meta.dirname })
 })
 
 app.get('/.well-known/keybase.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/keybase.txt'))
+  res.sendFile('views/misc/keybase.txt', { root: import.meta.dirname })
 })
 
 app.get('/humans.txt', (req, res) => {
-  res.sendFile(path.join(__dirname, 'views/misc/humans.txt'))
+  res.sendFile('views/misc/humans.txt', { root: import.meta.dirname })
 })
 
 // Routes for socket.io
 app.get('/js/socket.io.esm.min.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.esm.min.js'))
+  res.sendFile('node_modules/socket.io-client/dist/socket.io.esm.min.js', { root: import.meta.dirname })
 })
 app.get('/js/socket.io.esm.min.js.map', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/socket.io-client/dist/socket.io.esm.min.js.map'))
+  res.sendFile('node_modules/socket.io-client/dist/socket.io.esm.min.js.map', { root: import.meta.dirname })
 })
 
 // Routes for Leaflet (the mapping package)
 app.get('/js/leaflet-src.esm.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet-src.esm.js'))
+  res.sendFile('node_modules/leaflet/dist/leaflet-src.esm.js', { root: import.meta.dirname })
 })
 app.get('/js/leaflet-src.esm.js.map', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet-src.esm.js.map'))
+  res.sendFile('node_modules/leaflet/dist/leaflet-src.esm.js.map', { root: import.meta.dirname })
 })
 app.get('/css/leaflet.css', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/leaflet.css'))
+  res.sendFile('node_modules/leaflet/dist/leaflet.css', { root: import.meta.dirname })
 })
 app.get('/css/images/marker-icon.png', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/images/marker-icon.png'))
+  res.sendFile('node_modules/leaflet/dist/images/marker-icon.png', { root: import.meta.dirname })
 })
 app.get('/css/images/marker-shadow.png', (req, res) => {
-  res.sendFile(path.join(__dirname, 'node_modules/leaflet/dist/images/marker-shadow.png'))
+  res.sendFile('node_modules/leaflet/dist/images/marker-shadow.png', { root: import.meta.dirname })
 })
 
 // ---------------------------------------------------------------------------
@@ -981,12 +977,12 @@ app.use(express.static('public'))
 
 // Handle 404
 app.use(function (req, res) {
-  res.status(404).sendFile(path.join(__dirname, 'views/misc/404.html'))
+  res.status(404).sendFile('views/misc/404.html', { root: import.meta.dirname })
 })
 
 // Handle 500
 app.use(function (error, req, res, next) {
-  res.status(500).sendFile(path.join(__dirname, 'views/misc/500.html'))
+  res.status(500).sendFile('views/misc/500.html', { root: import.meta.dirname })
   console.log('Server error:', error)
 })
 
