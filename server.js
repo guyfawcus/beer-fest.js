@@ -630,7 +630,7 @@ ORDER BY (fn:lower-case(str(?breweryLabel)))
  * Updates {@link brewery_geojson}
  * this will only return points for breweries that have Wikidata QIDs and locations in Wikidata.
  * @param {beersObj} beers The object containing information on each beer
- * @returns {string} The URL containing the query for brewery information
+ * @returns {string} GeoJSON containing the brewery locations and related information
  */
 function generateBreweryGeojson(beers) {
   const data = {}
@@ -713,7 +713,7 @@ function initialiseBeers() {
       redisClient.hgetall('beers', (err, reply) => {
         if (err) {
           reject()
-          handleError("Couldn't beers list from Redis", err)
+          handleError("Couldn't get the beers list from Redis", err)
         }
 
         if (reply === null) {
