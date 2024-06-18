@@ -80,7 +80,7 @@ Please DO NOT deploy this application in an insecure state.
 The other place you may run into problems is with the static type checker (ESLint).
 These checks are there to help prevent bugs and to ensure a consistent style.
 All of these checks must pass before a commit to the master branch,
-but f you're just hacking away and want to try something out,
+but if you're just hacking away and want to try something out,
 do it in a new branch then commit with `git commit --no-verify`,
 then like with a security problem,
 just open a pull request or an issue and someone will help you out.
