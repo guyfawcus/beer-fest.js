@@ -187,7 +187,7 @@ app.post('/report-violation', cspParser, (req, res) => {
   }
 
   if (req.body) {
-    console.log('CSP Violation: ', req.body)
+    // console.log('CSP Violation: ', req.body)
   } else {
     console.log('CSP Violation: No data received!')
   }
