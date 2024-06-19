@@ -478,7 +478,9 @@ function getBreweryIds(beers) {
  * @returns {Promise} Returns a list of objects with info about the breweries
  */
 async function getBreweryInfo(brewery_query_url) {
-  const brewery_query = await fetch(brewery_query_url).catch((error) => {
+  const brewery_query = await fetch(brewery_query_url, {
+    headers: { 'User-Agent': 'beer-fest.js (https://github.com/guyfawcus)' }
+  }).catch((error) => {
     throw new Error("Couldn't connect to Wikidata", error)
   })
 
