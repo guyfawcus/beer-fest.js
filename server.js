@@ -7,7 +7,7 @@ import http from 'node:http'
 
 // Express related packages
 import compression from 'compression'
-import connectRedis from 'connect-redis'
+import RedisStore from 'connect-redis'
 import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
@@ -110,7 +110,8 @@ const app = express()
 const tls_config =
   NODE_ENV === 'production' ? { rejectUnauthorized: false, requestCert: true, agent: false } : undefined
 const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
-const RedisStore = connectRedis(session)
+
+await redisClient.connect()
 
 const wdk = WBK({
   instance: 'https://www.wikidata.org',
@@ -249,36 +250,42 @@ server.listen(process.env.PORT || 8000, () => {
 })
 
 // Read in previous state if it exists, initialise all as full if not
-redisClient.hgetall('stock_levels', (err, reply) => {
-  if (err) handleError("Couldn't get stock levels from Redis", err)
-
-  if (reply != null) {
-    logger.info(`Reading in: ${JSON.stringify(reply)}`)
-    last_table = reply
-  } else {
-    logger.info('Starting off state matrix')
-    for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
-      last_table[number] = 'full'
+await redisClient
+  .HGETALL('stock_levels')
+  .catch((error) => {
+    handleError("Couldn't get stock levels from Redis", error)
+  })
+  .then((reply) => {
+    if (Object.keys(reply).length !== 0) {
+      logger.info(`Reading in: ${JSON.stringify(reply)}`)
+      last_table = reply
+    } else {
+      logger.info('Starting off state matrix')
+      for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+        last_table[number] = 'full'
+      }
+      saveState(last_table)
     }
-    saveState(last_table)
-  }
-})
+  })
 
 // Read in previous config settings, initialise with defaults if not
-redisClient.hgetall('config', (err, reply) => {
-  if (err) handleError("Couldn't get config from Redis", err)
-
-  if (reply != null) {
-    logger.info(`Reading in: ${JSON.stringify(reply)}`)
-    // Convert the true/false strings to bools, then store them
-    last_config.confirm = reply.confirm === 'true'
-    last_config.low_enable = reply.low_enable === 'true'
-  } else {
-    logger.warn('No configuration settings defined in Redis, using defaults')
-  }
-  redisClient.hset('config', 'confirm', last_config.confirm.toString())
-  redisClient.hset('config', 'low_enable', last_config.low_enable.toString())
-})
+await redisClient
+  .HGETALL('config')
+  .catch((error) => {
+    handleError("Couldn't get config from Redis", error)
+  })
+  .then((reply) => {
+    if (Object.keys(reply).length !== 0) {
+      logger.info(`Reading in: ${JSON.stringify(reply)}`)
+      // Convert the true/false strings to bools, then store them
+      last_config.confirm = reply.confirm === 'true'
+      last_config.low_enable = reply.low_enable === 'true'
+    } else {
+      logger.warn('No configuration settings defined in Redis, using defaults')
+    }
+    redisClient.HSET('config', 'confirm', last_config.confirm.toString())
+    redisClient.HSET('config', 'low_enable', last_config.low_enable.toString())
+  })
 
 // ---------------------------------------------------------------------------
 // Errors
@@ -292,8 +299,8 @@ redisClient.on('error', (error) => {
   process.exit(1)
 })
 
-const handleError = (message, error) => {
-  logger.error(`${message} - ${error.message})`)
+function handleError(message, error) {
+  logger.error(`${message} - ${error.message}`)
   process.exit(1)
 }
 
@@ -306,17 +313,25 @@ const gracefulShutdown = () => {
   logger.warn('Shutting down server')
 
   // Clean up old session-socket mapping(s), new mappings will be created on restart
-  redisClient.keys('sock:*', (err, reply) => {
-    if (err) handleError("Couldn't get socket mappings from Redis", err)
-    if (reply.length === 0) process.exit()
-
-    redisClient.del(reply, (err, reply) => {
-      if (err) handleError("Couldn't delete socket mappings from Redis", err)
-      logger.info(`Removed ${reply} session-socket mapping(s)`)
-
-      process.exit()
+  redisClient
+    .KEYS('sock:*')
+    .catch((error) => {
+      handleError("Couldn't get socket mappings from Redis", error)
     })
-  })
+    .then((reply) => {
+      if (reply.length === 0) process.exit()
+
+      redisClient
+        .DEL(reply)
+        .catch((error) => {
+          handleError("Couldn't delete socket mappings from Redis", error)
+        })
+        .then((reply) => {
+          logger.info(`Removed ${reply} session-socket mapping(s)`)
+
+          process.exit()
+        })
+    })
 }
 
 // ---------------------------------------------------------------------------
@@ -337,7 +352,7 @@ function updateSingle(name, number, level) {
     number: number,
     level: level
   }
-  redisClient.zadd('log', `${epochTime}`, JSON.stringify(singleUpdateObj))
+  redisClient.ZADD('log', { score: epochTime, value: JSON.stringify(singleUpdateObj) })
   logger.info(`Distributing updates from ${name} (number ${number} = ${level})`)
   if (last_table[number] !== level) {
     last_table[number] = level
@@ -371,27 +386,31 @@ function replaceAll(name, stock_levels) {
   logger.info(`Distributing whole table from "${name}", backing up and wiping log`)
 
   // Before replacing all, perform backups and set them to expire in a week
-  const epochTime = Date.now()
+  const epochTime = String(Date.now())
   const logBackupName = `backup:log:${epochTime}`
   const stockBackupName = `backup:stock_levels:${epochTime}`
   const allBackupName = 'backup:all'
 
-  redisClient.exists('log', (err, reply) => {
-    // Backup log if it exists by renaming it
-    if (err) handleError("Couldn't check if log exists with Redis", err)
-    if (reply) redisClient.rename('log', logBackupName)
+  redisClient
+    .EXISTS('log')
+    .catch((error) => {
+      handleError("Couldn't check if log exists with Redis", error)
+    })
+    .then((reply) => {
+      // Backup log if it exists by renaming it
+      if (reply) redisClient.RENAME('log', logBackupName)
 
-    // Backup the current state
-    for (const [number, level] of Object.entries(last_table)) redisClient.hset(stockBackupName, number, level)
+      // Backup the current state
+      for (const [number, level] of Object.entries(last_table)) redisClient.HSET(stockBackupName, number, level)
 
-    // Add to the list of backups
-    redisClient.sadd(allBackupName, epochTime)
+      // Add to the list of backups
+      redisClient.SADD(allBackupName, epochTime)
 
-    // Finally, replace the state and send it off
-    last_table = stock_levels
-    saveState(stock_levels)
-    io.sockets.emit('replace-all', stock_levels)
-  })
+      // Finally, replace the state and send it off
+      last_table = stock_levels
+      saveState(stock_levels)
+      io.sockets.emit('replace-all', stock_levels)
+    })
 }
 
 /**
@@ -400,7 +419,7 @@ function replaceAll(name, stock_levels) {
  */
 function saveState(stock_levels) {
   for (const [number, level] of Object.entries(stock_levels)) {
-    redisClient.hset('stock_levels', number, level)
+    redisClient.HSET('stock_levels', number, level)
   }
 }
 
@@ -443,13 +462,16 @@ function saveCSV(beers) {
  * @param {beersObj} beers The object containing information on each beer
  */
 function saveBeers(beers) {
-  redisClient.del('beers', (err, reply) => {
-    if (err) handleError("Couldn't delete beers list from Redis", err)
-
-    Object.entries(beers).forEach(([beerId, beer]) => {
-      redisClient.hset('beers', beerId, JSON.stringify(beer))
+  redisClient
+    .DEL('beers')
+    .catch((error) => {
+      handleError("Couldn't delete beers list from Redis", error)
     })
-  })
+    .then((reply) => {
+      Object.entries(beers).forEach(([beerId, beer]) => {
+        redisClient.HSET('beers', beerId, JSON.stringify(beer))
+      })
+    })
 }
 
 /**
@@ -691,58 +713,59 @@ function initialiseBeers() {
     if (beers === null) {
       logger.warn('Beer information does not exist yet')
 
-      redisClient.hgetall('beers', (err, reply) => {
-        if (err) {
+      redisClient
+        .HGETALL('beers')
+        .catch((error) => {
           reject()
-          handleError("Couldn't get the beers list from Redis", err)
-        }
-
-        if (reply === null) {
-          // Check that the current beers file exists
-          try {
-            fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
-          } catch (err) {
+          handleError("Couldn't get the beers list from Redis", error)
+        })
+        .then((reply) => {
+          if (reply === null) {
+            // Check that the current beers file exists
             try {
-              logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
-              fs.accessSync(BEERS_FILE, fs.constants.F_OK)
-              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+              fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
             } catch (err) {
-              logger.warn('No current or default beers files found, making a blank one to use instead')
-              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
+              try {
+                logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
+                fs.accessSync(BEERS_FILE, fs.constants.F_OK)
+                fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+              } catch (err) {
+                logger.warn('No current or default beers files found, making a blank one to use instead')
+                fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
+              }
             }
+            logger.info('Reading in current beers file')
+            beers = {}
+            csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
+              beers[beer.beer_number] = beer
+            })
+
+            logger.info('Saving beer information to Redis')
+            saveBeers(beers)
+
+            logger.info('Updating brewery query URL and GeoJSON')
+            brewery_query_url = generateBreweryQuery(beers)
+            brewery_geojson = generateBreweryGeojson(beers)
+
+            resolve()
+          } else {
+            // For every beer, parse the entry then add it to the beers object
+            beers = {}
+            for (const beerStr in reply) {
+              const beer = JSON.parse(reply[beerStr])
+              beers[beer.beer_number] = beer
+            }
+
+            logger.info('Saving CSV from Redis')
+            saveCSV(beers)
+
+            logger.info('Updating brewery query URL and GeoJSON')
+            brewery_query_url = generateBreweryQuery(beers)
+            brewery_geojson = generateBreweryGeojson(beers)
+
+            resolve()
           }
-          logger.info('Reading in current beers file')
-          beers = {}
-          csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
-            beers[beer.beer_number] = beer
-          })
-
-          logger.info('Saving beer information to Redis')
-          saveBeers(beers)
-
-          logger.info('Updating brewery query URL and GeoJSON')
-          brewery_query_url = generateBreweryQuery(beers)
-          brewery_geojson = generateBreweryGeojson(beers)
-
-          resolve()
-        } else {
-          // For every beer, parse the entry then add it to the beers object
-          beers = {}
-          for (const beerStr in reply) {
-            const beer = JSON.parse(reply[beerStr])
-            beers[beer.beer_number] = beer
-          }
-
-          logger.info('Saving CSV from Redis')
-          saveCSV(beers)
-
-          logger.info('Updating brewery query URL and GeoJSON')
-          brewery_query_url = generateBreweryQuery(beers)
-          brewery_geojson = generateBreweryGeojson(beers)
-
-          resolve()
-        }
-      })
+        })
     } else {
       resolve()
     }
@@ -751,24 +774,32 @@ function initialiseBeers() {
 
 /** Used to stop unauthenticated clients getting to pages */
 function checkAuthenticated(req, res, next) {
-  redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
-    if (err) handleError("Couldn't check authed_ids from Redis", err)
-    if (reply) {
-      return next()
-    }
-    res.redirect('/login')
-  })
+  redisClient
+    .SISMEMBER('authed_ids', req.session.id)
+    .catch((error) => {
+      handleError("Couldn't check authed_ids from Redis", error)
+    })
+    .then((reply) => {
+      if (reply) {
+        return next()
+      }
+      res.redirect('/login')
+    })
 }
 
 /** Used to stop authenticated clients getting to pages */
 function checkNotAuthenticated(req, res, next) {
-  redisClient.sismember('authed_ids', req.session.id, (err, reply) => {
-    if (err) handleError("Couldn't check authed_ids from Redis", err)
-    if (reply) {
-      return res.redirect('/')
-    }
-    next()
-  })
+  redisClient
+    .SISMEMBER('authed_ids', req.session.id)
+    .catch((error) => {
+      handleError("Couldn't check authed_ids from Redis", error)
+    })
+    .then((reply) => {
+      if (reply) {
+        return res.redirect('/')
+      }
+      next()
+    })
 }
 
 // ---------------------------------------------------------------------------
@@ -896,13 +927,17 @@ app.post('/users', (req, res) => {
     if (resp) {
       logger.info(`Client - ${thisSession} (${name}) - has entered the correct code`)
       req.session.name = name
-      redisClient.sadd('authed_ids', thisSession)
-      redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
-        if (err) handleError("Couldn't get session members from Redis", err)
-        for (const socket of reply) {
-          io.to(socket).emit('auth', true)
-        }
-      })
+      redisClient.SADD('authed_ids', thisSession)
+      redisClient
+        .SMEMBERS(`sock:${thisSession}`)
+        .catch((error) => {
+          handleError("Couldn't get session members from Redis", error)
+        })
+        .then((reply) => {
+          for (const socket of reply) {
+            io.to(socket).emit('auth', true)
+          }
+        })
       res.redirect('/')
     } else {
       logger.warn(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
@@ -914,13 +949,17 @@ app.post('/users', (req, res) => {
 
 app.get('/logout', (req, res) => {
   const thisSession = req.session.id
-  redisClient.srem('authed_ids', thisSession)
-  redisClient.smembers(`sock:${thisSession}`, (err, reply) => {
-    if (err) handleError("Couldn't get session members from Redis", err)
-    for (const socket of reply) {
-      io.to(socket).emit('auth', false)
-    }
-  })
+  redisClient.SREM('authed_ids', thisSession)
+  redisClient
+    .SMEMBERS(`sock:${thisSession}`)
+    .catch((error) => {
+      handleError("Couldn't get session members from Redis", error)
+    })
+    .then((reply) => {
+      for (const socket of reply) {
+        io.to(socket).emit('auth', false)
+      }
+    })
   res.redirect('/')
 })
 
@@ -1011,17 +1050,21 @@ app.use(function (error, req, res, next) {
 // ---------------------------------------------------------------------------
 io.on('connection', (socket) => {
   // Track which sockets are related to each session
-  redisClient.sadd(`sock:${socket.handshake.session.id}`, socket.id)
+  redisClient.SADD(`sock:${socket.handshake.session.id}`, socket.id)
 
   // Check if the socket belongs to an authorised session
-  redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-    if (err) handleError("Couldn't check authed_ids from Redis", err)
-    if (reply) {
-      io.to(socket.id).emit('auth', true)
-    } else {
-      io.to(socket.id).emit('auth', false)
-    }
-  })
+  redisClient
+    .SISMEMBER('authed_ids', socket.handshake.session.id)
+    .catch((error) => {
+      handleError("Couldn't check authed_ids from Redis", error)
+    })
+    .then((reply) => {
+      if (reply) {
+        io.to(socket.id).emit('auth', true)
+      } else {
+        io.to(socket.id).emit('auth', false)
+      }
+    })
 
   // Find out which path the socket originated from
   let pathname = ''
@@ -1059,14 +1102,17 @@ io.on('connection', (socket) => {
 
   // Send the log of the previous states of all of the beers
   if (pathname === 'history' || pathname === 'bot') {
-    redisClient.zrange('log', 0, -1, (err, reply) => {
-      if (err) handleError("Couldn't check get log from Redis", err)
-
-      // Parse each log entry then send them all
-      const history = []
-      reply.forEach((update) => history.push(JSON.parse(update)))
-      io.to(socket.id).emit('history', history)
-    })
+    redisClient
+      .ZRANGE('log', 0, -1)
+      .catch((error) => {
+        handleError("Couldn't check get log from Redis", error)
+      })
+      .then((reply) => {
+        // Parse each log entry then send them all
+        const history = []
+        reply.forEach((update) => history.push(JSON.parse(update)))
+        io.to(socket.id).emit('history', history)
+      })
   }
 
   /* -------------------------------- */
@@ -1074,28 +1120,36 @@ io.on('connection', (socket) => {
   /* -------------------------------- */
   socket.on('update-all', (table) => {
     const name = socket.handshake.session.name
-    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-      if (err) handleError("Couldn't check authed_ids from Redis", err)
-      if (reply) {
-        updateRequired(name, table)
-      } else {
-        logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(socket.id).emit('replace-all', last_table)
-      }
-    })
+    redisClient
+      .SISMEMBER('authed_ids', socket.handshake.session.id)
+      .catch((error) => {
+        handleError("Couldn't check authed_ids from Redis", error)
+      })
+      .then((reply) => {
+        if (reply) {
+          updateRequired(name, table)
+        } else {
+          logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+          io.to(socket.id).emit('replace-all', last_table)
+        }
+      })
   })
 
   socket.on('replace-all', (table) => {
     const name = socket.handshake.session.name
-    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-      if (err) handleError("Couldn't check authed_ids from Redis", err)
-      if (reply) {
-        replaceAll(name, table)
-      } else {
-        logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
-        io.to(socket.id).emit('replace-all', last_table)
-      }
-    })
+    redisClient
+      .SISMEMBER('authed_ids', socket.handshake.session.id)
+      .catch((error) => {
+        handleError("Couldn't check authed_ids from Redis", error)
+      })
+      .then((reply) => {
+        if (reply) {
+          replaceAll(name, table)
+        } else {
+          logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+          io.to(socket.id).emit('replace-all', last_table)
+        }
+      })
   })
 
   socket.on('update-single', (stock_level) => {
@@ -1103,82 +1157,93 @@ io.on('connection', (socket) => {
     const number = stock_level.number
     const level = stock_level.level
 
-    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-      if (err) handleError("Couldn't check authed_ids from Redis", err)
-      if (reply) {
-        updateSingle(name, number, level)
-      } else {
-        logger.error(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
-        io.to(socket.id).emit('replace-all', last_table)
-      }
-    })
+    redisClient
+      .SISMEMBER('authed_ids', socket.handshake.session.id)
+      .catch((error) => {
+        handleError("Couldn't check authed_ids from Redis", error)
+      })
+      .then((reply) => {
+        if (reply) {
+          updateSingle(name, number, level)
+        } else {
+          logger.error(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
+          io.to(socket.id).emit('replace-all', last_table)
+        }
+      })
   })
 
   socket.on('config', (configuration) => {
-    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-      if (err) handleError("Couldn't check authed_ids from Redis", err)
-      if (reply) {
-        // Distribute and save the configuration
-        logger.info('Distributing configuration:')
-        logger.info(configuration)
-        io.sockets.emit('config', configuration)
-        last_config.confirm = configuration.confirm
-        last_config.low_enable = configuration.low_enable
-        redisClient.hset('config', 'confirm', configuration.confirm)
-        redisClient.hset('config', 'low_enable', configuration.low_enable)
-      } else {
-        logger.error(
-          `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
-        )
-        io.to(socket.id).emit('config', last_config)
-      }
-    })
+    redisClient
+      .SISMEMBER('authed_ids', socket.handshake.session.id)
+      .catch((error) => {
+        handleError("Couldn't check authed_ids from Redis", error)
+      })
+      .then((reply) => {
+        if (reply) {
+          // Distribute and save the configuration
+          logger.info(`Distributing configuration: ${JSON.stringify(configuration)}`)
+          io.sockets.emit('config', configuration)
+          last_config.confirm = configuration.confirm
+          last_config.low_enable = configuration.low_enable
+          redisClient.HSET('config', 'confirm', configuration.confirm.toString())
+          redisClient.HSET('config', 'low_enable', configuration.low_enable.toString())
+        } else {
+          logger.error(
+            `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
+          )
+          io.to(socket.id).emit('config', last_config)
+        }
+      })
   })
 
   socket.on('beers-file', (beersFileText) => {
     logger.info(`New beers file received from ${socket.handshake.session.id}`)
 
-    redisClient.sismember('authed_ids', socket.handshake.session.id, (err, reply) => {
-      if (err) handleError("Couldn't check authed_ids from Redis", err)
-      if (reply) {
-        beers = {}
-        csvParse(beersFileText, { columns: true }).forEach((beer) => {
-          beers[beer.beer_number] = beer
-        })
-
-        updateBeersFromWikidata(beers)
-          .then((wikidata_beers) => {
-            logger.info('Storing Wikidata claims')
-            beers = wikidata_beers
+    redisClient
+      .SISMEMBER('authed_ids', socket.handshake.session.id)
+      .catch((error) => {
+        handleError("Couldn't check authed_ids from Redis", error)
+      })
+      .then((reply) => {
+        if (reply) {
+          beers = {}
+          csvParse(beersFileText, { columns: true }).forEach((beer) => {
+            beers[beer.beer_number] = beer
           })
-          .catch((error) => {
-            logger.error(error)
-          })
-          .finally(() => {
-            logger.info('Sending updated beer information')
-            io.sockets.emit('beers', beers)
 
-            logger.info('Saving new beer information CSV')
-            saveCSV(beers)
+          updateBeersFromWikidata(beers)
+            .then((wikidata_beers) => {
+              logger.info('Storing Wikidata claims')
+              beers = wikidata_beers
+            })
+            .catch((error) => {
+              logger.error(error)
+            })
+            .finally(() => {
+              logger.info('Sending updated beer information')
+              io.sockets.emit('beers', beers)
 
-            logger.info('Updating brewery query URL and GeoJSON')
-            brewery_query_url = generateBreweryQuery(beers)
-            brewery_geojson = generateBreweryGeojson(beers)
+              logger.info('Saving new beer information CSV')
+              saveCSV(beers)
 
-            logger.info('Saving beer information to Redis')
-            saveBeers(beers)
-          })
-      } else {
-        logger.error(
-          `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
-        )
-        io.to(socket.id).emit('config', last_config)
-      }
-    })
+              logger.info('Updating brewery query URL and GeoJSON')
+              brewery_query_url = generateBreweryQuery(beers)
+              brewery_geojson = generateBreweryGeojson(beers)
+
+              logger.info('Saving beer information to Redis')
+              saveBeers(beers)
+            })
+        } else {
+          logger.error(
+            `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
+          )
+          io.to(socket.id).emit('config', last_config)
+        }
+      })
   })
 
   socket.on('disconnect', () => {
     logger.info(`Client ${socket.id} disconnected`)
-    redisClient.srem(`sock:${socket.handshake.session.id}`, socket.id)
+    redisClient.SREM(`sock:${socket.handshake.session.id}`, socket.id)
   })
 })
