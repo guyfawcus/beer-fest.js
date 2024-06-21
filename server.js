@@ -36,7 +36,8 @@ const logger = pino({
     options: {
       ignore: 'pid,hostname'
     }
-  }
+  },
+  level: process.env.LOG_LEVEL || 'info'
 })
 
 // ---------------------------------------------------------------------------
@@ -47,7 +48,7 @@ const ADMIN_CODE = process.env.ADMIN_CODE || bcrypt.hashSync(TEMP_UNHASHED, 10)
 const COOKIE_SECRET = process.env.COOKIE_SECRET || crypto.randomBytes(64).toString('hex')
 
 if (!process.env.ADMIN_CODE) {
-  logger.info(
+  logger.warn(
     '\x1b[33m%s\x1b[0m',
     `To be able to log in easily, please generate a secure $ADMIN_CODE environment variable using utils/codegen.js
 For the moment though, you can log in with "${TEMP_UNHASHED}"\n`
@@ -55,7 +56,7 @@ For the moment though, you can log in with "${TEMP_UNHASHED}"\n`
 }
 
 if (!process.env.COOKIE_SECRET) {
-  logger.info(
+  logger.warn(
     '\x1b[33m%s\x1b[0m',
     'To have logins persist, please generate a secure $COOKIE_SECRET environment variable using utils/codegen.js\n'
   )
@@ -180,29 +181,28 @@ app.post('/report-violation', cspParser, (req, res) => {
   const srcFile = (req.body['csp-report'] && req.body['csp-report']['source-file']) || ''
   const blockedUri = (req.body['csp-report'] && req.body['csp-report']['blocked-uri']) || ''
 
-  // Ignore violations because of onloadwff.js, it's a LastPass thing that can be ignored
   if (srcFile.includes('onloadwff.js')) {
+    logger.debug('CSP Violation: onloadwff.js error, this might be a LastPass thing')
     res.status(204).end()
     return
   }
 
-  // Ignore violations because of this request, it's a NoScript thing that can be ignored?
   if (blockedUri === 'data') {
+    logger.debug('CSP Violation: data URI error, this might be a NoScript thing')
     res.status(204).end()
     return
   }
 
-  // Temporarily ignore violations caused by a websocket transport issue that needs resolving
   if (blockedUri.substr(0, 4) === 'wss:') {
-    logger.info('Websocket transport issue: wss')
+    logger.debug('Websocket transport issue: wss')
     res.status(204).end()
     return
   }
 
   if (req.body) {
-    logger.info(`CSP Violation: ${JSON.stringify(req.body)}`)
+    logger.debug(`CSP Violation: ${JSON.stringify(req.body)}`)
   } else {
-    logger.info('CSP Violation: No data received!')
+    logger.debug('CSP Violation: No data received!')
   }
   res.status(204).end()
 })
@@ -233,10 +233,10 @@ app.use(redisSession)
   const apiURL = '/api/'
 
   if (req.method === 'GET' && !disableForURLs.includes(req.url) && !req.url.includes(apiURL)) {
-    // logger.info(`+++++++++++++++++++++++++++ setting cache for ${req.url}`)
+    // logger.debug(`+++++++++++++++++++++++++++ setting cache for ${req.url}`)
     res.set('Cache-control', 'public, must-revalidate')
   } else {
-    // logger.info(`--------------------------- disable cache for ${req.url}`)
+    // logger.debug(`--------------------------- disable cache for ${req.url}`)
     res.set('Cache-control', 'no-store')
   }
 
@@ -274,7 +274,7 @@ redisClient.hgetall('config', (err, reply) => {
     last_config.confirm = reply.confirm === 'true'
     last_config.low_enable = reply.low_enable === 'true'
   } else {
-    logger.info('No configuration settings defined in Redis, using defaults')
+    logger.warn('No configuration settings defined in Redis, using defaults')
   }
   redisClient.hset('config', 'confirm', last_config.confirm.toString())
   redisClient.hset('config', 'low_enable', last_config.low_enable.toString())
@@ -303,7 +303,7 @@ process.once('SIGTERM', () => gracefulShutdown())
 process.once('SIGUSR2', () => gracefulShutdown())
 
 const gracefulShutdown = () => {
-  logger.info('Shutting down server')
+  logger.warn('Shutting down server')
 
   // Clean up old session-socket mapping(s), new mappings will be created on restart
   redisClient.keys('sock:*', (err, reply) => {
@@ -689,7 +689,7 @@ function initialiseBeers() {
   return new Promise((resolve, reject) => {
     // Check if the beers file has already been read in
     if (beers === null) {
-      logger.info('Beer information does not exist yet')
+      logger.warn('Beer information does not exist yet')
 
       redisClient.hgetall('beers', (err, reply) => {
         if (err) {
@@ -703,11 +703,11 @@ function initialiseBeers() {
             fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
           } catch (err) {
             try {
-              logger.error(`No current beers file found, trying default (${BEERS_FILE})`)
+              logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
               fs.accessSync(BEERS_FILE, fs.constants.F_OK)
               fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
             } catch (err) {
-              logger.error('No current or default beers files found, making a blank one to use instead')
+              logger.warn('No current or default beers files found, making a blank one to use instead')
               fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
             }
           }
@@ -724,7 +724,6 @@ function initialiseBeers() {
           brewery_query_url = generateBreweryQuery(beers)
           brewery_geojson = generateBreweryGeojson(beers)
 
-          logger.info('Resolving newly created beers list')
           resolve()
         } else {
           // For every beer, parse the entry then add it to the beers object
@@ -906,7 +905,7 @@ app.post('/users', (req, res) => {
       })
       res.redirect('/')
     } else {
-      logger.info(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
+      logger.warn(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
       req.flash('error', 'Wrong code, please try again')
       res.redirect('login')
     }
@@ -952,7 +951,7 @@ app.post('/api/stock_levels', cors(), (req, res) => {
   const name = req.session.name || 'API'
   if (ENABLE_API === 'true') {
     if (Object.keys(req.body).length > NUM_OF_BUTTONS) {
-      logger.info('Too many items in JSON')
+      logger.error('Too many items in JSON')
       res.status(400).send('Too many items in JSON')
       return
     } else if (Object.keys(req.body).length === NUM_OF_BUTTONS) {
@@ -966,7 +965,7 @@ app.post('/api/stock_levels', cors(), (req, res) => {
     }
     res.send(last_table)
   } else {
-    logger.info('API use is not enabled')
+    logger.error('API use is not enabled')
     res.status(403).send('API use is not enabled')
   }
 })
@@ -981,11 +980,11 @@ app.post('/api/stock_levels/:number/:level', cors(), (req, res) => {
       updateSingle(name, number, level)
       res.send(last_table)
     } else {
-      logger.info('Number too high')
+      logger.error('API: Number too high')
       res.status(400).send('Number too high')
     }
   } else {
-    logger.info('API use is not enabled')
+    logger.error('API use is not enabled')
     res.status(403).send('API use is not enabled')
   }
 })
@@ -1004,7 +1003,7 @@ app.use(function (req, res) {
 // Handle 500
 app.use(function (error, req, res, next) {
   res.status(500).sendFile('views/misc/500.html', { root: import.meta.dirname })
-  logger.info(`Server error: ${error}`)
+  logger.error(`Server error: ${error}`)
 })
 
 // ---------------------------------------------------------------------------
@@ -1080,7 +1079,7 @@ io.on('connection', (socket) => {
       if (reply) {
         updateRequired(name, table)
       } else {
-        logger.info(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1093,7 +1092,7 @@ io.on('connection', (socket) => {
       if (reply) {
         replaceAll(name, table)
       } else {
-        logger.info(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
+        logger.error(`%Unauthenticated client ${socket.id} attempted to change the matrix with: ${table}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1109,7 +1108,7 @@ io.on('connection', (socket) => {
       if (reply) {
         updateSingle(name, number, level)
       } else {
-        logger.info(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
+        logger.error(`Unauthenticated client ${socket.id} attempted to change ${number} to ${level}`)
         io.to(socket.id).emit('replace-all', last_table)
       }
     })
@@ -1128,7 +1127,7 @@ io.on('connection', (socket) => {
         redisClient.hset('config', 'confirm', configuration.confirm)
         redisClient.hset('config', 'low_enable', configuration.low_enable)
       } else {
-        logger.info(
+        logger.error(
           `Unauthenticated client ${socket.id} attempted to change the config with: ${JSON.stringify(configuration)}`
         )
         io.to(socket.id).emit('config', last_config)
@@ -1153,7 +1152,7 @@ io.on('connection', (socket) => {
             beers = wikidata_beers
           })
           .catch((error) => {
-            logger.info(error)
+            logger.error(error)
           })
           .finally(() => {
             logger.info('Sending updated beer information')
@@ -1170,7 +1169,7 @@ io.on('connection', (socket) => {
             saveBeers(beers)
           })
       } else {
-        logger.info(
+        logger.error(
           `Unauthenticated client ${socket.id} attempted to change the beer information with: ${beersFileText}`
         )
         io.to(socket.id).emit('config', last_config)
