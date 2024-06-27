@@ -9,7 +9,7 @@
 
 import { io } from './socket.io.esm.min.js'
 
-/** `true` is a user is logged in */
+/** `true` if a user is logged in */
 export let AUTHORISED = false
 
 /** `true` if the confirmation window should pop up before an update */
