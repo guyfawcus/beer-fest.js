@@ -344,8 +344,7 @@ const gracefulShutdown = () => {
  * @param {levelValues} level The level it the beer is being set to
  */
 function updateSingle(name, number, level) {
-  const timeObj = new Date()
-  const epochTime = timeObj.getTime()
+  const epochTime = Date.now()
   const singleUpdateObj = {
     epoch_time: epochTime,
     name: name,
