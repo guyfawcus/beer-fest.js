@@ -111,7 +111,10 @@ const tls_config =
   NODE_ENV === 'production' ? { rejectUnauthorized: false, requestCert: true, agent: false } : undefined
 const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
 
-await redisClient.connect()
+await redisClient.connect().catch(() => {
+  logger.error("Can't connect to Redis")
+  process.exit(1)
+})
 
 const wdk = WBK({
   instance: 'https://www.wikidata.org',
