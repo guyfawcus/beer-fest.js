@@ -75,7 +75,7 @@ const last_config = { confirm: true, low_enable: false }
 let last_table = {}
 
 /** @type{beersObj} */
-let beers = null
+let beers = {}
 
 /** The total number of availability buttons */
 const NUM_OF_BUTTONS = 88
@@ -243,11 +243,6 @@ app.use(redisSession)
 
   next()
 }) */
-
-// Start the server
-server.listen(process.env.PORT || 8000, () => {
-  logger.info(`Listening on port ${server.address().port}`)
-})
 
 // Read in previous state if it exists, initialise all as full if not
 await redisClient
@@ -708,66 +703,59 @@ function generateBreweryGeojson(beers) {
  */
 function initialiseBeers() {
   return new Promise((resolve, reject) => {
-    // Check if the beers file has already been read in
-    if (beers === null) {
-      logger.warn('Beer information does not exist yet')
-
-      redisClient
-        .HGETALL('beers')
-        .catch((error) => {
-          reject()
-          handleError("Couldn't get the beers list from Redis", error)
-        })
-        .then((reply) => {
-          if (reply === null) {
-            // Check that the current beers file exists
+    redisClient
+      .HGETALL('beers')
+      .catch((error) => {
+        reject()
+        handleError("Couldn't get the beers list from Redis", error)
+      })
+      .then((reply) => {
+        if (reply === null) {
+          // Check that the current beers file exists
+          try {
+            fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
+          } catch (err) {
             try {
-              fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
+              logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
+              fs.accessSync(BEERS_FILE, fs.constants.F_OK)
+              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
             } catch (err) {
-              try {
-                logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
-                fs.accessSync(BEERS_FILE, fs.constants.F_OK)
-                fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
-              } catch (err) {
-                logger.warn('No current or default beers files found, making a blank one to use instead')
-                fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
-              }
+              logger.warn('No current or default beers files found, making a blank one to use instead')
+              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
             }
-            logger.info('Reading in current beers file')
-            beers = {}
-            csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
-              beers[beer.beer_number] = beer
-            })
-
-            logger.info('Saving beer information to Redis')
-            saveBeers(beers)
-
-            logger.info('Updating brewery query URL and GeoJSON')
-            brewery_query_url = generateBreweryQuery(beers)
-            brewery_geojson = generateBreweryGeojson(beers)
-
-            resolve()
-          } else {
-            // For every beer, parse the entry then add it to the beers object
-            beers = {}
-            for (const beerStr in reply) {
-              const beer = JSON.parse(reply[beerStr])
-              beers[beer.beer_number] = beer
-            }
-
-            logger.info('Saving CSV from Redis')
-            saveCSV(beers)
-
-            logger.info('Updating brewery query URL and GeoJSON')
-            brewery_query_url = generateBreweryQuery(beers)
-            brewery_geojson = generateBreweryGeojson(beers)
-
-            resolve()
           }
-        })
-    } else {
-      resolve()
-    }
+          logger.info('Reading in current beers file')
+          beers = {}
+          csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
+            beers[beer.beer_number] = beer
+          })
+
+          logger.info('Saving beer information to Redis')
+          saveBeers(beers)
+
+          logger.info('Updating brewery query URL and GeoJSON')
+          brewery_query_url = generateBreweryQuery(beers)
+          brewery_geojson = generateBreweryGeojson(beers)
+
+          resolve()
+        } else {
+          // For every beer, parse the entry then add it to the beers object
+          beers = {}
+          for (const beerStr in reply) {
+            const beer = JSON.parse(reply[beerStr])
+            beers[beer.beer_number] = beer
+          }
+
+          logger.info('Saving CSV from Redis')
+          saveCSV(beers)
+
+          logger.info('Updating brewery query URL and GeoJSON')
+          brewery_query_url = generateBreweryQuery(beers)
+          brewery_geojson = generateBreweryGeojson(beers)
+
+          resolve()
+        }
+      })
   })
 }
 
@@ -832,10 +820,7 @@ app.get('/login', checkNotAuthenticated, (req, res) => {
 })
 
 app.get('/downloads', (req, res) => {
-  // Initialise the beer information so that `CURRENT_BEERS_FILE` is available
-  initialiseBeers().then(() => {
-    res.sendFile('views/downloads.html', { root: import.meta.dirname })
-  })
+  res.sendFile('views/downloads.html', { root: import.meta.dirname })
 })
 
 app.get('/map', (req, res) => {
@@ -843,18 +828,12 @@ app.get('/map', (req, res) => {
 })
 
 app.get('/brewery-wikidata-query', (req, res) => {
-  // Initialise the beer information so that `brewery_query_url` is up-to-date
-  initialiseBeers().then(() => {
-    // Return the query URL minus the format param so that the link takes you to the query service
-    res.redirect(brewery_query_url.replace('sparql?format=json&query=', '#'))
-  })
+  // Return the query URL minus the format param so that the link takes you to the query service
+  res.redirect(brewery_query_url.replace('sparql?format=json&query=', '#'))
 })
 
 app.get('/downloads/breweries.geojson', (req, res) => {
-  // Initialise the beer information so that `brewery_geojson` is up-to-date
-  initialiseBeers().then(() => {
-    res.send(brewery_geojson)
-  })
+  res.send(brewery_geojson)
 })
 
 app.get('/bridge', (req, res) => {
@@ -966,15 +945,11 @@ app.get('/logout', (req, res) => {
 // Routes - API
 // ---------------------------------------------------------------------------
 app.get('/api/beers', cors(), (req, res) => {
-  initialiseBeers().then(() => {
-    res.send(beers)
-  })
+  res.send(beers)
 })
 
 app.get('/api/beers/:number', cors(), (req, res) => {
-  initialiseBeers().then(() => {
-    res.send(beers[req.params.number])
-  })
+  res.send(beers[req.params.number])
 })
 
 app.get('/api/stock_levels', cors(), (req, res) => {
@@ -1089,9 +1064,7 @@ io.on('connection', (socket) => {
 
   // Send the beer information
   if (pathname === 'history' || pathname === 'availability' || pathname === 'map' || pathname === 'bot') {
-    initialiseBeers().then(() => {
-      io.to(socket.id).emit('beers', beers)
-    })
+    io.to(socket.id).emit('beers', beers)
   }
 
   // Send the current state of all of the beers
@@ -1245,4 +1218,15 @@ io.on('connection', (socket) => {
     logger.info(`Client ${socket.id} disconnected`)
     redisClient.SREM(`sock:${socket.handshake.session.id}`, socket.id)
   })
+})
+
+// ---------------------------------------------------------------------------
+// Beer time!
+// ---------------------------------------------------------------------------
+
+await initialiseBeers()
+
+// Start the server
+server.listen(process.env.PORT || 8000, () => {
+  logger.info(`Listening on port ${server.address().port}`)
 })
