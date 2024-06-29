@@ -449,7 +449,7 @@ function saveCSV(beers) {
 
   const csvStr = csvStringify(Object.values(beers), { header: true, columns: columns })
 
-  fs.writeFile(CURRENT_BEERS_FILE, csvStr, (err) => {
+  fs.writeFileSync(CURRENT_BEERS_FILE, csvStr, (err) => {
     if (err) throw err
   })
 }
@@ -704,62 +704,47 @@ function generateBreweryGeojson(beers) {
  * After reading the beers in, they will be saved in Redis and `CURRENT_BEERS_FILE`
  * @returns {Promise} When the beers array has been initialised
  */
-function initialiseBeers() {
-  return new Promise((resolve, reject) => {
-    redisClient
-      .HGETALL('beers')
-      .catch((error) => {
-        reject()
-        handleError("Couldn't get the beers list from Redis", error)
-      })
-      .then((reply) => {
-        if (reply === null) {
-          // Check that the current beers file exists
-          try {
-            fs.accessSync(CURRENT_BEERS_FILE, fs.constants.F_OK)
-          } catch (err) {
-            try {
-              logger.warn(`No current beers file found, trying default (${BEERS_FILE})`)
-              fs.accessSync(BEERS_FILE, fs.constants.F_OK)
-              fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
-            } catch (err) {
-              logger.warn('No current or default beers files found, making a blank one to use instead')
-              fs.closeSync(fs.openSync(CURRENT_BEERS_FILE, 'w'))
-            }
+async function initialiseBeers() {
+  await redisClient
+    .HGETALL('beers')
+    .catch((error) => {
+      handleError("Couldn't get the beers list from Redis", error)
+    })
+    .then((reply) => {
+      if (Object.keys(reply).length !== 0) {
+        logger.info('Reading in beers from Redis')
+        // For every beer, parse the entry then add it to the beers object
+        for (const beerStr in reply) {
+          const beer = JSON.parse(reply[beerStr])
+          beers[beer.beer_number] = beer
+        }
+      } else {
+        // Try to use the default if the current beers file doesn't exist
+        if (!fs.existsSync(CURRENT_BEERS_FILE)) {
+          if (fs.existsSync(BEERS_FILE)) {
+            logger.warn(`No current beers file found, making a copy from the default instead (${BEERS_FILE})`)
+            fs.copyFileSync(BEERS_FILE, CURRENT_BEERS_FILE)
+          } else {
+            logger.warn('No current or default beers files found, making a blank one to use instead')
+            saveCSV(beers)
           }
-          logger.info('Reading in current beers file')
-          beers = {}
-          csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
-            beers[beer.beer_number] = beer
-          })
+        }
 
+        logger.info('Parsing the current beers file')
+        csvParse(fs.readFileSync(CURRENT_BEERS_FILE), { columns: true }).forEach((beer) => {
+          beers[beer.beer_number] = beer
+        })
+
+        if (Object.keys(beers).length !== 0) {
           logger.info('Saving beer information to Redis')
           saveBeers(beers)
-
-          logger.info('Updating brewery query URL and GeoJSON')
-          brewery_query_url = generateBreweryQuery(beers)
-          brewery_geojson = generateBreweryGeojson(beers)
-
-          resolve()
-        } else {
-          // For every beer, parse the entry then add it to the beers object
-          beers = {}
-          for (const beerStr in reply) {
-            const beer = JSON.parse(reply[beerStr])
-            beers[beer.beer_number] = beer
-          }
-
-          logger.info('Saving CSV from Redis')
-          saveCSV(beers)
-
-          logger.info('Updating brewery query URL and GeoJSON')
-          brewery_query_url = generateBreweryQuery(beers)
-          brewery_geojson = generateBreweryGeojson(beers)
-
-          resolve()
         }
-      })
-  })
+      }
+
+      logger.info('Updating brewery query URL and GeoJSON')
+      brewery_query_url = generateBreweryQuery(beers)
+      brewery_geojson = generateBreweryGeojson(beers)
+    })
 }
 
 /** Used to stop unauthenticated clients getting to pages */
