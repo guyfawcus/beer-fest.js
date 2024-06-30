@@ -517,7 +517,7 @@ async function getBreweryInfo(brewery_query_url) {
 
   brewery_query_data.forEach((entity) => {
     const qid = entity.brewery.value
-    const location = entity.location.match(/(-*\d+\.\d+) (-*\d+\.\d+)/)
+    const location = entity.location ? entity.location.match(/(-*\d+\.\d+) (-*\d+\.\d+)/) : undefined
 
     wikidata_claims[qid] = {
       brewery_website: entity.website,
