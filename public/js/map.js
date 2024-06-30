@@ -96,6 +96,33 @@ function refreshIcons() {
   })
 }
 
+async function refresh_geojson() {
+  try {
+    const response = await fetch('/downloads/breweries.geojson')
+    if (!response.ok) {
+      throw new Error(`Response status: ${response.status}`)
+    }
+    const data = await response.json()
+
+    breweries = L.geoJSON(data, {
+      pointToLayer: (feature, latlng) => {
+        return L.marker(latlng, {
+          icon: breweryIcon,
+          title: feature.properties.name,
+          alt: feature.properties.name,
+          riseOnHover: true
+        })
+      }
+    })
+    refreshIcons()
+    breweries.bindPopup((layer) => generateBreweryLabel(layer), { maxWidth: 500 })
+    // map.fitBounds(breweries.getBounds(), { padding: [10, 10] })
+    breweries.addTo(map)
+  } catch (error) {
+    console.error(error.message)
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Main
 // ---------------------------------------------------------------------------
@@ -128,24 +155,7 @@ socket.on('beers', (beerList) => {
   map.removeLayer(breweries)
 
   // Add the breweries with their labels
-  fetch('/downloads/breweries.geojson')
-    .then((response) => response.json())
-    .then((data) => {
-      breweries = L.geoJSON(data, {
-        pointToLayer: (feature, latlng) => {
-          return L.marker(latlng, {
-            icon: breweryIcon,
-            title: feature.properties.name,
-            alt: feature.properties.name,
-            riseOnHover: true
-          })
-        }
-      })
-      refreshIcons()
-      breweries.bindPopup((layer) => generateBreweryLabel(layer), { maxWidth: 500 })
-      // map.fitBounds(breweries.getBounds(), { padding: [10, 10] })
-      breweries.addTo(map)
-    })
+  refresh_geojson()
 })
 
 // Refresh the icons if the 'hiding' options are changed
