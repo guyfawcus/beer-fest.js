@@ -132,9 +132,10 @@ map.setView([51.8012, -0.72515], 8)
 
 // Add tile layer
 const tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  attribution: `&copy; <a href="https://www.openstreetmap.org/copyright" title="Open source map data">OpenStreetMap</a> contributors | 
+  attribution: `&copy; <a href="https://www.openstreetmap.org/copyright" title="Open source map data">OpenStreetMap</a> contributors |
                 Icons by <a href="https://www.flaticon.com/authors/freepik" title="Free vector icons">Freepik</a> |
-                Data from <a href="https://www.wikidata.org/" title="Free and open knowledge base">Wikidata</a> |
+                Data from <a href="https://www.wikidata.org/" title="Free and open knowledge base">Wikidata</a>
+                (<a href="../brewery-wikidata-query" title="Wikidata query for the data">query</a>) |
                 GeoJSON from <a href="/downloads/breweries.geojson" title="GeoJSON file with brewery data">here</a>`
 })
 tileLayer.addTo(map)
