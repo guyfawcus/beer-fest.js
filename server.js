@@ -449,9 +449,7 @@ function saveCSV(beers) {
 
   const csvStr = csvStringify(Object.values(beers), { header: true, columns: columns })
 
-  fs.writeFileSync(CURRENT_BEERS_FILE, csvStr, (err) => {
-    if (err) throw err
-  })
+  fs.writeFileSync(CURRENT_BEERS_FILE, csvStr)
 }
 
 /**
