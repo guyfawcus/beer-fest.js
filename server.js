@@ -109,16 +109,33 @@ const app = express()
 
 const tls_config =
   NODE_ENV === 'production' ? { rejectUnauthorized: false, requestCert: true, agent: false } : undefined
-const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
-
-await redisClient.connect().catch(() => {
-  logger.error("Can't connect to Redis")
-  process.exit(1)
-})
 
 const wdk = WBK({
   instance: 'https://www.wikidata.org',
   sparqlEndpoint: 'https://query.wikidata.org/sparql'
+})
+
+// ---------------------------------------------------------------------------
+// Redis
+// ---------------------------------------------------------------------------
+const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
+
+redisClient.on('error', (error) => {
+  if (error.code === 'ECONNREFUSED') {
+    logger.error("Can't connect to Redis")
+  } else {
+    logger.error(`Redis error: ${error.message}`)
+  }
+  // process.exit(1)
+})
+
+redisClient.on('connect', () => logger.info('Redis connection established'))
+redisClient.on('ready', () => logger.info('Redis is ready'))
+redisClient.on('reconnecting', () => logger.info('Redis is reconnecting'))
+
+await redisClient.connect().catch(() => {
+  logger.error("Can't connect to Redis")
+  process.exit(1)
 })
 
 // ---------------------------------------------------------------------------
@@ -288,15 +305,6 @@ await redisClient
 // ---------------------------------------------------------------------------
 // Errors
 // ---------------------------------------------------------------------------
-redisClient.on('error', (error) => {
-  if (error.code === 'ECONNREFUSED') {
-    logger.error("Can't connect to Redis")
-  } else {
-    logger.error(`Redis error: ${error.message}`)
-  }
-  // process.exit(1)
-})
-
 function handleError(message, error) {
   logger.error(`${message} - ${error.message}`)
   process.exit(1)
