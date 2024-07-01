@@ -118,7 +118,7 @@ const wdk = WBK({
 // ---------------------------------------------------------------------------
 // Redis
 // ---------------------------------------------------------------------------
-const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config })
+const redisClient = redis.createClient({ url: REDIS_URL, tls: tls_config, pingInterval: 30000 })
 
 redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
