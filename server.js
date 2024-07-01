@@ -292,9 +292,9 @@ redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
     logger.error("Can't connect to Redis")
   } else {
-    logger.error(error.message)
+    logger.error(`Redis error: ${error.message}`)
   }
-  process.exit(1)
+  // process.exit(1)
 })
 
 function handleError(message, error) {
