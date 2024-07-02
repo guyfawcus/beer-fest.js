@@ -682,6 +682,9 @@ function generateBreweryGeojson(beers) {
           ]
         } else {
           // If this brewery is already in `data`...
+          // Swap the name out if the last run was a "collab" beer
+          if (data[qid].name.includes('collab')) data[qid].name = beer.brewer
+          // Add the additional beer info
           data[qid].num_of_beers++
           data[qid].has_vegan_beers = data[qid].has_vegan_beers || beer.vegan === 'y'
           data[qid].has_gluten_free_beers = data[qid].has_gluten_free_beers || beer.gluten_free === 'y'
