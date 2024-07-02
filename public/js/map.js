@@ -69,10 +69,19 @@ function generateBreweryLabel(layer) {
     return `${beer.number} - ${beer.name}${vegan}${glutenFree}`
   })
 
-  // Return the formatted string for use in the popup
-  return `<b>${brewery.name}</b><br>
-          <a href="${brewery.website}">${brewery.website}</a><br><br>
-          ${beer_strings.join('<br>')}<br>`
+  // Format the popup text based on what's available
+  let popup_text = ''
+
+  if (brewery.website === '') {
+    popup_text = `<b>${brewery.name}</b><br><br>
+                  ${beer_strings.join('<br>')}<br>`
+  } else {
+    popup_text = `<b>${brewery.name}</b><br>
+                  <a href="${brewery.website}">${brewery.website}</a><br><br>
+                  ${beer_strings.join('<br>')}<br>`
+  }
+
+  return popup_text
 }
 
 /**
