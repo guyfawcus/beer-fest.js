@@ -658,13 +658,13 @@ function generateBreweryGeojson(beers) {
           data[qid].wikidata_qid = qid
           data[qid].wikidata_url = `http://www.wikidata.org/entity/${qid}`
 
-          data[qid].website = beer.brewery_website
-          data[qid].beer_advocate = beer.brewery_beer_advocate
-          data[qid].rate_beer = beer.brewery_rate_beer
-          data[qid].untappd = beer.brewery_untappd
-          data[qid].facebook = beer.brewery_facebook
-          data[qid].instagram = beer.brewery_instagram
-          data[qid].twitter = beer.brewery_twitter
+          data[qid].website = beer.brewery_website || ''
+          data[qid].beer_advocate = beer.brewery_beer_advocate || ''
+          data[qid].rate_beer = beer.brewery_rate_beer || ''
+          data[qid].untappd = beer.brewery_untappd || ''
+          data[qid].facebook = beer.brewery_facebook || ''
+          data[qid].instagram = beer.brewery_instagram || ''
+          data[qid].twitter = beer.brewery_twitter || ''
 
           data[qid].num_of_beers = 1
           data[qid].has_vegan_beers = beer.vegan === 'y'
