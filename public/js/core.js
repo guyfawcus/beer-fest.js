@@ -153,7 +153,7 @@ function setColour(number, level, element) {
 // ---------------------------------------------------------------------------
 // Index page formatting
 // ---------------------------------------------------------------------------
-if (location.pathname === '/') {
+if (location.pathname === '/staff') {
   const auth_button = document.getElementById('login')
 
   // Initialise the text on the login button.

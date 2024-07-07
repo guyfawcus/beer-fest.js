@@ -824,6 +824,10 @@ app.get('/map', (req, res) => {
   res.sendFile('views/map.html', { root: import.meta.dirname })
 })
 
+app.get('/staff', (req, res) => {
+  res.sendFile('views/staff.html', { root: import.meta.dirname })
+})
+
 app.get('/brewery-wikidata-query', (req, res) => {
   // Return the query URL minus the format param so that the link takes you to the query service
   res.redirect(brewery_query_url.replace('sparql?format=json&query=', '#'))
@@ -913,7 +917,7 @@ app.post('/users', (req, res) => {
             io.to(socket).emit('auth', true)
           }
         })
-      res.redirect('/')
+      res.redirect('/staff')
     } else {
       logger.warn(`Client - ${thisSession} (${name}) - has entered the wrong code (${code})`)
       req.flash('error', 'Wrong code, please try again')
@@ -935,7 +939,7 @@ app.get('/logout', (req, res) => {
         io.to(socket).emit('auth', false)
       }
     })
-  res.redirect('/')
+  res.redirect('/staff')
 })
 
 // ---------------------------------------------------------------------------

@@ -1,0 +1,49 @@
+<!doctype html>
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Resources for ACBF staff and crew" />
+    <title>ACBF Staff</title>
+
+    <link href="/style.css" type="text/css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <script type="module" src="/js/core.js"></script>
+  </head>
+  <body>
+    <div class="warning_icon" title="Server disconnected!">X</div>
+    <h1>ACBF Staff</h1>
+    <div class="menu_container">
+      <div class="menu_section">
+        <a class="button" title="Log in/out" id="login"></a>
+        <a class="button" href="/settings" title="Settings">Settings</a>
+      </div>
+      <div class="menu_section">
+        <a class="button" href="/slideshow" title="Slideshow with availability slide"> Slideshow </a>
+        <a class="button" href="/history" title="Recent changes">History</a>
+      </div>
+      <div class="menu_section">
+        <a class="button" href="/bridge" title="QLC+ bridge">QLC+ bridge</a>
+        <a class="button" href="/brewery-wikidata-query" title="Wikidata query">Wikidata query</a>
+      </div>
+      <div class="menu_section">
+        <a
+          class="button"
+          href="/downloads/current-beers.csv"
+          title="Download the beer information currently in use"
+          download="current-beers.csv"
+          >current-beers.csv</a
+        >
+        <a class="button" href="/downloads/tableschema.json" title="Frictionless Data table schema">tableschema.json</a>
+      </div>
+    </div>
+    <footer>
+      Made with 🍺 - © 2024 guyfawcus - (<a href="https://github.com/guyfawcus/beer-fest.js">MIT Licensed</a>)
+    </footer>
+  </body>
+</html>
