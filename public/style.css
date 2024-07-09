@@ -306,6 +306,18 @@ hr {
   place-items: center;
 }
 
+header {
+  display: grid;
+  height: 120px;
+  place-items: center;
+}
+
+@media (max-width: 1000px) {
+  header {
+    height: 240px;
+  }
+}
+
 h1,
 .menu_container,
 .grid {
