@@ -27,8 +27,6 @@
   --default-selection-colour: #b4d5ff;
 
   --transition-time: 150ms;
-
-  --footer-height: 5rem;
 }
 
 /* ------------------------------------------------------------------------ */
@@ -56,16 +54,13 @@
 /* ------------------------------------------------------------------------ */
 /* General styles                                                           */
 /* ------------------------------------------------------------------------ */
-html {
-  height: 100%;
-}
-
 a {
   color: var(--text-colour);
   text-decoration: none;
 }
 
 body {
+  display: grid;
   background-image: radial-gradient(
     circle farthest-corner at 50% 50%,
     var(--main-shade-colour) 0%,
@@ -75,16 +70,13 @@ body {
   font-family: 'Arial', 'sans-serif';
   margin: 0px;
   overflow-x: hidden;
-  position: relative;
-  min-height: 100vh;
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
-  font-size: 45px;
+  font-size: 5cqh;
   color: var(--button-bg-colour);
   font-family: 'HackerFiveTwo', 'Arial', 'sans-serif';
-  padding: 0.6145em;
   margin: 0px;
 }
 
@@ -101,12 +93,8 @@ input::selection {
 }
 
 footer {
-  position: absolute;
-  bottom: 0px;
-  width: 100%;
-  text-align: center;
-  height: var(--footer-height);
-  line-height: var(--footer-height);
+  padding-top: 60px;
+  padding-bottom: 20px;
 }
 
 footer::selection,
@@ -168,7 +156,6 @@ hr {
   border-top: 3px double #333;
   color: var(--main-colour);
   overflow: visible;
-  text-align: center;
   height: 5px;
   width: 100%;
 }
@@ -188,7 +175,7 @@ hr {
   display: block;
   position: absolute;
   /* From the top, down the height of the title and half of a button */
-  top: calc(119px + 60px);
+  top: calc((100vh / 9) * 2);
   left: 50%;
   transform: translate(-50%);
   background-color: var(--main-shade-colour);
@@ -197,14 +184,6 @@ hr {
     inset 0px 0px 1rem 0px var(--shadow-shade-colour),
     0px 0px 0.5rem 0px var(--shadow-colour);
   padding: 2rem;
-  text-align: center;
-}
-
-@media (orientation: portrait) {
-  .noscript__content {
-    /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
-    transform: translate(-50%, 50%) scale(2);
-  }
 }
 
 .noscript__content a:link {
@@ -224,27 +203,22 @@ hr {
 /* Common                           */
 /* -------------------------------- */
 .menu_container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
+  place-items: center;
   gap: 20px;
   padding-top: 20px;
-  padding-bottom: var(--footer-height);
+  padding-bottom: 60px;
 }
 
 .menu_section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
+  display: grid;
   width: 300px;
 }
 
 .settings_checkboxes {
-  display: flex;
-  justify-content: space-around;
-  text-align: center;
+  display: grid;
+  grid-auto-flow: column;
+  place-items: center;
   width: 300px;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -255,26 +229,16 @@ hr {
 /* -------------------------------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(161px, 1fr));
-}
-
-@media (orientation: portrait) {
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(218px, 1fr));
-  }
+  grid-template-columns: repeat(11, 1fr);
 }
 
 /* -------------------------------- */
 /* History                          */
 /* -------------------------------- */
 .history {
-  height: 42em;
-  width: 375px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: start;
+  height: 90vh;
+  width: calc(24em + 40px);
+  display: grid;
   padding: 20px;
   overflow: auto;
 }
@@ -296,7 +260,6 @@ hr {
   width: 40px;
   height: 40px;
   margin: 0 auto;
-  border-radius: 50%;
   position: absolute;
   top: 40px;
   right: 40px;
@@ -308,14 +271,8 @@ hr {
 
 header {
   display: grid;
-  height: 120px;
+  height: calc((100vh / 9) * 1.5);
   place-items: center;
-}
-
-@media (max-width: 1000px) {
-  header {
-    height: 240px;
-  }
 }
 
 h1,
@@ -343,20 +300,16 @@ h1,
   border: solid 2px var(--main-colour);
 }
 
-.availability_button,
-.button {
+.availability_button {
   background: var(--full-colour);
-  display: flex;
-  width: 100%;
-  height: 120px;
-  font-size: 3rem;
+  display: grid;
+  place-items: center;
+  height: calc((100vh - ((100vh / 9) * 1.5)) / 8);
+  font-size: 3.4cqh;
   font-weight: bold;
   box-shadow:
     inset 0px 0px 1rem 0px var(--shadow-shade-colour),
     0px 0px 0.5rem 0px var(--shadow-colour);
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   z-index: 1;
   will-change: transform;
   transition: all var(--transition-time);
@@ -368,25 +321,29 @@ body:not(.keyboardControl) .availability_button:hover,
 body.keyboardControl .availability_button:focus,
 body:not(.keyboardControl) .button:hover,
 body.keyboardControl .button:focus {
-  transform: translateY(-3px) scale(1.05);
-  border-radius: 50px;
+  transform: translateY(-2.5%) scale(1.05);
   box-shadow: 0px 0px 1.5rem 0px var(--shadow-shade-colour);
   box-shadow:
     inset 0px 0px 1rem 0px var(--shadow-shade-colour),
     0px 0px 1rem 0px var(--shadow-shade-colour),
     0px 0px 1.5rem 0px var(--shadow-colour);
-  border-radius: 8px;
+  border-radius: 1cqh;
   cursor: pointer;
   z-index: 2;
 }
 
 .button {
+  display: grid;
+  place-items: center;
   margin: 7.5px;
   height: 60px;
   background: var(--button-bg-colour);
-  font-size: 2rem;
+  font-size: 1.75rem;
   font-weight: normal;
   width: 95%;
+  box-shadow:
+    inset 0px 0px 1rem 0px var(--shadow-shade-colour),
+    0px 0px 0.5rem 0px var(--shadow-colour);
 }
 
 /* Use the crosshair cursor on mobile - stops from flashing (selection highlight?) */
@@ -407,7 +364,6 @@ body.keyboardControl .button:focus {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: var(--footer-height);
 }
 
 /* -------------------------------- */
@@ -418,8 +374,8 @@ body.keyboardControl .button:focus {
   transition-delay: var(--transition-time);
   pointer-events: none;
   position: absolute;
-  width: 100px;
-  height: 100px;
+  width: auto;
+  height: 80%;
 }
 
 .checked {
@@ -462,12 +418,10 @@ body.keyboardControl .button:focus {
 #popup-menu,
 .popup-info-modal {
   display: none;
-  flex-direction: column;
-  align-items: center;
+  place-items: center;
   position: absolute;
-  text-align: center;
   /* From the top, down the height of the title and half of a button */
-  top: calc(119px + 60px);
+  top: calc((100vh / 9) * 2);
   left: 50%;
   width: 180px;
   transform: translate(-50%);
@@ -486,33 +440,23 @@ body.keyboardControl .button:focus {
   top: 33%;
 }
 
-@media (orientation: portrait) {
-  #popup-menu,
-  .popup-info-modal {
-    /* In the middle of the page and down half of the upscaled height (to get the top of the element)  */
-    transform: translate(-50%, 20%) scale(1.4);
-  }
-}
-
 #popup-background.show {
   display: unset;
 }
 
 #popup-menu.show,
 .popup-info-modal.show {
-  display: flex;
+  display: grid;
 }
 
 .checkbox-label {
   padding-top: 2px;
   padding-bottom: 15px;
-  font-size: 1.2em;
 }
 
 #check-share {
   padding-top: 2px;
   padding-bottom: 15px;
-  font-size: 1.2em;
   font-weight: bold;
 }
 
@@ -524,7 +468,7 @@ body.keyboardControl .button:focus {
 }
 
 #clear-checks {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -557,6 +501,7 @@ body.keyboardControl .button:focus {
   position: absolute;
   width: 100%;
   height: 100%;
+  height: 100dvh;
   object-fit: contain;
   background-color: #00000099;
 }
@@ -565,8 +510,7 @@ body.keyboardControl .button:focus {
 /* Login                            */
 /* -------------------------------- */
 .login_fields {
-  display: flex;
-  flex-direction: column;
+  display: grid;
   gap: 15px;
 }
 
@@ -577,7 +521,6 @@ body.keyboardControl .button:focus {
   display: flex;
   width: 100%;
   justify-content: space-evenly;
-  text-align: center;
   padding: 5px;
   box-shadow:
     inset 0px 0px 0.2rem 0px var(--shadow-shade-colour),
@@ -610,4 +553,60 @@ form {
 /* -------------------------------- */
 .checkbox {
   width: 130px;
+}
+
+@media (max-width: 1200px) {
+  h1 {
+    font-size: 4cqh;
+  }
+
+  header {
+    height: calc((100vh / 11) * 1.5);
+  }
+
+  .grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+
+  .availability_button {
+    height: calc((100vh - ((100vh / 11) * 1.5)) / 10);
+  }
+
+  #popup-menu,
+  .popup-info-modal,
+  .noscript__content {
+    /* From the top, down the height of the title and half of a button */
+    top: calc((100vh / 11) * 2);
+  }
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 3cqh;
+  }
+
+  header {
+    height: calc((100vh / 12) * 1.5);
+  }
+
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .availability_button {
+    height: calc((100vh - ((100vh / 12) * 1.5)) / 11);
+  }
+
+  #popup-menu,
+  .popup-info-modal,
+  .noscript__content {
+    /* From the top, down the height of the title and half of a button */
+    top: calc((100vh / 12) * 2);
+  }
+}
+
+@media (max-width: 400px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

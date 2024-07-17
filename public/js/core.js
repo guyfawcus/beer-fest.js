@@ -182,6 +182,7 @@ export function buildCross(number) {
 
   cross.classList.add('cross')
   cross.id = `cross_${number}`
+  cross.setAttribute('viewBox', '0 0 100 100')
   // Layer the cross underneath the number
   // cross.style.zIndex = '-1'
 
