@@ -26,3 +26,14 @@ function carousel() {
     setTimeout(carousel, 10000)
   }
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Disable the cursor on the sponsor sides
+  document.body.style = 'cursor: none;'
+
+  // Disable the cursor on the availability slide
+  const iframe = document.querySelector('#slideshow_iframe')
+  iframe.onload = () => {
+    iframe.contentDocument.querySelector('#buttons_header').style.cursor = 'none'
+  }
+})
