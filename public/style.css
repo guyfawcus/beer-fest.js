@@ -248,6 +248,65 @@ hr {
   padding: 10px;
 }
 
+/* -------------------------------- */
+/* List                             */
+/* -------------------------------- */
+#list {
+  height: 90vh;
+  width: 90vw;
+  display: grid;
+  overflow: auto;
+  gap: 40px;
+  place-items: center;
+}
+
+#beer_number {
+  grid-area: beer_number;
+  font-weight: bold;
+}
+#beer_name {
+  grid-area: beer_name;
+  font-weight: bold;
+}
+#brewer {
+  grid-area: brewer;
+}
+#abv {
+  grid-area: abv;
+}
+#beer_style {
+  grid-area: beer_style;
+}
+#description {
+  grid-area: description;
+  padding-top: 10px;
+  text-align: left;
+}
+
+.beer {
+  display: grid;
+  place-items: center;
+  grid-template-columns: 10vw 25vw 25vw 10vw 20vw;
+  grid-template-areas:
+    'beer_number beer_name brewer abv beer_style'
+    'beer_number description description description description';
+}
+
+@media (max-width: 600px) {
+  #list {
+    width: 95vw;
+  }
+
+  .beer {
+    display: grid;
+    grid-template-columns: 10vw 40vw 40vw;
+    grid-template-areas:
+      'beer_number beer_name abv'
+      'beer_number brewer beer_style'
+      'beer_number description description';
+  }
+}
+
 /* ------------------------------------------------------------------------ */
 /* Main styles                                                              */
 /* ------------------------------------------------------------------------ */
@@ -295,7 +354,8 @@ h1,
 
 .menu_section,
 .settings_checkboxes,
-.history {
+.history,
+#list {
   background: var(--main-shade-colour);
   border: solid 2px var(--main-colour);
 }

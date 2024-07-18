@@ -800,6 +800,10 @@ app.get('/availability', (req, res) => {
   res.sendFile('views/buttons.html', { root: import.meta.dirname })
 })
 
+app.get('/list', (req, res) => {
+  res.sendFile('views/list.html', { root: import.meta.dirname })
+})
+
 app.get('/history', (req, res) => {
   res.sendFile('views/history.html', { root: import.meta.dirname })
 })
@@ -1064,7 +1068,7 @@ io.on('connection', (socket) => {
   }
 
   // Send the beer information
-  if (pathname === 'history' || pathname === 'availability' || pathname === 'map' || pathname === 'bot') {
+  if (['history', 'availability', 'list', 'map', 'bot'].includes(pathname)) {
     io.to(socket.id).emit('beers', beers)
   }
 

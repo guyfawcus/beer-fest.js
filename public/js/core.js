@@ -618,6 +618,34 @@ export function updateHistory(stock_level) {
 }
 
 // ---------------------------------------------------------------------------
+// List functions
+// --------------------------------------------------------------------------
+/**
+ * Function that creates divs with info about each beer
+ * and adds them to the list div.
+ *
+ * @param {beerObj} beers_list
+ */
+export function updateList(beers_list) {
+  const list_div = document.getElementById('list')
+  list_div.innerHTML = ''
+  list_div.append(document.createElement('hr'))
+
+  for (const beer in beers_list) {
+    const div = document.createElement('div')
+    div.classList.add('beer')
+    div.innerHTML = `<div id="beer_number">${beers_list[beer].beer_number}</div>
+                     <div id="beer_name">${beers_list[beer].beer_name}</div>
+                     <div id="brewer">${beers_list[beer].brewer}</div>
+                     <div id="abv">${beers_list[beer].abv}</div>
+                     <div id="beer_style">${beers_list[beer].beer_style}</div>
+                     <div id="description">${beers_list[beer].description}</div>`
+    list_div.append(div)
+    list_div.append(document.createElement('hr'))
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Settings functions
 // ---------------------------------------------------------------------------
 /**
