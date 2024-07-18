@@ -236,23 +236,18 @@ hr {
 /* History                          */
 /* -------------------------------- */
 .history {
-  height: 90svh;
-  width: calc(24em + 40px);
+  height: 95svh;
+  width: 85svw;
   display: grid;
-  padding: 20px;
+  padding: 2.5svw;
   overflow: auto;
-}
-
-.history::after {
-  content: '';
-  padding: 10px;
 }
 
 /* -------------------------------- */
 /* List                             */
 /* -------------------------------- */
 #list {
-  height: 90svh;
+  height: 95svh;
   width: 90svw;
   display: grid;
   overflow: auto;
@@ -578,9 +573,9 @@ body.keyboardControl .button:focus {
 /* History                          */
 /* -------------------------------- */
 .update {
-  display: flex;
-  width: 100%;
-  justify-content: space-evenly;
+  display: grid;
+  place-items: center;
+  grid-auto-flow: column;
   padding: 5px;
   box-shadow:
     inset 0px 0px 0.2rem 0px var(--shadow-shade-colour),
@@ -589,19 +584,25 @@ body.keyboardControl .button:focus {
 }
 
 .time {
-  width: 8em;
+  width: 20svw;
 }
 
 .name {
-  width: 8em;
+  width: 35svw;
 }
 
 .number {
-  width: 2em;
+  width: 5svw;
 }
 
 .level {
-  width: 6em;
+  width: 20svw;
+}
+
+@media (max-width: 600px) {
+  .history {
+    width: 90vw;
+  }
 }
 
 form {
