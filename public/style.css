@@ -631,6 +631,7 @@ form {
 
   .availability_button {
     height: calc((100svh - ((100svh / 11) * 1.5)) / 10);
+    font-size: 3cqh;
   }
 
   #popup-menu,
