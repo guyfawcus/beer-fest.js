@@ -151,7 +151,7 @@ function setColour(number, level, element) {
 }
 
 // ---------------------------------------------------------------------------
-// Index page formatting
+// Specific page formatting
 // ---------------------------------------------------------------------------
 if (location.pathname === '/staff') {
   const auth_button = document.getElementById('login')
@@ -163,6 +163,14 @@ if (location.pathname === '/staff') {
     auth_button.textContent = 'Log out'
   } else {
     auth_button.textContent = 'Log in'
+  }
+}
+
+// Reload the login page if someone has navigated to it using the browser's back/forward functionality,
+// this will have the effect of redirecting the user to the homepage if they're already logged in.
+if (location.pathname === '/login') {
+  if (String(window.performance.getEntriesByType('navigation')[0].type) === 'back_forward') {
+    window.location.reload()
   }
 }
 
