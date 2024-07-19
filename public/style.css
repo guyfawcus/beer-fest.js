@@ -559,7 +559,6 @@ form {
 .history {
   height: 95svh;
   width: 85svw;
-  display: grid;
   padding: 2.5svw;
   overflow: auto;
 }
