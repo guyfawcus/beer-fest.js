@@ -28,12 +28,12 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 27,Four,XT Brewing Co.,Q39053843,3.8%,Amber,,,Special Belgian malt and a fruity mix of American and European hops.
 28,Freeman Street,Thornbridge,Q7796317,6.0%,IPA,,,"Hop forward with citrus and pine, bitterness is balanced with caramel sweetness."
 29,Froot Jooce,Nuttycombe,,4.0%,Pale Ale,,,"A pale, hoppy and frooty summer ale."
-30,Future You,Verdant,,4.5%,Pale Ale,y,,"West Coast Pale - expect pine, tropical notes and a decent bitter finish."
+30,Future You,Verdant Brewing Co.,Q113829344,4.5%,Pale Ale,y,,"West Coast Pale - expect pine, tropical notes and a decent bitter finish."
 31,Fuzzy,Cloudwater,Q104869040,4.2%,Pale Ale,y,,"Soft, pillowy, hazy pale from Manchester's finest."
 32,Gold,The Five Points Brewing Company,Q98071243,3.4%,Golden Ale,,,"Fruity aroma, gives way to an earthy bitter finish. Classic cask Golden Ale."
 33,Golden Best,Timothy Taylor's,Q7807560,3.5%,Mild,,,"A crisp, amber coloured beer that makes a refreshing session ale."
 34,Good Day Sunshine,Vale Brewery,Q98072911,4.0%,Summer Ale,,,"Light in colour and taste, simply refreshing for summer."
-35,Good Old Boy,Renegade,,4.0%,Best Bitter,y,,"Bramling Cross and Northdown hops make for a well balanced, full flavoured beer."
+35,Good Old Boy,Renegade Brewery,Q7984464,4.0%,Best Bitter,y,,"Bramling Cross and Northdown hops make for a well balanced, full flavoured beer."
 36,Gulp Shake,Tiny Rebel,Q27136461,4.1%,IPA,,,Milkshake IPA using Simcoe and Mosaic Hops for a citrussy smooth flavour (contains lactose).
 37,Hangar 17,Oakham,Q7073885,4.1%,Amber Ale,,,A rich malty amber beer with aromas of tangerine and tangy citrus with a hint of orange peel.
 38,Hatchet,Buxton,Q98118486,3.4%,IPA,,,A pleasing bitterness to finish and is relentlessly hoppy up front.
@@ -44,14 +44,14 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 43,John Hampden,The Chiltern Brewery,Q97661391,4.8%,Harvest Ale,,,"Quality malt, with the aromatic fruitiness of a single English hop for balance."
 44,Juicy,Tiny Rebel,Q27136461,4.8%,Golden Ale,,,"Brewed with hop varieties to give a juicy, tropical flavour and aroma."
 45,Kaleidoscope,Wiper and True,Q27067400,4.2%,Pale Ale,y,,"Citra, Simcoe and Mosaic create a kaleidoscope of bright citrus and fruit flavours, with a gentle, clean bitterness."
-46,Lord Summerale,Verdant,,3.8%,Pale Ale,,,
+46,Lord Summerale,Verdant Brewing Co.,Q113829344,3.8%,Pale Ale,,,
 47,Kodiak,Mad Squirrel,Q98074829,4.7%,American Brown,,,Full-bodied brown ale with a twist - tropical fruit flavours from American hops.
 48,Long Ferry,Iron Pier,Q115766002,3.9%,Golden Ale,,,"Perfectly balanced, toffee malt and fresh hop character."
 49,Macaroni Ted,Ossett / Elusive (collab),,5.2%,WCIPA,,,"West Coast-style IPA, showcasing modern American hop varieties including Columbus, Citra, Simcoe and Talus."
-50,Maharaja,Renegade,,5.1%,IPA,,,"Full bodied, New World hopped IPA, tropical fruit flavours full on bitterness, earthy finish."
+50,Maharaja,Renegade Brewery,Q7984464,5.1%,IPA,,,"Full bodied, New World hopped IPA, tropical fruit flavours full on bitterness, earthy finish."
 51,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Classic ruby dark mild, smooth like velvet, sweet and creamy."
 52,Memento,Siren Craft Brew,Q97726156,3.8%,Best Bitter,,,"Grassy and herbal notes from English hops, boosted by Cascade in the dry hop."
-53,Mister Chubbs,Renegade,,3.7%,Bitter,,,"Citrus hop aroma and smooth palate, balance finish using Target and Celeia hops."
+53,Mister Chubbs,Renegade Brewery,Q7984464,3.7%,Bitter,,,"Citrus hop aroma and smooth palate, balance finish using Target and Celeia hops."
 54,Mister Squirrel,Mad Squirrel,Q98074829,4.0%,Bitter,,,"Balanced and respectable brew with notes of toffee, vanilla and nuts."
 55,Mosaic,Neptune,,4.5%,Pale Ale,,,"Single hopped pale with Mosaic. Juicy flavours of tropical fruits, blueberries and papaya."
 56,Mosaic,Arbor,Q97665078,4.0%,Pale Ale,,y,

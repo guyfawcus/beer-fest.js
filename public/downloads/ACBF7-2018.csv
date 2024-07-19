@@ -5,7 +5,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 4,Black,The Chiltern Brewery,Q97661391,3.9%,Porter,y,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolatey aroma."
 5,Blonde,The 3 Brewers of St.Albans,Q97619412,4.0%,Golden / Blonde,,,Mosaic hops give the beer a wonderful hoppy aroma and a refreshing smack of fruity citrussy flavours.
 6,Blood Moon,Aylesbury Brewhouse Co.,Q97621074,4.5%,Amber Ale,,,"Caramel malt, toffee, biscuit, dried fruit, resinous hops."
-7,Blue Skies IPA,Oakham,,6.0%,IPA,,,"Tropical fruit, citrus, peach, medium bitterness."
+7,Blue Skies IPA,Oakham,Q7073885,6.0%,IPA,,,"Tropical fruit, citrus, peach, medium bitterness."
 8,Bluebird,Lenton Lane,,3.8%,Golden / Blonde,,,"Pale, refreshing & hoppy."
 9,Brock,Tring Brewery Co.,Q7842351,3.7%,Bitter,,,A hint of sweetness and caramel. Challenger hops for bitterness & late hopped with Styrian Goldings.
 10,C-Bomb,Brew Foundation,,4.2%,Session IPA,,,"Fruity pale ale, singly hopped with Citra. Lemon and citrus, low bitterness."
@@ -35,7 +35,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 34,Liquid Mistress,Siren Craft Brew,Q97726156,5.8%,Amber Ale,,,Bright red ale with aromas and flavours of raisins and crackers balanced by citrus.
 35,Little Bitter That,Brew Foundation,,3.8%,Bitter,,,"Traditional British hops and malt for a fruity taste and aroma, balanced against a strong malty body."
 36,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of Coffee, Chocolate & Smoke."
-37,Long Summer Days,Bristol Beer Factory,,5.6%,IPA,,,"Big citrus flavour with botanical, sweet richness and a classic bitter US IPA finish."
+37,Long Summer Days,Bristol Beer Factory,Q107716330,5.6%,IPA,,,"Big citrus flavour with botanical, sweet richness and a classic bitter US IPA finish."
 38,Manta Ray,Animal Brewing Co,Q97975500,4.6%,Golden / Blonde,,,Pilsner Malts & triple hopped with American greens. Crisp dry and refreshing.
 39,MEGS Bomb,Arbor,,4.7%,Golden / Blonde,,,"Easy drinking Pale Ale with tropical fruits, citrus and a slight herbal finish."
 40,Melba,Thornbridge,Q7796317,5.2%,IPA,,,Light gold in colour; its peachy character is created by the use of aromatic US hops.
@@ -46,9 +46,9 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 45,Myrce IPA,Intrepid,,5.3%,Session IPA,,,"A bold, citrusy IPA with tropical aromas, from the blend of Cascade, Centennial & Citra hops."
 46,Narrow Gauge,Leighton Buzzard Brewing Co.,Q97676194,3.9%,Golden / Blonde,,,A strong citrus finish and long dry bitter aftertaste thanks to the liberal use of the First Gold and Citra hops.
 47,Nelson Sauvin Milkshake IPA,Tiny Rebel,Q27136461,4.2%,Session IPA,,,Grapefruit notes of the hop are smoothed out by the creamy texture delivered by the addition of lactose.
-48,OPA,Oakham,,4.0%,Golden / Blonde,,,"A bright straw colour, sweet floral aroma and taste then a dry finish with a light herbal bitterness. Light and refined."
+48,OPA,Oakham,Q7073885,4.0%,Golden / Blonde,,,"A bright straw colour, sweet floral aroma and taste then a dry finish with a light herbal bitterness. Light and refined."
 49,Pale,The Five Points Brewing Company,Q98071243,4.4%,APA,,,"A fresh, zesty, aromatic pale ale brewed with malted barley, a little wheat, and Amarillo, Centennial and Citra hops."
-50,Pale Blue Dot,Bristol Beer Factory,,4.4%,APA,,,Quaffable Pale Ale. Clean & crisp - citrussy and fruity.
+50,Pale Blue Dot,Bristol Beer Factory,Q107716330,4.4%,APA,,,Quaffable Pale Ale. Clean & crisp - citrussy and fruity.
 51,Plum Porter,Titanic Brewery,Q16985637,4.9%,Porter,,,Dark strong and well rounded; the richness is balanced by the late addition of Goldings hops and natural plum flavouring.
 52,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Aromas of chocolate and coffee with hints of caramel, brewed with British East Kent Goldings hops."
 53,Red Kite,Vale Brewery,Q98072911,4.3%,Bitter,,,Deep red in colour with big malt flavours and a strong hop finish.

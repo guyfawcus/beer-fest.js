@@ -26,6 +26,6 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 25,Great Grey Owl,Butcombe,,3.6%,American Pale,,,
 26,Pendle Witches Brew,Moorhouse's,,5.1%,Golden Ale,,,
 27,92 Squadron,Buntingford,,4.5%,Premium Bitter,,,
-28,Black Hole Porter,Oakham,,5.5%,Porter,,,
-29,Bitter Californian,Bristol Beer Factory,,4.8%,Pale Ale,,,
+28,Black Hole Porter,Oakham,Q7073885,5.5%,Porter,,,
+29,Bitter Californian,Bristol Beer Factory,Q107716330,4.8%,Pale Ale,,,
 30,Diablo,Summer Wine Brewery,,6.0%,IPA,,,
