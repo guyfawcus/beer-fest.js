@@ -98,17 +98,34 @@ document.addEventListener('click', (event) => {
 })
 
 // Get the checkedHexData from the URL, parse it if it's present, read in from local storage if not
-const checkedHexData = new URL(location.href).searchParams.get('checked') || localStorage.getItem('checkedHexData')
-if (checkedHexData) {
+const url_checkedHexData = new URL(location.href).searchParams.get('checked')
+const local_checkedHexData = localStorage.getItem('checkedHexData')
+let checkedHexData = ''
+
+if (url_checkedHexData || local_checkedHexData) {
+  if (local_checkedHexData) {
+    checkedHexData = local_checkedHexData
+  }
+
+  if (url_checkedHexData && !local_checkedHexData) {
+    checkedHexData = url_checkedHexData
+  }
+
+  if (url_checkedHexData && local_checkedHexData) {
+    if (window.confirm('Opening this link will override your check marks! Are you sure you want to continue?')) {
+      checkedHexData = url_checkedHexData
+    }
+  }
+
   const numbersChecked = parseCheckedHexData(checkedHexData)
   checkHistory.clearFuture()
   applyChecks(numbersChecked)
-}
 
-// Remove the checkedHexData from the URL so that it's not used if you refresh the page
-const newUrl = new URL(location.href)
-newUrl.searchParams.delete('checked')
-history.replaceState(null, '', newUrl.toString())
+  // Remove the checkedHexData from the URL so that it's not used if you refresh the page
+  const newUrl = new URL(location.href)
+  newUrl.searchParams.delete('checked')
+  history.replaceState(null, '', newUrl.toString())
+}
 
 // Set the default state for options
 if (!localStorage.getItem('HIDE_NO_INFORMATION')) {
