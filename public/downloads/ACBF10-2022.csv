@@ -39,7 +39,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
 39,Made North,Thornbridge,Q7796317,3.8%,Bitter,,,"Bright golden colour. Bracingly bitter and dry, light malt aromas and flavours of earthy, floral English hops."
 40,Manchester Bitter,Marble Brewery,Q19655039,4.2%,Bitter,,,"Speciality malt gives the deep golden coloured robust base, balanced by crisp bitterness and a floral, lemony aroma."
-41,Maris the Otter,Brew York,,3.9%,Bitter,,,3 varieties of new world hops and a malt backbone of 5 different malts. A complex modern take on English Bitter.
+41,Maris the Otter,Brew York,Q125758709,3.9%,Bitter,,,3 varieties of new world hops and a malt backbone of 5 different malts. A complex modern take on English Bitter.
 42,Melba,Thornbridge,Q7796317,5.2%,Peach IPA,,,Melba pours a light gold in colour and it’s peachy character is complemented by the use of highly aromatic US hops.
 43,Milk Stout,Bristol Beer Factory,Q107716330,4.5%,Milk Stout,,,Multi award-winning; Smooth chocolatey sweetness and balancing bitterness with hints of dark fruits.
 44,Mosaic,Arbor,Q97665078,4.0%,GF Pale Ale,,,Heavily hopped Mosaic Pale Ale with bold floral and tropical fruit flavours and aromas – Naturally Gluten Free.
@@ -63,7 +63,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
 63,Talus in Wonderland,Arbor,,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
 64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
-65,Tonkoko,Brew York,,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
+65,Tonkoko,Brew York,Q125758709,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
 66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
 67,Unlocked,Hornes Brewery,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
 68,US Pale,Left Handed Giant,,4.2%,Pale Ale,,,"With enticing, clean, bright aromas of pine, grapefruit and orange peel, from a blend of Cascade, Chinook, Centennial and Idaho 7 hops. Layered on a simple malt base with balanced bitterness for a refreshing finish."

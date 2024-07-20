@@ -66,7 +66,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 65,South Island Pale,Saltaire,,3.5%,Golden/Blonde Ale,,,
 66,Summer,Ilkley,,4.0%,Golden/Blonde Ale,,,
 67,Summer Daze,Malt,,4.0%,Golden/Blonde Ale,,,
-68,Sunburst,Dark Star Brewing Co.,,4.8%,Golden/Blonde Ale,,,
+68,Sunburst,Dark Star Brewing Co.,Q5223427,4.8%,Golden/Blonde Ale,,,
 69,Super Tidy IPA,Big Hand,,4.0%,Session IPA,,,
 70,The Devil Made Me Brew It,Arbor,,5.5%,Stout,,,
 71,The Islander,Urban Huntsman,,4.0%,APA,,,
