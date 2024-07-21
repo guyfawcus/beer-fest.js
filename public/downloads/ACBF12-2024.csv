@@ -1,7 +1,7 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
-1,Agent Nectaron,Stealth,,4.7%,Hazy Session IPA,,,"Lovely soft tones of peach, mango and guava combined with a lovely mouthfeel to make this a secret agent of a beer."
+1,Agent Nectaron,Stealth Brew Co,Q127686965,4.7%,Hazy Session IPA,,,"Lovely soft tones of peach, mango and guava combined with a lovely mouthfeel to make this a secret agent of a beer."
 2,Allsops Best Bitter,Allsops,,3.8%,Bitter,,,"Harmonious blend of malty sweetness and subtle hop bitterness, making it a classic session beer."
-3,Ampthill Gold,Kelchner,,4.1%,Golden Ale,,,"Brewed using yeast, the finest hops and a specially selected amber malt that gives it a rich golden tone."
+3,Ampthill Gold,Kelchner Brewery,Q127687141,4.1%,Golden Ale,,,"Brewed using yeast, the finest hops and a specially selected amber malt that gives it a rich golden tone."
 4,Another Day Done,Duration,,4.4%,Pale Ale,,,"Bags of tropical fruit aromas like peach and mango. Pours bright with a light haze and drinks juicy and crisp, ends with soft bitterness and a refreshingly dry finish."
 5,Apparition,Pig & Porter,,4.4%,Stout,,,"Very smooth and slightly sweet stout. Roasty, chocolatey, dark, deep, delicious. Cocoa and a little note of Bailey's cream liqueur."
 6,Armadillo Lizard,XT Brewing Co.,Q39053843,4.6%,Kolsch,,,A German classic light ale.
@@ -15,10 +15,10 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 14,Brother Rabbit,Thornbridge,Q7796317,4.0%,Golden Ale,,,"A beautiful golden ale made with Norfolk malt which gives a great base to the beer and a lightly resinous character, the hops present a fantastic, punchy, lemon flavour with grassy hints."
 15,Butty Bach,Wye Valley Brewery,Q8039718,4.5%,Premium Ale,,,"This full-bodied, smooth and satisfying ale is burnished gold in colour. We brew it using Maris Otter and Crystal malts, flaked barley, malted wheat, and locally grown Fuggles, Goldings and Bramling Cross hops."
 16,Calico Jack,Vale Brewery,Q98072911,5.0%,Stout,,,An easy drinking stout with Caribbean hints of coconut.
-17,Chelmsford IPA ,Kelchner,,4.5%,IPA,,,"Caramel and biscuit malt paired with English hops give it a fruity, yet dry and bitter finish."
+17,Chelmsford IPA,Kelchner Brewery,Q127687141,4.5%,IPA,,,"Caramel and biscuit malt paired with English hops give it a fruity, yet dry and bitter finish."
 18,Citra Star,Anarchy Brew Co.,Q98070202,4.1%,Session IPA,,,"Loaded with grapefruit, lemon and lime. Light-bodied enough to keep you coming back for more."
 19,Classic,The 3 Brewers of St.Albans,Q97619412,4.0%,Bitter,,,"Deep amber colour, a light hoppy aroma and a rich and rounded malty taste to give a smooth and refreshing ale."
-20,Covert,Stealth,,3.9%,GF Pale Ale,,,A duo of hot-side hops (Amarillo & Cascade) combine with a liberal dry hopping regime of Citra to give this session pale a mouthful of citrus and stone fruit flavours.
+20,Covert,Stealth Brew Co,Q127686965,3.9%,GF Pale Ale,,,A duo of hot-side hops (Amarillo & Cascade) combine with a liberal dry hopping regime of Citra to give this session pale a mouthful of citrus and stone fruit flavours.
 21,Crackendale,Thornbridge,Q7796317,5.2%,Pale Ale,,,"Crackendale explodes with a fantastic tropical fruit aroma, giving way to guava and ripe citrus which burst through on the palate with a beautiful bitter and sweet balance."
 22,Cwtch,Tiny Rebel,Q27136461,4.6%,Red Ale,,,It isn’t your average bitter - the hops do more to this deep amber coloured beer than just provide bite. Drinkability and balance makes this beer.
 23,Dazzle & Trap,Tring Brewery Co.,Q7842351,4.0%,Pale Ale,,,"Stonefruit, citrus and pine sing through an extra pale malt base in this thirst-quenching summertime pale. Simcoe hops take the lead, sourced from the USA."
@@ -39,7 +39,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 38,Highwire,Magic Rock Brewing,Q86756254,5.5%,Pale Ale,,,"Mango, Lychee and grapefruit flavours with a smoothly composed malt base."
 39,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness.
 40,HPA,Wye Valley Brewery,Q8039718,3.7%,Bitter,,,"Smooth on the palate and boasts a citrus hop aroma leading to a balanced bitter finish. Locally grown Target and Celeia hops, plus malted wheat and extra pale Maris Otter malted barley."
-41,Huggermuggery,Stealth,,5.9%,Mocha Milk Porter,,,"Combined with fair-trade cocoa and lactose this ‘mocha porter’ is full of roasted coffee notes, rich chocolate smoothness and a pleasantly sweet finish."
+41,Huggermuggery,Stealth Brew Co,Q127686965,5.9%,Mocha Milk Porter,,,"Combined with fair-trade cocoa and lactose this ‘mocha porter’ is full of roasted coffee notes, rich chocolate smoothness and a pleasantly sweet finish."
 42,Inferno,Oakham,Q7073885,4.0%,Blonde Ale,,,"Flame gold in colour, this igniting ale flares complex fruits across your tongue leaving a dry fruity, thirst suppressing bitter finish."
 43,IPA,Allsops,,5.0%,IPA,,,"Samuel Allsopp was the first to perfect Burton-brewed India Pale Ale. Some 200 years later, Allsopp & Sons invite you to savour this faithful recreation of the complex, beguiling, original Burton IPA."
 44,Jaipur,Thornbridge,Q7796317,5.9%,IPA,,,Hoppiness builds in the mouth and bursts with powerful citrus fruit flavours with a smooth finish.
@@ -62,12 +62,12 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 61,Penpol,Verdant Brewing Co.,Q113829344,3.8%,Pale Ale,,,"Our interpretation of a moreish, hop bitter and aromatic single hop Citra cask pale ale."
 62,Pride & Joy,Vocation Brewery,Q107717907,4.8%,Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
 63,Pure Gold,Purity,,3.8%,Golden Ale,,,"A refreshing golden ale with a dry and bitter finish. Brewed with English Maris Otter, Caragold and Wheat malts, plus Hallertau Northern Brewer, Bobeck and Hereford Goldings hops. Winner of nine awards."
-64,Quest for the Golden Bean,Kelchner,,4.1%,Porter,,,"Coffee-forward, dry and easy drinking porter."
+64,Quest for the Golden Bean,Kelchner Brewery,Q127687141,4.1%,Porter,,,"Coffee-forward, dry and easy drinking porter."
 65,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Classic London Porter, smooth and robust with roasted malt notes of coffee and chocolate."
 66,Resonance,Moor,,4.1%,Golden Ale,,,Citra Golden Pale. Vibrant Citra hops complement rich Bristol malts to perfect effect.
 67,Ridgeway,Tring Brewery Co.,Q7842351,4.0%,Bitter,,,Ridgeway is defined by the finest UK malts balanced with the fruity characteristics of Styrian Goldings hops. This is a classic English ale at it’s most refined and drinkable.
 68,Salt Dark Choc Imp Stout,Vocation / Neon Raptor (collab),Q107717907,10.8%,Imperial Stout,,,"Blends 8 different malts to deliver a deep, rich and slightly bitter Imperial Chocolate Stout. The late addition of cocoa and sea salt enhance the chocolate flavour and adds a delicate, savoury finish."
-69,Seclusion,Stealth,,5.5%,IPA,,,A generous helping of oats on the malt bill make for a soft base that’s bittered with British Admiral and late hopped with US Cascade.
+69,Seclusion,Stealth Brew Co,Q127686965,5.5%,IPA,,,A generous helping of oats on the malt bill make for a soft base that’s bittered with British Admiral and late hopped with US Cascade.
 70,Solaris,Big Smoke,,3.8%,Pale Ale,,,"A very easy drinking pale ale with Cascade & Centennial hops, brewed exclusively for cask."
 71,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 72,SS9 -Imperial Stout,Leigh on Sea,,9.0%,Imperial Stout,,,SS9 is a seriously strong stout characterised by deep boozy notes of coffee and chocolate from the range of dark malts used in the recipe.
