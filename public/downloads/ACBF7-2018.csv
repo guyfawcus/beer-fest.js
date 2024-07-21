@@ -30,7 +30,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 29,Honey IPA,Hiver,,5.4%,Session IPA,,,A biscuit malt character with good body gives way to a pleasant hop bitterness and delicate honey aftertaste.
 30,Hop Contract,Downlands Brewery,,4.5%,Pale Ale,,,"Hopped with Ernest, Idaho 7, Galaxy, Simcoe."
 31,Hop Kitty,Animal Brewing Co,Q97975500,3.9%,Pale Ale,,,"Intense tropical and citrus flavours. A hint of malt sweetness before more hops, big Mango and Lychee zest."
-32,Imperial Stout,Fuller's Brewery,,10.7%,Imperial Stout,,,"A rich, dark appearance with strong chocolate and deep cherry notes which lead to a lighter, bitter finish."
+32,Imperial Stout,Fuller's Brewery,Q5253950,10.7%,Imperial Stout,,,"A rich, dark appearance with strong chocolate and deep cherry notes which lead to a lighter, bitter finish."
 33,Inhaler,Magic Rock Brewing,,4.5%,Session IPA,,,"Super fruity, super ripe, super juicy and super drinkable."
 34,Liquid Mistress,Siren Craft Brew,Q97726156,5.8%,Amber Ale,,,Bright red ale with aromas and flavours of raisins and crackers balanced by citrus.
 35,Little Bitter That,Brew Foundation,,3.8%,Bitter,,,"Traditional British hops and malt for a fruity taste and aroma, balanced against a strong malty body."
