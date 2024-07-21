@@ -55,8 +55,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 54,Kipling,Thornbridge,Q7796317,5.2%,American Pale Ale,,,"Kipling is a golden beer made exclusively with the fabulous Nelson Sauvin hop that imparts exquisite passion fruit, gooseberry and mango aromas. An initial sweetness and medium body are balanced by a lasting grapefruit-like bitter finish."
 55,Stay Puft,Tiny Rebel,Q27136461,5.2%,Stout,,,"This marshmallow porter has the classic roasty qualities of a proper dark ale, whilst the marshmallow gives it a smooth sweetness, both combining for a delightful, S’mores-like ale. A sweet treat for the cold winter nights."
 56,Dixie,Leighton Buzzard Brewing Co.,Q97676194,5.5%,IPA,,,
-57,The Devil Made Me Brew It,Arbor,,5.5%,Stout,,,"A full bodied very drinkable stout, dry hopped with citra, mosaic, bravo and simcoe."
-58,Why Kick a Moo Cow,Arbor,,5.5%,American Pale Ale,,,"New zealand pale ale, brewed with a large quantity of southern cross and rakau hops added in the copper and dry hopped with pacific gem and pacific jade."
+57,The Devil Made Me Brew It,Arbor,Q97665078,5.5%,Stout,,,"A full bodied very drinkable stout, dry hopped with citra, mosaic, bravo and simcoe."
+58,Why Kick a Moo Cow,Arbor,Q97665078,5.5%,American Pale Ale,,,"New zealand pale ale, brewed with a large quantity of southern cross and rakau hops added in the copper and dry hopped with pacific gem and pacific jade."
 59,Shepherds Warning,Wild Weather,Q98212518,5.6%,IPA,,,"Shepherds Warning is a pale IPA where the flavour begins soft and smooth building to a wonderful big hit of hoppy grapefruit, peach and mango."
 60,Black Buzzard,Leighton Buzzard Brewing Co.,Q97676194,5.8%,Porter,,,"A crazy marriage of six different malts delivers a wonderful, complex, robust porter."
 61,Riggwelter,Black Sheep Brewery,,5.9%,English Strong Ale,,,"Riggwelter, a real powerhouse of a beer. Much thought went into the creation of our flagship ‘strong’ ale. To create something with real strength and depth we developed a unique recipe featuring rich espresso aromas, dark fruit and roasted malt flavours."

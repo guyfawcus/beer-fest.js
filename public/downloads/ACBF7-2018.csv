@@ -12,11 +12,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 11,Cherry Bomb,Tiny Rebel,Q27136461,5.0%,Fruit Beer,,,"A modern take on the classic Belgian sour cherry beer, Kriek."
 12,Chilli Porter,Leighton Buzzard Brewing Co.,Q97676194,5.8%,Porter,,,"A wonderful, complex, robust porter with glorious hints of coffee and chocolate and a little chilli heat."
 13,Chopper,Great Heck,,3.8%,Golden / Blonde,,,Pale Yorkshire session beer using English & Slovenian hops. Dry hopped with Chinook for aroma.
-14,Citra Pale,BAD Co.,,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
+14,Citra Pale,BAD Co.,Q98214444,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
 15,Confidence,Moor,,4.6%,Amber Ale,,,"Crystal and wheat malts, spicy US hops, rich & malty."
-16,Dark Arts,Magic Rock Brewing,,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
+16,Dark Arts,Magic Rock Brewing,Q86756254,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
 17,Dark Fox,Hornes Brewery,Q97666414,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
-18,Day Tripper,Downlands Brewery,,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
+18,Day Tripper,downlands brewery,Q98118420,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
 19,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Barley Wine,,,"A rich, sweet barley wine with a heady, alcoholic nose and incredibly complex flavour profile."
 20,Don't Believe the Hype,Tiny Rebel,Q27136461,5.0%,IPA,,,"Hazy golden colour, floral & caramel aroma, taste is sweet & juicy citrus."
 21,Earl Grey IPA,Marble Brewery,Q19655039,6.8%,IPA,,,"Crisp and golden. Caramel, tea and malt aromas. Sweet with some bitterness and spiciness."
@@ -28,16 +28,16 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 27,Grapevine,Fallen,,5.4%,APA,,,"Floral, citrus, tropical, fruity, bitter with NZ hops."
 28,Gravitas,Vale Brewery,Q98072911,4.8%,Pale Ale,,,"A strong, pale ale packed with hop and citrus flavours, rounded off by a dry, biscuit finish."
 29,Honey IPA,Hiver,,5.4%,Session IPA,,,A biscuit malt character with good body gives way to a pleasant hop bitterness and delicate honey aftertaste.
-30,Hop Contract,Downlands Brewery,,4.5%,Pale Ale,,,"Hopped with Ernest, Idaho 7, Galaxy, Simcoe."
+30,Hop Contract,downlands brewery,Q98118420,4.5%,Pale Ale,,,"Hopped with Ernest, Idaho 7, Galaxy, Simcoe."
 31,Hop Kitty,Animal Brewing Co,Q97975500,3.9%,Pale Ale,,,"Intense tropical and citrus flavours. A hint of malt sweetness before more hops, big Mango and Lychee zest."
 32,Imperial Stout,Fuller's Brewery,Q5253950,10.7%,Imperial Stout,,,"A rich, dark appearance with strong chocolate and deep cherry notes which lead to a lighter, bitter finish."
-33,Inhaler,Magic Rock Brewing,,4.5%,Session IPA,,,"Super fruity, super ripe, super juicy and super drinkable."
+33,Inhaler,Magic Rock Brewing,Q86756254,4.5%,Session IPA,,,"Super fruity, super ripe, super juicy and super drinkable."
 34,Liquid Mistress,Siren Craft Brew,Q97726156,5.8%,Amber Ale,,,Bright red ale with aromas and flavours of raisins and crackers balanced by citrus.
 35,Little Bitter That,Brew Foundation,,3.8%,Bitter,,,"Traditional British hops and malt for a fruity taste and aroma, balanced against a strong malty body."
 36,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of Coffee, Chocolate & Smoke."
 37,Long Summer Days,Bristol Beer Factory,Q107716330,5.6%,IPA,,,"Big citrus flavour with botanical, sweet richness and a classic bitter US IPA finish."
 38,Manta Ray,Animal Brewing Co,Q97975500,4.6%,Golden / Blonde,,,Pilsner Malts & triple hopped with American greens. Crisp dry and refreshing.
-39,MEGS Bomb,Arbor,,4.7%,Golden / Blonde,,,"Easy drinking Pale Ale with tropical fruits, citrus and a slight herbal finish."
+39,MEGS Bomb,Arbor,Q97665078,4.7%,Golden / Blonde,,,"Easy drinking Pale Ale with tropical fruits, citrus and a slight herbal finish."
 40,Melba,Thornbridge,Q7796317,5.2%,IPA,,,Light gold in colour; its peachy character is created by the use of aromatic US hops.
 41,Miss Shelley,Watling Street,,4.3%,Golden / Blonde,,,"This golden beer has hoppy, citrus notes and a refreshing crisp finish."
 42,Moho,Mantle,,4.3%,Golden / Blonde,,,"Aromatic Welsh Pale Ale, hopped with two different American varieties. A light coloured Ale, bursting with flavour."
@@ -57,11 +57,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 56,Roadie,Signature Brew,,4.3%,Session IPA,,,"Super crisp, light and refreshing. Plenty of Columbus & Cascade hops."
 57,RoadKill,Mad Squirrel,Q98074829,6.5%,IPA,,,"Hazy gold. Aroma and taste are rich tropical fruits, citrus, flowers, hops, malt; nice long fruity finish."
 58,Rock Steady,Mantle,,3.8%,Golden / Blonde,,,"Very drinkable Golden Session Ale, with a good dose of British hops for a crisp and refreshing finish."
-59,Sean of the Red,Arbor,,5.1%,Amber Ale,,,"Red/Amber, red berry notes with sweet malt and a dry hop finish."
+59,Sean of the Red,Arbor,Q97665078,5.1%,Amber Ale,,,"Red/Amber, red berry notes with sweet malt and a dry hop finish."
 60,Serendipity,Wild Weather,Q98212518,3.5%,APA,,,An explosively fruity American Pale Ale. Big American hops deliver a huge nose over a subtle malt bill.
 61,Serenity,Abbeydale Brewery,Q98067081,3.8%,Session IPA,,,Heavily hopped with varieties from the US and Oz. Citrus with a bitter hop finish.
 62,Single Hop Styrian Dragon,Intrepid,,4.5%,Golden / Blonde,,,"The latest in the Single Hop series using Styrian Dragon for notes of passion fruit, melon & berries."
-63,South Island Pale,Saltaire,,3.5%,Golden / Blonde,,,"A clean, pale beer, with cool crisp fruitiness from New Zealand hops."
+63,South Island Pale,Saltaire,Q98073411,3.5%,Golden / Blonde,,,"A clean, pale beer, with cool crisp fruitiness from New Zealand hops."
 64,Special English Ale,The 3 Brewers of St.Albans,Q97619412,4.8%,Premium Bitter,,,A robust and full bodied Premium Ale. Chocolate malt gives a deep copper colour and English hops give the ale a hint of berries.
 65,Starry Nights,Malt,,4.0%,Amber Ale,,,An easy drinking amber coloured ale. Southern Hemisphere hops make this a well-balanced and fruity beer.
 66,Strawberry Lucaria,Thornbridge,Q7796317,4.5%,Porter,,,"Strawberry, caramel, liquorice & chocolate aromas with flavours of sweet, creamy, strawberry with roasted malt."
@@ -78,4 +78,4 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 77,Vital Spark,Fyne Ales,Q125390234,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
 78,VPA,Vale Brewery,Q98072911,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
 79,Wolf,Aylesbury Brewhouse Co.,Q97621074,3.8%,Pale Ale,,,"Straw coloured pale ale with Slovenian hop, Styrian Wolf. Flavours of citrus and berries and a smooth bitterness."
-80,Yorkshire Bitter,BAD Co.,,3.8%,Bitter,,,"Green fruits, Malty sweetness, refreshing after taste."
+80,Yorkshire Bitter,BAD Co.,Q98214444,3.8%,Bitter,,,"Green fruits, Malty sweetness, refreshing after taste."

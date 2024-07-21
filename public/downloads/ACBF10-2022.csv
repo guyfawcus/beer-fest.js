@@ -61,7 +61,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 60,Stronghold,Arundel,,4.7%,Best Bitter,,,"Smooth, full-flavoured premium bitter. Balanced malt, fruit and hops come through in this rich, chestnut-coloured beer."
 61,Sun Spot,Pope's Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
 62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
-63,Talus in Wonderland,Arbor,,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
+63,Talus in Wonderland,Arbor,Q97665078,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
 64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
 65,Tonkoko,Brew York,Q125758709,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
 66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
