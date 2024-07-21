@@ -1,6 +1,6 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
 1,Agent Nectaron,Stealth Brew Co,Q127686965,4.7%,Hazy Session IPA,,,"Lovely soft tones of peach, mango and guava combined with a lovely mouthfeel to make this a secret agent of a beer."
-2,Allsops Best Bitter,Allsops,,3.8%,Bitter,,,"Harmonious blend of malty sweetness and subtle hop bitterness, making it a classic session beer."
+2,Allsopp’s Best Bitter,Allsopp’s,Q7410755,3.8%,Bitter,,,"Harmonious blend of malty sweetness and subtle hop bitterness, making it a classic session beer."
 3,Ampthill Gold,Kelchner Brewery,Q127687141,4.1%,Golden Ale,,,"Brewed using yeast, the finest hops and a specially selected amber malt that gives it a rich golden tone."
 4,Another Day Done,Duration,,4.4%,Pale Ale,,,"Bags of tropical fruit aromas like peach and mango. Pours bright with a light haze and drinks juicy and crisp, ends with soft bitterness and a refreshingly dry finish."
 5,Apparition,Pig & Porter,,4.4%,Stout,,,"Very smooth and slightly sweet stout. Roasty, chocolatey, dark, deep, delicious. Cocoa and a little note of Bailey's cream liqueur."
@@ -41,7 +41,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 40,HPA,Wye Valley Brewery,Q8039718,3.7%,Bitter,,,"Smooth on the palate and boasts a citrus hop aroma leading to a balanced bitter finish. Locally grown Target and Celeia hops, plus malted wheat and extra pale Maris Otter malted barley."
 41,Huggermuggery,Stealth Brew Co,Q127686965,5.9%,Mocha Milk Porter,,,"Combined with fair-trade cocoa and lactose this ‘mocha porter’ is full of roasted coffee notes, rich chocolate smoothness and a pleasantly sweet finish."
 42,Inferno,Oakham,Q7073885,4.0%,Blonde Ale,,,"Flame gold in colour, this igniting ale flares complex fruits across your tongue leaving a dry fruity, thirst suppressing bitter finish."
-43,IPA,Allsops,,5.0%,IPA,,,"Samuel Allsopp was the first to perfect Burton-brewed India Pale Ale. Some 200 years later, Allsopp & Sons invite you to savour this faithful recreation of the complex, beguiling, original Burton IPA."
+43,India Pale Ale,Allsopp’s,Q7410755,5.0%,IPA,,,"Samuel Allsopp was the first to perfect Burton-brewed India Pale Ale. Some 200 years later, Allsopp & Sons invite you to savour this faithful recreation of the complex, beguiling, original Burton IPA."
 44,Jaipur,Thornbridge,Q7796317,5.9%,IPA,,,Hoppiness builds in the mouth and bursts with powerful citrus fruit flavours with a smooth finish.
 45,Jaipur Noir,Thornbridge,Q7796317,5.9%,Black IPA,,,Our flagship beer has had a makeover to celebrate its 19th birthday! We have added an array of dark malts to the brew to give this version it’s unique look alongside the classic Jaipur flavours.
 46,Jarl,Fyne Ales,Q125390234,3.8%,Blonde Ale,,,"Jarl is our flagship, flavour-forward, single-hop session blonde ale brewed as a showcase of American hop, Citra."
