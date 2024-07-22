@@ -55,7 +55,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 54,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Classic ruby dark mild, smooth like velvet, sweet and creamy."
 55,Mild,Marble Brewery,Q19655039,4.1%,Mild,,,Eight different malts were used to create this balance Mild. Hints of caramel and chocolate are layered in the modern interpretation of a classic British style. A rich dark colour with a dry finish.
 56,Mister Chubbs,Renegade Brewery,Q7984464,3.4%,Bitter,,,"This beautifully balanced session bitter is packed with all the spicy, fruity and floral flavours you’d expect from English hops, creating a brew as fragrant as it is moreish."
-57,Nano Cask,Moor,,3.4%,Session Bitter,,,A quaffable British session bitter balancing the unique qualities of British hop varieties.
+57,Nano Cask,Moor,Q127690175,3.4%,Session Bitter,y,,A quaffable British session bitter balancing the unique qualities of British hop varieties.
 58,Neon Necta,Tiny Rebel,Q27136461,5.0%,NEIPA,,,Filled to the brim with Nectaron with a good helping of both Citra and ID7 to give it the juicy sweetness it deserves. This magnificent blend has nectarines and soft peaches on the nose.
 59,Pale,The Chiltern Brewery,Q97661391,3.7%,Pale Ale,,,"Relatively light in colour, with a creamy smoothness, it has a good definition on the palate and a refreshing, cleansing finish."
 60,Paris Gold,The Chiltern Brewery,Q97661391,3.9%,Golden,,,"A take on Chiltern Gold, just for the Olympics."
@@ -64,7 +64,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 63,Pure Gold,Purity,,3.8%,Golden Ale,,,"A refreshing golden ale with a dry and bitter finish. Brewed with English Maris Otter, Caragold and Wheat malts, plus Hallertau Northern Brewer, Bobeck and Hereford Goldings hops. Winner of nine awards."
 64,Quest for the Golden Bean,Kelchner Brewery,Q127687141,4.1%,Porter,,,"Coffee-forward, dry and easy drinking porter."
 65,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Classic London Porter, smooth and robust with roasted malt notes of coffee and chocolate."
-66,Resonance,Moor,,4.1%,Golden Ale,,,Citra Golden Pale. Vibrant Citra hops complement rich Bristol malts to perfect effect.
+66,Resonance,Moor,Q127690175,4.1%,Golden Ale,y,,Citra Golden Pale. Vibrant Citra hops complement rich Bristol malts to perfect effect.
 67,Ridgeway,Tring Brewery Co.,Q7842351,4.0%,Bitter,,,Ridgeway is defined by the finest UK malts balanced with the fruity characteristics of Styrian Goldings hops. This is a classic English ale at it’s most refined and drinkable.
 68,Salt Dark Choc Imp Stout,Vocation / Neon Raptor (collab),Q107717907,10.8%,Imperial Stout,,,"Blends 8 different malts to deliver a deep, rich and slightly bitter Imperial Chocolate Stout. The late addition of cocoa and sea salt enhance the chocolate flavour and adds a delicate, savoury finish."
 69,Seclusion,Stealth Brew Co,Q127686965,5.5%,IPA,,,A generous helping of oats on the malt bill make for a soft base that’s bittered with British Admiral and late hopped with US Cascade.

@@ -13,7 +13,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 12,Chilli Porter,Leighton Buzzard Brewing Co.,Q97676194,5.8%,Porter,,,"A wonderful, complex, robust porter with glorious hints of coffee and chocolate and a little chilli heat."
 13,Chopper,Great Heck,,3.8%,Golden / Blonde,,,Pale Yorkshire session beer using English & Slovenian hops. Dry hopped with Chinook for aroma.
 14,Citra Pale,BAD Co.,Q98214444,4.5%,Pale Ale,,,Classic lemon notes from the use of Citra hops in this refreshing pale ale.
-15,Confidence,Moor,,4.6%,Amber Ale,,,"Crystal and wheat malts, spicy US hops, rich & malty."
+15,Confidence,Moor,Q127690175,4.6%,Amber Ale,y,,"Crystal and wheat malts, spicy US hops, rich & malty."
 16,Dark Arts,Magic Rock Brewing,Q86756254,6.0%,Stout,,,"A luxuriously smooth mouthfeel, followed by spicy hop notes and flavours of chocolate, liquorice, blackberries and figs."
 17,Dark Fox,Hornes Brewery,Q97666414,3.8%,Brown Ale,,,A rich malty brown brew with roasted notes and a lasting dry bitter finish.
 18,Day Tripper,downlands brewery,Q98118420,5.4%,Golden / Blonde,,,A light hoppy ale with a twist of Summer.
@@ -74,7 +74,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 73,Triple Goat Porter,Hornes Brewery,Q97666414,4.6%,Porter,,,"Earthy, robust porter with a balanced sweetness from a delicious blend of roasted malts, UK and american hops."
 74,Tropical IPA,Beatnikz Republic,Q107717860,5.6%,IPA,y,,"A full flavoured hoppy IPA with Motueka, Ekuanot & Mosaic hops."
 75,Tuckerlovsky,Marble Brewery,Q19655039,4.7%,Session IPA,,,"Lemon, grapefruit, pineapple and pine resin partner with a subtle sweetness whilst a rich mouth-feel leads to a crisp finish."
-76,Union Hop,Moor,,4.7%,Golden / Blonde,,,Traditional British floor malted barley and modern British hops.
+76,Union Hop,Moor,Q127690175,4.7%,Golden / Blonde,y,,Traditional British floor malted barley and modern British hops.
 77,Vital Spark,Fyne Ales,Q125390234,4.4%,Mild,,,"A dark rich beer that shows glints of red. The taste is clean, slightly sharp with a hint of blackcurrant."
 78,VPA,Vale Brewery,Q98072911,4.2%,Pale Ale,,,"Hops from across the Atlantic produce a dry, hoppy ale with a citrus nose, combined with a notable sweetness."
 79,Wolf,Aylesbury Brewhouse Co.,Q97621074,3.8%,Pale Ale,,,"Straw coloured pale ale with Slovenian hop, Styrian Wolf. Flavours of citrus and berries and a smooth bitterness."
