@@ -33,7 +33,7 @@ let BEERS = {}
 let STOCK_LEVELS = {}
 
 /** The total number of availability buttons */
-const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 88
+const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 115
 
 /** There is a warning icon on most pages that appears if the connection is lost */
 const warningIcon = document.getElementById('warning_icon')
@@ -103,7 +103,7 @@ export const socket = io.connect(`${ws_scheme}://${location.host}?source=${locat
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
 function setTooltip(number, element) {
-  const thisBeer = BEERS[number]
+  const thisBeer = BEERS[element.id.split('_')[2]]
   if (thisBeer !== undefined) {
     const vegan = thisBeer.vegan === 'y' ? ' (Ve)' : ''
     const glutenFree = thisBeer.gluten_free === 'y' ? ' (GF)' : ''
@@ -129,24 +129,24 @@ function setColour(number, level, element) {
   if (!element) return
 
   // Get the information for this beer to see if it's vegan or gluten-free
-  const thisBeer = BEERS[number]
+  const thisBeer = BEERS[element.id.split('_')[2]]
 
   // Use the previous state if a new level is not defined
   if (!level) level = STOCK_LEVELS[number]
 
   // Apply the 'hide-colour' to buttons that are to be hidden or set the level colour if not
   if (localStorage.HIDE_NO_INFORMATION === 'true' && !thisBeer) {
-    element.style.background = 'var(--hide-colour)'
+    element.dataset.level = ''
   } else if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
-    element.style.background = 'var(--hide-colour)'
+    element.dataset.level = ''
   } else if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
-    element.style.background = 'var(--hide-colour)'
+    element.dataset.level = ''
   } else if (level === 'empty') {
-    element.style.background = 'var(--empty-colour)'
+    element.dataset.level = 'empty'
   } else if (level === 'low') {
-    element.style.background = 'var(--low-colour)'
+    element.dataset.level = 'low'
   } else if (level === 'full') {
-    element.style.background = 'var(--full-colour)'
+    element.dataset.level = 'full'
   }
 }
 
@@ -174,6 +174,10 @@ if (location.pathname === '/login') {
   }
 }
 
+if (location.pathname === '/master-availability') {
+  document.body.style.cursor = 'none'
+}
+
 // ---------------------------------------------------------------------------
 // Button / Availability functions
 // ---------------------------------------------------------------------------
@@ -182,7 +186,7 @@ if (location.pathname === '/login') {
  * @param {number} number The button number to add the cross to
  */
 export function buildCross(number) {
-  const button = document.getElementById(`button_${number}`)
+  const button = document.querySelector(`[id^=button_${number}]`)
 
   const cross = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
   const backslash = document.createElementNS('http://www.w3.org/2000/svg', 'line')
@@ -290,7 +294,7 @@ function setInfoModal(number) {
  * @param {boolean} [store] If 'true', the checkedHexData in localStorage will be updated
  */
 function setCross(number, checked = true, store = true) {
-  const button = document.getElementById(`button_${number}`)
+  const button = document.querySelector(`[id^=button_${number}]`)
   if (!button) return
   const cross = button.getElementsByClassName('cross')[0]
 
@@ -319,13 +323,17 @@ function setCross(number, checked = true, store = true) {
  * @param {boolean} [store] If 'true', they will be stored as checkedHexData in localStorage
  */
 export function applyChecks(numbersChecked = [], store = true) {
-  for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+  const beer_numbers = Object.values(document.getElementsByClassName('availability_button')).map((button) =>
+    Number(button.id.split('_')[1])
+  )
+
+  beer_numbers.forEach((number) => {
     if (numbersChecked.includes(number)) {
       setCross(number, true, false)
     } else {
       setCross(number, false, false)
     }
-  }
+  })
   if (store) storeChecks(numbersChecked)
 }
 
@@ -523,7 +531,8 @@ export function parseCheckedHexData(checkedHexData) {
  * @param {number} number The number to update the level of / set the cross
  */
 export function updateNumber(number) {
-  const button = document.getElementById(`button_${number}`)
+  const button = document.querySelector(`[id^=button_${number}]`)
+  const button_id = button.id.split('_')[2]
   const cross = button.getElementsByClassName('cross')[0]
 
   if (!AUTHORISED) {
@@ -542,10 +551,10 @@ export function updateNumber(number) {
    */
   const confirmUpdate = (level) => {
     if (TO_CONFIRM) {
-      const thisBeer = BEERS[number]
+      const thisBeer = BEERS[button_id]
       let message = ''
       if (thisBeer !== undefined) {
-        message = `Are you sure you want to mark ${thisBeer.beer_name} (${number}) as ${level}?`
+        message = `Are you sure you want to mark ${thisBeer.beer_name} (${button_id}) as ${level}?`
       } else {
         message = `Number ${number} is not in the list of beers, would you still like to mark it as ${level}?`
       }
@@ -585,7 +594,7 @@ export function updateNumber(number) {
  * @param {levelValues} level The level to set
  */
 export function updateLevel(number, level) {
-  const button = document.getElementById(`button_${number}`)
+  const button = document.querySelector(`[id^=button_${number}]`)
   console.log(`Setting ${number} as ${level}`)
   setColour(number, level, button)
   STOCK_LEVELS[number] = level

@@ -1,0 +1,92 @@
+<!doctype html>
+
+<html lang="en-GB">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="ACBF Cider / Keg wall availability display" />
+    <title>ACBF Cider / Keg wall Availability</title>
+
+    <link href="/style.css?v=2" type="text/css" rel="stylesheet" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <script type="module" src="/js/buttons.js"></script>
+  </head>
+  <body>
+    <div class="warning_icon" title="Server disconnected!">X</div>
+    <noscript>
+      <div class="noscript">
+        <div class="noscript__content">
+          <h2>Please enable JavaScript!</h2>
+          <br />
+          This site heavily relies on JavaScript to function. Good news though - all of it is served locally, and the
+          only external dependency is <a href="https://socket.io/">Socket.IO</a>, which is needed for communication with
+          the availability server.<br /><br />
+          If you would like to audit the rest of the code that this site uses, please visit
+          <a href="https://github.com/guyfawcus/beer-fest.js/"><nobr>github.com/guyfawcus/beer-fest.js</nobr></a
+          >.
+        </div>
+      </div>
+    </noscript>
+    <div class="popup" id="popup-background"></div>
+    <div class="popup" id="popup-menu">
+      <div id="check-share">
+        Share your checks with:
+        <a id="check-share-url" href="http://127.0.0.1:8000/other-availability?checked=">this&nbsp;link</a>
+      </div>
+      <div class="button" id="clear-checks" title="Clear check marks">Clear checks</div>
+      <div class="checkbox" title="Hide beers with no information">
+        <input type="checkbox" id="info_check" />
+      </div>
+      <div class="checkbox-label"><label for="info_check">Hide beers with no information</label></div>
+      <div class="checkbox" title="Hide non-vegan beers">
+        <input type="checkbox" id="vegan_check" />
+      </div>
+      <div class="checkbox-label"><label for="vegan_check">Hide non-vegan beers</label></div>
+      <div class="checkbox" title="Hide non-gluten free beers">
+        <input type="checkbox" id="gluten_free_check" />
+      </div>
+      <div class="checkbox-label"><label for="gluten_free_check">Hide non-gluten-free beers</label></div>
+    </div>
+    <header id="buttons_header"><h1>Cider / Keg wall Availability</h1></header>
+    <div class="cider-grid">
+      <div class="availability_button" id="button_84_C1">C1</div>
+      <div class="availability_button" id="button_85_C2">C2</div>
+      <div class="availability_button" id="button_86_C3">C3</div>
+      <div class="availability_button" id="button_87_C4">C4</div>
+      <div class="availability_button" id="button_88_C5">C5</div>
+      <div class="availability_button" id="button_89_C6">C6</div>
+      <div class="availability_button" id="button_90_C7">C7</div>
+      <div class="availability_button" id="button_91_C8">C8</div>
+      <div class="availability_button" id="button_92_C9">C9</div>
+      <div class="availability_button" id="button_93_C10">C10</div>
+      <div class="availability_button" id="button_94_C11">C11</div>
+      <div class="availability_button" id="button_95_C12">C12</div>
+      <div class="availability_button" id="button_96_C13">C13</div>
+      <div class="availability_button" id="button_97_C14">C14</div>
+      <div class="availability_button" id="button_98_C15">C15</div>
+      <div class="availability_button" id="button_99_C16">C16</div>
+      <div class="availability_button" id="button_100_C17">C17</div>
+      <div class="availability_button" id="button_101_C18">C18</div>
+      <div class="availability_button" id="button_102_C19">C19</div>
+      <div class="availability_button" id="button_103_C20">C20</div>
+    </div>
+    <div class="keg-grid">
+      <div class="availability_button" id="button_104_A">A</div>
+      <div class="availability_button" id="button_105_B">B</div>
+      <div class="availability_button" id="button_106_C">C</div>
+      <div class="availability_button" id="button_107_D">D</div>
+      <div class="availability_button" id="button_108_E">E</div>
+      <div class="availability_button" id="button_109_F">F</div>
+      <div class="availability_button" id="button_110_G">G</div>
+      <div class="availability_button" id="button_111_H">H</div>
+      <div class="availability_button" id="button_112_I">I</div>
+      <div class="availability_button" id="button_113_J">J</div>
+      <div class="availability_button" id="button_114_K">K</div>
+      <div class="availability_button" id="button_115_L">L</div>
+    </div>
+  </body>
+</html>

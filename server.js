@@ -78,7 +78,7 @@ let last_table = {}
 let beers = {}
 
 /** The total number of availability buttons */
-const NUM_OF_BUTTONS = 88
+const NUM_OF_BUTTONS = 115
 
 /** This url contains a Wikidata query for information about the breweries with QIDs
  * It is updated on start and when a new beers file is uploaded. */
@@ -265,23 +265,27 @@ app.use(redisSession)
 }) */
 
 // Read in previous state if it exists, initialise all as full if not
-await redisClient
-  .HGETALL('stock_levels')
-  .catch((error) => {
-    handleError("Couldn't get stock levels from Redis", error)
-  })
-  .then((reply) => {
-    if (Object.keys(reply).length !== 0) {
-      logger.info(`Reading in: ${JSON.stringify(reply)}`)
-      last_table = reply
-    } else {
-      logger.info('Starting off state matrix')
-      for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
-        last_table[number] = 'full'
+async function initialiseMatrix(beers) {
+  await redisClient
+    .HGETALL('stock_levels')
+    .catch((error) => {
+      handleError("Couldn't get stock levels from Redis", error)
+    })
+    .then((reply) => {
+      if (Object.keys(reply).length !== 0) {
+        logger.info(`Reading in: ${JSON.stringify(reply)}`)
+        last_table = reply
+      } else {
+        logger.info('Starting off state matrix')
+        Object.values(beers)
+          .map((beer) => beer.beer_number)
+          .forEach((number) => {
+            last_table[number] = 'full'
+          })
+        saveState(last_table)
       }
-      saveState(last_table)
-    }
-  })
+    })
+}
 
 // Read in previous config settings, initialise with defaults if not
 await redisClient
@@ -800,6 +804,18 @@ app.get('/availability', (req, res) => {
   res.sendFile('views/buttons.html', { root: import.meta.dirname })
 })
 
+app.get('/other-availability', (req, res) => {
+  // Remove the X-Frame-Options header so that this page can be embedded (iframe)
+  res.removeHeader('X-Frame-Options')
+  res.sendFile('views/other-availability.html', { root: import.meta.dirname })
+})
+
+app.get('/master-availability', (req, res) => {
+  // Remove the X-Frame-Options header so that this page can be embedded (iframe)
+  res.removeHeader('X-Frame-Options')
+  res.sendFile('views/master-availability.html', { root: import.meta.dirname })
+})
+
 app.get('/list', (req, res) => {
   res.sendFile('views/list.html', { root: import.meta.dirname })
 })
@@ -1063,12 +1079,14 @@ io.on('connection', (socket) => {
   logger.info(`Client ${socket.id} connected (${pathname})`)
 
   // Send the configuration settings
-  if (pathname === 'settings' || pathname === 'availability' || pathname === 'bot') {
+  if (['settings', 'availability', 'other-availability', 'master-availability', 'bot'].includes(pathname)) {
     io.to(socket.id).emit('config', last_config)
   }
 
   // Send the beer information
-  if (['history', 'availability', 'list', 'map', 'bot'].includes(pathname)) {
+  if (
+    ['history', 'availability', 'other-availability', 'master-availability', 'list', 'map', 'bot'].includes(pathname)
+  ) {
     io.to(socket.id).emit('beers', beers)
   }
 
@@ -1230,6 +1248,7 @@ io.on('connection', (socket) => {
 // ---------------------------------------------------------------------------
 
 await initialiseBeers()
+await initialiseMatrix(beers)
 
 // Start the server
 server.listen(process.env.PORT || 8000, () => {

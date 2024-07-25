@@ -88,9 +88,11 @@ document.onmousemove = (eventObj) => {
 }
 
 // Show menu if the header is clicked on
-document.getElementById('buttons_header').addEventListener('click', () => {
-  openMenuPopup()
-})
+if (location.pathname !== '/master-availability') {
+  document.getElementById('buttons_header').addEventListener('click', () => {
+    openMenuPopup()
+  })
+}
 
 // Hide menu if anywhere other than the popup is clicked on
 document.addEventListener('click', (event) => {

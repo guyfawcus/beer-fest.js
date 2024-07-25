@@ -3,6 +3,8 @@
 /* ------------------------------------------------------------------------ */
 :root {
   --full-colour: #00a8ff;
+  --cider-full-colour: #29cd3a;
+  --keg-full-colour: #50e3fc;
   --low-colour: #fbc531;
   --empty-colour: #e84118;
   --hide-colour: #2f3640;
@@ -287,6 +289,32 @@ h1,
   outline: none;
 }
 
+.availability_button[data-level=''],
+.update[data-level=''] {
+  background: var(--hide-colour);
+}
+.availability_button[data-level='full'],
+.update[data-level='full'] {
+  background: var(--full-colour);
+}
+.availability_button[data-level='low'],
+.update[data-level='low'] {
+  background: var(--low-colour);
+}
+.availability_button[data-level='empty'],
+.update[data-level='empty'] {
+  background: var(--empty-colour);
+}
+
+.availability_button.cider[data-level='full'],
+.update.cider[data-level='full'] {
+  background: var(--cider-full-colour);
+}
+.availability_button.keg[data-level='full'],
+.update.keg[data-level='full'] {
+  background: var(--keg-full-colour);
+}
+
 /* XOR the hover and focus styles depending on the 'keyboardControl' mode */
 body:not(.keyboardControl) .availability_button:hover,
 body.keyboardControl .availability_button:focus,
@@ -343,6 +371,40 @@ body.keyboardControl .button:focus {
 .grid {
   display: grid;
   grid-template-columns: repeat(11, 1fr);
+}
+
+.master-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.master-grid > .availability_button {
+  height: calc(100svh / 10);
+}
+
+.cider-grid > .availability_button {
+  height: calc(((100svh - ((100svh / 9) * 1.5)) / 8) * 1.25);
+}
+
+.master-grid > #button_84_C1 {
+  grid-column-start: 2;
+}
+.master-grid > #button_94_C11 {
+  grid-column-start: 2;
+}
+.master-grid > #button_104_A {
+  grid-column-start: 1;
+}
+
+.cider-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  margin-bottom: calc((100svh - ((100svh / 9) * 1.5)) / 8);
+}
+
+.keg-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
 }
 
 .cross {
@@ -517,7 +579,9 @@ body.keyboardControl .button:focus {
 /* -------------------------------- */
 /* Slideshow                        */
 /* -------------------------------- */
-#slideshow_iframe {
+#availability-iframe,
+#other-availability-iframe {
+  display: none;
   position: absolute;
   border: 0px;
   width: 100%;
@@ -612,11 +676,27 @@ form {
     height: calc((100svh / 11) * 1.5);
   }
 
-  .grid {
+  .grid,
+  .master-grid {
     grid-template-columns: repeat(8, 1fr);
   }
+  .cider-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .keg-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 
-  .availability_button {
+  .master-grid > #button_84_C1 {
+    grid-column-start: 1;
+  }
+  .master-grid > #button_94_C11 {
+    grid-column-start: unset;
+  }
+
+  .availability_button,
+  .master-grid > .availability_button,
+  .cider-grid > .availability_button {
     height: calc((100svh - ((100svh / 11) * 1.5)) / 10);
     font-size: 3cqh;
   }
@@ -638,11 +718,13 @@ form {
     height: calc((100svh / 12) * 1.5);
   }
 
-  .grid {
+  .grid,
+  .master-grid {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .availability_button {
+  .availability_button,
+  .master-grid > .availability_button {
     height: calc((100svh - ((100svh / 12) * 1.5)) / 11);
   }
 
@@ -655,7 +737,7 @@ form {
 }
 
 @media (max-width: 400px) {
-  .grid {
+  .grid.master-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
