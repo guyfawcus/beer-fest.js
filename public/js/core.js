@@ -103,7 +103,7 @@ export const socket = io.connect(`${ws_scheme}://${location.host}?source=${locat
  * @param {HTMLDivElement} element The element that the tooltip is to be added to
  */
 function setTooltip(number, element) {
-  const thisBeer = BEERS[element.id.split('_')[2]]
+  const thisBeer = BEERS[element.id.split('_')[2]] || BEERS[element.childNodes[4].textContent]
   if (thisBeer !== undefined) {
     const vegan = thisBeer.vegan === 'y' ? ' (Ve)' : ''
     const glutenFree = thisBeer.gluten_free === 'y' ? ' (GF)' : ''
