@@ -130,9 +130,6 @@ if (url_checkedHexData || local_checkedHexData) {
 }
 
 // Set the default state for options
-if (!localStorage.getItem('HIDE_NO_INFORMATION')) {
-  localStorage.setItem('HIDE_NO_INFORMATION', 'true')
-}
 if (!localStorage.getItem('HIDE_NOT_VEGAN')) {
   localStorage.setItem('HIDE_NOT_VEGAN', 'false')
 }
@@ -143,15 +140,7 @@ if (!localStorage.getItem('HIDE_NOT_GLUTEN_FREE')) {
 // Update this page if changes are made to another one on the same device
 window.onstorage = (event) => {
   const changeEvent = new Event('change')
-  if (event.key === 'HIDE_NO_INFORMATION') {
-    if (event.newValue === 'true') {
-      info_checkbox.checked = true
-      info_checkbox.dispatchEvent(changeEvent)
-    } else {
-      info_checkbox.checked = false
-      info_checkbox.dispatchEvent(changeEvent)
-    }
-  } else if (event.key === 'HIDE_NOT_VEGAN') {
+  if (event.key === 'HIDE_NOT_VEGAN') {
     if (event.newValue === 'true') {
       vegan_checkbox.checked = true
       vegan_checkbox.dispatchEvent(changeEvent)
@@ -177,16 +166,9 @@ window.onstorage = (event) => {
 // Menu
 // ---------------------------------------------------------------------------
 const clear_checks = document.getElementById('clear-checks')
-const info_checkbox = document.getElementById('info_check')
 const vegan_checkbox = document.getElementById('vegan_check')
 const gluten_free_checkbox = document.getElementById('gluten_free_check')
 
-// Get previous option states
-if (localStorage.getItem('HIDE_NO_INFORMATION') === 'true') {
-  info_checkbox.checked = true
-} else {
-  info_checkbox.checked = false
-}
 if (localStorage.getItem('HIDE_NOT_VEGAN') === 'true') {
   vegan_checkbox.checked = true
 } else {
@@ -206,15 +188,6 @@ clear_checks.addEventListener('click', (event) => {
   document.getElementById('check-share-url').href = generateCheckedHexURL().toString()
 })
 
-info_checkbox.addEventListener('change', (event) => {
-  if (event.target.checked) {
-    localStorage.setItem('HIDE_NO_INFORMATION', 'true')
-    refreshButtons()
-  } else {
-    localStorage.setItem('HIDE_NO_INFORMATION', 'false')
-    refreshButtons()
-  }
-})
 vegan_checkbox.addEventListener('change', (event) => {
   if (event.target.checked) {
     localStorage.setItem('HIDE_NOT_VEGAN', 'true')

@@ -45,6 +45,11 @@ export const socket = io.connect(`${ws_scheme}://${location.host}?source=${locat
 })
 // Note: WebSocket first transport order was previously disabled due to iOS connection problems
 
+// This option is not used anymore; we need to make sure it's unset before removing it completely
+if (localStorage.getItem('HIDE_NO_INFORMATION')) {
+  localStorage.setItem('HIDE_NO_INFORMATION', 'false')
+}
+
 // ---------------------------------------------------------------------------
 // Type definitions
 // ---------------------------------------------------------------------------
@@ -135,9 +140,7 @@ function setColour(number, level, element) {
   if (!level) level = STOCK_LEVELS[number]
 
   // Apply the 'hide-colour' to buttons that are to be hidden or set the level colour if not
-  if (localStorage.HIDE_NO_INFORMATION === 'true' && !thisBeer) {
-    element.dataset.level = ''
-  } else if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
+  if (localStorage.HIDE_NOT_VEGAN === 'true' && thisBeer && thisBeer.vegan !== 'y') {
     element.dataset.level = ''
   } else if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
     element.dataset.level = ''

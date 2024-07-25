@@ -9,7 +9,7 @@ socket.on('beers', (beerList) => {
 
 // Update this page if changes are made to another one on the same device
 window.onstorage = (event) => {
-  if (event.key === 'HIDE_NO_INFORMATION' || event.key === 'HIDE_NOT_VEGAN' || event.key === 'HIDE_NOT_GLUTEN_FREE') {
+  if (event.key === 'HIDE_NOT_VEGAN' || event.key === 'HIDE_NOT_GLUTEN_FREE') {
     console.debug('Window event: storage')
   }
 }
