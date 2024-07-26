@@ -3,9 +3,9 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 2,Allsopp’s Best Bitter,Allsopp’s,Q7410755,3.8%,Bitter,,,"Harmonious blend of malty sweetness and subtle hop bitterness, making it a classic session beer."
 3,Ampthill Gold,Kelchner Brewery,Q127687141,4.1%,Golden Ale,,,"Brewed using yeast, the finest hops and a specially selected amber malt that gives it a rich golden tone."
 4,Another Day Done,Duration,,4.4%,Pale Ale,,,"Bags of tropical fruit aromas like peach and mango. Pours bright with a light haze and drinks juicy and crisp, ends with soft bitterness and a refreshingly dry finish."
-5,Apparition,Pig & Porter,,4.4%,Stout,,,"Very smooth and slightly sweet stout. Roasty, chocolatey, dark, deep, delicious. Cocoa and a little note of Bailey's cream liqueur."
+5,Apparition,Pig & Porter,,4.4%,Stout,y,,"Very smooth and slightly sweet stout. Roasty, chocolatey, dark, deep, delicious. Cocoa and a little note of Bailey's cream liqueur."
 6,Armadillo Lizard,XT Brewing Co.,Q39053843,4.6%,Kolsch,,,A German classic light ale.
-7,Aurora,Burning Sky,,5.6%,Pale Ale,,,"A satisfying blend of malts to provide a juicy backbone and a pale amber colour. An expansive blend of US hops give a resinous mouthfeel, big citrus and tropical fruit flavours."
+7,Aurora,Burning Sky,,5.6%,Pale Ale,y,,"A satisfying blend of malts to provide a juicy backbone and a pale amber colour. An expansive blend of US hops give a resinous mouthfeel, big citrus and tropical fruit flavours."
 8,Black,The Chiltern Brewery,Q97661391,3.9%,Porter,,,"Dark, ruby treacle tones, hints of roast barley and beautifully hopped with a chocolaty aroma."
 9,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,"Golden in colour,  Mosaic hops give a fruity aroma and a refreshing smack of citrussy flavours."
 10,Blonde Haze,Almasty Brewing Co,Q98070139,4.0%,Hazy Blonde Ale,,,Distinctive English malt sweetness and character. Challenger hops provide the noticeable but rounded bitterness with Olicana balancing the act giving tones of sweet fruits.
@@ -36,7 +36,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 35,Good Old Boy,Renegade Brewery,Q7984464,4.0%,Best Bitter,,,Brewed with a blend of rich Maris Otter malted barley and fruity Bramling Cross and Northdown hops to produce an exceptionally well-balanced and full-flavored beer.
 36,Hare,Animal Brewing Co,Q97975500,4.6%,Amber,,,"Special W and Crystal Wheat malts give caramel, nuts and pastries flavours, combined with Galena, Bramling Cross and Comet hops for citrus, grapefruit and blackcurrant notes."
 37,Highlander,Fyne Ales,Q125390234,4.8%,Amber Ale,,,"Proudly traditional, Highlander is the punchy, bittersweet amber ale that Fyne Ales was built on."
-38,Highwire,Magic Rock Brewing,Q86756254,5.5%,Pale Ale,,,"Mango, Lychee and grapefruit flavours with a smoothly composed malt base."
+38,Highwire,Magic Rock Brewing,Q86756254,5.5%,Pale Ale,y,,"Mango, Lychee and grapefruit flavours with a smoothly composed malt base."
 39,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Bursting with intense tropical and citrus flavours with toasted malt sweetness.
 40,HPA,Wye Valley Brewery,Q8039718,3.7%,Bitter,,,"Smooth on the palate and boasts a citrus hop aroma leading to a balanced bitter finish. Locally grown Target and Celeia hops, plus malted wheat and extra pale Maris Otter malted barley."
 41,Huggermuggery,Stealth Brew Co,Q127686965,5.9%,Mocha Milk Porter,,,"Combined with fair-trade cocoa and lactose this ‘mocha porter’ is full of roasted coffee notes, rich chocolate smoothness and a pleasantly sweet finish."
@@ -46,11 +46,11 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 45,Jaipur Noir,Thornbridge,Q7796317,5.9%,Black IPA,,,Our flagship beer has had a makeover to celebrate its 19th birthday! We have added an array of dark malts to the brew to give this version it’s unique look alongside the classic Jaipur flavours.
 46,Jarl,Fyne Ales,Q125390234,3.8%,Blonde Ale,,,"Jarl is our flagship, flavour-forward, single-hop session blonde ale brewed as a showcase of American hop, Citra."
 47,Jimbo,Purity,,4.0%,Bitter,y,y,"The combination of classic and new wave hops give JIMBO aromas of mixed berries, crisp apple, yet all balanced with a well rounded nutty bitter finish. JIMBO is also vegan and gluten-free."
-48,Jolly Green,Brew York / LHG (collab),Q125758709,5.0%,Hazy IPA,,,"Vibrant ale showcases a harmonious blend of Galaxy, Mosaic, and Simcoe hops, delivering a burst of tropical and citrus flavours."
+48,Jolly Green,Brew York / LHG (collab),Q125758709,5.0%,Hazy IPA,y,,"Vibrant ale showcases a harmonious blend of Galaxy, Mosaic, and Simcoe hops, delivering a burst of tropical and citrus flavours."
 49,Liberation Frequency,Marble Brewery,Q19655039,4.0%,Pale Ale,,y,"Crafted with Ekuanot, Mosaic, & Azacca Hops. A gluten free pale, bursting with flavour. Experience hoppy liberation in every sip."
 50,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,y,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
 51,Maharaja,Renegade Brewery,Q7984464,5.1%,IPA,,,"The colour of golden hour lighting, an aroma so appealing your mouth will water with anticipation and a sensational tropical flavour that will keep you coming back for more..."
-52,Make It Strata,Brew York,Q125758709,4.6%,Pale Ale,,,"We add small amounts of hop at the beginning of the boil, with a larger quantity to the very end, to showcase the subtle aromas and characteristics of each hop variety exclusively."
+52,Make It Strata,Brew York,Q125758709,4.6%,Pale Ale,y,,"We add small amounts of hop at the beginning of the boil, with a larger quantity to the very end, to showcase the subtle aromas and characteristics of each hop variety exclusively."
 53,Manchester Bitter,Marble Brewery,Q19655039,4.2%,Bitter,,,"Speciality malt gives the deep golden colour d robust base, balanced by crisp bitterness and a floral, lemony aroma."
 54,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Classic ruby dark mild, smooth like velvet, sweet and creamy."
 55,Mild,Marble Brewery,Q19655039,4.1%,Mild,,,Eight different malts were used to create this balance Mild. Hints of caramel and chocolate are layered in the modern interpretation of a classic British style. A rich dark colour with a dry finish.
@@ -61,9 +61,9 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 60,Paris Gold,The Chiltern Brewery,Q97661391,3.9%,Golden,,,"A take on Chiltern Gold, just for the Olympics."
 61,Penpol,Verdant Brewing Co.,Q113829344,3.8%,Pale Ale,,,"Our interpretation of a moreish, hop bitter and aromatic single hop Citra cask pale ale."
 62,Pride & Joy,Vocation Brewery,Q107717907,4.8%,Pale Ale,,,"Expect bold notes of citrus, blueberry, tropical fruits and earthy pine, layered over a balanced malty base."
-63,Pure Gold,Purity,,3.8%,Golden Ale,,,"A refreshing golden ale with a dry and bitter finish. Brewed with English Maris Otter, Caragold and Wheat malts, plus Hallertau Northern Brewer, Bobeck and Hereford Goldings hops. Winner of nine awards."
+63,Pure Gold,Purity,,3.8%,Golden Ale,y,,"A refreshing golden ale with a dry and bitter finish. Brewed with English Maris Otter, Caragold and Wheat malts, plus Hallertau Northern Brewer, Bobeck and Hereford Goldings hops. Winner of nine awards."
 64,Quest for the Golden Bean,Kelchner Brewery,Q127687141,4.1%,Porter,,,"Coffee-forward, dry and easy drinking porter."
-65,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Classic London Porter, smooth and robust with roasted malt notes of coffee and chocolate."
+65,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,y,,"Classic London Porter, smooth and robust with roasted malt notes of coffee and chocolate."
 66,Resonance,Moor,Q127690175,4.1%,Golden Ale,y,,Citra Golden Pale. Vibrant Citra hops complement rich Bristol malts to perfect effect.
 67,Ridgeway,Tring Brewery Co.,Q7842351,4.0%,Bitter,,,Ridgeway is defined by the finest UK malts balanced with the fruity characteristics of Styrian Goldings hops. This is a classic English ale at it’s most refined and drinkable.
 68,Salt Dark Choc Imp Stout,Vocation / Neon Raptor (collab),Q107717907,10.8%,Imperial Stout,,,"Blends 8 different malts to deliver a deep, rich and slightly bitter Imperial Chocolate Stout. The late addition of cocoa and sea salt enhance the chocolate flavour and adds a delicate, savoury finish."
@@ -71,8 +71,8 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 70,Solaris,Big Smoke,,3.8%,Pale Ale,,,"A very easy drinking pale ale with Cascade & Centennial hops, brewed exclusively for cask."
 71,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 72,SS9,Leigh on Sea Brewery,Q127690153,9.0%,Imperial Stout,,,SS9 is a seriously strong stout characterised by deep boozy notes of coffee and chocolate from the range of dark malts used in the recipe.
-73,Summertime,Burning Sky,,4.5%,Pale Ale,,,"Summertime is a clean drinking summer pale brewed with Maris Otter and wheat malts, a delicate spicing and blend of classic European and New Zealand hop varieties give a refreshing finish."
-74,The Joy of Sesh,New Bristol Brewery,Q98214265,4.2%,Hazy IPA,,,"An easy sessionable quaffer, hopped with Citra and Mosaic."
+73,Summertime,Burning Sky,,4.5%,Pale Ale,y,,"Summertime is a clean drinking summer pale brewed with Maris Otter and wheat malts, a delicate spicing and blend of classic European and New Zealand hop varieties give a refreshing finish."
+74,The Joy of Sesh,New Bristol Brewery,Q98214265,4.2%,Hazy IPA,y,y,"An easy sessionable quaffer, hopped with Citra and Mosaic."
 75,The Shark is Working,Vale Brewery,Q98072911,4.4%,Red IPA,,,A rye ale that balances complexity and drinkability with ripe red fruit flavours from Barbe Rouge hops.
 76,Timberwolf,XT Brewing Co.,Q39053843,4.7%,US Pale Ale,,,"Packs of American hops (Columbus, Chinook, Amarillo and Mosaic), double dry hopped with a further late hop addition just to be on the safe side. Its a hazy, yellow golden, pale beer."
 77,Trident,Mad Squirrel,Q98074829,3.4%,Pale Ale,,,"This pale ale hopped with Talus, Mosaic and CryoPop, unveils a sea of citrus and tropical waves."
@@ -80,37 +80,37 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 79,Unlocked,Hornes Brewery,Q97666414,5.0%,IPA,,y,"Crisp IPA with citrus characteristics. Balanced malts, American Cascade and Summit hops. Gluten free."
 80,White Rat,Ossett,,4.0%,Pale Ale,,,"This very pale, hoppy ale is made from low colour malt. A combination of Cascade, Columbus & Amarillo hops produce an intensely aromatic and resinous finish."
 81,Wild Card Best,Wild Card,Q123737039,4.2%,Bitter,,,"Made with pale, wheat, chewy crystal and a smidgen of chocolate malt. Heavily hopped on the hot side with Magnum and Centennial."
-82,XPA,The Five Points Brewing Company,Q98071243,4.0%,Extra Pale Ale,,,A light and tropical extra pale ale with assertive hop bitterness and aromas of mango and passionfruit.
+82,XPA,The Five Points Brewing Company,Q98071243,4.0%,Extra Pale Ale,y,y,A light and tropical extra pale ale with assertive hop bitterness and aromas of mango and passionfruit.
 83,Yorkshire Blonde,Ossett,,3.9%,Blonde Ale,,,"Full bodied, well-rounded and slightly sweet. Late hopped with Mount Hood."
-C1,Bakewell Tart,Seacider,,4.0%,Med/Sweet,,,
-C2,Bee Sting,Lilley's,,6.8%,Sweet,,,
-C3,Black Dragon,Gwynt,,7.2%,Med/Dry,,,
-C4,Devon Scrumpy,Sandford Orchards,,6.0%,Dry,,,
-C5,Elderflower,Lilley's,,3.4%,Med,,,
-C6,Gladiator,Lilley's,,8.5%,Med,,,
-C7,Mango,Lilley's,,4.0%,Sweet,,,
-C8,Old Bristolian,Broadoak,,7.5%,Med,,,
-C9,Old Rosie,Westons,,6.8%,Med/Dry,,,
-C10,Original,Thistly Cross,,6.2%,Med,,,
-C11,Peach,Lilley's,,4.0%,Sweet,,,
-C12,Pig Squeal,Snailsbank,,7.0%,Dry,,,
-C13,Pina Colada,Lilley's,,3.4%,Sweet,,,
-C14,Rhubarb,Lilley's,,4.0%,Med/Sweet,,,
-C15,Slack Alice,Celtic Marches,,4.6%,Med,,,
-C16,Sonic Titan,Ascension,,8.2%,Dry,,,
-C17,Strawberry,Lilley's,,3.5%,Sweet,,,
-C18,Thundering Molly,Celtic Marches,,5.2%,Med,,,
-C19,Tropical,Lilley's,,4.0%,Sweet,,,
-C20,Very Perry,Snailsbank,,5.0%,Med,,,
-A,Floret,Pollys,,4.2%,Extra Pale Ale,,,
-B,Tiny Violence,Indie Rabble,,5.0%,Stout,,,
-C,Saison,Two Flints / Burning Sky (collab),,5.2%,Saison,,,
-D,The Slinky Vagabond,Creative Juices,,5.6%,IPA,,,
-E,Seven Way Mirror,Deya,,5.6%,Pale Ale,,,
-F,Glasshouse,Half Light,,6.0%,IPA,,,
-G,Good Bubble,Cloudwater,,6.0%,IPA,,,
-H,Platform Haze,Pollys,,6.3%,IPA,,,
-I,Cosm,Beak / Uchu (collab),,6.5%,NEIPA,,,
-J,Out of Focus,Track,,6.5%,IPA,,,
-K,Plenty Kohia Nelson,Floc,,8.0%,DIPA,,,
-L,What Dreams are Made of,Verdant,,8.4%,DIPA,,,
+C1,Bakewell Tart,Seacider,,4.0%,Med/Sweet,,y,
+C2,Bee Sting,Lilley's,,6.8%,Sweet,,y,
+C3,Black Dragon,Gwynt,,7.2%,Med/Dry,,y,
+C4,Devon Scrumpy,Sandford Orchards,,6.0%,Dry,,y,
+C5,Elderflower,Lilley's,,3.4%,Med,,y,
+C6,Gladiator,Lilley's,,8.5%,Med,,y,
+C7,Mango,Lilley's,,4.0%,Sweet,,y,
+C8,Old Bristolian,Broadoak,,7.5%,Med,,y,
+C9,Old Rosie,Westons,,6.8%,Med/Dry,,y,
+C10,Original,Thistly Cross,,6.2%,Med,,y,
+C11,Peach,Lilley's,,4.0%,Sweet,,y,
+C12,Pig Squeal,Snailsbank,,7.0%,Dry,,y,
+C13,Pina Colada,Lilley's,,3.4%,Sweet,,y,
+C14,Rhubarb,Lilley's,,4.0%,Med/Sweet,,y,
+C15,Slack Alice,Celtic Marches,,4.6%,Med,,y,
+C16,Sonic Titan,Ascension,,8.2%,Dry,,y,
+C17,Strawberry,Lilley's,,3.5%,Sweet,,y,
+C18,Thundering Molly,Celtic Marches,,5.2%,Med,,y,
+C19,Tropical,Lilley's,,4.0%,Sweet,,y,
+C20,Very Perry,Snailsbank,,5.0%,Med,,y,
+A,Floret,Pollys,,4.2%,Extra Pale Ale,y,,
+B,Tiny Violence,Indie Rabble,,5.0%,Stout,y,,
+C,Saison,Two Flints / Burning Sky (collab),,5.2%,Saison,y,,
+D,The Slinky Vagabond,Creative Juices,,5.6%,IPA,y,,
+E,Seven Way Mirror,Deya,,5.6%,Pale Ale,y,,
+F,Glasshouse,Half Light,,6.0%,IPA,y,,
+G,Under Skies,Floc,,6.2%,IPA,y,,
+H,Platform Haze,Pollys,,6.3%,IPA,y,,
+I,Cosm,Beak / Uchu (collab),,6.5%,NEIPA,y,,
+J,Out of Focus,Track,,6.5%,IPA,y,,
+K,Plenty Kohia Nelson,Floc,,8.0%,DIPA,y,,
+L,What Dreams are Made of,Verdant,,8.4%,DIPA,y,,
