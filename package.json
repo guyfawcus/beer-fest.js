@@ -22,7 +22,7 @@
     "url": "https://github.com/guyfawcus/beer-fest.js.git"
   },
   "engines": {
-    "node": "^20.11.x"
+    "node": "^23.7.x"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
