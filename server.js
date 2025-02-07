@@ -7,7 +7,7 @@ import http from 'node:http'
 
 // Express related packages
 import compression from 'compression'
-import RedisStore from 'connect-redis'
+import { RedisStore } from 'connect-redis'
 import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
