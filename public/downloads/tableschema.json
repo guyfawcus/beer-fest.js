@@ -4,7 +4,7 @@
       "name": "beer_number",
       "title": "Beer number",
       "description": "The number of the beer",
-      "type": "integer",
+      "type": "string",
       "constraints": {
         "required": true,
         "unique": true
