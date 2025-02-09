@@ -3,7 +3,7 @@
 ## Installation
 
 1. Install [Node.js](https://nodejs.org/)
-2. Install and run [Redis](https://redis.io/download)
+2. Install and run [Valkey](https://valkey.io/) (an open source alternative to Redis)
 3. `git clone https://github.com/guyfawcus/beer-fest.git`
 4. `cd beer-fest`
 5. `npm install`
@@ -16,7 +16,7 @@
 - `COOKIE_SECRET` - A cryptographically secure random string (take a look at [/utils/codegen.js](/utils/codegen.js))
 - `ENABLE_API` - `true` or `false` depending on whether you want to enable the API POST endpoints or not (can be left unset, defaults to `false`)
 - `NODE_ENV` - set to `production` if deployed (can be left unset when developing)
-- `REDIS_URL`- the `redis://` URL (can be left unset if using Redis with its default settings)
+- `REDIS_URL`- the `redis://` URL (can be left unset if using Redis/Valkey with its default settings)
 
 ## Coding
 
