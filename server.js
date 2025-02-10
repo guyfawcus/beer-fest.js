@@ -12,7 +12,6 @@ import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
 import expressFlash from 'express-flash'
-import expressSocketIoSession from 'express-socket.io-session'
 import featurePolicy from 'feature-policy'
 import helmet from 'helmet'
 import session from 'express-session'
@@ -235,7 +234,10 @@ const server = new http.Server(app)
 const io = new SocketIo(server, { cookie: false, serveClient: false })
 const redisSession = session(sessionOptions)
 
-io.use(expressSocketIoSession(redisSession))
+io.use((socket, next) => {
+  redisSession(socket.handshake, {}, next)
+})
+
 app.set('view-engine', 'ejs')
 
 app.use(compression())
