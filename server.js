@@ -12,7 +12,7 @@ import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
 import expressFlash from 'express-flash'
-import featurePolicy from 'feature-policy'
+import permissionsPolicy from 'permissions-policy'
 import helmet from 'helmet'
 import session from 'express-session'
 
@@ -158,17 +158,17 @@ if (NODE_ENV === 'production') {
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
 app.use(
-  featurePolicy({
+  permissionsPolicy({
     features: {
-      accelerometer: ["'none'"],
-      // ambientLightSensor: ["'none'"], // Chrome doesn't like this at the moment
-      camera: ["'none'"],
-      geolocation: ["'none'"],
-      gyroscope: ["'none'"],
-      magnetometer: ["'none'"],
-      microphone: ["'none'"],
-      // serial: ["'none'"], // Chrome doesn't like this at the moment
-      usb: ["'none'"]
+      accelerometer: ['none'],
+      ambientLightSensor: ['none'],
+      camera: ['none'],
+      geolocation: ['none'],
+      gyroscope: ['none'],
+      magnetometer: ['none'],
+      microphone: ['none'],
+      serial: ['none'],
+      usb: ['none']
     }
   })
 )
