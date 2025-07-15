@@ -1,7 +1,7 @@
 /*!
  * https://github.com/guyfawcus/beer-fest.js
  *
- * (c) 2024 - James Fawcus-Robinson
+ * (c) 2025 - James Fawcus-Robinson
  * Released under the MIT License.
  */
 
