@@ -20,7 +20,7 @@ export let LOW_ENABLE = false
 
 /**
  * Simple key value store that conforms to  {@link beersObj},
- * where a number is the key and a [beer object]{@link beerObj} is the value`
+ * where a number is the key and a [beer object]{@link beerObj} is the value
  * @type{beersObj}
  */
 let BEERS = {}
