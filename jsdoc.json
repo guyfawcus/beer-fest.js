@@ -1,6 +1,6 @@
 {
   "source": {
-    "include": ["public/js"],
+    "include": ["public/js", "server.js", "types.js"],
     "includePattern": ".js$",
     "excludePattern": "(node_modules/|docs)"
   },

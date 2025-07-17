@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/** @module server/main */
 
 // Built in packages
 import crypto from 'node:crypto'
@@ -70,10 +71,10 @@ const CURRENT_BEERS_FILE = './public/downloads/current-beers.csv'
 /** @type {configObj} */
 const last_config = { confirm: true, low_enable: false }
 
-/** @type{stockLevelsObj} */
+/** @type {stockLevelsObj} */
 let last_table = {}
 
-/** @type{beersObj} */
+/** @type {beersObj} */
 let beers = {}
 
 /** The total number of availability buttons */
@@ -86,20 +87,6 @@ let brewery_query_url = 'https://query.wikidata.org/'
 /** This will contain the GeoJSON that describes all of the breweries
  * It is updated on start and when a new beers file is uploaded. */
 let brewery_geojson = ''
-
-// ---------------------------------------------------------------------------
-// Type definitions
-// ---------------------------------------------------------------------------
-/**
- * Object to store the configuration state
- * @typedef {object} configObj
- * @property {boolean} confirm
- * @property {boolean} low_enable
- */
-
-/** @typedef {import('./public/js/core.js').stockLevelsObj} stockLevelsObj */
-/** @typedef {import('./public/js/core.js').beersObj} beersObj */
-/** @typedef {import('./public/js/core.js').levelValues} levelValues */
 
 // ---------------------------------------------------------------------------
 // Initial setup

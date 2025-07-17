@@ -6,6 +6,7 @@
  */
 
 /* eslint-env browser */
+/** @module client/core */
 
 import { io } from './socket.io.esm.min.js'
 
@@ -21,14 +22,14 @@ export let LOW_ENABLE = false
 /**
  * Simple key value store that conforms to  {@link beersObj},
  * where a number is the key and a [beer object]{@link beerObj} is the value
- * @type{beersObj}
+ * @type {beersObj}
  */
 let BEERS = {}
 
 /**
  * Simple key value store that conforms to {@link stockLevelsObj},
  * where a number is the key and a [level]{@link levelValues} is the value
- * @type{stockLevelsObj}
+ * @type {stockLevelsObj}
  */
 let STOCK_LEVELS = {}
 
@@ -49,55 +50,6 @@ export const socket = io.connect(`${ws_scheme}://${location.host}?source=${locat
 if (localStorage.getItem('HIDE_NO_INFORMATION')) {
   localStorage.setItem('HIDE_NO_INFORMATION', 'false')
 }
-
-// ---------------------------------------------------------------------------
-// Type definitions
-// ---------------------------------------------------------------------------
-/**
- * The different level values that can be used
- * @typedef {('empty'|'low'|'full')} levelValues
- */
-
-/**
- * Object that stores information about each beer.
- * All of the optional properties are obtained from Wikidata.
- * @typedef {Object} beerObj
- * @property {string} beerObj.beer_number The number of the beer
- * @property {string} beerObj.beer_name The name of the beer
- * @property {string} beerObj.brewer The brewer of the beer
- * @property {string} beerObj.brewery_wikidata_id The Wikidata QID of the brewery
- * @property {string} beerObj.abv The alcohol by volume of the beer
- * @property {string} beerObj.beer_style The style of the beer
- * @property {string} beerObj.vegan 'y' if the beer is vegan
- * @property {string} beerObj.gluten_free 'y' if the beer is gluten free
- * @property {string} beerObj.description A description of the beer
- * @property {string} [beerObj.brewery_website] The brewery's website
- * @property {string} [beerObj.brewery_latitude] The brewery's latitude
- * @property {string} [beerObj.brewery_longitude] The brewery's longitude
- * @property {string} [beerObj.brewery_beer_advocate] The brewery's BeerAdvocate ID
- * @property {string} [beerObj.brewery_rate_beer] The brewery's RateBeer ID
- * @property {string} [beerObj.brewery_untappd] The brewery's Untappd ID
- * @property {string} [beerObj.brewery_facebook] The brewery's Facebook ID
- * @property {string} [beerObj.brewery_instagram] The brewery's Instagram username
- * @property {string} [beerObj.brewery_twitter] The brewery's Twitter username
- */
-
-/**
- * Object to store the beer information for a range of beers. Used in {@link BEERS}
- * @typedef {Object.<number, beerObj>} beersObj
- */
-
-/** Object to store the stock levels for a range of beers. Used in {@link STOCK_LEVELS}
- * @typedef {Object.<number, levelValues>} stockLevelsObj
- */
-
-/** Object to store the stock level and other info for an update. Used in {@link updateHistory}
- * @typedef {object} singleUpdateObj
- * @property {number} epoch_time Time since the the Unix epoch that the update was performed
- * @property {string} name The name of the person who generated the update
- * @property {number} number The number of the beer that was changed
- * @property {levelValues} level The level that the beer is set to
- */
 
 // ---------------------------------------------------------------------------
 // Shared functions
@@ -677,7 +629,7 @@ export function updateAllAs(level) {
   if (confirm(`Are you sure you want to mark everything as ${level}?`) !== true) return
 
   console.log(`Setting everything as ${level}`)
-  /** @type{stockLevelsObj} */
+  /** @type {stockLevelsObj} */
   const table = {}
   for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
     table[number] = level

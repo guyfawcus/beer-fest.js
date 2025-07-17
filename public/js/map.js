@@ -1,4 +1,5 @@
 /* eslint-env browser */
+/** @module client/map */
 
 import * as L from './leaflet-src.esm.js'
 import { socket } from './core.js'
