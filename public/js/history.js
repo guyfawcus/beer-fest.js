@@ -1,5 +1,3 @@
-/* eslint-env browser */
-
 import { socket, updateHistory } from './core.js'
 
 let historyLog = []

@@ -5,7 +5,6 @@
  * Released under the MIT License.
  */
 
-/* eslint-env browser */
 /** @module client/core */
 
 import { io } from './socket.io.esm.min.js'

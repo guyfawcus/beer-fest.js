@@ -26,8 +26,7 @@ Installation will give you the following to help in working with this software:
 - [DefinitelyTyped](https://github.com/DefinitelyTyped/DefinitelyTyped#readme) - For type checking and usage notes in your IDE
 - [Husky](https://github.com/typicode/husky#readme) - For running tests before committing and pushing with Git
 - [Prettier](https://prettier.io/) - Code formatter to keep the style consistent
-- [Standard JS](https://standardjs.com/) - Rules for linting the code with...
-- [ESLint](https://eslint.org/) - Static analysis tool to for catching problems before they appear
+- [ESLint](https://eslint.org/) - Linter and static analysis tool for catching problems before they appear
 - [JSDoc](https://jsdoc.app/) - For generating documentation
 
 ### Setup

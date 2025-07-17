@@ -1,5 +1,3 @@
-/* eslint-env browser */
-
 import { io } from './socket.io.esm.min.js'
 
 const bfjsSocket = io.connect(location.host)

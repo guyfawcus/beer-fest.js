@@ -1,5 +1,3 @@
-/* eslint-env browser */
-
 import { socket, updateList } from './core.js'
 
 socket.on('beers', (beerList) => {

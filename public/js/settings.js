@@ -1,5 +1,3 @@
-/* eslint-env browser */
-
 import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket, tableUpload, beersUpload, updateAllAs } from './core.js'
 
 const stateUploadButton = document.getElementById('stateUploadButton')
