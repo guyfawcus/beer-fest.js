@@ -252,7 +252,10 @@ app.use(redisSession)
   next()
 }) */
 
-// Read in previous state if it exists, initialise all as full if not
+/**
+ * Read in the previous state if it exists, initialise all as full if not
+ * @param {beersObj} beers The object containing information on each beer
+ */
 async function initialiseMatrix(beers) {
   await redisClient
     .HGETALL('stock_levels')
