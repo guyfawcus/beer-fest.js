@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "eslint": "eslint --ignore-path .gitignore .",
+    "typecheck": "tsc --project tsconfig.json --noEmit",
     "prettier": "prettier --ignore-path .gitignore --write '**/*.js' '**/*.css' '**/*.md'",
     "pretest": "npm run prettier && npm run eslint",
     "test": "",
@@ -63,7 +64,8 @@
     "jsdoc": "^4.0.4",
     "npm-check-updates": "^18.0.1",
     "prettier": "^3.6.2",
-    "standard": "^17.1.2"
+    "standard": "^17.1.2",
+    "typescript": "^5.8.3"
   },
   "prettier": {
     "printWidth": 120,
