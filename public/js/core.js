@@ -39,16 +39,11 @@ const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').le
 const warningIcon = document.getElementById('warning_icon')
 
 /** The socket.io socket object */
+// Note: WebSocket first transport order was previously disabled due to iOS connection problems
 const ws_scheme = location.protocol === 'https:' ? 'wss' : 'ws'
 export const socket = io.connect(`${ws_scheme}://${location.host}?source=${location.pathname}`, {
   transports: ['websocket', 'polling']
 })
-// Note: WebSocket first transport order was previously disabled due to iOS connection problems
-
-// This option is not used anymore; we need to make sure it's unset before removing it completely
-if (localStorage.getItem('HIDE_NO_INFORMATION')) {
-  localStorage.setItem('HIDE_NO_INFORMATION', 'false')
-}
 
 // ---------------------------------------------------------------------------
 // Shared functions
