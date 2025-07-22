@@ -656,7 +656,7 @@ export function tableUpload() {
       }
 
       // File size validation
-      if (file.size > 1048) {
+      if (file.size > 1503) {
         alert("Error: this file is too large,\nplease upload a valid 'state.json' file")
         return
       }
