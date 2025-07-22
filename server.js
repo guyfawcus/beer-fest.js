@@ -8,11 +8,13 @@ import http from 'node:http'
 
 // Express related packages
 import compression from 'compression'
-import { RedisStore } from 'connect-redis'
+import { RedisStore as RedisSessionStore } from 'connect-redis'
 import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
 import expressFlash from 'express-flash'
+import rateLimit from 'express-rate-limit'
+import { RedisStore as RedisRateLimitStore } from 'rate-limit-redis'
 import permissionsPolicy from 'permissions-policy'
 import helmet from 'helmet'
 import session from 'express-session'
@@ -130,7 +132,7 @@ const sessionOptions = {
   name: 'sessionId',
   cookie: { sameSite: 'strict' },
   secret: COOKIE_SECRET,
-  store: new RedisStore({ client: redisClient }),
+  store: new RedisSessionStore({ client: redisClient }),
   resave: false,
   saveUninitialized: true
 }
@@ -212,6 +214,19 @@ app.post('/report-violation', cspParser, (req, res) => {
   }
   res.status(204).end()
 })
+
+const limiter = rateLimit({
+  windowMs: 10 * 60 * 1000, // 10 minutes
+  limit: 500, // Limit each IP to 500 requests per `window`
+  standardHeaders: 'draft-8', // Combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  ipv6Subnet: 60, // Set to 60 or 64 to be less aggressive, or 52 or 48 to be more aggressive
+  store: new RedisRateLimitStore({
+    sendCommand: (...args) => redisClient.sendCommand(args)
+  })
+})
+
+app.use(limiter)
 
 // ---------------------------------------------------------------------------
 // Configuration
