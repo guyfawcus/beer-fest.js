@@ -51,6 +51,11 @@
         <priority>0.6</priority>
     </url>
         <url>
+        <loc>https://acbf.app/downloads/ACBF13-2025.csv</loc>
+        <changefreq>daily</changefreq>
+        <priority>0.4</priority>
+    </url>
+    <url>
         <loc>https://acbf.app/downloads/ACBF12-2024.csv</loc>
         <changefreq>daily</changefreq>
         <priority>0.4</priority>

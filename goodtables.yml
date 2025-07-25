@@ -22,3 +22,18 @@ files:
 
   - source: public/downloads/ACBF8-2019.csv
     schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF9-2021.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF10-2022.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF11-2023.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF12-2024.csv
+    schema: public/downloads/tableschema.json
+
+  - source: public/downloads/ACBF13-2025.csv
+    schema: public/downloads/tableschema.json
