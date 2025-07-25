@@ -370,7 +370,11 @@ body.keyboardControl .button:focus {
 /* -------------------------------- */
 .grid {
   display: grid;
-  grid-template-columns: repeat(11, 1fr);
+  grid-template-columns: repeat(12, 1fr);
+}
+
+.grid > .availability_button {
+  height: calc(((100svh - ((100svh / 9) * 1.5)) / 6));
 }
 
 .master-grid {
@@ -379,20 +383,20 @@ body.keyboardControl .button:focus {
 }
 
 .master-grid > .availability_button {
-  height: calc(100svh / 10);
+  height: calc(100svh / 9);
 }
 
 .cider-grid > .availability_button {
   height: calc(((100svh - ((100svh / 9) * 1.5)) / 8) * 1.25);
 }
 
-.master-grid > #button_84_C1 {
+.master-grid > #button_73_C1 {
   grid-column-start: 2;
 }
-.master-grid > #button_94_C11 {
+.master-grid > #button_83_C11 {
   grid-column-start: 2;
 }
-.master-grid > #button_104_A {
+.master-grid > #button_93_A {
   grid-column-start: 1;
 }
 
