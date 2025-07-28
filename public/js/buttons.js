@@ -43,6 +43,9 @@ const buttons = document.getElementsByClassName('availability_button')
 for (const button of buttons) {
   const number = Number(button.id.split('_')[1])
 
+  // Initialise as full for the correct colour to be applied
+  button.dataset.level = 'full'
+
   // Build a cross on the button
   buildCross(number)
 
