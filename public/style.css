@@ -692,16 +692,19 @@ form {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .master-grid > #button_84_C1 {
+  .master-grid > #button_73_C1,
+  .master-grid > #button_93_A {
     grid-column-start: 1;
   }
-  .master-grid > #button_94_C11 {
+
+  .master-grid > #button_83_C11 {
     grid-column-start: unset;
   }
 
   .availability_button,
-  .master-grid > .availability_button,
-  .cider-grid > .availability_button {
+  .grid > .availability_button,
+  .cider-grid > .availability_button,
+  .master-grid > .availability_button {
     height: calc((100svh - ((100svh / 11) * 1.5)) / 10);
     font-size: 3cqh;
   }
@@ -729,6 +732,8 @@ form {
   }
 
   .availability_button,
+  .grid > .availability_button,
+  .cider-grid > .availability_button,
   .master-grid > .availability_button {
     height: calc((100svh - ((100svh / 12) * 1.5)) / 11);
   }
