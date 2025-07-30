@@ -599,7 +599,6 @@ export function updateList(beers_list) {
 
   // Convert object to array
   const beers_array = Object.values(beers_list)
-  console.log(beers_array)
 
   // Define custom sort function for beer_number
   beers_array.sort((a, b) => {
