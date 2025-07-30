@@ -597,15 +597,41 @@ export function updateList(beers_list) {
   list_div.innerHTML = ''
   list_div.append(document.createElement('hr'))
 
-  for (const beer in beers_list) {
+  // Convert object to array
+  const beers_array = Object.values(beers_list)
+  console.log(beers_array)
+
+  // Define custom sort function for beer_number
+  beers_array.sort((a, b) => {
+    const orderValue = (v) => {
+      // Numeric beers (1–99)
+      if (!isNaN(v)) return parseInt(v)
+
+      // C1–C99
+      const cMatch = v.match(/^C(\d+)$/)
+      if (cMatch) return 100 + parseInt(cMatch[1]) // 100–119
+
+      // A–Z
+      const azMatch = v.match(/^[A-Z]$/)
+      if (azMatch) return 200 + v.charCodeAt(0) - 65 // A=200, B=201, ..., Z=225
+
+      // Fallback
+      return 999
+    }
+
+    return orderValue(a.beer_number) - orderValue(b.beer_number)
+  })
+
+  // Render sorted beers
+  for (const beer of beers_array) {
     const div = document.createElement('div')
     div.classList.add('beer')
-    div.innerHTML = `<div id="beer_number">${beers_list[beer].beer_number}</div>
-                     <div id="beer_name">${beers_list[beer].beer_name}</div>
-                     <div id="brewer">${beers_list[beer].brewer}</div>
-                     <div id="abv">${beers_list[beer].abv}</div>
-                     <div id="beer_style">${beers_list[beer].beer_style}</div>
-                     <div id="description">${beers_list[beer].description}</div>`
+    div.innerHTML = `<div id="beer_number">${beer.beer_number}</div>
+                     <div id="beer_name">${beer.beer_name}</div>
+                     <div id="brewer">${beer.brewer}</div>
+                     <div id="abv">${beer.abv}</div>
+                     <div id="beer_style">${beer.beer_style}</div>
+                     <div id="description">${beer.description}</div>`
     list_div.append(div)
     list_div.append(document.createElement('hr'))
   }
