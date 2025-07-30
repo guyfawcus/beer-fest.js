@@ -37,7 +37,7 @@
       "description": "The alcohol by volume of the beer",
       "type": "string",
       "constraints": {
-        "pattern": "\\d{1,2}.\\d%"
+        "pattern": "(6.66%|\\d{1,2}.\\d%)"
       }
     },
     {
