@@ -1082,7 +1082,7 @@ io.on('connection', (socket) => {
   if (pathname.slice(-1) === '/') pathname = pathname.slice(0, -1)
 
   // When a new client connects, update them with the current state of things
-  logger.info(`Client ${socket.id} connected (${pathname})`)
+  logger.debug(`Client ${socket.id} connected (${pathname})`)
 
   // Send the configuration settings
   if (['settings', 'availability', 'other-availability', 'master-availability', 'bot'].includes(pathname)) {
@@ -1248,6 +1248,16 @@ io.on('connection', (socket) => {
     redisClient.SREM(`sock:${socket.handshake.session.id}`, socket.id)
   })
 })
+
+// Log the number of connected clients
+let lastCount = 0
+setInterval(() => {
+  const currentCount = io.sockets.sockets.size
+  if (currentCount !== lastCount) {
+    logger.info(`Connected clients: ${currentCount}`)
+    lastCount = currentCount
+  }
+}, 5000)
 
 // ---------------------------------------------------------------------------
 // Beer time!
