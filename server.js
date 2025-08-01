@@ -139,7 +139,7 @@ const sessionOptions = {
 
 if (NODE_ENV === 'production') {
   app.use(expressEnforcesSsl())
-  app.enable('trust proxy')
+  app.set('trust proxy', 1)
   sessionOptions.cookie.secure = true
   sessionOptions.name = '__Host-sessionId'
 }
