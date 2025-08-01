@@ -1,76 +1,76 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
-1,Abyss,Neptune Brewery,,5.0%,Stout,y,,"Triple oated, giving a smooth, chocolatey stout with a hint of roasted coffee."
+1,Abyss,Neptune Brewery,Q135551664,5.0%,Stout,y,,"Triple oated, giving a smooth, chocolatey stout with a hint of roasted coffee."
 2,Aur Melys,Monty's,,3.9%,Golden Ale,,,Pronounced Our Mellys - Sweet Gold in Welsh. Sweet and mellow with a golden hue and soft malt finish. Very moreish and sessionable.
 3,Aussie Pale,Glasshouse,,4.5%,Pale Ale,y,,"A vibrant pale ale with juicy notes of passionfruit and tangerine, layered over sweet biscuity malts and a touch of pine and earthy truffle."
-4,Beechwood,Chiltern,,4.3%,Best Bitter,,,"Mid-amber with toffee and nutty aroma. Balanced bitterness and sweetness with a long, satisfying finish."
-5,Best,Five Points,,4.1%,Best Bitter,,,"A modern take on a classic bitter with caramel and biscuit malt character, balanced by grassy, herbal Fuggle hops."
-6,Black Beauty,Vale,,4.4%,Porter,,,Dark and smooth with chocolate and coffee notes. A velvety mild with gentle bitterness.
-7,Black Mass,Abbeydale,,6.66%,Black IPA,y,y,"A bold Black IPA with roasted malt, chocolate, and coffee notes balanced by assertive hop bitterness; dark, complex, and smooth."
-8,Blond,Weekend Project x Surrey Hills,,4.2%,Blonde Ale,,,A crisp and easy-drinking golden ale with light malt sweetness and subtle floral hops; refreshing and balanced.
-9,Blonde,The 3 Brewers,,4.2%,Blonde Ale,,,Smooth and mellow with hints of honey and biscuit malt. Easy-drinking and delicately balanced.
+4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Best Bitter,,,"Mid-amber with toffee and nutty aroma. Balanced bitterness and sweetness with a long, satisfying finish."
+5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A modern take on a classic bitter with caramel and biscuit malt character, balanced by grassy, herbal Fuggle hops."
+6,Black Beauty,Vale Brewery,Q98072911,4.4%,Porter,,,Dark and smooth with chocolate and coffee notes. A velvety mild with gentle bitterness.
+7,Black Mass,Abbeydale Brewery,Q98067081,6.66%,Black IPA,y,y,"A bold Black IPA with roasted malt, chocolate, and coffee notes balanced by assertive hop bitterness; dark, complex, and smooth."
+8,Blond,Weekend Project / Surrey Hills (collab),,4.2%,Blonde Ale,,,A crisp and easy-drinking golden ale with light malt sweetness and subtle floral hops; refreshing and balanced.
+9,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde Ale,,,Smooth and mellow with hints of honey and biscuit malt. Easy-drinking and delicately balanced.
 10,Blonde Ale,Brentwood,,3.8%,Blonde / Golden Ale,,,Light and fruity with a crisp finish from Styrian Golding hops. Easy-drinking and refreshing.
 11,Blood Mountain,Black Iris,,4.2%,Best Bitter,,,"English-hopped red ale with a subtle caramel backbone and a dry, balanced finish."
-12,Brill Gold,Vale,,3.4%,Golden Ale,,,Pale and refreshing with a gentle bitterness and soft malt sweetness.
-13,Brother Rabbit,Thornbridge,,4.0%,Golden Ale,,,Crisp and light with hints of lemon zest and a soft floral bitterness.
-14,Chiltern Black,Chiltern,,3.9%,Porter,y,,Dark ruby with roast barley and chocolate notes. Smooth and complex — a year-round favourite.
-15,Chiltern Pale,Chiltern,,3.7%,Session Pale Ale,,,"Light amber with creamy smoothness and a refreshing, cleansing finish. Subtle fruit and malt balance make it a proper quaffing ale."
-16,Citra,Oakham,,4.2%,Session IPA,,,"A pioneering UK session IPA brewed with 100% Citra hops; expect explosive grapefruit and lemon zest on a crisp golden malt base, finishing dry and hoppy."
-17,Classic,The 3 Brewers,,4.0%,Best Bitter,,,"Deep amber with a light hoppy aroma and rounded malt character. Clean, smooth, and supremely drinkable."
-18,Clawhammer,Tring,,4.1%,Amber Ale,,,"Malty and smooth with hints of caramel and a gentle bitterness. A solid, sessionable amber."
-19,Colleys Dog,Tring,,5.2%,Strong Bitter (ESB),,,Dark ruby and malt-forward with nutty depth and a full-bodied finish. Old-school and bold.
-20,Daily Bread,Abbeydale,,3.8%,Best Bitter,,y,"A classic English bitter with copper colour, bready malt, gentle caramel, and a dry, floral finish; smooth and sessionable."
-21,Dark Mild,Timothy Taylor,,3.5%,Mild Ale,,,Smooth and malty with chocolate undertones and a gentle bitterness.
-22,DBS XB Pale,XT,,4.4%,Best Bitter,,,Rich and fruity with earthy UK hops. Balanced malt backbone and a herbal aroma.
-23,Death or Glory,Tring,,7.2%,Barley Wine,,,"Rich and complex with sweet malt, warming alcohol, and a heady aroma. Brewed by appointment to the Queen’s Royal Lancers."
-24,Electric Sheep,Vale,,4.3%,IPA,,,Hoppy and vibrant with tropical fruit notes and a dry finish. A modern pale with a quirky name.
-25,Essence,Deya,,4.5%,Pale Ale,y,,"A New Zealand-hopped pale ale with subtle citrus and white grape notes; soft and juicy with a clean, refreshing finish."
+12,Brill Gold,Vale Brewery,Q98072911,3.4%,Golden Ale,,,Pale and refreshing with a gentle bitterness and soft malt sweetness.
+13,Brother Rabbit,Thornbridge,Q7796317,4.0%,Golden Ale,,,Crisp and light with hints of lemon zest and a soft floral bitterness.
+14,Chiltern Black,The Chiltern Brewery,Q97661391,3.9%,Porter,y,,Dark ruby with roast barley and chocolate notes. Smooth and complex — a year-round favourite.
+15,Chiltern Pale,The Chiltern Brewery,Q97661391,3.7%,Session Pale Ale,,,"Light amber with creamy smoothness and a refreshing, cleansing finish. Subtle fruit and malt balance make it a proper quaffing ale."
+16,Citra,Oakham,Q7073885,4.2%,Session IPA,,,"A pioneering UK session IPA brewed with 100% Citra hops; expect explosive grapefruit and lemon zest on a crisp golden malt base, finishing dry and hoppy."
+17,Classic,The 3 Brewers of St.Albans,Q97619412,4.0%,Best Bitter,,,"Deep amber with a light hoppy aroma and rounded malt character. Clean, smooth, and supremely drinkable."
+18,Clawhammer,Tring Brewery Co.,Q7842351,4.1%,Amber Ale,,,"Malty and smooth with hints of caramel and a gentle bitterness. A solid, sessionable amber."
+19,Colleys Dog,Tring Brewery Co.,Q7842351,5.2%,Strong Bitter (ESB),,,Dark ruby and malt-forward with nutty depth and a full-bodied finish. Old-school and bold.
+20,Daily Bread,Abbeydale Brewery,Q98067081,3.8%,Best Bitter,,y,"A classic English bitter with copper colour, bready malt, gentle caramel, and a dry, floral finish; smooth and sessionable."
+21,Dark Mild,Timothy Taylor's,Q7807560,3.5%,Mild Ale,,,Smooth and malty with chocolate undertones and a gentle bitterness.
+22,DBS XB Pale,XT Brewing Co.,Q39053843,4.4%,Best Bitter,,,Rich and fruity with earthy UK hops. Balanced malt backbone and a herbal aroma.
+23,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Barley Wine,,,"Rich and complex with sweet malt, warming alcohol, and a heady aroma. Brewed by appointment to the Queen’s Royal Lancers."
+24,Electric Sheep,Vale Brewery,Q98072911,4.3%,IPA,,,Hoppy and vibrant with tropical fruit notes and a dry finish. A modern pale with a quirky name.
+25,Essence,DEYA Brewing Company,Q135551754,4.5%,Pale Ale,y,,"A New Zealand-hopped pale ale with subtle citrus and white grape notes; soft and juicy with a clean, refreshing finish."
 26,Essential,Treens,,3.8%,Golden Ale,,,"A crisp session pale ale with grassy, peppery hops, grapefruit and mango notes, and a biscuity malt base; finishes dry and bitter."
-27,Explorer Series III,Chiltern,,4.0%,Extra Pale Ale,,,"Bright and crisp with stone fruit and passionfruit aroma. A seasonal brew with a clean, modern twist."
-28,Fanny Ebbs,Tring,,3.9%,Summer Ale,,,Crisp and thirst-quenching with late citrus hop aroma from Saaz and Cascade. A blonde ale built for sunny days.
-29,Featherstone,Hornes,,3.6%,Amber Ale,,y,"Malty and mellow with caramel notes and a soft, earthy hop character."
-30,Four,XT,,3.8%,Amber Ale,,,"Fruity mix of American and European hops over Belgian malt. Citrus aroma, dry finish, and caramel warmth."
+27,Explorer Series III,The Chiltern Brewery,Q97661391,4.0%,Extra Pale Ale,,,"Bright and crisp with stone fruit and passionfruit aroma. A seasonal brew with a clean, modern twist."
+28,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,Crisp and thirst-quenching with late citrus hop aroma from Saaz and Cascade. A blonde ale built for sunny days.
+29,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber Ale,,y,"Malty and mellow with caramel notes and a soft, earthy hop character."
+30,Four,XT Brewing Co.,Q39053843,3.8%,Amber Ale,,,"Fruity mix of American and European hops over Belgian malt. Citrus aroma, dry finish, and caramel warmth."
 31,Give Your Last,Pentrich,,5.0%,Milk Stout,,,"Rolo-inspired stout bursting with sweet chocolate and caramel, mellowed by lactose for a smooth, decadent experience."
-32,Golden,The 3 Brewers,,3.8%,Golden Ale,,,Light and crisp with subtle citrus and floral hop notes. A refreshing session ale brewed with Hertfordshire water.
-33,Good Day Sunshine,Vale,,4.0%,Summer Ale,,,Bright and zesty with a citrus hop burst and a crisp finish. A cheerful ale for sunny moods.
-34,Hop Kitty,XT,,3.9%,Pale Ale,,,Triple-hopped and bursting with tropical fruit and citrus. Light-bodied with toasted malt sweetness.
+32,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden Ale,,,Light and crisp with subtle citrus and floral hop notes. A refreshing session ale brewed with Hertfordshire water.
+33,Good Day Sunshine,Vale Brewery,Q98072911,4.0%,Summer Ale,,,Bright and zesty with a citrus hop burst and a crisp finish. A cheerful ale for sunny moods.
+34,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Triple-hopped and bursting with tropical fruit and citrus. Light-bodied with toasted malt sweetness.
 35,Hopoholic,Downtown,,5.2%,IPA,,,Bold and hoppy with citrus zest and a resinous backbone. A punchy IPA for hop lovers.
-36,Inferno,Oakham,,4.0%,Blonde Ale,,,"A light golden ale with a big personality, bursting with fruity American hop flavours—think satsuma, peach, mango, and grapefruit—with a zesty, refreshing finish."
-37,Jaipur,Thornbridge,,5.9%,IPA,,,"A modern classic with bright citrus and a dry, assertive hop finish."
-38,Juicy,Tiny Rebel,,4.8%,Tropical Pale Ale,y,,"Packed with passionfruit and mango, this one’s bold, sweet, and refreshingly zesty."
-39,Lamanva,Verdant,,4.0%,Best Bitter,y,,"A smooth, light brown best bitter with gentle biscuit malt and soft hop character; expect hints of lemon, lime, raspberry, and dried fruit with a mellow bitter finish."
-40,Landlord Dark,Timothy Taylor,,4.1%,Bitter,,,Robust and balanced with roasted malt and a nutty backbone.
-41,Mansion Mild,Tring,,3.7%,Ruby Mild Ale,,,Smooth and sweet with creamy malt and subtle fruit. Like velvet in a glass.
-42,Mosaic,Arbor,,4.0%,Pale Ale,y,y,"A heavily hopped, gluten-free pale ale with bold floral and tropical fruit aromas; expect soft lemon, mango, and a gentle bittersweet finish."
+36,Inferno,Oakham,Q7073885,4.0%,Blonde Ale,,,"A light golden ale with a big personality, bursting with fruity American hop flavours—think satsuma, peach, mango, and grapefruit—with a zesty, refreshing finish."
+37,Jaipur,Thornbridge,Q7796317,5.9%,IPA,,,"A modern classic with bright citrus and a dry, assertive hop finish."
+38,Juicy,Tiny Rebel,Q27136461,4.8%,Tropical Pale Ale,y,,"Packed with passionfruit and mango, this one’s bold, sweet, and refreshingly zesty."
+39,Lamanva,Verdant Brewing Co.,Q113829344,4.0%,Best Bitter,y,,"A smooth, light brown best bitter with gentle biscuit malt and soft hop character; expect hints of lemon, lime, raspberry, and dried fruit with a mellow bitter finish."
+40,Landlord Dark,Timothy Taylor's,Q7807560,4.1%,Bitter,,,Robust and balanced with roasted malt and a nutty backbone.
+41,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Ruby Mild Ale,,,Smooth and sweet with creamy malt and subtle fruit. Like velvet in a glass.
+42,Mosaic,Arbor,Q97665078,4.0%,Pale Ale,y,y,"A heavily hopped, gluten-free pale ale with bold floral and tropical fruit aromas; expect soft lemon, mango, and a gentle bittersweet finish."
 43,Nail in the Coffin,Black Iris,,5.9%,ESB,,,"Rich mahogany ESB with chocolate and caramel notes, a touch of spice, and a pleasantly dry, fruity finish."
 44,Old Peculier,Theakstons,,5.6%,Old Ale,,,"A rich, full-bodied old ale with deep ruby hues, offering notes of black cherry, banana, toffee, and roasted malt, with a smooth, warming finish."
 45,Olympia,Harveys,,4.3%,Golden Ale,,,"A golden ale with smooth malt character and a delicate bitterness; expect notes of digestive biscuit, hedgerow herbs, and a touch of honeyed sweetness."
-46,One,XT,,4.2%,Blonde Ale,,,"Citrus and fruity hops meet English barley and Bohemian malts. Biscuity, nutty, and grassy with a lemony finish."
-47,One inch Punch,Tiny Rebel,,3.9%,Session IPA,y,,"Light-bodied and hazy with grassy hops, white grape, and a touch of citrus; refreshing and easy-drinking with a gentle bitterness."
+46,One,XT Brewing Co.,Q39053843,4.2%,Blonde Ale,,,"Citrus and fruity hops meet English barley and Bohemian malts. Biscuity, nutty, and grassy with a lemony finish."
+47,One inch Punch,Tiny Rebel,Q27136461,3.9%,Session IPA,y,,"Light-bodied and hazy with grassy hops, white grape, and a touch of citrus; refreshing and easy-drinking with a gentle bitterness."
 48,Open Trail,Left Handed Giant,,4.2%,Pale Ale,y,,"A delightful American Pale Ale with Amarillo, Simcoe and Centennial hops, pushing notes of pine and seville orange to the forefront."
 49,Pells Pale,Harveys,,3.7%,Pale Ale,,,"A bright, citrusy pale ale brewed with Motueka and UK hops; delivers zesty aromas, a fruity palate, and a clean, subtly bitter finish."
-50,Pride of Pendle,Moorhouses,,4.1%,Session Bitter,,,"A well-balanced bitter with subtle fruit and malt notes, finishing with a gentle hop bitterness."
+50,Pride of Pendle,Moorhouse's,Q15255982,4.1%,Session Bitter,,,"A well-balanced bitter with subtle fruit and malt notes, finishing with a gentle hop bitterness."
 51,Quadhop,Downtown,,4.6%,American Pale Ale,,,Copper-hued and malt-forward with roasted oats and piney hops. Balanced bitterness and a clean finish.
-52,Railway Porter,Five Points,,4.8%,Porter,y,,"A rich, jet-black porter with aromas of chocolate and currants, flavours of black treacle and orange, and a roasty, peppery finish."
-53,Red Kite,Vale,,4.3%,Best Bitter,,,Rich amber colour with roasted malt and a hint of spice. Balanced and warming.
-54,Ridgeway,Tring,,4.0%,English Bitter,,,"Balanced and bready with fruity Styrian Goldings hops. A refined, easy-drinking bitter."
-55,Rocketman,Arbor,,6.0%,IPA,y,,"A full-flavoured American IPA brewed with Mosaic and Citra hops; expect bold tropical fruit flavours like mango, lychee, and sweet grapefruit, with a piney, bitter finish."
-56,Rodondo,Neptune Brewery,,5.5%,Pacific IPA,y,,"Bright and juicy with tropical pineapple, passionfruit, and lime notes from Galaxy, Motueka, and Vic Secret hops, finishing with a crisp hint of pine."
-57,Session IPA,Chiltern,,3.4%,Session IPA,,,Light gold and fresh-tasting with grapefruit and orange hop character. Balanced and easy-drinking.
+52,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,y,,"A rich, jet-black porter with aromas of chocolate and currants, flavours of black treacle and orange, and a roasty, peppery finish."
+53,Red Kite,Vale Brewery,Q98072911,4.3%,Best Bitter,,,Rich amber colour with roasted malt and a hint of spice. Balanced and warming.
+54,Ridgeway,Tring Brewery Co.,Q7842351,4.0%,English Bitter,,,"Balanced and bready with fruity Styrian Goldings hops. A refined, easy-drinking bitter."
+55,Rocketman,Arbor,Q97665078,6.0%,IPA,y,,"A full-flavoured American IPA brewed with Mosaic and Citra hops; expect bold tropical fruit flavours like mango, lychee, and sweet grapefruit, with a piney, bitter finish."
+56,Rodondo,Neptune Brewery,Q135551664,5.5%,Pacific IPA,y,,"Bright and juicy with tropical pineapple, passionfruit, and lime notes from Galaxy, Motueka, and Vic Secret hops, finishing with a crisp hint of pine."
+57,Session IPA,The Chiltern Brewery,Q97661391,3.4%,Session IPA,,,Light gold and fresh-tasting with grapefruit and orange hop character. Balanced and easy-drinking.
 58,She Sells Citra,Pentrich,,6.5%,IPA,y,,"A naturally hazy, super-hoppy IPA packed with Citra hops; bursting with juicy grapefruit, pineapple, and mango over a light, smooth bitterness."
-59,Side Pocket,Tring,,3.6%,Golden Ale,,,Straw-coloured and hoppy with citrus and floral notes from Cascade hops. A refreshing session beer.
+59,Side Pocket,Tring Brewery Co.,Q7842351,3.6%,Golden Ale,,,Straw-coloured and hoppy with citrus and floral notes from Cascade hops. A refreshing session beer.
 60,Sisters,Harveys,,3.4%,Bitter,,,"A light-bodied table beer with soft caramel and toast notes, lifted by autumnal orange and spice aromas; sessionable and gently bitter with a fragrant hop finish."
-61,Somers,Vocation,,4.3%,Pale Ale,y,,"A lush hazy pale ale with New Zealand hops delivering ripe stone fruit, juicy mango, zesty citrus, and a soft, piney finish."
-62,Sonoma,Track,,3.8%,Pale Ale,y,,"A hazy, sessionable pale ale bursting with sticky mandarin and grapefruit, finishing crisp and clean with a soft, pithy bitterness."
-63,Squid Ink,XT,,5.5%,Black IPA,,,"Bold and stormy with dark roasted malts and a tsunami of hops. Resinous, bitter, and complex."
+61,Somers,Vocation Brewery,Q107717907,4.3%,Pale Ale,y,,"A lush hazy pale ale with New Zealand hops delivering ripe stone fruit, juicy mango, zesty citrus, and a soft, piney finish."
+62,Sonoma,Track,Q135533570,3.8%,Pale Ale,y,,"A hazy, sessionable pale ale bursting with sticky mandarin and grapefruit, finishing crisp and clean with a soft, pithy bitterness."
+63,Squid Ink,XT Brewing Co.,Q39053843,5.5%,Black IPA,,,"Bold and stormy with dark roasted malts and a tsunami of hops. Resinous, bitter, and complex."
 64,Sunbeam,Treens,,4.8%,Golden Ale,,,"A smooth golden ale with a full citrus aroma, floral and spicy hop character, and a caramel malt backbone; finishes long and bitter with hints of tropical fruit."
 65,Sunshine,Monty's,,4.2%,Golden Ale,,,Floral and citrusy with Cascade hops. Dry finish and refreshing character — a glass of summer all year round.
-66,Sup,Northern Monk,,3.4%,Golden Ale,y,,"A smooth golden ale with soft malt sweetness, subtle citrus, and a clean, quaffable finish; perfect for a sunny day."
+66,Sup,Northern Monk,Q98214662,3.4%,Golden Ale,y,,"A smooth golden ale with soft malt sweetness, subtle citrus, and a clean, quaffable finish; perfect for a sunny day."
 67,Swordfish,Wadworth,,5.0%,Rum-infused Amber Ale,,,Full-bodied with rich caramel and subtle rum warmth. A smooth ale with a hint of adventure.
-68,Ten,XT,,4.4%,Stout,,,"Full-bodied and rich with roasted barley, oats, and a touch of chocolate. Light on hops, big on flavour."
-69,Triple Goat Pale,Hornes,,3.9%,Pale Ale,,y,Crisp and citrusy with Cascade and Summit hops. Well-balanced malt and a clean finish.
-70,Unlocked,Hornes,,4.3%,IPA,,y,Light and refreshing with subtle fruit and a gentle bitterness. A smooth session ale.
-71,Wooden Ships,Neptune Brewery,,4.7%,Pale Ale,y,,Lemon and blood orange notes are balanced by light floral flavours and a resinous finish.
-72,Wychert,Vale,,3.9%,Traditional Bitter,,,Malty and smooth with earthy hops and a touch of caramel. A classic English bitter.
+68,Ten,XT Brewing Co.,Q39053843,4.4%,Stout,,,"Full-bodied and rich with roasted barley, oats, and a touch of chocolate. Light on hops, big on flavour."
+69,Triple Goat Pale,Hornes Brewery,Q97666414,3.9%,Pale Ale,,y,Crisp and citrusy with Cascade and Summit hops. Well-balanced malt and a clean finish.
+70,Unlocked,Hornes Brewery,Q97666414,4.3%,IPA,,y,Light and refreshing with subtle fruit and a gentle bitterness. A smooth session ale.
+71,Wooden Ships,Neptune Brewery,Q135551664,4.7%,Pale Ale,y,,Lemon and blood orange notes are balanced by light floral flavours and a resinous finish.
+72,Wychert,Vale Brewery,Q98072911,3.9%,Traditional Bitter,,,Malty and smooth with earthy hops and a touch of caramel. A classic English bitter.
 C1,Elderflower,Lilley's,,3.4%,Medium-Sweet,,,
 C2,Pina Colada,Lilley's,,3.4%,Sweet,,,
 C3,Blackcurrant,Saxby's,,3.7%,Sweet,,,
@@ -91,15 +91,15 @@ C17,Crazy Goat,Lilley's,,6.8%,Medium-Sweet,,,
 C18,Bee Sting,Lilley's,,6.8%,Medium-Sweet,,,
 C19,Jaggy Thistle,Thistly Cross,,7.4%,Medium-Dry,,,
 C20,Gladiator,Lilley's,,8.5%,Medium-Sweet,,,
-A,Contain,Track,,6.5%,IPA,y,,
+A,Contain,Track,Q135533570,6.5%,IPA,y,,
 B,Dripping in Riwaka,Two Flints,,8.0%,DIPA,y,,
 C,Floret,Pollys,,4.5%,Pale Ale,y,,
-D,Geometry of Sound,Verdant x Wylam,,6.5%,IPA,y,,
+D,Geometry of Sound,Verdant / Wylam (collab),,6.5%,IPA,y,,
 E,Iron Brew,Vault City,,4.8%,Sour,y,,
 F,Lay Down My Bones,Queer Brew,,4.9%,Brown Ale,y,,
-G,Lilac Roller,Deya,,8.0%,DIPA,y,,
+G,Lilac Roller,DEYA Brewing Company,Q135551754,8.0%,DIPA,y,,
 H,No Time To Regret,Creative Juices,,4.2%,Milk Stout,,,
 I,Parade,Beak,,6.0%,IPA,y,,
 J,State of Oscillation,Glasshouse,,7.2%,IPA,y,,
-K,Sunshine Spectacles,Indie Rabble x Wendover Beers,,3.8%,Pale Ale,y,,
+K,Sunshine Spectacles,Indie Rabble / Wendover Beers (collab),,3.8%,Pale Ale,y,,
 L,West Coast IPA,Saint Monday,,6.9%,West Coast IPA,y,,

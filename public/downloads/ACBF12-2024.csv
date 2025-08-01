@@ -69,7 +69,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 68,Salt Dark Choc Imp Stout,Vocation / Neon Raptor (collab),Q107717907,10.8%,Imperial Stout,,,"Blends 8 different malts to deliver a deep, rich and slightly bitter Imperial Chocolate Stout. The late addition of cocoa and sea salt enhance the chocolate flavour and adds a delicate, savoury finish."
 69,Seclusion,Stealth Brew Co,Q127686965,5.5%,IPA,,,A generous helping of oats on the malt bill make for a soft base that’s bittered with British Admiral and late hopped with US Cascade.
 70,Solaris,Big Smoke,,3.8%,Pale Ale,,,"A very easy drinking pale ale with Cascade & Centennial hops, brewed exclusively for cask."
-71,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
+71,Sonoma,Track,Q135533570,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of  mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 72,SS9,Leigh on Sea Brewery,Q127690153,9.0%,Imperial Stout,,,SS9 is a seriously strong stout characterised by deep boozy notes of coffee and chocolate from the range of dark malts used in the recipe.
 73,Summertime,Burning Sky,,4.5%,Pale Ale,y,,"Summertime is a clean drinking summer pale brewed with Maris Otter and wheat malts, a delicate spicing and blend of classic European and New Zealand hop varieties give a refreshing finish."
 74,The Joy of Sesh,New Bristol Brewery,Q98214265,4.2%,Hazy IPA,y,y,"An easy sessionable quaffer, hopped with Citra and Mosaic."
@@ -106,11 +106,11 @@ A,Floret,Pollys,,4.2%,Extra Pale Ale,y,,
 B,Tiny Violence,Indie Rabble,,5.0%,Stout,y,,
 C,Saison,Two Flints / Burning Sky (collab),,5.2%,Saison,y,,
 D,The Slinky Vagabond,Creative Juices,,5.6%,IPA,y,,
-E,Seven Way Mirror,Deya,,5.6%,Pale Ale,y,,
+E,Seven Way Mirror,DEYA Brewing Company,Q135551754,5.6%,Pale Ale,y,,
 F,Glasshouse,Half Light,,6.0%,IPA,y,,
 G,Under Skies,Floc,,6.2%,IPA,y,,
 H,Platform Haze,Pollys,,6.3%,IPA,y,,
 I,Cosm,Beak / Uchu (collab),,6.5%,NEIPA,y,,
-J,Out of Focus,Track,,6.5%,IPA,y,,
+J,Out of Focus,Track,Q135533570,6.5%,IPA,y,,
 K,Plenty Kohia Nelson,Floc,,8.0%,DIPA,y,,
-L,What Dreams are Made of,Verdant,,8.4%,DIPA,y,,
+L,What Dreams are Made of,Verdant Brewing Co.,Q113829344,8.4%,DIPA,y,,

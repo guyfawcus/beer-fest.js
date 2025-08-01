@@ -20,7 +20,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 19,Dark Mild,Timothy Taylor's,Q7807560,3.5%,Dark Mild,,,"A dark ruby beer with roasted notes and a smooth, creamy taste. A favourite of lovers of a good old fashioned mild."
 20,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, sweet barley wine with an incredibly complex flavour profile. Brewed by appointment to the Kings Royal Lancers."
 21,Eight,XT Brewing Co.,Q39053843,4.5%,Porter,,,Rich dark beer brewed with four malts and a cocktail of hops. Deep malty base with dark chocolate flavours.
-22,Escape Goat,Deya,,4.0%,Pale Ale,y,,"Aroma of tropical fruit and lime, with orange, lychee and sweet cereal on the mid palate. Clean firm bitterness."
+22,Escape Goat,DEYA Brewing Company,Q135551754,4.0%,Pale Ale,y,,"Aroma of tropical fruit and lime, with orange, lychee and sweet cereal on the mid palate. Clean firm bitterness."
 23,Fake News,paradigm brewery,Q98075011,3.8%,Pale Ale,,,"Session pale ale for the post truth ""citrus"" generation."
 24,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,Blonde coloured summer ale with citrus hop aroma.
 25,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,y,y,Crystal and Cascade hops in the boil and dry hopped with even more Cascade give this beer a fruity punch.
@@ -53,24 +53,24 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 52,Memento,Siren Craft Brew,Q97726156,3.8%,Best Bitter,,,"Grassy and herbal notes from English hops, boosted by Cascade in the dry hop."
 53,Mister Chubbs,Renegade Brewery,Q7984464,3.7%,Bitter,,,"Citrus hop aroma and smooth palate, balance finish using Target and Celeia hops."
 54,Mister Squirrel,Mad Squirrel,Q98074829,4.0%,Bitter,,,"Balanced and respectable brew with notes of toffee, vanilla and nuts."
-55,Mosaic,Neptune,,4.5%,Pale Ale,,,"Single hopped pale with Mosaic. Juicy flavours of tropical fruits, blueberries and papaya."
+55,Mosaic,Neptune Brewery,Q135551664,4.5%,Pale Ale,,,"Single hopped pale with Mosaic. Juicy flavours of tropical fruits, blueberries and papaya."
 56,Mosaic,Arbor,Q97665078,4.0%,Pale Ale,,y,
 57,Old Skool,Kent Brewery,Q98103562,4.1%,Best Bitter,,,"A traditional style English bitter, as hoppy as it used to be."
-58,Once Forgotten,Track,,4.4%,Amber,,,"Malt character of caramel and lightly toasted biscuits shine through a light body, with gentle notes of pine and light citrus fruits."
+58,Once Forgotten,Track,Q135533570,4.4%,Amber,,,"Malt character of caramel and lightly toasted biscuits shine through a light body, with gentle notes of pine and light citrus fruits."
 59,Ordinary,Anspach & Hobday,Q98222607,3.7%,Bitter,,,"Pine, spice and dark fruit aromas, with smooth caramel, biscuit on the palate."
 60,Pacific Pale,Left Handed Giant,,4.5%,Pale Ale,,,"Complex hop bill including Idaho-7 and Galaxy, summer berries and tropical."
 61,Railway Porter,The Five Points Brewing Company,Q98071243,4.8%,Porter,,,"Classic London Porter, smooth and robust with roasted malt notes of coffee and chocolate."
 62,Reality Trip,Anarchy Brew Co.,Q98070202,5.2%,IPA,,,English style IPA.
 63,Red Kite,Vale Brewery,Q98072911,4.3%,Best Bitter,,,Rich malt flavours make this a rounded chestnut best bitter.
-64,Reject All Cookies,Deya,,3.4%,Pale Ale,,,"Pineapple, orange and peach aromas with a light, wheaty body."
+64,Reject All Cookies,DEYA Brewing Company,Q135551754,3.4%,Pale Ale,,,"Pineapple, orange and peach aromas with a light, wheaty body."
 65,Reload,Bristol Beer Factory,Q107716330,4.2%,Pale Ale,,,"Mystic and Jester hops give classic blackcurrant and citrus aromas, that sets up for a fruity complex finish."
 66,Resolution,Mad Squirrel,Q98074829,4.2%,Golden Ale,,,Resolution is late hopped with three American hop varieties for maximum flavour.
 67,Right to Roam,Buxton,Q98118486,3.8%,Bitter,,,A highly sessionable bitter brewed using English grown hops.
-68,Sea of Dreams,Neptune,,4.2%,Pale Ale,,,"A heady mix of mango juiciness, with a marmalade bite, and soft finish."
+68,Sea of Dreams,Neptune Brewery,Q135551664,4.2%,Pale Ale,,,"A heady mix of mango juiciness, with a marmalade bite, and soft finish."
 69,Shine,Oakham,Q7073885,3.7%,Pale Ale,,,"Zesty summer citrus and soft fruit flavours and a gentle, moreish bitterness."
 70,Side Pocket for a Toad,Tring Brewery Co.,Q7842351,3.6%,Golden Ale,,,Citrus and floral notes from the best Cascade hops with a crisp dry finish make this Golden Ale a fantastic session beer.
 71,Single Origin,Kelchner Brewery,Q127687141,4.1%,Porter,,,"A classic dark and rich Porter, generously infused with single origin coffee beans."
-72,Sonoma,Track,,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
+72,Sonoma,Track,Q135533570,3.8%,Pale Ale,,,"Mosaic, Centennial & Citra hops give resinous notes of mandarin, and grapefruit. Crisp & clean finish with a soft bitterness."
 73,Special,The 3 Brewers of St.Albans,Q97619412,4.8%,Strong Ale,,,Special English Ale uses chocolate malt to give it a deep copper colour and English hops give the ale a hint of berries.
 74,Symposium,Ossett,,5.0%,Pale Ale,,,"NZ-grown Nectaron hops and US Citra to give intense aromas of citrus, peach, pineapple and passion fruit."
 75,Triple Goat,Hornes Brewery,Q97666414,3.9%,Pale Ale,,y,"Natural pale ale brewed with malted pale barley, Chinook and New Zealand Southern Cross hops."
