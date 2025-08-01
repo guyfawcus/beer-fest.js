@@ -1244,7 +1244,7 @@ io.on('connection', (socket) => {
   })
 
   socket.on('disconnect', () => {
-    logger.info(`Client ${socket.id} disconnected`)
+    logger.debug(`Client ${socket.id} disconnected`)
     redisClient.SREM(`sock:${socket.handshake.session.id}`, socket.id)
   })
 })
