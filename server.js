@@ -134,7 +134,7 @@ const sessionOptions = {
   secret: COOKIE_SECRET,
   store: new RedisSessionStore({ client: redisClient }),
   resave: false,
-  saveUninitialized: true
+  saveUninitialized: false
 }
 
 if (NODE_ENV === 'production') {
