@@ -36,7 +36,7 @@ let STOCK_LEVELS = {}
 const NUM_OF_BUTTONS = document.getElementsByClassName('availability_button').length || 115
 
 /** There is a warning icon on most pages that appears if the connection is lost */
-const warningIcon = document.getElementById('warning_icon')
+const warningIcon = document.getElementsByClassName('warning_icon')[0]
 
 /** The socket.io socket object */
 // Note: WebSocket first transport order was previously disabled due to iOS connection problems
