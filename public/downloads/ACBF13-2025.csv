@@ -1,6 +1,6 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
 1,Abyss,Neptune Brewery,Q135551664,5.0%,Stout,y,,"Triple oated, giving a smooth, chocolatey stout with a hint of roasted coffee."
-2,Aur Melys,Monty's Brewery,Q135552557,3.9%,Golden Ale,,,Pronounced Our Mellys - Sweet Gold in Welsh. Sweet and mellow with a golden hue and soft malt finish. Very moreish and sessionable.
+2,Aur Melys,Monty's Brewery,Q135552557,3.9%,Golden Ale,,,Pronounced Our Mellys — Sweet Gold in Welsh. Sweet and mellow with a golden hue and soft malt finish. Very moreish and sessionable.
 3,Aussie Pale,GlassHouse Beer Co,Q135552484,4.5%,Pale Ale,y,,"A vibrant pale ale with juicy notes of passionfruit and tangerine, layered over sweet biscuity malts and a touch of pine and earthy truffle."
 4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Best Bitter,,,"Mid-amber with toffee and nutty aroma. Balanced bitterness and sweetness with a long, satisfying finish."
 5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A modern take on a classic bitter with caramel and biscuit malt character, balanced by grassy, herbal Fuggle hops."
@@ -34,7 +34,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 33,Good Day Sunshine,Vale Brewery,Q98072911,4.0%,Summer Ale,,,Bright and zesty with a citrus hop burst and a crisp finish. A cheerful ale for sunny moods.
 34,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale Ale,,,Triple-hopped and bursting with tropical fruit and citrus. Light-bodied with toasted malt sweetness.
 35,Hopoholic,Downtown,,5.2%,IPA,,,Bold and hoppy with citrus zest and a resinous backbone. A punchy IPA for hop lovers.
-36,Inferno,Oakham,Q7073885,4.0%,Blonde Ale,,,"A light golden ale with a big personality, bursting with fruity American hop flavours—think satsuma, peach, mango, and grapefruit—with a zesty, refreshing finish."
+36,Inferno,Oakham,Q7073885,4.0%,Blonde Ale,,,"A light golden ale with a big personality, bursting with fruity American hop flavours — think satsuma, peach, mango, and grapefruit — with a zesty, refreshing finish."
 37,Jaipur,Thornbridge,Q7796317,5.9%,IPA,,,"A modern classic with bright citrus and a dry, assertive hop finish."
 38,Juicy,Tiny Rebel,Q27136461,4.8%,Tropical Pale Ale,y,,"Packed with passionfruit and mango, this one’s bold, sweet, and refreshingly zesty."
 39,Lamanva,Verdant Brewing Co.,Q113829344,4.0%,Best Bitter,y,,"A smooth, light brown best bitter with gentle biscuit malt and soft hop character; expect hints of lemon, lime, raspberry, and dried fruit with a mellow bitter finish."

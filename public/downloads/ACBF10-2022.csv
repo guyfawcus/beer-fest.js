@@ -2,7 +2,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 1,A Little Faith,Northern Monk,Q98214662,4.0%,Hazy Pale Ale,,,"All the juice, citrus and tropical flavour of Faith, but even more sessionable at a lower ABV of 4%."
 2,Amity,Vale Brewery,Q98072911,3.9%,Bitter,,,A blend of malts to give it a so-fish-ticated dry finish and American Columbus hops that gives it a real bite.
 3,Ashford,Thornbridge,Q7796317,4.2%,Brown Ale,,,"Floral and berry hop with gentle coffee and roast hazelnut aromas. Smooth in the mouth with a nice dry, toasty note."
-4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned 'nutty' flavour and punch."
+4,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,,"Premium quality pale malt, crystal malt, and increased hops, gives this beer its renowned ‘nutty’ flavour and punch."
 5,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,,,"A singly hopped with Fuggles. Refreshing and smooth, with caramel and biscuit notes, and a grassy, herbal freshness."
 6,Birthday Stay Puft,Tiny Rebel,Q27136461,10.0%,Marshmallow Porter,,,"Marshmallow & Salted Caramel Birthday Cake Porter. A thick, oozy, caramely, birthday cakey, 10% monster."
 7,Bitter,Almasty Brewing Co,Q98070139,4.5%,Bitter,,,A traditional English Bitter with Maris Otter barley and traditional English hops. Gentle bitterness and floral aromas.
@@ -26,7 +26,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 25,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer Ale,,,An amazingly crisp Summer Ale with very low bitterness and late citrus hop aroma from a combination of Saaz and Cascade varieties.
 26,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber Ale,,,US Crystal and Cascade hops in the boil and dry hopped with more Cascade make this little ABV beer pack a fruity punch.
 27,Flying on Time,Odyssey,,4.5%,Session IPA,,,"Golden Promise malt. Idaho-7, Ekuanot & Cryo Azacca hops. Tangerine, mango & notes of sweet cereal."
-28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale - brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
+28,Fourteen,XT Brewing Co.,Q39053843,4.5%,Saison,,,A Golden Pale Ale — brewed with a semi-wild Belgian Saison Yeast. A zesty fruity refreshing ale with a natural haze.
 29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden Ale,,,"Cascade hops give a subtle citrus flavour, coupled with Cara malt to give a light golden colour and a hint of sweetness."
 30,Golden Ale,The Chiltern Brewery,Q97661391,3.9%,Golden Ale,,,Biscuity malt notes and hopped with the UK grown Cascade producing a beautiful citrus & grapefruit aroma.
 31,Golden Ale,Almasty Brewing Co,Q98070139,4.7%,Golden Ale,,,Challenger hops provide bitterness with Goldings giving hints of spice running alongside floral and citrus aromas.
@@ -34,7 +34,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 33,I Don't Tip,Anarchy Brew Co.,Q98070202,6.2%,IPA,,,Citrus and orange pith with an underlying note of pine and a strong bitter finish. Vegan Friendly. DDH West Coast IPA.
 34,I Remember Having One,Verdant Brewing Co.,Q113829344,3.8%,Pale Ale,,,"Verdant yeast, soft Cornish water and selected Citra hops make this a smooth, big bodied and zesty little beer."
 35,Jaipur DDH,Thornbridge,Q7796317,5.9%,IPA,,,The 15th Anniversary of Jaipur. DDH Jaipur is double dry hopped creating an even punchier tropical fruit character.
-36,Karate Kiwi,Vocation / Overtone (collab),Q107717907,5.5%,Pale Ale,,,"NZ hops - Motueka, Rakau & Wai-iti. Citrus, punchy ripe stonefruit. Refreshing, hoppy with a soft bitter finish."
+36,Karate Kiwi,Vocation / Overtone (collab),Q107717907,5.5%,Pale Ale,,,"NZ hops — Motueka, Rakau & Wai-iti. Citrus, punchy ripe stonefruit. Refreshing, hoppy with a soft bitter finish."
 37,Lazarus,Odyssey,,5.0%,Pale Ale,,,"Extra pale, Golden Promise and Oats. Ekuanot, Azacca and Cryo Azacca. Full-bodied mango sherbet and citrus."
 38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,,,"Notes of coffee, chocolate and smoke. Like its namesake, there is more to discover in London Porters unlit complexity."
 39,Made North,Thornbridge,Q7796317,3.8%,Bitter,,,"Bright golden colour. Bracingly bitter and dry, light malt aromas and flavours of earthy, floral English hops."
@@ -42,7 +42,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 41,Maris the Otter,Brew York,Q125758709,3.9%,Bitter,,,3 varieties of new world hops and a malt backbone of 5 different malts. A complex modern take on English Bitter.
 42,Melba,Thornbridge,Q7796317,5.2%,Peach IPA,,,Melba pours a light gold in colour and it’s peachy character is complemented by the use of highly aromatic US hops.
 43,Milk Stout,Bristol Beer Factory,Q107716330,4.5%,Milk Stout,,,Multi award-winning; Smooth chocolatey sweetness and balancing bitterness with hints of dark fruits.
-44,Mosaic,Arbor,Q97665078,4.0%,GF Pale Ale,,,Heavily hopped Mosaic Pale Ale with bold floral and tropical fruit flavours and aromas – Naturally Gluten Free.
+44,Mosaic,Arbor,Q97665078,4.0%,GF Pale Ale,,,Heavily hopped Mosaic Pale Ale with bold floral and tropical fruit flavours and aromas — Naturally Gluten Free.
 45,Mr Squirrel,Mad Squirrel,Q98074829,4.0%,Premium Bitter,,,"An old school bitter for the 21st century, with vintage notes of toffee, vanilla, and nuts."
 46,Northern Monkey,Tring / ACBF (collab),Q7842351,5.1%,Best Bitter,,,Brewed with oats for mouthfeel and three types of malt for flavour and colour. Hopped with Boadicea and a gentle dry hop with Challenger.
 47,OPA,Oakham,Q7073885,4.0%,Pale Ale,,,"Light gold in colour, with bold fruity hop notes balanced perfectly with a refreshing dry finish. Exclusive to Dayla."
@@ -62,7 +62,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 61,Sun Spot,Pope's Yard,Q98222617,4.0%,Pale Ale,,,"Sun spot is 4% ABV, a summery session pale ale with citrus and tropical notes, but fairly malty too!"
 62,Sunrise,Gower,,4.0%,Blonde,,,"A light straw coloured, easy drinking beer, infused with refreshing lemon and sun-ripened flavours and aromas."
 63,Talus in Wonderland,Arbor,Q97665078,4.8%,Pale Ale,,,"American Pale Ale featuring Yakima Chief’s new hop Talus, accompanied by Idaho 7 and Azacca."
-64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA – packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
+64,Three,XT Brewing Co.,Q39053843,4.2%,Golden Ale,,,"An American style IPA — packed with Chinook, Columbus and Cascade hops that offer a crisp, clean and refreshing with a lasting hoppy bite."
 65,Tonkoko,Brew York,Q125758709,4.3%,Milk Stout,,,"Tonka, coconut, vanilla and cacao nibs combine to make this silky smooth and indulgent milk stout."
 66,Tri-Hop,Mad Squirrel,Q98074829,4.0%,GF Pale Ale,,,"Naturally Gluten free Pale Ale brewed with Mosaic, Vic Secret and Motueka hops."
 67,Unlocked,Hornes Brewery,Q97666414,4.3%,IPA,,,"Unlocked Hornes IPA is a citrusy refreshing session IPA, packed full of Citra and Simcoe hops."
