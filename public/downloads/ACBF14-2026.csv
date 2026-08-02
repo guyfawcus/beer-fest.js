@@ -1,76 +1,76 @@
 beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_free,description
-1,A Room Is Still A Room,Cloudwater,,4.0%,Pale Ale,y,,"Soft and hazy with bright Citra and Enigma hop character, delivering juicy citrus, tropical fruit and gentle stone-fruit flavours; smooth, highly drinkable."
-2,Beechwood,Chiltern,,4.3%,Bitter,,y,"Mid-amber with toffee and nutty aroma. Balanced bitterness and sweetness with a long, satisfying finish."
+1,A Room Is Still A Room,Cloudwater,Q104869040,4.0%,Pale Ale,y,,"Soft and hazy with bright Citra and Enigma hop character, delivering juicy citrus, tropical fruit and gentle stone-fruit flavours; smooth, highly drinkable."
+2,Beechwood,The Chiltern Brewery,Q97661391,4.3%,Bitter,,y,"Mid-amber with toffee and nutty aroma. Balanced bitterness and sweetness with a long, satisfying finish."
 3,Beer Street,London Brewing Co.,,4.0%,Bitter,,,Easy-drinking pale ale with bright hop aromas and subtle citrus flavours.
-4,Best,Five Points,,4.1%,Best Bitter,y,,Traditional best bitter with balanced caramel malt and earthy English hop character.
+4,Best,The Five Points Brewing Company,Q98071243,4.1%,Best Bitter,y,,Traditional best bitter with balanced caramel malt and earthy English hop character.
 5,Bitter,Kirkstall,,3.8%,Bitter,,,Classic Yorkshire bitter with balanced malt sweetness and a satisfying hoppy finish.
-6,Black,Chiltern,,3.9%,Stout,,,Dark ruby with roast barley and chocolate notes. Smooth and complex — a year-round favourite.
-7,Black Beauty,Vale,,4.4%,Porter,,,"A smooth, dark porter with rich roasted malt, chocolate and coffee notes, finishing with a gentle sweetness and satisfying depth."
-8,Blonde,The 3 Brewers,,4.2%,Blonde,,,Mosaic and Rakau hops give a wonderful hoppy aroma and a refreshing smack of fruity citrussy flavours.
-9,Brill Gold,Vale,,3.4%,Golden,,,"Maris Otter malt and English hops, including First Gold and Celeia. Subtle citrus and orange hop flavours and balanced bitterness."
-10,Butty Bach,Wye Valley,,4.5%,Premium Ale,,,"Smooth premium amber ale with rich malt flavours, fruity notes and a deceptively easy finish."
-11,Buzzard,XT/Animal,,4.6%,Pale,,,A single hopped Pale. Yakima giving floral hints and mild bitterness.
+6,Black,The Chiltern Brewery,Q97661391,3.9%,Stout,,,Dark ruby with roast barley and chocolate notes. Smooth and complex — a year-round favourite.
+7,Black Beauty,Vale Brewery,Q98072911,4.4%,Porter,,,"A smooth, dark porter with rich roasted malt, chocolate and coffee notes, finishing with a gentle sweetness and satisfying depth."
+8,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde,,,Mosaic and Rakau hops give a wonderful hoppy aroma and a refreshing smack of fruity citrussy flavours.
+9,Brill Gold,Vale Brewery,Q98072911,3.4%,Golden,,,"Maris Otter malt and English hops, including First Gold and Celeia. Subtle citrus and orange hop flavours and balanced bitterness."
+10,Butty Bach,Wye Valley Brewery,Q8039718,4.5%,Premium Ale,,,"Smooth premium amber ale with rich malt flavours, fruity notes and a deceptively easy finish."
+11,Buzzard,XT / Animal (collab),,4.6%,Pale,,,A single hopped Pale. Yakima giving floral hints and mild bitterness.
 12,By Furrow,Woodshedding,,4.5%,Golden Ale,,,"Modern pale ale combining juicy hop character with a clean, balanced finish."
 13,By the Mill,Burnt Mill,,3.8%,Best Bitter,y,y,"Soft, hop-forward pale best bitter showcasing vibrant citrus and tropical fruit notes."
-14,Clown College,Pentrich,,4.6%,Pale Ale,y,,"Naturally hazy pale ale with mango, passion fruit and grapefruit over gentle bitterness."
-15,Colleys Dog,Tring,,5.2%,Ruby Ale,,,"A rich, dark ruby ale with nutty malt flavours, hints of caramel and walnut, a full-bodied character, and a long, smooth dry finish."
-16,Cwtch,Tiny Rebel,,4.6%,Red Ale,y,,Smooth Welsh red ale with caramel sweetness and a hint of citrus hops.
-17,Death or Glory,Tring,,7.2%,Strong Ale,,,"A rich, strong ale with a heady fruity, estery nose. This beer  has a very complex flavour profile."
+14,Clown College,Pentrich Brewing Co.,Q135552809,4.6%,Pale Ale,y,,"Naturally hazy pale ale with mango, passion fruit and grapefruit over gentle bitterness."
+15,Colleys Dog,Tring Brewery Co.,Q7842351,5.2%,Ruby Ale,,,"A rich, dark ruby ale with nutty malt flavours, hints of caramel and walnut, a full-bodied character, and a long, smooth dry finish."
+16,Cwtch,Tiny Rebel,Q27136461,4.6%,Red Ale,y,,Smooth Welsh red ale with caramel sweetness and a hint of citrus hops.
+17,Death or Glory,Tring Brewery Co.,Q7842351,7.2%,Strong Ale,,,"A rich, strong ale with a heady fruity, estery nose. This beer  has a very complex flavour profile."
 18,Drift,St Ives,,4.0%,Amber Ale,,,Light golden ale with gentle citrus notes and an easy-drinking character.
-19,Endless Love,Wiper & True,,4.8%,Pale Ale,y,,"Bright pale ale with vibrant citrus, stone fruit and balanced refreshment."
+19,Endless Love,Wiper and True,Q27067400,4.8%,Pale Ale,y,,"Bright pale ale with vibrant citrus, stone fruit and balanced refreshment."
 20,Ernie's Milk Stout,Settle,,4.5%,Milk Stout,,,"Rich and creamy milk stout with roasted coffee, chocolate and subtle sweetness."
-21,Evolve,Mad Squirrel,,4.1%,Bitter,,,"Hopped with Chinook, Harlequin and Olicana producing a bitter with a blend of pine and citrus aromas."
-22,Fanny Ebbs,Tring,,3.9%,Summer,,,Crisp with low bitterness and citrus hop aroma from a combination of Saaz and Cascade varieties.
-23,Fashionably Late,Siren,,4.5%,West Coast IPA,,,Smooth modern pale ale combining juicy tropical fruit with bright citrus hops.
-24,Featherstone,Hornes,,3.6%,Amber,,y,A touch of Crystal malt with Cascade hops in the boil and dry hopped with more Cascade give this lighter ABV beer a fruity punch.
+21,Evolve,Mad Squirrel,Q98074829,4.1%,Bitter,,,"Hopped with Chinook, Harlequin and Olicana producing a bitter with a blend of pine and citrus aromas."
+22,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer,,,Crisp with low bitterness and citrus hop aroma from a combination of Saaz and Cascade varieties.
+23,Fashionably Late,Siren Craft Brew,Q97726156,4.5%,West Coast IPA,,,Smooth modern pale ale combining juicy tropical fruit with bright citrus hops.
+24,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,,y,A touch of Crystal malt with Cascade hops in the boil and dry hopped with more Cascade give this lighter ABV beer a fruity punch.
 25,Four,XT,,3.8%,Amber,,,Speciality malts and a fruity mix of American and European hops.
-26,Gatekeeper,Buxton,,4.1%,Porter,y,,"Smooth dark porter with roasted malt, coffee and chocolate notes."
-27,Glass Mountain,Oakham,,4.2%,Cream Ale,,,"Zesty lemon flavours with herbal hints, notes of mint and green tea and a clean moreish bitterness."
+26,Gatekeeper,Buxton Brewery,Q98118486,4.1%,Porter,y,,"Smooth dark porter with roasted malt, coffee and chocolate notes."
+27,Glass Mountain,Oakham,Q7073885,4.2%,Cream Ale,,,"Zesty lemon flavours with herbal hints, notes of mint and green tea and a clean moreish bitterness."
 28,Glittering Sun,Burnt Mill,,4.0%,Pale Ale,y,,"Bright and juicy pale ale with tropical fruit character and a clean, refreshing finish."
-29,Golden,The 3 Brewers,,3.8%,Golden,,,Cascade hops give a subtle citrus flavour while Cara malt gives a light golden colour and a hint of sweetness.
-30,Golden Fleece,XT/Animal,,4.3%,Golden,,,"Brewers Gold, First Gold & Goldings giving Orange, spice & blackcurrant notes."
+29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden,,,Cascade hops give a subtle citrus flavour while Cara malt gives a light golden colour and a hint of sweetness.
+30,Golden Fleece,XT / Animal (collab),,4.3%,Golden,,,"Brewers Gold, First Gold & Goldings giving Orange, spice & blackcurrant notes."
 31,Hop Kitty,XT,,3.9%,Pale,,,Huge on Citra and Cascade hops. HopKitty is bursting with intense tropical and citrus flavours.
-32,HPA,Wye Valley,,3.7%,Bitter,,,"Refreshing pale ale with floral hop aromas, citrus notes and a crisp, dry finish."
+32,HPA,Wye Valley Brewery,Q8039718,3.7%,Bitter,,,"Refreshing pale ale with floral hop aromas, citrus notes and a crisp, dry finish."
 33,I Want to be Classified,Courier Brewing,,4.5%,Pale Ale,,,"Fresh, modern pale ale combining juicy hop character with a clean finish."
 34,Idaho 7 the Dank,Red Willow,,4.7%,Session IPA,y,,"Resinous and tropical with bold pine, citrus and dank hop character."
-35,Jaipur,Thornbridge,,5.9%,IPA,,,"Award-winning IPA bursting with citrus fruit, honeyed malt and a long bitter finish."
+35,Jaipur,Thornbridge,Q7796317,5.9%,IPA,,,"Award-winning IPA bursting with citrus fruit, honeyed malt and a long bitter finish."
 36,Jumpers for Goalposts,Duration,,4.3%,Summer Ale,,,"Orange marmalade and bright citrus flavours leading into a crisp, refreshing finish."
-37,Let There be Light,Buxton,,4.0%,Summer Ale,y,,"Light, crisp golden ale with delicate citrus hops and refreshing drinkability."
-38,London Porter,Mad Squirrel,,5.0%,Porter,y,,"A Porter that offers notes of coffee, chocolate and a slight smokiness."
-39,Lord Marples,Thornbridge,,4.0%,Bitter,,,Classic bitter with honey and caramel malt flavours balanced by gentle bitterness.
-40,Lumina,Siren,,4.2%,Session IPA,y,y,Tropical and citrus-packed session IPA with a soft body and refreshing finish.
-41,Mansion Mild,Tring,,3.7%,Mild,,,"Dark mild, smooth like velvet, sweet and creamy."
+37,Let There be Light,Buxton Brewery,Q98118486,4.0%,Summer Ale,y,,"Light, crisp golden ale with delicate citrus hops and refreshing drinkability."
+38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,y,,"A Porter that offers notes of coffee, chocolate and a slight smokiness."
+39,Lord Marples,Thornbridge,Q7796317,4.0%,Bitter,,,Classic bitter with honey and caramel malt flavours balanced by gentle bitterness.
+40,Lumina,Siren Craft Brew,Q97726156,4.2%,Session IPA,y,y,Tropical and citrus-packed session IPA with a soft body and refreshing finish.
+41,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Dark mild, smooth like velvet, sweet and creamy."
 42,Meor,St Ives,,4.8%,IPA,,,Balanced amber ale offering biscuit malt flavours and a subtle hop finish.
-43,Moongazing,Tring,,4.2%,Amber,,,"Bitterness with grapefruit, mango and peach hop character from Chinook and Citra. Rye crystal malt adds additional complexity."
-44,Mosaic,Arbor,,4.0%,Pale Ale,y,y,"Single-hop pale ale bursting with mango, citrus and tropical fruit aromas from Mosaic hops."
+43,Moongazing,Tring Brewery Co.,Q7842351,4.2%,Amber,,,"Bitterness with grapefruit, mango and peach hop character from Chinook and Citra. Rye crystal malt adds additional complexity."
+44,Mosaic,Arbor,Q97665078,4.0%,Pale Ale,y,y,"Single-hop pale ale bursting with mango, citrus and tropical fruit aromas from Mosaic hops."
 45,Naked Ladies,Twickenham,,4.4%,Golden Ale,,,"Well-balanced golden ale with fresh hop aromas, citrus notes and a crisp finish."
 46,Nectar,Kirkstall,,4.1%,Honey Pale Ale,,,"Soft, juicy pale ale packed with tropical fruit and citrus hop flavours."
-47,One for the Team,Arbor,,4.5%,Session IPA,y,y,"Juicy session IPA packed with Citra, Mosaic, Idaho 7 and Talus delivering bright tropical and citrus flavours."
-48,Pale,Chiltern,,3.7%,Pale,,,"A crisp, refreshing pale ale with bright citrus hops, subtle malt sweetness, and a clean, satisfying finish."
-49,Pomelo,Mad Squirrel,,4.2%,Pale,y,,"Unfined single hopped Pale, using Citra. Expect grapefruit and lemon."
-50,Ridgeway,Tring,,4.0%,Bitter,,,"Balanced aroma and taste. Malt characteristics yield to a dry, fruity hop flavour."
+47,One for the Team,Arbor,Q97665078,4.5%,Session IPA,y,y,"Juicy session IPA packed with Citra, Mosaic, Idaho 7 and Talus delivering bright tropical and citrus flavours."
+48,Pale,The Chiltern Brewery,Q97661391,3.7%,Pale,,,"A crisp, refreshing pale ale with bright citrus hops, subtle malt sweetness, and a clean, satisfying finish."
+49,Pomelo,Mad Squirrel,Q98074829,4.2%,Pale,y,,"Unfined single hopped Pale, using Citra. Expect grapefruit and lemon."
+50,Ridgeway,Tring Brewery Co.,Q7842351,4.0%,Bitter,,,"Balanced aroma and taste. Malt characteristics yield to a dry, fruity hop flavour."
 51,Screech Owl,Castle Rock,,5.5%,IPA,,,Rich amber ale combining biscuit malt flavours with a balanced hop bitterness.
-52,Session IPA,Chiltern,,3.4%,Session IPA,,,"A light, easy-drinking IPA bursting with tropical fruit and citrus hop flavours, balanced by a crisp, refreshing finish."
-53,Show Me the Money,Tiny Rebel,,4.3%,Golden Ale,,,"Bright, hop-forward pale ale with juicy tropical fruit and citrus flavours."
-54,Side Pocket for a Toad,Tring,,3.6%,Golden,,,Citrus and floral notes from Cascade hops balanced with a crisp dry finish.
-55,Smart Big Fish,Vale,,4.3%,Summer,,,Bright floral hops and a soft malt sweetness make for easy summer drinking.
-56,Special,The 3 Brewers,,4.8%,Bitter,,,"Chocolate malt gives a deep copper colour, while English hops give a hint of berries."
-57,Spring,Beak x Harvey's,,4.5%,Golden Ale,,,"Refreshing golden ale with grapefruit, citrus and soft tropical fruit over a smooth biscuity malt base."
+52,Session IPA,The Chiltern Brewery,Q97661391,3.4%,Session IPA,,,"A light, easy-drinking IPA bursting with tropical fruit and citrus hop flavours, balanced by a crisp, refreshing finish."
+53,Show Me the Money,Tiny Rebel,Q27136461,4.3%,Golden Ale,,,"Bright, hop-forward pale ale with juicy tropical fruit and citrus flavours."
+54,Side Pocket for a Toad,Tring Brewery Co.,Q7842351,3.6%,Golden,,,Citrus and floral notes from Cascade hops balanced with a crisp dry finish.
+55,Smart Big Fish,Vale Brewery,Q98072911,4.3%,Summer,,,Bright floral hops and a soft malt sweetness make for easy summer drinking.
+56,Special,The 3 Brewers of St.Albans,Q97619412,4.8%,Bitter,,,"Chocolate malt gives a deep copper colour, while English hops give a hint of berries."
+57,Spring,Beak / Harvey's (collab),,4.5%,Golden Ale,,,"Refreshing golden ale with grapefruit, citrus and soft tropical fruit over a smooth biscuity malt base."
 58,Summer Pale Ale Cascade,The Kernel,,5.1%,Pale Ale,,,Clean and refreshing pale ale showcasing Cascade's grapefruit and floral character.
 59,Swifty,Jiddler's Tipple,,3.4%,Session IPA,y,y,"Light and refreshing session IPA with lemon, lime, gooseberry and tropical fruit flavours."
 60,Tacoma,Kirkstall,,4.5%,IPA,,,"West Coast pale ale combining citrus, pine and refreshing bitterness."
 61,The Jump,Woodshedding,,4.1%,Bitter,,,"Soft, fruity pale ale with citrus and tropical flavours."
-62,The Wangdoodle,Buxton,,4.2%,Bitter,,,"American brown ale with pine, spice and red berry aromas balanced by gentle caramel sweetness."
-63,Tickety Brew,Vale,,4.0%,Amber,,,"A classic amber ale with smooth caramel malt, earthy Fuggles and Goldings hops, and a well-balanced, refreshing bitter finish."
+62,The Wangdoodle,Buxton Brewery,Q98118486,4.2%,Bitter,,,"American brown ale with pine, spice and red berry aromas balanced by gentle caramel sweetness."
+63,Tickety Brew,Vale Brewery,Q98072911,4.0%,Amber,,,"A classic amber ale with smooth caramel malt, earthy Fuggles and Goldings hops, and a well-balanced, refreshing bitter finish."
 64,Titan,LHG,,3.8%,Pale Ale,y,,Full-flavoured golden ale delivering citrus hop character and a balanced finish.
 65,Tobi,Woodshedding,,5.3%,IPA,,,Refreshing pale ale delivering bright hop aroma and easy-drinking balance.
-66,Trident,Mad Squirrel,,3.4%,Pale,,,"Hopped with Talus, Mosiac and Cryopop; unveils a sea of citrus and tropical flavours."
-67,Triple Goat IPA,Hornes,,5.0%,IPA,,y,"IPA with citrus characteristics. Well balanced malts, American Cascade and Summit hops."
-68,Triple Goat Pale,Hornes,,3.9%,Pale,,y,"Brewed with malted pale barley, Chinook and Southern Cross whole flower hops, brewers yeast and pure water."
-69,Twice As Precious,Cloudwater,,4.2%,Bitter,y,,"Velvety smooth bitter with biscuit malt, fruity resin notes and a soft pine finish."
+66,Trident,Mad Squirrel,Q98074829,3.4%,Pale,,,"Hopped with Talus, Mosiac and Cryopop; unveils a sea of citrus and tropical flavours."
+67,Triple Goat IPA,Hornes Brewery,Q97666414,5.0%,IPA,,y,"IPA with citrus characteristics. Well balanced malts, American Cascade and Summit hops."
+68,Triple Goat Pale,Hornes Brewery,Q97666414,3.9%,Pale,,y,"Brewed with malted pale barley, Chinook and Southern Cross whole flower hops, brewers yeast and pure water."
+69,Twice As Precious,Cloudwater,Q104869040,4.2%,Bitter,y,,"Velvety smooth bitter with biscuit malt, fruity resin notes and a soft pine finish."
 70,West Coast,Red Willow,,5.2%,West Coast Pale Ale,,,"Crisp, classic West Coast IPA with citrus, pine and a clean bitter finish."
-71,Wharf View,Brew York,,3.8%,Chocolate Porter,,,"Layers of smooth chocolate, roasted malt and gentle coffee notes."
-72,Wychert,Vale,,3.9%,Bitter,,,"A traditional amber bitter with rich malt sweetness, gentle hop bitterness and a smooth, easy-drinking finish."
+71,Wharf View,Brew York,Q125758709,3.8%,Chocolate Porter,,,"Layers of smooth chocolate, roasted malt and gentle coffee notes."
+72,Wychert,Vale Brewery,Q98072911,3.9%,Bitter,,,"A traditional amber bitter with rich malt sweetness, gentle hop bitterness and a smooth, easy-drinking finish."
 C1,Abrahalls AD,Celtic Marches,,6.5%,Traditional / Dry Cider,,,
 C2,Alice,Celtic Marches,,4.6%,Medium Cider,,,
 C3,Apples & Pears,Lilley's,,4.0%,Fruit Cider / Perry Blend,,,
