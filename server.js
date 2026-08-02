@@ -145,7 +145,7 @@ if (NODE_ENV === 'production') {
 }
 
 app.use(helmet())
-app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
+app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }))
 app.use(
   permissionsPolicy({
     features: {
