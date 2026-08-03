@@ -137,11 +137,11 @@ const sessionOptions = {
 
 if (NODE_ENV === 'production') {
   app.use(expressEnforcesSsl())
-  app.set('trust proxy', 1)
   sessionOptions.cookie.secure = true
   sessionOptions.name = '__Host-sessionId'
 }
 
+app.set('trust proxy', 1)
 app.use(helmet())
 app.use(helmet.referrerPolicy({ policy: 'strict-origin-when-cross-origin' }))
 app.use(
