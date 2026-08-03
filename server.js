@@ -13,7 +13,7 @@ import cors from 'cors'
 import express from 'express'
 import expressEnforcesSsl from 'express-enforces-ssl'
 import expressFlash from 'express-flash'
-import rateLimit from 'express-rate-limit'
+import { rateLimit, ipKeyGenerator } from 'express-rate-limit'
 import { RedisStore as RedisRateLimitStore } from 'rate-limit-redis'
 import permissionsPolicy from 'permissions-policy'
 import helmet from 'helmet'
@@ -218,7 +218,11 @@ const limiter = rateLimit({
   limit: 500, // Limit each IP to 500 requests per `window`
   standardHeaders: 'draft-8', // Combined `RateLimit` header
   legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-  ipv6Subnet: 60, // Set to 60 or 64 to be less aggressive, or 52 or 48 to be more aggressive
+  keyGenerator: (req) => {
+    const clientIp = req.headers['cf-connecting-ip'] ?? req.ip
+    // Set to 60 or 64 to be less aggressive, or 52 or 48 to be more aggressive
+    return ipKeyGenerator(clientIp, 64)
+  },
   store: new RedisRateLimitStore({
     sendCommand: (...args) => redisClient.sendCommand(args)
   })
