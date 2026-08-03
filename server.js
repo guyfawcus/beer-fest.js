@@ -95,8 +95,6 @@ let brewery_geojson = ''
 // ---------------------------------------------------------------------------
 const app = express()
 
-const tls_config = NODE_ENV === 'production' ? { tls: true, rejectUnauthorized: false } : undefined
-
 const wdk = WBK({
   instance: 'https://www.wikidata.org',
   sparqlEndpoint: 'https://query.wikidata.org/sparql'
@@ -105,7 +103,7 @@ const wdk = WBK({
 // ---------------------------------------------------------------------------
 // Redis
 // ---------------------------------------------------------------------------
-const redisClient = redis.createClient({ url: REDIS_URL, socket: tls_config, pingInterval: 30000 })
+const redisClient = redis.createClient({ url: REDIS_URL, pingInterval: 30000 })
 
 redisClient.on('error', (error) => {
   if (error.code === 'ECONNREFUSED') {
