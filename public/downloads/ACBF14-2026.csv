@@ -21,7 +21,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 20,Ernie's Milk Stout,Settle,,4.5%,Milk Stout,,,"Rich and creamy milk stout with roasted coffee, chocolate and subtle sweetness."
 21,Evolve,Mad Squirrel,Q98074829,4.1%,Bitter,,,"Hopped with Chinook, Harlequin and Olicana producing a bitter with a blend of pine and citrus aromas."
 22,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer,,,Crisp with low bitterness and citrus hop aroma from a combination of Saaz and Cascade varieties.
-23,Fashionably Late,Siren Craft Brew,Q97726156,4.5%,West Coast IPA,,,Smooth modern pale ale combining juicy tropical fruit with bright citrus hops.
+23,Fashionably Late,Siren Craft Brew,Q132657849,4.5%,West Coast IPA,,,Smooth modern pale ale combining juicy tropical fruit with bright citrus hops.
 24,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,,y,A touch of Crystal malt with Cascade hops in the boil and dry hopped with more Cascade give this lighter ABV beer a fruity punch.
 25,Four,XT Brewing Co.,Q39053843,3.8%,Amber,,,Speciality malts and a fruity mix of American and European hops.
 26,Gatekeeper,Buxton Brewery,Q98118486,4.1%,Porter,y,,"Smooth dark porter with roasted malt, coffee and chocolate notes."
@@ -38,7 +38,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 37,Let There be Light,Buxton Brewery,Q98118486,4.0%,Summer Ale,y,,"Light, crisp golden ale with delicate citrus hops and refreshing drinkability."
 38,London Porter,Mad Squirrel,Q98074829,5.0%,Porter,y,,"A Porter that offers notes of coffee, chocolate and a slight smokiness."
 39,Lord Marples,Thornbridge,Q7796317,4.0%,Bitter,,,Classic bitter with honey and caramel malt flavours balanced by gentle bitterness.
-40,Lumina,Siren Craft Brew,Q97726156,4.2%,Session IPA,y,y,Tropical and citrus-packed session IPA with a soft body and refreshing finish.
+40,Lumina,Siren Craft Brew,Q132657849,4.2%,Session IPA,y,y,Tropical and citrus-packed session IPA with a soft body and refreshing finish.
 41,Mansion Mild,Tring Brewery Co.,Q7842351,3.7%,Mild,,,"Dark mild, smooth like velvet, sweet and creamy."
 42,Meor,St Ives,,4.8%,IPA,,,Balanced amber ale offering biscuit malt flavours and a subtle hop finish.
 43,Moongazing,Tring Brewery Co.,Q7842351,4.2%,Amber,,,"Bitterness with grapefruit, mango and peach hop character from Chinook and Citra. Rye crystal malt adds additional complexity."
