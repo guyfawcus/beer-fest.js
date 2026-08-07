@@ -748,6 +748,12 @@ async function initialiseBeers() {
           } else {
             logger.warn('No current or default beers files found, making a blank one to use instead')
             saveCSV(beers)
+
+            logger.info('Initialising state')
+            for (let number = 1; number <= NUM_OF_BUTTONS; number++) {
+              last_table[number] = 'full'
+            }
+            saveState(last_table)
           }
         }
 
