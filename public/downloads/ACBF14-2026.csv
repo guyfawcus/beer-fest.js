@@ -9,7 +9,7 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 8,Blonde,The 3 Brewers of St.Albans,Q97619412,4.2%,Blonde,,,Mosaic and Rakau hops give a wonderful hoppy aroma and a refreshing smack of fruity citrussy flavours.
 9,Brill Gold,Vale Brewery,Q98072911,3.4%,Golden,,,"Maris Otter malt and English hops, including First Gold and Celeia. Subtle citrus and orange hop flavours and balanced bitterness."
 10,Butty Bach,Wye Valley Brewery,Q8039718,4.5%,Premium Ale,,,"Smooth premium amber ale with rich malt flavours, fruity notes and a deceptively easy finish."
-11,Buzzard,XT / Animal (collab),,4.6%,Pale,,,A single hopped Pale. Yakima giving floral hints and mild bitterness.
+11,Buzzard,XT / Animal (collab),Q39053843,4.6%,Pale,,,A single hopped Pale. Yakima giving floral hints and mild bitterness.
 12,By Furrow,Woodshedding,,4.5%,Golden Ale,,,"Modern pale ale combining juicy hop character with a clean, balanced finish."
 13,By the Mill,Burnt Mill,,3.8%,Best Bitter,y,y,"Soft, hop-forward pale best bitter showcasing vibrant citrus and tropical fruit notes."
 14,Clown College,Pentrich Brewing Co.,Q135552809,4.6%,Pale Ale,y,,"Naturally hazy pale ale with mango, passion fruit and grapefruit over gentle bitterness."
@@ -23,13 +23,13 @@ beer_number,beer_name,brewer,brewery_wikidata_id,abv,beer_style,vegan,gluten_fre
 22,Fanny Ebbs,Tring Brewery Co.,Q7842351,3.9%,Summer,,,Crisp with low bitterness and citrus hop aroma from a combination of Saaz and Cascade varieties.
 23,Fashionably Late,Siren Craft Brew,Q97726156,4.5%,West Coast IPA,,,Smooth modern pale ale combining juicy tropical fruit with bright citrus hops.
 24,Featherstone,Hornes Brewery,Q97666414,3.6%,Amber,,y,A touch of Crystal malt with Cascade hops in the boil and dry hopped with more Cascade give this lighter ABV beer a fruity punch.
-25,Four,XT,,3.8%,Amber,,,Speciality malts and a fruity mix of American and European hops.
+25,Four,XT Brewing Co.,Q39053843,3.8%,Amber,,,Speciality malts and a fruity mix of American and European hops.
 26,Gatekeeper,Buxton Brewery,Q98118486,4.1%,Porter,y,,"Smooth dark porter with roasted malt, coffee and chocolate notes."
 27,Glass Mountain,Oakham,Q7073885,4.2%,Cream Ale,,,"Zesty lemon flavours with herbal hints, notes of mint and green tea and a clean moreish bitterness."
 28,Glittering Sun,Burnt Mill,,4.0%,Pale Ale,y,,"Bright and juicy pale ale with tropical fruit character and a clean, refreshing finish."
 29,Golden,The 3 Brewers of St.Albans,Q97619412,3.8%,Golden,,,Cascade hops give a subtle citrus flavour while Cara malt gives a light golden colour and a hint of sweetness.
-30,Golden Fleece,XT / Animal (collab),,4.3%,Golden,,,"Brewers Gold, First Gold & Goldings giving Orange, spice & blackcurrant notes."
-31,Hop Kitty,XT,,3.9%,Pale,,,Huge on Citra and Cascade hops. HopKitty is bursting with intense tropical and citrus flavours.
+30,Golden Fleece,XT / Animal (collab),Q39053843,4.3%,Golden,,,"Brewers Gold, First Gold & Goldings giving Orange, spice & blackcurrant notes."
+31,Hop Kitty,XT Brewing Co.,Q39053843,3.9%,Pale,,,Huge on Citra and Cascade hops. HopKitty is bursting with intense tropical and citrus flavours.
 32,HPA,Wye Valley Brewery,Q8039718,3.7%,Bitter,,,"Refreshing pale ale with floral hop aromas, citrus notes and a crisp, dry finish."
 33,I Want to be Classified,Courier Brewing,,4.5%,Pale Ale,,,"Fresh, modern pale ale combining juicy hop character with a clean finish."
 34,Idaho 7 the Dank,Red Willow,,4.7%,Session IPA,y,,"Resinous and tropical with bold pine, citrus and dank hop character."
