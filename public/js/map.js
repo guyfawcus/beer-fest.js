@@ -93,6 +93,11 @@ function refreshIcons() {
   const showIcon = (brewery) => brewery.setIcon(breweryIcon).setZIndexOffset(0)
   const hideIcon = (brewery) => brewery.setIcon(hiddenBreweryIcon).setZIndexOffset(-1000)
 
+  const vegan_filter = document.getElementById('vegan-filter')
+  const gf_filter = document.getElementById('gf-filter')
+  vegan_filter.checked = hide_not_vegan
+  gf_filter.checked = hide_not_gluten_free
+
   breweries.eachLayer((brewery) => {
     const has_vegan_beers = brewery.feature.properties.has_vegan_beers
     const has_gluten_free_beers = brewery.feature.properties.has_gluten_free_beers
@@ -155,6 +160,43 @@ venue.bindPopup('Aston Clinton Beer Festival')
 venue.setZIndexOffset(1000)
 venue.addTo(map)
 venue.openPopup()
+
+// Add filter controls that also affect the button displays via local storage
+const FilterControl = L.Control.extend({
+  onAdd(map) {
+    const div = L.DomUtil.create('div', 'filter-control')
+
+    div.innerHTML = `
+            <label><input id="vegan-filter" type="checkbox">Hide non-vegan options</label><br>
+            <label><input id="gf-filter" type="checkbox">Hide non-gluten-free options</label>
+        `
+
+    // Stop the map moving while interacting
+    L.DomEvent.disableClickPropagation(div)
+    L.DomEvent.disableScrollPropagation(div)
+
+    // Restore saved values
+    const hide_not_vegan = localStorage.getItem('HIDE_NOT_VEGAN') === 'true'
+    const hide_not_gluten_free = localStorage.getItem('HIDE_NOT_GLUTEN_FREE') === 'true'
+
+    div.querySelector('#vegan-filter').checked = hide_not_vegan
+    div.querySelector('#gf-filter').checked = hide_not_gluten_free
+
+    div.querySelector('#vegan-filter').addEventListener('change', (e) => {
+      localStorage.setItem('HIDE_NOT_VEGAN', e.target.checked)
+      refreshIcons()
+    })
+
+    div.querySelector('#gf-filter').addEventListener('change', (e) => {
+      localStorage.setItem('HIDE_NOT_GLUTEN_FREE', e.target.checked)
+      refreshIcons()
+    })
+
+    return div
+  }
+})
+
+new FilterControl({ position: 'topright' }).addTo(map)
 
 // Update if there is a message sent to the 'beers' topic.
 // This is so that a new file is uploaded, it will be automatically refreshed.
