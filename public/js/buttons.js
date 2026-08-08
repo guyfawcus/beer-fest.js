@@ -1,6 +1,7 @@
 import {
   applyChecks,
   buildCross,
+  setCross,
   checkHistory,
   generateCheckedHexURL,
   buildInfoModal,
@@ -66,6 +67,12 @@ for (const button of buttons) {
       clickButton(number)
     }
   }
+
+  // Clear the cross when a button is right clicked
+  button.addEventListener('contextmenu', (eventObj) => {
+    eventObj.preventDefault()
+    setCross(number, false)
+  })
 }
 
 // Add listeners for keypress events

@@ -244,7 +244,7 @@ function setInfoModal(number) {
  * @param {boolean} [checked] If `true`, the cross will be added. If false, it will be removed
  * @param {boolean} [store] If 'true', the checkedHexData in localStorage will be updated
  */
-function setCross(number, checked = true, store = true) {
+export function setCross(number, checked = true, store = true) {
   const button = document.querySelector(`[id^=button_${number}]`)
   if (!button) return
   const cross = button.getElementsByClassName('cross')[0]
