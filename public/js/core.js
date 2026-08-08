@@ -90,11 +90,13 @@ function setColour(number, level, element) {
     element.dataset.level = ''
   } else if (localStorage.HIDE_NOT_GLUTEN_FREE === 'true' && thisBeer && thisBeer.gluten_free !== 'y') {
     element.dataset.level = ''
+  } else if (!thisBeer?.beer_name) {
+    element.dataset.level = ''
   } else if (level === 'empty') {
     element.dataset.level = 'empty'
   } else if (level === 'low') {
     element.dataset.level = 'low'
-  } else if (level === 'full') {
+  } else {
     element.dataset.level = 'full'
   }
 }
