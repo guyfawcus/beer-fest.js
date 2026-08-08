@@ -1,7 +1,17 @@
-import { AUTHORISED, TO_CONFIRM, LOW_ENABLE, socket, tableUpload, beersUpload, updateAllAs } from './core.js'
+import {
+  AUTHORISED,
+  TO_CONFIRM,
+  LOW_ENABLE,
+  socket,
+  tableUpload,
+  beersUpload,
+  beersClear,
+  updateAllAs
+} from './core.js'
 
 const stateUploadButton = document.getElementById('stateUploadButton')
 const beersUploadButton = document.getElementById('beersUploadButton')
+const beersClearButton = document.getElementById('beersClearButton')
 const fullButton = document.getElementById('fullButton')
 const lowButton = document.getElementById('lowButton')
 const emptyButton = document.getElementById('emptyButton')
@@ -10,6 +20,7 @@ const low_checkbox = document.getElementById('low_check')
 
 stateUploadButton.addEventListener('click', (event) => tableUpload())
 beersUploadButton.addEventListener('click', (event) => beersUpload())
+beersClearButton.addEventListener('click', (event) => beersClear())
 fullButton.addEventListener('click', (event) => updateAllAs('full'))
 lowButton.addEventListener('click', (event) => updateAllAs('low'))
 emptyButton.addEventListener('click', (event) => updateAllAs('empty'))

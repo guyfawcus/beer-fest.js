@@ -706,6 +706,16 @@ export function tableUpload() {
 }
 
 /**
+ * This allows wiping the current state
+ */
+export function beersClear() {
+  if (!AUTHORISED) return
+  if (confirm('Are you sure you want to clear the data?')) {
+    socket.emit('beers-file', '')
+  }
+}
+
+/**
  * This creates a hidden element that pops up an upload dialog that allows
  * sending new beer information to the server for distribution.
  */
