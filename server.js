@@ -71,7 +71,7 @@ const BEERS_FILE = process.env.BEERS_FILE || ''
 const CURRENT_BEERS_FILE = './public/downloads/current-beers.csv'
 
 /** @type {configObj} */
-const last_config = { confirm: true, low_enable: false }
+const last_config = { confirm: true, low_enable: true }
 
 /** @type {stockLevelsObj} */
 let last_table = {}
